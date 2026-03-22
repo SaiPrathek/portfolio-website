@@ -1,0 +1,18 @@
+{
+  "name": "sai-prathek-kotha-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Sai Prathek Kotha - dual theme (F1 Racing / The Office)",
+  "author": "Sai Prathek Kotha",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website",
+    "f1-theme",
+    "office-theme"
+  ]
+}

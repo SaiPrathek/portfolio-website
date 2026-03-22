@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;0,700;1,600&amp;family=Space+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#27438a",
+              "tertiary-container": "#97b0ff",
+              "inverse-primary": "#735c00",
+              "tertiary-fixed-dim": "#b4c5ff",
+              "outline-variant": "#4d4635",
+              "tertiary-fixed": "#dbe1ff",
+              "surface-container-high": "#2a2a2a",
+              "surface-bright": "#393939",
+              "surface": "#131313",
+              "on-primary-fixed-variant": "#574500",
+              "outline": "#99907c",
+              "surface-dim": "#131313",
+              "surface-variant": "#353535",
+              "on-secondary": "#323200",
+              "error-container": "#93000a",
+              "tertiary": "#bfcdff",
+              "secondary": "#cbcb6a",
+              "inverse-surface": "#e5e2e1",
+              "secondary-container": "#5c5d01",
+              "on-secondary-fixed": "#1d1d00",
+              "primary": "#f2ca50",
+              "on-secondary-container": "#d6d674",
+              "surface-container-highest": "#353535",
+              "primary-fixed": "#ffe088",
+              "primary-container": "#d4af37",
+              "on-tertiary": "#082b72",
+              "on-surface-variant": "#d0c5af",
+              "on-primary-container": "#554300",
+              "on-background": "#e5e2e1",
+              "error": "#ffb4ab",
+              "background": "#131313",
+              "on-primary": "#3c2f00",
+              "inverse-on-surface": "#313030",
+              "surface-container-low": "#1c1b1b",
+              "on-tertiary-fixed": "#00174b",
+              "on-error-container": "#ffdad6",
+              "secondary-fixed": "#e8e883",
+              "secondary-fixed-dim": "#cbcb6a",
+              "on-tertiary-container": "#254188",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-tint": "#e9c349",
+              "on-primary-fixed": "#241a00",
+              "on-secondary-fixed-variant": "#494900",
+              "on-error": "#690005",
+              "on-surface": "#e5e2e1",
+              "surface-container": "#20201f"
+            },
+            fontFamily: {
+              "headline": ["Newsreader", "serif"],
+              "body": ["Space Grotesk", "sans-serif"],
+              "label": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ruled-paper {
+            background-image: repeating-linear-gradient(transparent, transparent 31px, #d4af37 31px, #d4af37 32px);
+            line-height: 32px;
+        }
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 min-h-screen relative overflow-x-hidden">
+<div class="fixed inset-0 noise-overlay pointer-events-none z-50"></div>
+<!-- Top Navigation Bar -->
+<nav class="bg-[#131313] dark:bg-[#131313] flex justify-between items-center w-full px-12 py-6 max-w-screen-2xl mx-auto z-40 relative">
+<div class="font-serif text-2xl italic font-semibold text-[#f2ca50] dark:text-[#f2ca50]">
+            The Modern Regional Manager
+        </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#cbcb6a] hover:text-[#f2ca50] transition-colors font-sans text-xs tracking-tight Space Grotesk" href="#">Memos</a>
+<a class="text-[#cbcb6a] hover:text-[#f2ca50] transition-colors font-sans text-xs tracking-tight Space Grotesk" href="#">The Annex</a>
+<a class="text-[#cbcb6a] hover:text-[#f2ca50] transition-colors font-sans text-xs tracking-tight Space Grotesk" href="#">Personnel File</a>
+<a class="text-[#f2ca50] border-b-2 border-[#f2ca50] pb-1 font-bold font-sans text-xs tracking-tight Space Grotesk" href="#">The Breakroom</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer hover:bg-[#1c1b1b] transition-all duration-300 p-2 rounded-lg" data-icon="account_circle">account_circle</span>
+</div>
+</nav>
+<main class="max-w-screen-xl mx-auto px-6 md:px-12 py-20 relative">
+<!-- Hero Section -->
+<header class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-secondary text-5xl" data-icon="coffee">coffee</span>
+<span class="font-label text-label-md uppercase tracking-[0.3em] text-secondary/60">Rest &amp; Recuperation</span>
+</div>
+<h1 class="font-headline text-7xl md:text-8xl font-bold text-on-background leading-none">
+                    Pull up a chair.
+                </h1>
+<p class="mt-8 font-body text-xl text-on-surface-variant/80 max-w-lg leading-relaxed">
+                    The coffee is mediocre, the gossip is confidential, and the management door is always half-open. Welcome to the digital inner-sanctum.
+                </p>
+</div>
+<div class="relative">
+<div class="font-headline text-2xl italic text-error/40 border-2 border-error/30 px-6 py-3 -rotate-12 select-none uppercase tracking-widest">
+                    Authorized Personnel Only
+                </div>
+</div>
+</header>
+<!-- Main Layout: Bento Grid Style -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- The Memo Pad (Contact Form) -->
+<div class="lg:col-span-7 bg-secondary-fixed text-on-secondary-fixed p-8 md:p-12 shadow-2xl relative overflow-hidden group">
+<!-- Red Margin Line -->
+<div class="absolute left-16 top-0 bottom-0 w-px bg-error/30 z-10"></div>
+<div class="relative z-20">
+<h2 class="font-headline text-4xl font-bold mb-10 pl-12 text-on-secondary-fixed/90">Leave a Memo</h2>
+<form class="space-y-0 ruled-paper pl-12">
+<div class="flex items-baseline gap-4 mb-8">
+<label class="font-label text-xs uppercase tracking-widest opacity-50 w-20 shrink-0">From:</label>
+<input class="bg-transparent border-none focus:ring-0 w-full p-0 font-body placeholder:italic placeholder:opacity-30" placeholder="Identity or Department" type="text"/>
+</div>
+<div class="flex items-baseline gap-4 mb-8">
+<label class="font-label text-xs uppercase tracking-widest opacity-50 w-20 shrink-0">Subject:</label>
+<input class="bg-transparent border-none focus:ring-0 w-full p-0 font-body placeholder:italic placeholder:opacity-30" placeholder="Grievance or Commendation" type="text"/>
+</div>
+<div class="flex flex-col gap-2 min-h-[300px]">
+<label class="font-label text-xs uppercase tracking-widest opacity-50">Observation:</label>
+<textarea class="bg-transparent border-none focus:ring-0 w-full p-0 font-body placeholder:italic placeholder:opacity-30 min-h-[250px] resize-none" placeholder="Write clearly, HR is watching..."></textarea>
+</div>
+<div class="pt-12 flex justify-end">
+<button class="bg-surface-container-highest text-primary px-10 py-4 font-label font-bold uppercase tracking-widest hover:bg-surface-bright transition-all active:scale-95 flex items-center gap-3">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+                                Transmit Memo
+                            </button>
+</div>
+</form>
+</div>
+<!-- Coffee Ring Detail -->
+<div class="absolute -bottom-10 -right-10 w-48 h-48 border-[6px] border-on-secondary-fixed/5 rounded-full pointer-events-none"></div>
+</div>
+<!-- The Bulletin Board (Socials & Info) -->
+<div class="lg:col-span-5 space-y-8">
+<div class="bg-surface-container-low p-8 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 flex gap-2">
+<div class="w-12 h-6 bg-surface-container-highest/50 backdrop-blur rounded-sm border border-outline-variant/20"></div>
+</div>
+<h3 class="font-headline text-2xl font-semibold mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="push_pin">push_pin</span>
+                        Bulletin Board
+                    </h3>
+<div class="space-y-6">
+<!-- Social Link -->
+<a class="block bg-surface-container p-6 border-l-4 border-tertiary hover:bg-surface-container-high transition-all group" href="#">
+<div class="flex justify-between items-center">
+<div>
+<span class="font-label text-[10px] uppercase text-tertiary tracking-widest">Network Extension</span>
+<p class="font-headline text-xl mt-1">Personnel LinkedIn</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Social Link -->
+<a class="block bg-surface-container p-6 border-l-4 border-secondary hover:bg-surface-container-high transition-all group" href="#">
+<div class="flex justify-between items-center">
+<div>
+<span class="font-label text-[10px] uppercase text-secondary tracking-widest">Digital Repository</span>
+<p class="font-headline text-xl mt-1">The Archive (GitHub)</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Office Hours Card -->
+<div class="bg-surface-container-highest p-6 relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-label text-[10px] uppercase text-primary tracking-widest">Availability</span>
+<h4 class="font-headline text-xl mt-1 mb-4">Official Hours</h4>
+<ul class="space-y-2 font-label text-xs text-on-surface-variant">
+<li class="flex justify-between"><span>Mon - Fri</span> <span>09:00 - 17:00 EST</span></li>
+<li class="flex justify-between"><span>Sat - Sun</span> <span>Off Duty (The Annex)</span></li>
+</ul>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-7xl opacity-5 text-on-primary-container" data-icon="schedule">schedule</span>
+</div>
+</div>
+</div>
+<!-- Secondary Visual -->
+<div class="aspect-video bg-surface-container-low overflow-hidden relative group">
+<img alt="Moody office workspace" class="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="Modern dark luxury office workspace background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWbEjvjqZc50HUM5Q_DZCWfr5-_stfSZYB-qldxN-2bgwRN4nhLRKTk3nWPzz3bGWVszHS9lLy_WPaPJumtFN6Z9-6aj0MW7cmO0Mxr6QzWYePt2gNi4rhUq5Ubwflg7r58yxUsdzHubtIkzILmbsNOGBi6nC3q0IVH349rW_JwSnbDnFiOtXLniJ_0wWprJaASua6WGttV00k3uMPat2eh7WviEbMUOJA43kSmSQ7nGV3a_XGX2owml1wFSKiJfzvqruZOiSLudev"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80"></div>
+<div class="absolute bottom-6 left-6">
+<span class="font-label text-[10px] uppercase text-primary tracking-[0.2em]">Scranton Regional</span>
+<p class="font-headline text-lg italic opacity-70 italic text-on-surface">The desk where decisions happen.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-10 px-12 flex flex-col md:flex-row justify-between items-center opacity-70 bg-[#131313] dark:bg-[#131313] border-t border-[#353535]/20">
+<div class="font-sans text-[10px] uppercase tracking-[0.2em] Space Grotesk text-[#cbcb6a]">
+            © 2024 Scrantonicity Digital. All Rights Reserved. Confidential.
+        </div>
+<div class="flex gap-8 mt-6 md:mt-0">
+<a class="text-[#bfcdff]/60 hover:text-[#f2ca50] transition-colors font-sans text-[10px] uppercase tracking-[0.2em] Space Grotesk" href="#">Internal Memo</a>
+<a class="text-[#bfcdff]/60 hover:text-[#f2ca50] transition-colors font-sans text-[10px] uppercase tracking-[0.2em] Space Grotesk" href="#">Privacy Policy</a>
+<a class="text-[#bfcdff]/60 hover:text-[#f2ca50] transition-colors font-sans text-[10px] uppercase tracking-[0.2em] Space Grotesk" href="#">Contact HR</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai Prathek Kotha | Portfolio</title>
+  <meta name="description" content="Portfolio of Sai Prathek Kotha - Senior Engineer, AI Researcher, and Builder." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'space': ['"Space Grotesk"', 'sans-serif'],
+            'inter': ['"Inter"', 'sans-serif'],
+            'mono': ['"JetBrains Mono"', 'monospace'],
+            'news': ['"Newsreader"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="theme-f1">
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="#hero" class="navbar-logo flex items-center gap-2">
+          <span class="f1-only text-2xl font-black italic tracking-tighter" style="color: var(--primary);">APEX ENGINEERING</span>
+          <span class="office-only text-2xl font-semibold tracking-wide" style="color: var(--primary); font-family: var(--font-headline);">THE BRANCH</span>
+        </a>
+
+        <!-- Nav Links (desktop) -->
+        <div class="hidden md:flex items-center gap-6">
+          <a href="#hero" class="nav-link f1-only">The Paddock</a>
+          <a href="#projects" class="nav-link f1-only">The Garage</a>
+          <a href="#experience" class="nav-link f1-only">The Pit Wall</a>
+          <a href="#publications" class="nav-link f1-only">Tech Regs</a>
+          <a href="#contact" class="nav-link f1-only">Contact</a>
+          <a href="#hero" class="nav-link office-only">Memos</a>
+          <a href="#projects" class="nav-link office-only">The Annex</a>
+          <a href="#experience" class="nav-link office-only">Personnel File</a>
+          <a href="#publications" class="nav-link office-only">Filing Cabinet</a>
+          <a href="#contact" class="nav-link office-only">Breakroom</a>
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <span class="f1-only flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">sports_motorsports</span>
+              <span class="toggle-label">F1</span>
+            </span>
+            <span class="office-only flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">tv_gen</span>
+              <span class="toggle-label">OFFICE</span>
+            </span>
+            <span class="toggle-switch-track">
+              <span class="toggle-switch-thumb"></span>
+            </span>
+          </button>
+          <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+      <a href="#hero" class="mobile-nav-link f1-only">The Paddock</a>
+      <a href="#projects" class="mobile-nav-link f1-only">The Garage</a>
+      <a href="#experience" class="mobile-nav-link f1-only">The Pit Wall</a>
+      <a href="#publications" class="mobile-nav-link f1-only">Technical Regs</a>
+      <a href="#contact" class="mobile-nav-link f1-only">Contact</a>
+      <a href="#hero" class="mobile-nav-link office-only">Memos</a>
+      <a href="#projects" class="mobile-nav-link office-only">The Annex</a>
+      <a href="#experience" class="mobile-nav-link office-only">Personnel File</a>
+      <a href="#publications" class="mobile-nav-link office-only">Filing Cabinet</a>
+      <a href="#contact" class="mobile-nav-link office-only">Breakroom</a>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO: THE STARTING GRID ===================== -->
+  <section id="hero" class="relative pt-24 pb-16">
+    <div class="max-w-screen-2xl mx-auto px-6">
+
+      <!-- F1 Hero -->
+      <div class="f1-only">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Left Column: Identity Anchor -->
+          <div class="lg:col-span-7 flex flex-col justify-end min-h-[500px] lg:min-h-[614px] pb-12 fade-in">
+            <div class="mb-6 flex items-center gap-2">
+              <span class="text-[10px] font-black px-2 py-0.5 tracking-[0.2em] uppercase" style="background: var(--primary); color: #fff; font-family: var(--font-headline);">P1 STATUS</span>
+              <div class="h-[2px] w-24" style="background: var(--primary-container);"></div>
+            </div>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black italic tracking-tighter leading-[0.85] mb-4" style="color: var(--on-surface); font-family: var(--font-headline);">
+              SAI PRATHEK<br/>KOTHA
+            </h1>
+            <p class="text-xl md:text-2xl font-bold uppercase tracking-tight" style="color: var(--secondary); font-family: var(--font-headline);">
+              Team Principal of Intelligence
+            </p>
+            <div class="mt-12 flex flex-wrap gap-4">
+              <a href="#projects" class="inline-block text-white font-extrabold uppercase px-8 py-4 text-sm tracking-widest shadow-lg hover:shadow-red-600/20 transition-all active:scale-95" style="background: var(--speed-gradient); font-family: var(--font-headline);">
+                Initiate Launch Sequence
+              </a>
+              <a href="#contact" class="inline-block font-extrabold uppercase px-8 py-4 text-sm tracking-widest transition-all" style="background: var(--surface-container-highest); color: var(--primary); font-family: var(--font-headline);">
+                Contact Pit Wall
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Telemetry Bento -->
+          <div class="lg:col-span-5 grid grid-cols-2 gap-4 fade-in fade-delay-200">
+            <!-- GPA Card -->
+            <div class="col-span-1 p-6 flex flex-col justify-between relative overflow-hidden" style="background: var(--surface-container-lowest);">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+              <div class="carbon-overlay"></div>
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-headline);">CHAMPIONSHIP POINTS</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-5xl font-black" style="color: var(--on-surface); font-family: var(--font-headline);">9.25</span>
+                  <span class="text-sm font-bold italic" style="color: var(--primary); font-family: var(--font-headline);">GPA</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 mt-8">
+                <span class="material-symbols-outlined text-sm text-green-600" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-headline);">Target Optimized</span>
+              </div>
+            </div>
+
+            <!-- Hours Saved Card -->
+            <div class="col-span-1 p-6 flex flex-col justify-between relative overflow-hidden" style="background: var(--surface-container-lowest);">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+              <div class="carbon-overlay"></div>
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-headline);">PIT EFFICIENCY</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-5xl font-black" style="color: var(--on-surface); font-family: var(--font-headline);">80+</span>
+                  <span class="text-sm font-bold italic" style="color: var(--primary); font-family: var(--font-headline);">HRS</span>
+                </div>
+              </div>
+              <div class="mt-8">
+                <span class="text-[10px] font-bold uppercase tracking-widest block" style="color: var(--secondary); font-family: var(--font-headline);">Saved / Sprint</span>
+              </div>
+            </div>
+
+            <!-- Radio Message Component -->
+            <div class="col-span-2 p-8 relative overflow-hidden" style="background: var(--on-surface); color: #fff;">
+              <div class="absolute top-0 right-0 p-4 opacity-10">
+                <span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">settings_input_antenna</span>
+              </div>
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
+                <span class="text-xs tracking-widest uppercase" style="color: #e2e2e2; font-family: var(--font-mono);">Team Radio: ACTIVE</span>
+              </div>
+              <blockquote class="text-2xl md:text-3xl font-light italic leading-snug" style="font-family: var(--font-headline);">
+                "Leave me alone, I know what I'm doing"
+              </blockquote>
+              <div class="mt-6 flex justify-between items-end">
+                <div>
+                  <p class="text-[10px] uppercase tracking-widest" style="color: #6b6b6b; font-family: var(--font-mono);">Driver: KOTHA, S.</p>
+                  <p class="text-[10px] uppercase tracking-widest" style="color: #6b6b6b; font-family: var(--font-mono);">Circuit: GLOBAL_INTEL</p>
+                </div>
+                <span class="font-black italic tracking-tighter" style="color: var(--primary); font-family: var(--font-headline);">RADIO_COMM_01</span>
+              </div>
+            </div>
+
+            <!-- Visual Accent Image -->
+            <div class="col-span-2 aspect-[21/9] relative overflow-hidden group">
+              <img alt="F1 Dashboard Telemetry" class="w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr4QYx1z1o-VuzGeqZ-i-CjbJYa_i6IfB9f0kirzSDTuyQH828Y8ArNm6sLDdR7P4XNgRkIpY0XGus_wZ1AtV8Fopixp2rR1eQJawdF3slbbxh-gcjvZvFi8jgynyMESPmdIzKLp82ty1qHr0vCVjF0KmruOl0ceAVLL8V9p1cM78u0NYNqDUzOa2EsaY-qlr2HZr_-VuHj5hBqK5rpVGAe7P8urXPo5H8RWyhhwaxkaI3YYB94lMwoJgmq7CkbbKM25M4vCMYZ2Cw" loading="eager" />
+              <div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+                <div class="flex gap-1">
+                  <div class="w-8 h-1" style="background: var(--primary);"></div>
+                  <div class="w-4 h-1" style="background: var(--primary); opacity: 0.4;"></div>
+                  <div class="w-2 h-1" style="background: var(--primary); opacity: 0.2;"></div>
+                </div>
+                <span class="text-[10px] font-bold text-white uppercase tracking-tighter" style="font-family: var(--font-mono);">Sector 1: PURPLE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Office Hero — Bento Grid -->
+      <div class="office-only">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 fade-in">
+          <!-- Left: Identity -->
+          <div class="lg:col-span-7 flex flex-col justify-end min-h-[500px] lg:min-h-[614px] pb-12">
+            <div class="mb-6 flex items-center gap-2">
+              <span class="confidential-stamp text-[10px] font-bold px-3 py-1 tracking-[0.15em] uppercase">CONFIDENTIAL</span>
+              <div class="h-[2px] w-24" style="background: var(--primary);"></div>
+            </div>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-semibold leading-[0.85] mb-4" style="color: var(--on-surface); font-family: var(--font-headline);">
+              SAI PRATHEK<br/>KOTHA
+            </h1>
+            <p class="text-xl md:text-2xl font-light" style="color: var(--on-surface-variant); font-family: var(--font-headline);">
+              Digital Branch Manager
+            </p>
+            <div class="mt-12 flex flex-wrap gap-4">
+              <a href="#projects" class="btn-primary-office">View My Memos</a>
+              <a href="#contact" class="btn-secondary-office">The Breakroom</a>
+            </div>
+          </div>
+
+          <!-- Right: Office Bento -->
+          <div class="lg:col-span-5 grid grid-cols-2 gap-4 fade-in fade-delay-200">
+            <!-- GPA Card -->
+            <div class="col-span-1 p-6 flex flex-col justify-between relative" style="background: var(--surface-container-low);">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-body);">Performance Review</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-5xl font-semibold" style="color: var(--on-surface); font-family: var(--font-headline);">9.25</span>
+                  <span class="text-sm font-semibold italic" style="color: var(--primary); font-family: var(--font-headline);">GPA</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 mt-8">
+                <span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">stars</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-body);">Exceeds Expectations</span>
+              </div>
+            </div>
+
+            <!-- Hours Saved Card -->
+            <div class="col-span-1 p-6 flex flex-col justify-between relative" style="background: var(--surface-container-low);">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-body);">Productivity Score</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-5xl font-semibold" style="color: var(--on-surface); font-family: var(--font-headline);">80+</span>
+                  <span class="text-sm font-semibold italic" style="color: var(--primary); font-family: var(--font-headline);">HRS</span>
+                </div>
+              </div>
+              <div class="mt-8">
+                <span class="text-[10px] font-bold uppercase tracking-widest block" style="color: var(--secondary); font-family: var(--font-body);">Saved / Sprint</span>
+              </div>
+            </div>
+
+            <!-- Office Memo / Dundie Component -->
+            <div class="col-span-2 p-8 relative overflow-hidden" style="background: var(--surface-container-highest); color: var(--on-surface);">
+              <div class="absolute top-0 right-0 p-4 opacity-10">
+                <span class="material-symbols-outlined text-6xl" style="color: var(--primary); font-variation-settings: 'FILL' 1;">emoji_events</span>
+              </div>
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-3 h-3 rounded-full animate-pulse" style="background: var(--primary);"></div>
+                <span class="text-xs tracking-widest uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Internal Memo: ACTIVE</span>
+              </div>
+              <blockquote class="text-2xl md:text-3xl font-light italic leading-snug" style="font-family: var(--font-headline);">
+                "Would I rather be feared or loved? Both. I want people to be afraid of how much they love me."
+              </blockquote>
+              <div class="mt-6 flex justify-between items-end">
+                <div>
+                  <p class="text-[10px] uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono);">From: KOTHA, S.</p>
+                  <p class="text-[10px] uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono);">Dept: ENGINEERING</p>
+                </div>
+                <span class="font-semibold italic tracking-tight" style="color: var(--primary); font-family: var(--font-headline);">MEMO_001</span>
+              </div>
+            </div>
+
+            <!-- Visual Accent Image -->
+            <div class="col-span-2 aspect-[21/9] relative overflow-hidden group">
+              <img alt="Modern office workspace" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCr6fCrKfJ2inElBDcfiYWNIZE04kvUhUjvmeF5eNI-iJlhdth10oOown4Xu5GI5AHgAdK1hZRzI3pkMuSjcc-wHZShI3LNm37NshFXzrNqUr-xwTCFUnHKjZOlXQ0sPPobIZFr0-4DpCA6XhORukqqwzlhZ48Dgc6KvK9pi_0NoFk3xhkPTKZVSClThlHoRoTT3qrQHBArpSuJOWW0UrTmOWqnSJsk6geKQD_Ei8Zw60OyNuQF5Lu0fJLRTLXey8I15l43xyMf09q" loading="eager" />
+              <div class="absolute inset-0" style="background: linear-gradient(to top, var(--surface)/40, transparent);"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+                <div class="flex gap-1">
+                  <div class="w-8 h-1" style="background: var(--primary);"></div>
+                  <div class="w-4 h-1" style="background: var(--primary); opacity: 0.4;"></div>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-tighter" style="color: var(--on-surface); font-family: var(--font-mono);">Floor 3: CORNER OFFICE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Technical Strip / Marquee (F1) -->
+    <div class="f1-only mt-24 border-y py-12 overflow-hidden whitespace-nowrap" style="border-color: var(--surface-container-highest); background: var(--surface-container-low);">
+      <div class="marquee-content">
+        <span class="text-4xl font-black italic tracking-tighter" style="font-family: var(--font-headline); color: var(--on-surface); opacity: 0.15;">AERODYNAMIC INTELLIGENCE &nbsp;&bull;&nbsp; DATA PRECISION &nbsp;&bull;&nbsp; ENGINEERING EXCELLENCE &nbsp;&bull;&nbsp; ELITE PERFORMANCE &nbsp;&bull;&nbsp;</span>
+        <span class="text-4xl font-black italic tracking-tighter" style="font-family: var(--font-headline); color: var(--on-surface); opacity: 0.15;">AERODYNAMIC INTELLIGENCE &nbsp;&bull;&nbsp; DATA PRECISION &nbsp;&bull;&nbsp; ENGINEERING EXCELLENCE &nbsp;&bull;&nbsp; ELITE PERFORMANCE &nbsp;&bull;&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- Office Marquee Strip -->
+    <div class="office-only mt-16 border-y py-10 overflow-hidden whitespace-nowrap" style="border-color: var(--outline-variant); background: var(--surface-container-low);">
+      <div class="marquee-content">
+        <span class="text-3xl font-semibold italic opacity-10" style="font-family: var(--font-headline);">BEARS BEETS BATTLESTAR GALACTICA &nbsp;&bull;&nbsp; THAT'S WHAT SHE SAID &nbsp;&bull;&nbsp; WORLD'S BEST BOSS &nbsp;&bull;&nbsp; ASSISTANT TO THE REGIONAL MANAGER &nbsp;&bull;&nbsp;</span>
+        <span class="text-3xl font-semibold italic opacity-10" style="font-family: var(--font-headline);">BEARS BEETS BATTLESTAR GALACTICA &nbsp;&bull;&nbsp; THAT'S WHAT SHE SAID &nbsp;&bull;&nbsp; WORLD'S BEST BOSS &nbsp;&bull;&nbsp; ASSISTANT TO THE REGIONAL MANAGER &nbsp;&bull;&nbsp;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS: THE GARAGE ===================== -->
+  <section id="projects" class="relative py-20 md:py-32">
+    <div class="max-w-screen-2xl mx-auto px-6">
+
+      <!-- F1 Header -->
+      <div class="f1-only fade-in mb-16">
+        <header class="flex flex-col md:flex-row justify-between items-end gap-6 border-l-4 pl-6" style="border-color: var(--primary);">
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] uppercase tracking-widest px-2 py-0.5" style="color: var(--secondary); background: var(--surface-container); font-family: var(--font-mono);">System Status: Active</span>
+              <span class="text-[10px] uppercase tracking-widest font-bold" style="color: var(--primary); font-family: var(--font-mono);">Session: R&amp;D Garage</span>
+            </div>
+            <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none" style="font-family: var(--font-headline);">
+              The <span class="italic" style="color: var(--primary);">Garage</span>
+            </h2>
+          </div>
+          <div class="text-right max-w-xs">
+            <p class="text-[10px] uppercase leading-relaxed" style="color: var(--secondary); font-family: var(--font-mono);">
+              Accessing experimental builds and high-performance engineering components. Proceed with technical caution.
+            </p>
+          </div>
+        </header>
+      </div>
+
+      <!-- Office Header -->
+      <div class="office-only fade-in mb-16">
+        <p class="text-xs tracking-[0.2em] uppercase mb-2" style="color: var(--primary); font-family: var(--font-body);">Internal Memos</p>
+        <h2 class="text-4xl md:text-5xl font-semibold" style="color: var(--on-surface); font-family: var(--font-headline);">Project Memos</h2>
+        <div class="h-0.5 w-20 mt-4" style="background: var(--primary);"></div>
+      </div>
+
+      <!-- F1: Bento Grid Projects -->
+      <div class="f1-only">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-20">
+
+          <!-- Project 1: MIRA (8 cols) -->
+          <div class="md:col-span-8 group relative overflow-hidden fade-in transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-lowest);">
+            <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+            <div class="p-8 md:p-10 h-full flex flex-col">
+              <!-- Header row: Title + Stats -->
+              <div class="flex justify-between items-start mb-6">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Project ID: APX-01</span>
+                  <h3 class="text-4xl font-extrabold tracking-tighter uppercase italic" style="font-family: var(--font-headline);">MIRA</h3>
+                  <p class="text-sm font-medium mt-1" style="color: var(--secondary);">Multi-Intelligence Response Agent</p>
+                </div>
+                <div class="flex gap-6">
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Accuracy</span>
+                    <span class="block text-2xl font-bold tracking-tight" style="color: var(--primary); font-family: var(--font-headline);">99.4%</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Latency</span>
+                    <span class="block text-2xl font-bold tracking-tight" style="font-family: var(--font-headline);">12ms</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Full-width image -->
+              <div class="w-full h-48 relative overflow-hidden border mb-6" style="background: var(--surface-container-low); border-color: var(--outline-variant);">
+                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 opacity-50 group-hover:opacity-100" src="img/mira-app.jpg" alt="MIRA AI" loading="lazy" />
+                <div class="absolute inset-0 carbon-overlay"></div>
+              </div>
+
+              <!-- Description + CTA -->
+              <p class="text-xs leading-relaxed mb-6 max-w-xl" style="color: var(--secondary); font-family: var(--font-mono);">Fine-tuned Meta-LLaMA-3.1-8B on 8.4M+ tokens. Real-time multidimensional data analysis using proprietary neural chassis architecture. Optimized for low-drag decision making.</p>
+              <div class="mt-auto">
+                <a href="https://kzmluwnx39bq0ja6grhx.lite.vusercontent.net/" target="_blank" rel="noopener" class="inline-block text-white font-bold uppercase text-xs tracking-widest px-6 py-3 active:scale-90 transition-transform" style="background: var(--speed-gradient); font-family: var(--font-headline);">Launch MIRA</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: SQL Runner (4 cols) -->
+          <div class="md:col-span-4 relative overflow-hidden flex flex-col fade-in fade-delay-100 transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-lowest);">
+            <div class="absolute top-0 left-0 w-full h-1" style="background: var(--primary);"></div>
+            <div class="p-8 flex-1 flex flex-col">
+              <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Project ID: APX-02</span>
+              <h3 class="text-4xl font-extrabold tracking-tighter uppercase italic" style="font-family: var(--font-headline);">SQL Runner</h3>
+              <p class="text-sm font-medium mt-1 mb-6" style="color: var(--secondary);">Natural Language Engine</p>
+
+              <div class="space-y-3 mb-6">
+                <div class="p-3 relative" style="background: var(--surface-container-low); border-left: 2px solid var(--primary);">
+                  <span class="text-[10px] uppercase block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Query Efficiency</span>
+                  <div class="h-1 w-full" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--primary); width: 88%;"></div></div>
+                </div>
+                <div class="p-3 relative" style="background: var(--surface-container-low); border-left: 2px solid var(--secondary);">
+                  <span class="text-[10px] uppercase block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Schema Mapping</span>
+                  <div class="h-1 w-full" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--secondary); width: 94%;"></div></div>
+                </div>
+              </div>
+
+              <div class="mt-auto h-28 bg-zinc-900 p-4 text-zinc-400 overflow-hidden leading-tight rounded-sm" style="font-family: var(--font-mono); font-size: 10px;">
+                <span class="text-emerald-500">SELECT</span> * <span class="text-emerald-500">FROM</span> telemetry<br/>
+                <span class="text-emerald-500">WHERE</span> driver_id = 'LECLERC'<br/>
+                <span class="text-emerald-500">AND</span> session_type = 'QUALIFYING'<br/>
+                <span class="text-zinc-600">_</span>
+              </div>
+            </div>
+            <a href="#publications" class="block w-full py-4 text-center font-bold uppercase text-[10px] tracking-widest transition-colors" style="background: var(--surface-container-high); color: var(--on-surface); font-family: var(--font-headline);">View Research Paper</a>
+          </div>
+
+          <!-- Project 3: OSINT Hub (12 cols) -->
+          <div class="md:col-span-12 p-8 md:p-10 relative overflow-hidden fade-in fade-delay-200 transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-lowest);">
+            <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+              <div class="w-full md:w-1/3">
+                <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Project ID: APX-03</span>
+                <h3 class="text-4xl font-extrabold tracking-tighter uppercase italic mb-4" style="font-family: var(--font-headline);">OSINT Hub</h3>
+                <p class="text-sm font-medium mb-6" style="color: var(--secondary);">Real-time open-source intelligence gathering and pattern recognition for competitive advantage.</p>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div class="border p-3" style="border-color: var(--outline-variant);">
+                    <span class="block text-xl font-bold" style="font-family: var(--font-headline);">1.4 TB</span>
+                    <span class="block text-[9px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Daily Throughput</span>
+                  </div>
+                  <div class="border p-3" style="border-color: var(--outline-variant);">
+                    <span class="block text-xl font-bold" style="font-family: var(--font-headline);">0.8s</span>
+                    <span class="block text-[9px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Pattern ID</span>
+                  </div>
+                </div>
+                <a href="#contact" class="inline-block text-white font-bold uppercase text-xs tracking-widest px-6 py-3 active:scale-90 transition-transform" style="background: var(--speed-gradient); font-family: var(--font-headline);">Request Access</a>
+              </div>
+              <div class="w-full md:w-2/3 flex gap-3">
+                <div class="h-48 flex-1 overflow-hidden relative grayscale hover:grayscale-0 transition-all rounded-sm" style="background: var(--surface-container-low);">
+                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Data visualization" loading="lazy" />
+                </div>
+                <div class="h-48 flex-1 overflow-hidden relative grayscale hover:grayscale-0 transition-all rounded-sm" style="background: var(--surface-container-low);">
+                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Server room" loading="lazy" />
+                </div>
+                <div class="h-48 flex-1 overflow-hidden relative grayscale hover:grayscale-0 transition-all rounded-sm" style="background: var(--surface-container-low);">
+                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Code on monitor" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Office: Bento Grid Projects -->
+      <div class="office-only">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-20">
+
+          <!-- Project 1: MIRA (8 cols) -->
+          <div class="md:col-span-8 group relative overflow-hidden fade-in transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-low);">
+            <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+            <div class="p-8 md:p-10 h-full flex flex-col">
+              <div class="flex justify-between items-start mb-6">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Case File: DM-01</span>
+                  <h3 class="text-4xl font-semibold tracking-tight italic" style="font-family: var(--font-headline);">Project MIRA</h3>
+                  <p class="text-sm font-medium mt-1" style="color: var(--secondary);">The Therapist Nobody Hired</p>
+                </div>
+                <div class="flex gap-4">
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Empathy</span>
+                    <span class="block text-2xl font-semibold tracking-tight" style="color: var(--primary); font-family: var(--font-headline);">99.4%</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Response</span>
+                    <span class="block text-2xl font-semibold tracking-tight" style="font-family: var(--font-headline);">12ms</span>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full h-48 relative overflow-hidden border mb-6" style="background: var(--surface-container); border-color: var(--outline-variant);">
+                <img class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-all duration-500" src="img/mira-app.jpg" alt="Project MIRA" loading="lazy" />
+              </div>
+              <p class="text-xs leading-relaxed mb-6 max-w-xl" style="color: var(--secondary); font-family: var(--font-mono);">Fine-tuned Meta-LLaMA-3.1-8B on 8.4M+ tokens. An AI therapist that actually listens &mdash; open-sourced on Hugging Face.</p>
+              <div class="mt-auto">
+                <a href="https://kzmluwnx39bq0ja6grhx.lite.vusercontent.net/" target="_blank" rel="noopener" class="inline-block font-semibold uppercase text-xs tracking-widest px-6 py-3 active:scale-90 transition-transform" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);">Launch MIRA</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: The Auditor (4 cols) -->
+          <div class="md:col-span-4 relative overflow-hidden flex flex-col fade-in fade-delay-100 transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-low);">
+            <div class="absolute top-0 left-0 w-full h-1" style="background: var(--primary);"></div>
+            <div class="p-8 flex-1 flex flex-col">
+              <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Case File: DM-02</span>
+              <h3 class="text-4xl font-semibold tracking-tight italic" style="font-family: var(--font-headline);">The Auditor</h3>
+              <p class="text-sm font-medium mt-1 mb-6" style="color: var(--secondary);">Spreadsheets, But Make It AI</p>
+              <div class="space-y-3 mb-6">
+                <div class="p-3 relative" style="background: var(--surface-container); border-left: 2px solid var(--primary);">
+                  <span class="text-[10px] uppercase block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Query Efficiency</span>
+                  <div class="h-1 w-full" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--primary); width: 88%;"></div></div>
+                </div>
+                <div class="p-3 relative" style="background: var(--surface-container); border-left: 2px solid var(--secondary);">
+                  <span class="text-[10px] uppercase block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Schema Mapping</span>
+                  <div class="h-1 w-full" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--secondary); width: 94%;"></div></div>
+                </div>
+              </div>
+              <div class="mt-auto h-28 p-4 overflow-hidden leading-tight rounded-sm" style="background: #1a1a2e; color: #8b8ba7; font-family: var(--font-mono); font-size: 10px;">
+                <span style="color: var(--primary);">SELECT</span> * <span style="color: var(--primary);">FROM</span> quarterly_reports<br/>
+                <span style="color: var(--primary);">WHERE</span> dept = 'ACCOUNTING'<br/>
+                <span style="color: var(--primary);">AND</span> status = 'FILED'<br/>
+                <span style="color: #444;">_</span>
+              </div>
+            </div>
+            <a href="#publications" class="block w-full py-4 text-center font-semibold uppercase text-[10px] tracking-widest transition-colors" style="background: var(--surface-container-highest); color: var(--on-surface); font-family: var(--font-headline);">View Research Paper</a>
+          </div>
+
+          <!-- Project 3: Echo Command (12 cols) -->
+          <div class="md:col-span-12 p-8 md:p-10 relative overflow-hidden fade-in fade-delay-200 transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-low);">
+            <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+              <div class="w-full md:w-1/3">
+                <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Case File: DM-03</span>
+                <h3 class="text-4xl font-semibold tracking-tight italic mb-4" style="font-family: var(--font-headline);">Echo Command</h3>
+                <p class="text-sm font-medium mb-6" style="color: var(--secondary);">K2K Discovery &mdash; The Office Surveillance Network that even Dwight would approve of.</p>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div class="border p-3" style="border-color: var(--outline-variant);">
+                    <span class="block text-xl font-semibold" style="font-family: var(--font-headline);">1.4 TB</span>
+                    <span class="block text-[9px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Daily Throughput</span>
+                  </div>
+                  <div class="border p-3" style="border-color: var(--outline-variant);">
+                    <span class="block text-xl font-semibold" style="font-family: var(--font-headline);">0.8s</span>
+                    <span class="block text-[9px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Pattern ID</span>
+                  </div>
+                </div>
+                <a href="#contact" class="inline-block font-semibold uppercase text-xs tracking-widest px-6 py-3 active:scale-90 transition-transform" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);">Request Access</a>
+              </div>
+              <div class="w-full md:w-2/3 flex gap-3">
+                <div class="h-48 flex-1 overflow-hidden relative opacity-60 hover:opacity-100 transition-all rounded-sm" style="background: var(--surface-container);">
+                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Data visualization" loading="lazy" />
+                </div>
+                <div class="h-48 flex-1 overflow-hidden relative opacity-60 hover:opacity-100 transition-all rounded-sm" style="background: var(--surface-container);">
+                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Server room" loading="lazy" />
+                </div>
+                <div class="h-48 flex-1 overflow-hidden relative opacity-60 hover:opacity-100 transition-all rounded-sm" style="background: var(--surface-container);">
+                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Code on monitor" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radio Check (F1) / Water Cooler (Office) -->
+      <div class="mt-20">
+        <!-- F1 Radio Check -->
+        <div class="f1-only">
+          <div class="fade-in flex items-center gap-4 mb-8">
+            <h3 class="text-2xl font-black uppercase italic tracking-tighter" style="font-family: var(--font-headline);">Radio Check</h3>
+            <div class="flex-1 h-0.5" style="background: var(--surface-container-high);"></div>
+            <span class="text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Live Feed // Unfiltered</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="fade-in p-6 flex gap-4" style="background: var(--surface-container-low);">
+              <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center" style="background: var(--primary-container);"><span class="material-symbols-outlined text-xl text-white">radio</span></div>
+              <div>
+                <span class="block text-xs font-extrabold uppercase mb-1" style="color: var(--primary); font-family: var(--font-headline);">D. RICCIARDO</span>
+                <p class="text-xs italic" style="color: var(--on-surface); font-family: var(--font-mono);">"The OSINT Dashboard is great, but can it find me a decent flat white in Baku? The latency is low, but my caffeine level is lower."</p>
+              </div>
+            </div>
+            <div class="fade-in fade-delay-100 p-6 flex gap-4" style="background: var(--surface-container-low);">
+              <div class="flex-shrink-0 w-10 h-10 bg-zinc-800 flex items-center justify-center"><span class="material-symbols-outlined text-xl text-white">radio</span></div>
+              <div>
+                <span class="block text-xs font-extrabold uppercase mb-1" style="color: var(--on-surface); font-family: var(--font-headline);">M. VERSTAPPEN</span>
+                <p class="text-xs italic" style="color: var(--on-surface); font-family: var(--font-mono);">"MIRA keeps telling me to slow down in the pit lane. Tell her it's not 'unsafe', it's 'optimal rotation'. Also, fix the UI, too much red."</p>
+              </div>
+            </div>
+            <div class="fade-in fade-delay-200 p-6 flex gap-4" style="background: var(--surface-container-low);">
+              <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center" style="background: var(--primary-container);"><span class="material-symbols-outlined text-xl text-white">radio</span></div>
+              <div>
+                <span class="block text-xs font-extrabold uppercase mb-1" style="color: var(--primary); font-family: var(--font-headline);">L. HAMILTON</span>
+                <p class="text-xs italic" style="color: var(--on-surface); font-family: var(--font-mono);">"Guys, the SQL Runner is insane. It just translated 'The tires are gone' into a 400-page dissertation on rubber degradation. Efficient."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Office Water Cooler -->
+        <div class="office-only">
+          <div class="fade-in flex items-center gap-4 mb-10">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-2xl" style="color: var(--secondary); font-variation-settings: 'FILL' 1;">coffee</span>
+              <h3 class="text-2xl font-semibold" style="color: var(--on-surface); font-family: var(--font-headline);">Water Cooler Talk</h3>
+            </div>
+            <div class="flex-1 h-px" style="background: var(--outline-variant);"></div>
+            <span class="text-xs tracking-wider uppercase" style="color: var(--secondary); font-family: var(--font-body);">Overheard in the Breakroom</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="fade-in quote-card quote-card-office">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="quote-avatar-office"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; color: var(--primary);">person</span></div>
+                <div>
+                  <span class="text-sm font-semibold" style="color: var(--primary); font-family: var(--font-headline);">Michael Scott</span>
+                  <span class="block text-[10px] uppercase tracking-wider" style="color: var(--secondary);">Re: Project MIRA</span>
+                </div>
+              </div>
+              <p class="text-sm italic leading-relaxed" style="color: var(--on-surface); font-family: var(--font-headline);">"I tried MIRA for therapy. She told me my management style was 'concerning but entertaining.' Best performance review I've ever gotten."</p>
+            </div>
+            <div class="fade-in fade-delay-100 quote-card quote-card-office">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="quote-avatar-office"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; color: var(--secondary);">psychology</span></div>
+                <div>
+                  <span class="text-sm font-semibold" style="color: var(--primary); font-family: var(--font-headline);">Dwight Schrute</span>
+                  <span class="block text-[10px] uppercase tracking-wider" style="color: var(--secondary);">Re: The Auditor</span>
+                </div>
+              </div>
+              <p class="text-sm italic leading-relaxed" style="color: var(--on-surface); font-family: var(--font-headline);">"Sai built a system that turns English into SQL. I asked it 'Who is the best salesman?' It returned one row. Me. Obviously."</p>
+            </div>
+            <div class="fade-in fade-delay-200 quote-card quote-card-office">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="quote-avatar-office"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; color: var(--tertiary, #bfcdff);">sentiment_satisfied</span></div>
+                <div>
+                  <span class="text-sm font-semibold" style="color: var(--primary); font-family: var(--font-headline);">Jim Halpert</span>
+                  <span class="block text-[10px] uppercase tracking-wider" style="color: var(--secondary);">Re: Echo Command</span>
+                </div>
+              </div>
+              <p class="text-sm italic leading-relaxed" style="color: var(--on-surface); font-family: var(--font-headline);">"The OSINT dashboard knows everything about everyone. It's like having Ryan's browser history, but actually useful."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE: THE PIT WALL ===================== -->
+  <section id="experience" class="relative py-20 md:py-32">
+    <div class="experience-bg"></div>
+    <div class="max-w-screen-2xl mx-auto px-6 relative z-10">
+
+      <!-- F1 Header -->
+      <div class="f1-only fade-in mb-12">
+        <header class="flex flex-col md:flex-row justify-between items-baseline gap-4">
+          <div>
+            <span class="text-[10px] tracking-[0.3em] uppercase mb-2 block" style="color: var(--primary); font-family: var(--font-mono);">Telemetry Stream / LIVE</span>
+            <h2 class="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none" style="font-family: var(--font-headline);">The Pit Wall</h2>
+          </div>
+          <div class="flex flex-col items-end">
+            <div class="px-3 py-1 text-xs mb-1" style="background: var(--primary); color: #fff; font-family: var(--font-mono);">SESSION: CAREER_MODE_V2.0</div>
+            <div class="text-sm" style="color: var(--secondary); font-family: var(--font-mono);">STATUS: OPTIMAL PERFORMANCE</div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Office Header -->
+      <div class="office-only fade-in mb-12">
+        <p class="text-xs tracking-[0.2em] uppercase mb-2" style="color: var(--primary); font-family: var(--font-body);">Personnel Records</p>
+        <h2 class="text-4xl md:text-5xl font-semibold" style="color: var(--on-surface); font-family: var(--font-headline);">The Annex</h2>
+        <div class="h-0.5 w-20 mt-4" style="background: var(--primary);"></div>
+      </div>
+
+      <!-- F1: Bento Grid Experience -->
+      <div class="f1-only">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <!-- Left: Experience Cards -->
+          <div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- State Street -->
+            <section class="fade-in p-6 relative overflow-hidden shadow-sm group" style="background: var(--surface-container-lowest);">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+              <div class="carbon-overlay"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold tracking-tight" style="font-family: var(--font-headline);">STATE STREET</h3>
+                    <p class="text-xs" style="color: var(--secondary); font-family: var(--font-mono);">2023 — 2024 / SENIOR ASSOCIATE</p>
+                  </div>
+                  <span class="text-[10px] px-2 py-1" style="background: var(--surface-container); color: var(--on-surface); font-family: var(--font-mono);">P01</span>
+                </div>
+                <div class="space-y-4 mb-8">
+                  <div class="flex justify-between text-xs mb-1" style="font-family: var(--font-mono);"><span>SYSTEM ARCHITECTURE</span><span style="color: var(--primary);">98.2%</span></div>
+                  <div class="w-full h-1" style="background: var(--surface-container-high);"><div class="h-full" style="background: var(--primary); width: 98%;"></div></div>
+                  <div class="flex justify-between text-xs mb-1" style="font-family: var(--font-mono);"><span>FINANCIAL PROTOCOLS</span><span style="color: var(--primary);">94.5%</span></div>
+                  <div class="w-full h-1" style="background: var(--surface-container-high);"><div class="h-full" style="background: var(--primary); width: 94%;"></div></div>
+                </div>
+                <div class="border-t pt-4" style="border-color: var(--surface-container-high);">
+                  <h4 class="text-sm font-bold uppercase mb-3" style="font-family: var(--font-headline);">Podium Finishes</h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">workspace_premium</span><span>Built Text-to-SQL saving 80+ hrs/week</span></li>
+                    <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">workspace_premium</span><span>Led team to 7th in Int'l AI Hackathon</span></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- Infosec K2K -->
+            <section class="fade-in fade-delay-100 p-6 relative overflow-hidden shadow-sm" style="background: var(--surface-container-lowest);">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--secondary);"></div>
+              <div class="carbon-overlay"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-6">
+                  <div>
+                    <h3 class="text-2xl font-bold tracking-tight uppercase" style="font-family: var(--font-headline);">Infosec K2K</h3>
+                    <p class="text-xs" style="color: var(--secondary); font-family: var(--font-mono);">2025 — PRESENT / DATA SCIENTIST</p>
+                  </div>
+                  <span class="text-[10px] px-2 py-1" style="background: var(--surface-container); color: var(--on-surface); font-family: var(--font-mono);">P02</span>
+                </div>
+                <div class="space-y-4 mb-8">
+                  <div class="flex justify-between text-xs mb-1" style="font-family: var(--font-mono);"><span>THREAT NEUTRALIZATION</span><span style="color: var(--primary);">91.0%</span></div>
+                  <div class="w-full h-1" style="background: var(--surface-container-high);"><div class="h-full" style="background: var(--primary); width: 91%;"></div></div>
+                  <div class="flex justify-between text-xs mb-1" style="font-family: var(--font-mono);"><span>PENTESTING</span><span style="color: var(--primary);">88.3%</span></div>
+                  <div class="w-full h-1" style="background: var(--surface-container-high);"><div class="h-full" style="background: var(--primary); width: 88%;"></div></div>
+                </div>
+                <div class="border-t pt-4" style="border-color: var(--surface-container-high);">
+                  <h4 class="text-sm font-bold uppercase mb-3" style="font-family: var(--font-headline);">Podium Finishes</h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">workspace_premium</span><span>Built IAM posture assessment + OSINT</span></li>
+                    <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">workspace_premium</span><span>Anomaly detection modules for security</span></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- Engineer Radio (Full Width) -->
+            <section class="md:col-span-2 fade-in fade-delay-200 p-6 relative" style="background: var(--surface-container-high); border-left: 4px solid var(--primary);">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="material-symbols-outlined" style="color: var(--primary);">radio</span>
+                <h3 class="font-black text-lg tracking-tighter uppercase" style="font-family: var(--font-headline);">Engineer Radio</h3>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm italic" style="font-family: var(--font-mono);">
+                <div class="p-4 shadow-sm" style="background: var(--surface-container-lowest); border-right: 2px solid var(--primary);">
+                  <p class="mb-2">"Multi-21, Sai. Multi-21."</p>
+                  <span class="text-[10px] uppercase font-bold" style="color: var(--secondary);">Race Engineer // LAP 42</span>
+                </div>
+                <div class="p-4 shadow-sm" style="background: var(--surface-container-lowest); border-right: 2px solid var(--primary);">
+                  <p class="mb-2">"In-in-in-in-in! Box this lap for softs."</p>
+                  <span class="text-[10px] uppercase font-bold" style="color: var(--secondary);">Pit Wall // LAP 56</span>
+                </div>
+                <div class="p-4 shadow-sm" style="background: var(--surface-container-lowest); border-right: 2px solid var(--primary);">
+                  <p class="mb-2">"Leave me to it. I know what I'm doing."</p>
+                  <span class="text-[10px] uppercase font-bold" style="color: var(--secondary);">Lead Driver // LAP 12</span>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right Sidebar -->
+          <aside class="md:col-span-4 space-y-6">
+            <!-- Profile Card -->
+            <div class="fade-in p-4 shadow-sm flex items-center gap-4 border" style="background: var(--surface-container-lowest); border-color: var(--surface-container);">
+              <img class="w-16 h-16 object-cover grayscale" src="img/profile.jpg" alt="Profile" loading="lazy" />
+              <div>
+                <div class="font-bold text-xl tracking-tight" style="font-family: var(--font-headline);">SAI_ENGINEERING</div>
+                <div class="text-[10px]" style="color: var(--primary); font-family: var(--font-mono);">RANK: PLATINUM / LICENSE: FIA-G6</div>
+              </div>
+            </div>
+
+            <!-- Track Position Map -->
+            <div class="fade-in fade-delay-100 p-4 h-64 relative overflow-hidden group" style="background: var(--surface-container-low);">
+              <div class="absolute inset-0 grayscale opacity-40">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBqVDkIf8YSioCGm_6atrP52-dmJZnqIyQTt2zLuyYGIRjOWOcA8_NO3cpwQr-8KMAqyY_YTs9uLExt67_POxt61Bqfw7Su-Iy3iHk8l-4UxAFg01O1ffJOxI0mhHU8eQaYeBa5KQ2lTue0lqGCMxGSZ-Dp1eHFrAQ-XK60_RM0MNfN8G_hwEJ7TPuCq7DDojVcjJB5KPevSSpUeuw6jZU662BZOLAy4U1ia5FOk4kr9GDWFxiNSHjoIL8-WwGxci2jmdTI6MkJTDD" alt="Race track" loading="lazy" />
+              </div>
+              <div class="relative z-10 flex flex-col justify-between h-full">
+                <div class="flex justify-between items-start">
+                  <span class="font-bold text-sm px-2 py-1 text-white" style="background: var(--primary); font-family: var(--font-headline);">TRACK_MAP</span>
+                  <span class="text-[10px] uppercase" style="font-family: var(--font-mono);">Sector 1 / CLEAR</span>
+                </div>
+                <div class="flex items-end justify-between">
+                  <div class="flex gap-2 items-center">
+                    <div class="w-2 h-2 rounded-full animate-pulse" style="background: var(--primary);"></div>
+                    <span class="text-[10px] uppercase" style="font-family: var(--font-mono);">Live Signal</span>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-black text-2xl italic leading-none" style="font-family: var(--font-headline);">MONZA</p>
+                    <p class="text-[10px]" style="color: var(--secondary); font-family: var(--font-mono);">AUTODROMO NAZIONALE</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Career Timeline -->
+            <div class="fade-in fade-delay-200 p-6 space-y-4" style="background: var(--surface-container-highest);">
+              <h3 class="font-bold uppercase text-xs tracking-[0.2em] mb-4" style="font-family: var(--font-headline);">Career Timeline</h3>
+              <div class="relative pl-4 space-y-6" style="border-left: 1px solid var(--outline-variant);">
+                <div class="relative">
+                  <div class="absolute -left-[21px] top-1 w-2.5 h-2.5" style="background: var(--primary);"></div>
+                  <span class="block text-[10px] mb-1" style="color: var(--primary); font-family: var(--font-mono);">JAN 2025 - NOW</span>
+                  <p class="font-bold text-sm" style="font-family: var(--font-headline);">Infosec K2K: Data Scientist</p>
+                </div>
+                <div class="relative">
+                  <div class="absolute -left-[21px] top-1 w-2.5 h-2.5" style="background: var(--secondary);"></div>
+                  <span class="block text-[10px] mb-1" style="color: var(--secondary); font-family: var(--font-mono);">JAN 2023 - DEC 2024</span>
+                  <p class="font-bold text-sm" style="font-family: var(--font-headline);">State Street: Senior Associate</p>
+                </div>
+                <div class="relative opacity-60">
+                  <div class="absolute -left-[21px] top-1 w-2.5 h-2.5" style="background: var(--secondary);"></div>
+                  <span class="block text-[10px] mb-1" style="color: var(--secondary); font-family: var(--font-mono);">AUG 2019</span>
+                  <p class="font-bold text-sm" style="font-family: var(--font-headline);">Grid Start: B.E. at GITAM</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- Office: Bento Grid Experience -->
+      <div class="office-only">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- State Street -->
+            <section class="fade-in p-6 relative overflow-hidden shadow-sm group" style="background: var(--surface-container-low);">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-6">
+                  <div>
+                    <h3 class="text-2xl font-semibold tracking-tight" style="font-family: var(--font-headline);">State Street</h3>
+                    <p class="text-xs" style="color: var(--secondary); font-family: var(--font-mono);">2023 — 2024 / SENIOR ASSOCIATE</p>
+                  </div>
+                  <span class="text-[10px] px-2 py-1" style="background: var(--surface-container-highest); font-family: var(--font-mono);"><span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">emoji_events</span></span>
+                </div>
+                <div class="space-y-4 mb-8">
+                  <div class="flex justify-between text-xs mb-1" style="font-family: var(--font-mono);"><span>PRODUCTIVITY</span><span style="color: var(--primary);">95%</span></div>
+                  <div class="w-full h-1" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--primary); width: 95%;"></div></div>
+                  <div class="flex justify-between text-xs mb-1" style="font-family: var(--font-mono);"><span>TEAM SPIRIT</span><span style="color: var(--primary);">90%</span></div>
+                  <div class="w-full h-1" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--primary); width: 90%;"></div></div>
+                </div>
+                <div class="border-t pt-4" style="border-color: var(--outline-variant);">
+                  <h4 class="text-sm font-semibold uppercase mb-3" style="font-family: var(--font-headline);">Dundie Nominations</h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">emoji_events</span><span>Text-to-SQL saving 80+ hrs/week</span></li>
+                    <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">emoji_events</span><span>7th in Int'l AI Hackathon</span></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- Infosec K2K -->
+            <section class="fade-in fade-delay-100 p-6 relative overflow-hidden shadow-sm" style="background: var(--surface-container-low);">
+              <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--secondary);"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-6">
+                  <div>
+                    <h3 class="text-2xl font-semibold tracking-tight" style="font-family: var(--font-headline);">Infosec K2K</h3>
+                    <p class="text-xs" style="color: var(--secondary); font-family: var(--font-mono);">2025 — PRESENT / DATA SCIENTIST</p>
+                  </div>
+                  <span class="text-[10px] px-2 py-1" style="background: var(--surface-container-highest); font-family: var(--font-mono);"><span class="material-symbols-outlined text-sm" style="color: var(--secondary); font-variation-settings: 'FILL' 1;">stars</span></span>
+                </div>
+                <div class="space-y-4 mb-8">
+                  <div class="flex justify-between text-xs mb-1" style="font-family: var(--font-mono);"><span>THREAT INTEL</span><span style="color: var(--primary);">91%</span></div>
+                  <div class="w-full h-1" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--primary); width: 91%;"></div></div>
+                  <div class="flex justify-between text-xs mb-1" style="font-family: var(--font-mono);"><span>SURVEILLANCE</span><span style="color: var(--primary);">88%</span></div>
+                  <div class="w-full h-1" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--primary); width: 88%;"></div></div>
+                </div>
+                <div class="border-t pt-4" style="border-color: var(--outline-variant);">
+                  <h4 class="text-sm font-semibold uppercase mb-3" style="font-family: var(--font-headline);">Dundie Nominations</h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">emoji_events</span><span>IAM posture assessment + OSINT</span></li>
+                    <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-sm" style="color: var(--primary); font-variation-settings: 'FILL' 1;">emoji_events</span><span>Anomaly detection modules</span></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- Breakroom Quotes -->
+            <section class="md:col-span-2 fade-in fade-delay-200 p-6 relative" style="background: var(--surface-container-highest); border-left: 4px solid var(--primary);">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="material-symbols-outlined text-xl" style="color: var(--secondary); font-variation-settings: 'FILL' 1;">coffee</span>
+                <h3 class="font-semibold text-lg tracking-tight" style="font-family: var(--font-headline);">Breakroom Chatter</h3>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm italic" style="font-family: var(--font-headline);">
+                <div class="p-4 shadow-sm" style="background: var(--surface-container-low); border-right: 2px solid var(--primary);">
+                  <p class="mb-2">"I declare... BANKRUPTCY! I mean, DEPLOYMENT!"</p>
+                  <span class="text-[10px] uppercase font-bold" style="color: var(--secondary); font-family: var(--font-mono);">Michael // Monday</span>
+                </div>
+                <div class="p-4 shadow-sm" style="background: var(--surface-container-low); border-right: 2px solid var(--primary);">
+                  <p class="mb-2">"Identity theft is not a joke, Jim. That's why we built OSINT."</p>
+                  <span class="text-[10px] uppercase font-bold" style="color: var(--secondary); font-family: var(--font-mono);">Dwight // Tuesday</span>
+                </div>
+                <div class="p-4 shadow-sm" style="background: var(--surface-container-low); border-right: 2px solid var(--primary);">
+                  <p class="mb-2">"I'm not superstitious. But I am a little stitious about prod deploys."</p>
+                  <span class="text-[10px] uppercase font-bold" style="color: var(--secondary); font-family: var(--font-mono);">Michael // Friday</span>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right Sidebar -->
+          <aside class="md:col-span-4 space-y-6">
+            <div class="fade-in p-4 shadow-sm flex items-center gap-4 border" style="background: var(--surface-container-low); border-color: var(--outline-variant);">
+              <img class="w-16 h-16 object-cover rounded-full" src="img/profile.jpg" alt="Profile" loading="lazy" />
+              <div>
+                <div class="font-semibold text-xl tracking-tight" style="font-family: var(--font-headline);">SAI_KOTHA</div>
+                <div class="text-[10px]" style="color: var(--primary); font-family: var(--font-mono);">TITLE: REGIONAL MANAGER (ACTING)</div>
+              </div>
+            </div>
+
+            <div class="fade-in fade-delay-100 p-4 h-64 relative overflow-hidden group" style="background: var(--surface-container-low);">
+              <div class="absolute inset-0 opacity-30">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWbEjvjqZc50HUM5Q_DZCWfr5-_stfSZYB-qldxN-2bgwRN4nhLRKTk3nWPzz3bGWVszHS9lLy_WPaPJumtFN6Z9-6aj0MW7cmO0Mxr6QzWYePt2gNi4rhUq5Ubwflg7r58yxUsdzHubtIkzILmbsNOGBi6nC3q0IVH349rW_JwSnbDnFiOtXLniJ_0wWprJaASua6WGttV00k3uMPat2eh7WviEbMUOJA43kSmSQ7nGV3a_XGX2owml1wFSKiJfzvqruZOiSLudev" alt="Moody office workspace" loading="lazy" />
+              </div>
+              <div class="relative z-10 flex flex-col justify-between h-full">
+                <div class="flex justify-between items-start">
+                  <span class="font-semibold text-sm px-2 py-1" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);">FLOOR_PLAN</span>
+                  <span class="text-[10px] uppercase" style="font-family: var(--font-mono);">Floor 3 / OPEN</span>
+                </div>
+                <div class="flex items-end justify-between">
+                  <div class="flex gap-2 items-center">
+                    <div class="w-2 h-2 rounded-full animate-pulse" style="background: var(--primary);"></div>
+                    <span class="text-[10px] uppercase" style="font-family: var(--font-mono);">Status: In Office</span>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-semibold text-2xl italic leading-none" style="font-family: var(--font-headline);">SCRANTON</p>
+                    <p class="text-[10px]" style="color: var(--secondary); font-family: var(--font-mono);">DUNDER MIFFLIN INFINITY</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fade-in fade-delay-200 p-6 space-y-4" style="background: var(--surface-container-highest);">
+              <h3 class="font-semibold uppercase text-xs tracking-[0.2em] mb-4" style="font-family: var(--font-headline);">Employment History</h3>
+              <div class="relative pl-4 space-y-6" style="border-left: 1px solid var(--outline-variant);">
+                <div class="relative">
+                  <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full" style="background: var(--primary);"></div>
+                  <span class="block text-[10px] mb-1" style="color: var(--primary); font-family: var(--font-mono);">JAN 2025 - NOW</span>
+                  <p class="font-semibold text-sm" style="font-family: var(--font-headline);">Infosec K2K: Data Scientist</p>
+                </div>
+                <div class="relative">
+                  <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full" style="background: var(--secondary);"></div>
+                  <span class="block text-[10px] mb-1" style="color: var(--secondary); font-family: var(--font-mono);">JAN 2023 - DEC 2024</span>
+                  <p class="font-semibold text-sm" style="font-family: var(--font-headline);">State Street: Senior Associate</p>
+                </div>
+                <div class="relative opacity-60">
+                  <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full" style="background: var(--secondary);"></div>
+                  <span class="block text-[10px] mb-1" style="color: var(--secondary); font-family: var(--font-mono);">AUG 2019</span>
+                  <p class="font-semibold text-sm" style="font-family: var(--font-headline);">Orientation: B.E. at GITAM</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== INTERLUDE: TEAM RADIO / SUGGESTION BOX ===================== -->
+  <section class="relative py-16 md:py-24 overflow-hidden">
+    <div class="max-w-screen-2xl mx-auto px-6">
+
+      <!-- F1: Team Radio Generator -->
+      <div class="f1-only fade-in">
+        <div class="max-w-2xl mx-auto">
+          <div id="radio-console" class="relative p-8 md:p-12 cursor-pointer" style="background: var(--on-surface); color: #fff;">
+            <div class="carbon-overlay"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-1" style="background: var(--speed-gradient);"></div>
+            <!-- Top bar -->
+            <div class="flex items-center justify-between mb-8 relative z-10">
+              <div class="flex items-center gap-3">
+                <div class="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
+                <span class="text-[10px] tracking-[0.3em] uppercase" style="font-family: var(--font-mono); color: #999;">Team Radio // Encrypted Channel</span>
+              </div>
+              <span id="radio-lap" class="text-[10px] tracking-widest uppercase" style="font-family: var(--font-mono); color: #666;">LAP 00/15</span>
+            </div>
+            <!-- Waveform -->
+            <div id="radio-waveform" class="flex items-center justify-center gap-[3px] h-12 mb-8 relative z-10 radio-waveform-idle"></div>
+            <!-- Message -->
+            <div class="relative z-10 min-h-[120px] flex items-center">
+              <blockquote id="radio-message" class="text-2xl md:text-3xl font-light italic leading-snug transition-all duration-300" style="font-family: var(--font-headline);">
+                "Click to intercept team radio..."
+              </blockquote>
+            </div>
+            <!-- Bottom bar -->
+            <div class="mt-8 flex justify-between items-end relative z-10">
+              <div>
+                <p id="radio-driver" class="text-[10px] uppercase tracking-widest" style="color: #6b6b6b; font-family: var(--font-mono);">Driver: KOTHA, S.</p>
+                <p id="radio-circuit" class="text-[10px] uppercase tracking-widest" style="color: #6b6b6b; font-family: var(--font-mono);">Circuit: STANDBY</p>
+              </div>
+              <span id="radio-id" class="font-black italic tracking-tighter" style="color: var(--primary); font-family: var(--font-headline);">RADIO_STANDBY</span>
+            </div>
+          </div>
+          <p class="text-center mt-4 text-xs tracking-widest uppercase" style="color: var(--secondary); font-family: var(--font-mono);">
+            <span class="material-symbols-outlined text-sm align-middle mr-1">touch_app</span>
+            Click the radio to intercept transmissions
+          </p>
+        </div>
+      </div>
+
+      <!-- Office: Suggestion Box -->
+      <div class="office-only fade-in">
+        <div class="max-w-2xl mx-auto">
+          <div class="relative p-8 md:p-12 text-center" style="background: var(--surface-container-high); border: 2px solid var(--outline-variant);">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1" style="background: var(--primary); color: var(--surface);">
+              <span class="text-[10px] font-bold uppercase tracking-[0.2em]" style="font-family: var(--font-body);">Suggestion Box</span>
+            </div>
+            <!-- Slot -->
+            <div class="w-48 h-2 mx-auto mt-4 mb-8 rounded-full" style="background: var(--surface-container-lowest); box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);"></div>
+            <!-- Note -->
+            <div class="relative mx-auto max-w-md">
+              <div id="suggestion-paper" class="p-8" style="background: #fdf6e3; color: #3b3b3b;">
+                <p id="suggestion-quote" class="text-lg md:text-xl italic leading-relaxed" style="font-family: var(--font-headline);">
+                  Click below to open a suggestion...
+                </p>
+                <div class="mt-4 pt-4" style="border-top: 1px dashed #c4b48a;">
+                  <span id="suggestion-author" class="text-xs uppercase tracking-wider font-bold" style="color: #8b7d56; font-family: var(--font-mono);">-- Anonymous</span>
+                </div>
+              </div>
+            </div>
+            <!-- Button -->
+            <button id="suggestion-trigger" class="mt-6 inline-flex items-center gap-2 px-6 py-3 cursor-pointer transition-all hover:scale-105 active:scale-95 border-none" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);" aria-label="Open next suggestion">
+              <span class="material-symbols-outlined text-lg">draft</span>
+              <span class="text-xs font-bold uppercase tracking-widest">Pull a Suggestion</span>
+            </button>
+          </div>
+          <p class="text-center mt-4 text-xs tracking-wider" style="color: var(--secondary); font-family: var(--font-mono);">
+            Anonymous submissions from the Scranton branch
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== PUBLICATIONS: TECHNICAL REGULATIONS ===================== -->
+  <section id="publications" class="relative py-20 md:py-32">
+
+    <!-- F1: Blueprint Grid Publications -->
+    <div class="f1-only">
+      <div class="blueprint-grid-bg">
+        <div class="max-w-7xl mx-auto px-6">
+          <!-- Header -->
+          <div class="fade-in flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+              <div class="inline-block px-3 py-1 mb-4" style="background: var(--primary);">
+                <span class="text-[10px] text-white tracking-[0.2em] uppercase" style="font-family: var(--font-mono);">Confidential // FIA Technical Dept.</span>
+              </div>
+              <h2 class="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85]" style="font-family: var(--font-headline);">
+                Technical<br/><span style="color: var(--primary);">Regulations</span>
+              </h2>
+            </div>
+            <div class="text-right max-w-xs">
+              <p class="text-[12px] uppercase leading-tight" style="color: var(--secondary); font-family: var(--font-mono);">
+                Article 3.2.1: All research components must adhere to the 2024 chassis structural integrity guidelines.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Archive Sidebar -->
+            <div class="lg:col-span-3 space-y-8 fade-in">
+              <div class="p-6" style="background: var(--surface-container-low); border-left: 4px solid var(--primary);">
+                <h3 class="font-bold uppercase tracking-tight mb-4 text-lg" style="font-family: var(--font-headline);">Archive Filters</h3>
+                <nav class="space-y-2">
+                  <div class="flex items-center justify-between p-2"><span class="text-xs uppercase" style="font-family: var(--font-mono);">Aerodynamics</span><span class="px-2 py-0.5 text-[10px]" style="font-family: var(--font-mono); background: rgba(112,112,112,0.1);">12</span></div>
+                  <div class="flex items-center justify-between p-2 bg-white" style="border-left: 2px solid var(--primary);"><span class="text-xs uppercase font-bold" style="color: var(--primary); font-family: var(--font-mono);">Power Unit</span><span class="text-white px-2 py-0.5 text-[10px]" style="background: var(--primary); font-family: var(--font-mono);">08</span></div>
+                  <div class="flex items-center justify-between p-2"><span class="text-xs uppercase" style="font-family: var(--font-mono);">Telemetry</span><span class="px-2 py-0.5 text-[10px]" style="font-family: var(--font-mono); background: rgba(112,112,112,0.1);">05</span></div>
+                  <div class="flex items-center justify-between p-2"><span class="text-xs uppercase" style="font-family: var(--font-mono);">Suspension</span><span class="px-2 py-0.5 text-[10px]" style="font-family: var(--font-mono); background: rgba(112,112,112,0.1);">09</span></div>
+                </nav>
+              </div>
+              <div class="relative p-6 shadow-sm border" style="background: #fff; border-color: var(--outline-variant);">
+                <div class="paper-clip"></div>
+                <h4 class="font-bold text-sm uppercase mb-2" style="font-family: var(--font-headline);">Notice to Competitors</h4>
+                <p class="text-xs leading-relaxed" style="color: var(--secondary);">Any unauthorized use of AI for wind-tunnel simulation mapping must be declared before Friday's FP1 session.</p>
+              </div>
+            </div>
+
+            <!-- Papers -->
+            <div class="lg:col-span-9 space-y-12">
+              <!-- Paper 1 -->
+              <div class="fade-in paper-texture-card p-8 md:p-12 shadow-xl relative overflow-hidden flex flex-col md:flex-row gap-8">
+                <div class="absolute top-6 right-6 red-stamp">Approved</div>
+                <div class="md:w-1/3 aspect-[3/4] relative border" style="background: var(--surface-container); border-color: #e5e5e5;">
+                  <img class="w-full h-full object-cover" src="img/neural-network.jpg" alt="Neural Network" loading="lazy" />
+                </div>
+                <div class="md:w-2/3 flex flex-col">
+                  <div class="flex items-center gap-4 mb-4">
+                    <span class="text-[10px] px-2 py-1 uppercase" style="background: var(--surface-container); font-family: var(--font-mono);">TD/004/24</span>
+                    <span class="text-[10px]" style="color: #aaa; font-family: var(--font-mono);">PUBLISHED: 12.04.24</span>
+                  </div>
+                  <h3 class="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-4 leading-tight" style="font-family: var(--font-headline);">
+                    An Experimental Study on Denoising the Images with Autoencoders
+                  </h3>
+                  <p class="text-sm mb-8 leading-relaxed" style="color: var(--secondary);">
+                    ICCCE 2024 &mdash; Advanced manifold learning techniques using autoencoders to isolate and remove stochastic noise from high-resolution industrial captures.
+                  </p>
+                  <div class="mt-auto flex items-center gap-4">
+                    <a href="https://link.springer.com/book/10.1007/978-981-99-7137-4" target="_blank" rel="noopener" class="inline-block text-white px-6 py-2 font-bold uppercase text-xs tracking-widest hover:brightness-110 transition-all active:scale-90" style="background: var(--primary); font-family: var(--font-headline);">Read on Springer</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paper 2 -->
+              <div class="fade-in fade-delay-100 paper-texture-card p-8 md:p-12 shadow-xl relative overflow-hidden flex flex-col md:flex-row gap-8">
+                <div class="absolute top-10 right-10 red-stamp opacity-40" style="transform: rotate(-45deg); border-style: dashed;">Restricted</div>
+                <div class="md:w-1/3 aspect-[3/4] relative border" style="background: var(--surface-container-high); border-color: #e5e5e5;">
+                  <img class="w-full h-full object-cover" src="img/sql-code.jpg" alt="SQL Code" loading="lazy" />
+                </div>
+                <div class="md:w-2/3 flex flex-col">
+                  <div class="flex items-center gap-4 mb-4">
+                    <span class="text-[10px] px-2 py-1 uppercase" style="background: var(--surface-container); font-family: var(--font-mono);">TD/007/24</span>
+                    <span class="text-[10px]" style="color: #aaa; font-family: var(--font-mono);">PUBLISHED: 02.05.24</span>
+                  </div>
+                  <h3 class="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-4 leading-tight" style="font-family: var(--font-headline);">
+                    T2I-RISE: A Comprehensive Approach with Conversational Context and Feedback Systems
+                  </h3>
+                  <p class="text-sm mb-8 leading-relaxed" style="color: var(--secondary);">
+                    IEEE BigData 2024 &mdash; Architectural breakdown of adversarial robustness in latent diffusion models. The RISE framework for real-time attribution analysis.
+                  </p>
+                  <div class="mt-auto flex items-center gap-4">
+                    <a href="https://ieeexplore.ieee.org/document/10825844" target="_blank" rel="noopener" class="inline-block text-white px-6 py-2 font-bold uppercase text-xs tracking-widest hover:brightness-110 transition-all active:scale-90" style="background: var(--primary); font-family: var(--font-headline);">Read on IEEE Xplore</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Steward's Inquiry (Fun Section) -->
+              <div class="fade-in fade-delay-200 mt-16 p-8 md:p-12 relative overflow-hidden" style="background: #18181b; color: #fff;">
+                <div class="absolute top-0 right-0 w-32 h-32 opacity-10 pointer-events-none">
+                  <span class="material-symbols-outlined" style="font-size: 8rem;">gavel</span>
+                </div>
+                <div class="relative z-10">
+                  <div class="flex items-center gap-2 mb-6">
+                    <span class="w-3 h-3 bg-red-600 rounded-full animate-pulse"></span>
+                    <h3 class="text-2xl font-black uppercase tracking-tighter" style="font-family: var(--font-headline);">Steward's Inquiry: Research Quality Audit</h3>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="space-y-4">
+                      <div class="text-[11px] uppercase tracking-widest" style="color: #888; font-family: var(--font-mono);">Case Reference: FIA-2024-X4</div>
+                      <div class="p-4 text-sm italic leading-relaxed" style="border-left: 1px solid #444; background: rgba(255,255,255,0.05); color: #bbb;">
+                        "The submission regarding 'Optimized Tea Brewing for Pit Crew Alertness' was reviewed by the technical delegate. While the thermodynamics of the kettle are impressive, we fail to see how this contributes to the aerodynamic load of the front wing."
+                      </div>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                      <div class="text-4xl font-black uppercase text-red-600 mb-2" style="font-family: var(--font-headline);">Verdict: Re-lap Required</div>
+                      <p class="text-xs" style="color: #888; font-family: var(--font-mono);">PENALTY: Authors must spend 48 hours in the wind tunnel simulating the drag coefficient of a sandwich.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Office: Filing Cabinet Publications -->
+    <div class="office-only">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="fade-in flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div>
+            <div class="inline-block px-3 py-1 mb-4" style="background: var(--primary); color: var(--surface);">
+              <span class="text-[10px] tracking-[0.2em] uppercase" style="font-family: var(--font-mono);">HR Dept. // Eyes Only</span>
+            </div>
+            <h2 class="text-5xl md:text-7xl font-semibold leading-[0.85]" style="font-family: var(--font-headline);">
+              The Filing<br/><span style="color: var(--primary);">Cabinet</span>
+            </h2>
+          </div>
+          <div class="text-right max-w-xs">
+            <p class="text-[12px] uppercase leading-tight" style="color: var(--secondary); font-family: var(--font-mono);">
+              All published memos must be filed in triplicate and approved by regional management.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <!-- Sidebar -->
+          <div class="lg:col-span-3 space-y-8 fade-in">
+            <div class="p-6" style="background: var(--surface-container-low); border-left: 4px solid var(--primary);">
+              <h3 class="font-semibold uppercase tracking-tight mb-4 text-lg" style="font-family: var(--font-headline);">Filing Categories</h3>
+              <nav class="space-y-2">
+                <div class="flex items-center justify-between p-2"><span class="text-xs uppercase" style="font-family: var(--font-mono);">AI Research</span><span class="px-2 py-0.5 text-[10px]" style="font-family: var(--font-mono); background: var(--surface-container-highest);">06</span></div>
+                <div class="flex items-center justify-between p-2" style="background: var(--surface-container-highest); border-left: 2px solid var(--primary);"><span class="text-xs uppercase font-bold" style="color: var(--primary); font-family: var(--font-mono);">Computer Vision</span><span class="px-2 py-0.5 text-[10px]" style="background: var(--primary); color: var(--surface); font-family: var(--font-mono);">02</span></div>
+                <div class="flex items-center justify-between p-2"><span class="text-xs uppercase" style="font-family: var(--font-mono);">Cybersecurity</span><span class="px-2 py-0.5 text-[10px]" style="font-family: var(--font-mono); background: var(--surface-container-highest);">04</span></div>
+              </nav>
+            </div>
+            <div class="relative p-6 shadow-sm border" style="background: var(--surface-container-low); border-color: var(--outline-variant);">
+              <h4 class="font-semibold text-sm uppercase mb-2 flex items-center gap-2" style="font-family: var(--font-headline);"><span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">description</span> Memo from HR</h4>
+              <p class="text-xs leading-relaxed" style="color: var(--secondary);">All employees are reminded that publishing research papers does not count as "personal time." Please file them under professional development.</p>
+            </div>
+          </div>
+
+          <!-- Papers -->
+          <div class="lg:col-span-9 space-y-12">
+            <div class="fade-in p-8 md:p-12 shadow-lg relative overflow-hidden flex flex-col md:flex-row gap-8" style="background: var(--surface-container-low);">
+              <div class="absolute top-6 right-6 text-sm font-bold px-3 py-1 border-2" style="transform: rotate(-12deg); border-color: var(--primary); color: var(--primary); font-family: var(--font-headline);">APPROVED</div>
+              <div class="md:w-1/3 aspect-[3/4] relative border" style="background: var(--surface-container); border-color: var(--outline-variant);">
+                <img class="w-full h-full object-cover opacity-70" src="img/neural-network.jpg" alt="Neural Network" loading="lazy" />
+              </div>
+              <div class="md:w-2/3 flex flex-col">
+                <div class="flex items-center gap-4 mb-4">
+                  <span class="text-[10px] px-2 py-1 uppercase" style="background: var(--surface-container-highest); font-family: var(--font-mono);">FILE/001/24</span>
+                  <span class="text-[10px]" style="color: var(--secondary); font-family: var(--font-mono);">FILED: 2024</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4 leading-tight" style="font-family: var(--font-headline);">
+                  An Experimental Study on Denoising the Images with Autoencoders
+                </h3>
+                <p class="text-sm mb-8 leading-relaxed" style="color: var(--secondary);">ICCCE 2024 &mdash; Advanced manifold learning techniques using autoencoders for noise isolation in high-resolution captures.</p>
+                <div class="mt-auto">
+                  <a href="https://link.springer.com/book/10.1007/978-981-99-7137-4" target="_blank" rel="noopener" class="inline-block px-6 py-2 font-semibold uppercase text-xs tracking-widest transition-all active:scale-90" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);">Read on Springer</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="fade-in fade-delay-100 p-8 md:p-12 shadow-lg relative overflow-hidden flex flex-col md:flex-row gap-8" style="background: var(--surface-container-low);">
+              <div class="absolute top-10 right-10 text-sm font-bold px-3 py-1 border-2 opacity-50" style="transform: rotate(-45deg); border-style: dashed; border-color: var(--primary); color: var(--primary); font-family: var(--font-headline);">TOP SECRET</div>
+              <div class="md:w-1/3 aspect-[3/4] relative border" style="background: var(--surface-container); border-color: var(--outline-variant);">
+                <img class="w-full h-full object-cover opacity-70" src="img/sql-code.jpg" alt="SQL Code" loading="lazy" />
+              </div>
+              <div class="md:w-2/3 flex flex-col">
+                <div class="flex items-center gap-4 mb-4">
+                  <span class="text-[10px] px-2 py-1 uppercase" style="background: var(--surface-container-highest); font-family: var(--font-mono);">FILE/002/24</span>
+                  <span class="text-[10px]" style="color: var(--secondary); font-family: var(--font-mono);">FILED: 2024</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4 leading-tight" style="font-family: var(--font-headline);">
+                  T2I-RISE: A Comprehensive Approach with Conversational Context and Feedback Systems
+                </h3>
+                <p class="text-sm mb-8 leading-relaxed" style="color: var(--secondary);">IEEE BigData 2024 &mdash; Adversarial robustness in latent diffusion models. The RISE framework for real-time attribution.</p>
+                <div class="mt-auto">
+                  <a href="https://ieeexplore.ieee.org/document/10825844" target="_blank" rel="noopener" class="inline-block px-6 py-2 font-semibold uppercase text-xs tracking-widest transition-all active:scale-90" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);">Read on IEEE Xplore</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- HR Investigation (Fun) -->
+            <div class="fade-in fade-delay-200 mt-16 p-8 md:p-12 relative overflow-hidden" style="background: var(--surface-container-highest);">
+              <div class="absolute top-0 right-0 w-32 h-32 opacity-10 pointer-events-none"><span class="material-symbols-outlined" style="font-size: 8rem;">description</span></div>
+              <div class="relative z-10">
+                <div class="flex items-center gap-2 mb-6">
+                  <span class="w-3 h-3 rounded-full animate-pulse" style="background: var(--primary);"></span>
+                  <h3 class="text-2xl font-semibold tracking-tight" style="font-family: var(--font-headline);">HR Investigation: Research Quality Audit</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                  <div class="space-y-4">
+                    <div class="text-[11px] uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono);">Case #: HR-2024-TOBY</div>
+                    <div class="p-4 text-sm italic leading-relaxed" style="border-left: 1px solid var(--outline-variant); background: var(--surface-container-low);">
+                      "The submission regarding 'Optimized Tea Brewing for Break Room Alertness' was reviewed by management. While the thermodynamics of the kettle are impressive, Toby has flagged it as 'not work-related'."
+                    </div>
+                  </div>
+                  <div class="flex flex-col justify-center">
+                    <div class="text-4xl font-semibold" style="color: var(--primary); font-family: var(--font-headline);">Verdict: More Research Needed</div>
+                    <p class="text-xs mt-2" style="color: var(--secondary); font-family: var(--font-mono);">PENALTY: Mandatory pizza party attendance for 3 Fridays.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INTERLUDE: PIT LANE / HOLD MUSIC ===================== -->
+  <div class="relative overflow-hidden" style="padding: 2rem 0;">
+    <!-- F1: Pit Lane -->
+    <div class="f1-only">
+      <div class="flex items-center justify-center gap-4 py-4" style="background: var(--surface-container-low); border-top: 3px solid var(--primary); border-bottom: 3px solid var(--primary);">
+        <div class="pit-lane-lines"></div>
+        <div class="flex items-center gap-3 flex-shrink-0">
+          <span class="material-symbols-outlined text-2xl" style="color: var(--primary); font-variation-settings: 'FILL' 1;">speed</span>
+          <span class="text-[10px] font-black uppercase tracking-[0.3em]" style="color: var(--secondary); font-family: var(--font-mono);">Pit Lane &mdash; 80 km/h limit</span>
+          <div class="flex gap-1">
+            <span class="pit-dot"></span>
+            <span class="pit-dot"></span>
+            <span class="pit-dot"></span>
+            <span class="pit-dot"></span>
+            <span class="pit-dot"></span>
+          </div>
+        </div>
+        <div class="pit-lane-lines"></div>
+      </div>
+    </div>
+    <!-- Office: Please Hold -->
+    <div class="office-only">
+      <div class="flex items-center justify-center gap-4 py-5" style="background: var(--surface-container-low); border-top: 1px solid var(--outline-variant); border-bottom: 1px solid var(--outline-variant);">
+        <span class="material-symbols-outlined text-xl" style="color: var(--secondary); font-variation-settings: 'FILL' 1;">phone_in_talk</span>
+        <span class="text-xs tracking-wider" style="color: var(--secondary); font-family: var(--font-headline); font-style: italic;">
+          Please hold, transferring your call...
+        </span>
+        <div class="flex gap-2">
+          <span class="hold-dot"></span>
+          <span class="hold-dot"></span>
+          <span class="hold-dot"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONTACT: THE PADDOCK ===================== -->
+  <section id="contact" class="relative py-20 md:py-32">
+    <div class="max-w-screen-2xl mx-auto px-6">
+
+      <!-- F1 Header -->
+      <div class="f1-only fade-in mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div class="lg:col-span-8">
+            <div class="inline-block px-3 py-1 mb-4" style="background: var(--surface-container); font-family: var(--font-headline); font-weight: bold; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;">
+              Hospitality Suite // Access Granted
+            </div>
+            <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none" style="font-family: var(--font-headline);">
+              THE <span class="italic" style="color: var(--primary);">PADDOCK</span>
+            </h2>
+            <p class="text-lg mt-4 max-w-2xl font-medium leading-relaxed" style="color: var(--secondary);">
+              Step into our high-performance environment. Whether you're looking for technical collaboration or a strategic partnership, our engineering team is ready to optimize your trajectory.
+            </p>
+          </div>
+          <div class="lg:col-span-4 flex justify-end">
+            <div class="text-right">
+              <div class="text-sm font-bold mb-1 uppercase tracking-tighter" style="color: var(--primary); font-family: var(--font-mono);">Current Latency</div>
+              <div class="text-4xl font-black tracking-tighter" style="font-family: var(--font-mono);">0.0042<span class="text-lg">ms</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Office Header -->
+      <div class="office-only fade-in mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div class="lg:col-span-8">
+            <div class="inline-block px-3 py-1 mb-4" style="background: var(--surface-container-highest); font-family: var(--font-headline); font-weight: 600; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;">
+              Break Room // Open Door Policy
+            </div>
+            <h2 class="text-5xl md:text-7xl font-semibold leading-none" style="font-family: var(--font-headline);">
+              THE <span class="italic" style="color: var(--primary);">BREAKROOM</span>
+            </h2>
+            <p class="text-lg mt-4 max-w-2xl font-medium leading-relaxed" style="color: var(--secondary);">
+              My door is always open. Unless it's closed. Then please knock. Actually, just send an email.
+            </p>
+          </div>
+          <div class="lg:col-span-4 flex justify-end">
+            <div class="text-right">
+              <div class="text-sm font-semibold mb-1 uppercase tracking-tighter" style="color: var(--primary); font-family: var(--font-mono);">Response Time</div>
+              <div class="text-4xl font-semibold tracking-tighter" style="font-family: var(--font-mono);">ASAP<span class="text-lg">ish</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- F1: Bento Contact Layout -->
+      <div class="f1-only">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Contact Form -->
+          <div class="lg:col-span-7 fade-in p-8 relative overflow-hidden shadow-sm" style="background: var(--surface-container-lowest); border-left: 2px solid var(--primary);">
+            <div class="absolute top-0 right-0 w-32 h-32 carbon-overlay pointer-events-none"></div>
+            <header class="mb-10 flex justify-between items-start">
+              <div>
+                <h3 class="text-2xl font-bold tracking-tight uppercase" style="font-family: var(--font-headline);">Contract Negotiation</h3>
+                <p class="text-sm font-medium" style="color: var(--secondary);">Submit telemetry for project initiation.</p>
+              </div>
+              <span class="text-[10px] px-2 py-1" style="background: var(--surface-container-high); font-family: var(--font-mono);">REQ_ID: AX-2024</span>
+            </header>
+            <form id="contact-form" class="space-y-6" onsubmit="return false;">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-1">
+                  <label class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-headline);">Chief Technical Officer</label>
+                  <input class="w-full bg-transparent border-0 border-b px-0 py-2 placeholder:opacity-40 font-medium focus:ring-0 focus:outline-none" style="border-color: var(--outline-variant); color: var(--on-surface);" placeholder="Full Name" type="text"/>
+                </div>
+                <div class="space-y-1">
+                  <label class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-headline);">Encryption Channel</label>
+                  <input class="w-full bg-transparent border-0 border-b px-0 py-2 placeholder:opacity-40 font-medium focus:ring-0 focus:outline-none" style="border-color: var(--outline-variant); color: var(--on-surface);" placeholder="Email Address" type="email"/>
+                </div>
+              </div>
+              <div class="space-y-1">
+                <label class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-headline);">Strategic Briefing</label>
+                <textarea class="w-full bg-transparent border-0 border-b px-0 py-2 placeholder:opacity-40 font-medium resize-none focus:ring-0 focus:outline-none" style="border-color: var(--outline-variant); color: var(--on-surface);" placeholder="Detail your engineering requirements..." rows="4"></textarea>
+              </div>
+              <div class="pt-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--primary);"></span>
+                  <span class="text-[10px] uppercase font-bold tracking-tighter" style="color: var(--secondary); font-family: var(--font-mono);">System Ready</span>
+                </div>
+                <button type="submit" class="text-white px-8 py-3 font-bold uppercase tracking-tighter text-sm flex items-center gap-2 hover:shadow-lg transition-all active:scale-95" style="background: var(--speed-gradient); font-family: var(--font-headline);">
+                  Initiate Strategic Inquiry
+                  <span class="material-symbols-outlined text-sm">send</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Column -->
+          <div class="lg:col-span-5 space-y-6">
+            <!-- Location Card -->
+            <div class="fade-in fade-delay-100 p-6 relative overflow-hidden group" style="background: var(--surface-container-low);">
+              <div class="flex justify-between items-start mb-8">
+                <h3 class="font-bold text-lg uppercase tracking-tight" style="font-family: var(--font-headline);">Main Paddock</h3>
+                <span class="material-symbols-outlined" style="color: var(--primary);">location_on</span>
+              </div>
+              <div class="relative h-48 w-full overflow-hidden mb-4" style="background: #e5e5e5;">
+                <img class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCr6fCrKfJ2inElBDcfiYWNIZE04kvUhUjvmeF5eNI-iJlhdth10oOown4Xu5GI5AHgAdK1hZRzI3pkMuSjcc-wHZShI3LNm37NshFXzrNqUr-xwTCFUnHKjZOlXQ0sPPobIZFr0-4DpCA6XhORukqqwzlhZ48Dgc6KvK9pi_0NoFk3xhkPTKZVSClThlHoRoTT3qrQHBArpSuJOWW0UrTmOWqnSJsk6geKQD_Ei8Zw60OyNuQF5Lu0fJLRTLXey8I15l43xyMf09q" alt="HQ Location" loading="lazy" />
+                <div class="absolute inset-0" style="background: linear-gradient(to top, var(--surface-container-low), transparent);"></div>
+              </div>
+              <div class="text-xs space-y-1" style="font-family: var(--font-mono);">
+                <p class="font-bold">APEX HQ // HYDERABAD, INDIA</p>
+                <p style="color: var(--secondary);">INNOVATION DISTRICT, SECTOR 7</p>
+              </div>
+            </div>
+
+            <!-- Stats Bento -->
+            <div class="grid grid-cols-2 gap-6">
+              <div class="fade-in fade-delay-200 p-6 flex flex-col justify-between" style="background: var(--surface-container-high);">
+                <span class="material-symbols-outlined text-xl" style="color: var(--primary);">speed</span>
+                <div class="mt-4">
+                  <div class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-headline);">Efficiency</div>
+                  <div class="text-3xl font-black tracking-tighter" style="font-family: var(--font-headline);">99.8<span class="text-sm">%</span></div>
+                </div>
+              </div>
+              <div class="fade-in fade-delay-200 p-6 flex flex-col justify-between" style="background: var(--surface-container-high);">
+                <span class="material-symbols-outlined text-xl" style="color: var(--primary);">hub</span>
+                <div class="mt-4">
+                  <div class="text-[10px] font-bold uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-headline);">Network</div>
+                  <div class="text-3xl font-black tracking-tighter" style="font-family: var(--font-headline);">GLOBAL</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Direct Connect -->
+            <div class="fade-in fade-delay-200 p-6 shadow-sm" style="background: #fff; border-top: 2px solid var(--primary-container);">
+              <h3 class="text-sm font-bold uppercase mb-4 tracking-widest" style="color: var(--secondary); font-family: var(--font-headline);">Direct Telemetry</h3>
+              <div class="space-y-4">
+                <a class="flex items-center justify-between group" href="https://www.linkedin.com/in/sai-prathek-kotha-b70973200/" target="_blank">
+                  <span class="text-xs font-bold" style="font-family: var(--font-mono);">LINKEDIN</span>
+                  <span class="text-sm font-bold group-hover:text-red-600 transition-colors">saiprathekkotha</span>
+                </a>
+                <a class="flex items-center justify-between group" href="https://github.com/SaiPrathek" target="_blank">
+                  <span class="text-xs font-bold" style="font-family: var(--font-mono);">GITHUB</span>
+                  <span class="text-sm font-bold group-hover:text-red-600 transition-colors">saiprathekkotha</span>
+                </a>
+                <a class="flex items-center justify-between group" href="mailto:kothasaiprathek@gmail.com">
+                  <span class="text-xs font-bold" style="font-family: var(--font-mono);">ENCRYPTED_COMMS</span>
+                  <span class="text-sm font-bold group-hover:text-red-600 transition-colors">kothasaiprathek@gmail.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Office: Bento Contact (Stitch Breakroom Memo Pad) -->
+      <div class="office-only">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- The Memo Pad (Contact Form) -->
+          <div class="lg:col-span-7 fade-in p-8 md:p-12 shadow-2xl relative overflow-hidden group" style="background: #fffef5; color: #1a1a1a;">
+            <!-- Red Margin Line -->
+            <div class="absolute left-16 top-0 bottom-0 w-px" style="background: rgba(179, 4, 0, 0.3); z-index: 10;"></div>
+            <!-- Ruled Paper Lines -->
+            <div class="absolute inset-0 pointer-events-none" style="background-image: repeating-linear-gradient(transparent, transparent 31px, #d4af37 31px, #d4af37 32px); opacity: 0.15;"></div>
+            <div class="relative z-20">
+              <h3 class="text-3xl font-semibold mb-10 pl-12" style="font-family: var(--font-headline); color: rgba(26,26,26,0.9);">Leave a Memo</h3>
+              <form class="space-y-0 pl-12" onsubmit="return false;">
+                <div class="flex items-baseline gap-4 mb-8">
+                  <label class="text-[10px] uppercase tracking-widest opacity-50 w-20 shrink-0" style="font-family: var(--font-body);">From:</label>
+                  <input class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30" style="color: #1a1a1a; font-family: var(--font-body); line-height: 32px;" placeholder="Identity or Department" type="text"/>
+                </div>
+                <div class="flex items-baseline gap-4 mb-8">
+                  <label class="text-[10px] uppercase tracking-widest opacity-50 w-20 shrink-0" style="font-family: var(--font-body);">Subject:</label>
+                  <input class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30" style="color: #1a1a1a; font-family: var(--font-body); line-height: 32px;" placeholder="Grievance or Commendation" type="text"/>
+                </div>
+                <div class="flex flex-col gap-2 min-h-[250px]">
+                  <label class="text-[10px] uppercase tracking-widest opacity-50" style="font-family: var(--font-body);">Observation:</label>
+                  <textarea class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30 min-h-[200px] resize-none" style="color: #1a1a1a; font-family: var(--font-body); line-height: 32px;" placeholder="Write clearly, HR is watching..."></textarea>
+                </div>
+                <div class="pt-12 flex justify-end">
+                  <button type="submit" class="px-10 py-4 font-bold uppercase tracking-widest text-xs flex items-center gap-3 hover:brightness-110 transition-all active:scale-95" style="background: var(--surface-container-highest); color: var(--primary); font-family: var(--font-body);">
+                    <span class="material-symbols-outlined text-sm">send</span>
+                    Transmit Memo
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- Coffee Ring Detail -->
+            <div class="absolute -bottom-10 -right-10 w-48 h-48 rounded-full pointer-events-none" style="border: 6px solid rgba(26,26,26,0.05);"></div>
+          </div>
+
+          <!-- The Bulletin Board (Socials & Info) -->
+          <div class="lg:col-span-5 space-y-8">
+            <!-- Pinned Board -->
+            <div class="fade-in p-8 relative" style="background: var(--surface-container-low);">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex gap-2">
+                <div class="w-12 h-6 backdrop-blur rounded-sm" style="background: rgba(53,53,53,0.5); border: 1px solid rgba(77,70,53,0.2);"></div>
+              </div>
+              <h3 class="text-2xl font-semibold mb-8 flex items-center gap-3" style="font-family: var(--font-headline);">
+                <span class="material-symbols-outlined" style="color: var(--primary); font-variation-settings: 'FILL' 1;">push_pin</span>
+                Bulletin Board
+              </h3>
+              <div class="space-y-6">
+                <a class="block p-6 border-l-4 hover:brightness-110 transition-all group" href="https://www.linkedin.com/in/sai-prathek-kotha-b70973200/" target="_blank" style="background: var(--surface-container); border-color: #bfcdff;">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span class="text-[10px] uppercase tracking-widest" style="color: #bfcdff; font-family: var(--font-body);">Network Extension</span>
+                      <p class="text-xl mt-1" style="font-family: var(--font-headline);">Personnel LinkedIn</p>
+                    </div>
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" style="color: var(--on-surface-variant, #d0c5af);">arrow_outward</span>
+                  </div>
+                </a>
+                <a class="block p-6 border-l-4 hover:brightness-110 transition-all group" href="https://github.com/SaiPrathek" target="_blank" style="background: var(--surface-container); border-color: var(--secondary);">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span class="text-[10px] uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-body);">Digital Repository</span>
+                      <p class="text-xl mt-1" style="font-family: var(--font-headline);">The Archive (GitHub)</p>
+                    </div>
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" style="color: var(--on-surface-variant, #d0c5af);">arrow_outward</span>
+                  </div>
+                </a>
+                <!-- Office Hours -->
+                <div class="p-6 relative overflow-hidden" style="background: var(--surface-container-highest);">
+                  <div class="relative z-10">
+                    <span class="text-[10px] uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-body);">Availability</span>
+                    <h4 class="text-xl mt-1 mb-4" style="font-family: var(--font-headline);">Official Hours</h4>
+                    <ul class="space-y-2 text-xs" style="color: var(--on-surface-variant, #d0c5af); font-family: var(--font-body);">
+                      <li class="flex justify-between"><span>Mon - Fri</span> <span>09:00 - 17:00 IST</span></li>
+                      <li class="flex justify-between"><span>Sat - Sun</span> <span>Off Duty (The Annex)</span></li>
+                    </ul>
+                  </div>
+                  <span class="material-symbols-outlined absolute -bottom-4 -right-4 text-7xl opacity-5" style="color: var(--primary);">schedule</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Workspace Image -->
+            <div class="aspect-video overflow-hidden relative group" style="background: var(--surface-container-low);">
+              <img alt="Moody office workspace" class="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWbEjvjqZc50HUM5Q_DZCWfr5-_stfSZYB-qldxN-2bgwRN4nhLRKTk3nWPzz3bGWVszHS9lLy_WPaPJumtFN6Z9-6aj0MW7cmO0Mxr6QzWYePt2gNi4rhUq5Ubwflg7r58yxUsdzHubtIkzILmbsNOGBi6nC3q0IVH349rW_JwSnbDnFiOtXLniJ_0wWprJaASua6WGttV00k3uMPat2eh7WviEbMUOJA43kSmSQ7nGV3a_XGX2owml1wFSKiJfzvqruZOiSLudev" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-80"></div>
+              <div class="absolute bottom-6 left-6">
+                <span class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--primary); font-family: var(--font-body);">Scranton Regional</span>
+                <p class="text-lg italic opacity-70" style="font-family: var(--font-headline);">The desk where decisions happen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="footer" class="relative py-8" style="border-top: 4px solid var(--primary);">
+
+    <!-- F1 Footer -->
+    <div class="f1-only">
+      <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+          <!-- Team Radio Section -->
+          <div class="flex items-center gap-4 p-4" style="background: var(--surface-container-high); border-left: 4px solid var(--primary);">
+            <span class="material-symbols-outlined animate-pulse" style="color: var(--primary); font-variation-settings: 'FILL' 1;">settings_input_antenna</span>
+            <div class="text-[10px] uppercase tracking-widest leading-tight" style="font-family: var(--font-mono);">
+              <span class="font-bold block mb-1" style="color: var(--primary);">TEAM RADIO // BOX BOX BOX</span>
+              "BONO, MY BUGS ARE GONE! SHIP THE BUILD."
+            </div>
+          </div>
+          <div class="flex flex-col md:items-end gap-2">
+            <div class="flex gap-4 text-[10px] uppercase tracking-widest" style="font-family: var(--font-mono); color: var(--secondary);">
+              <a class="hover:text-red-600 underline decoration-red-600 underline-offset-4 transition-all" href="#hero">Paddock</a>
+              <a class="hover:text-red-600 underline decoration-red-600 underline-offset-4 transition-all" href="#projects">Garage</a>
+              <a class="hover:text-red-600 underline decoration-red-600 underline-offset-4 transition-all" href="#experience">Pit Wall</a>
+              <a class="hover:text-red-600 underline decoration-red-600 underline-offset-4 transition-all" href="#publications">Tech Regs</a>
+              <a class="font-bold underline decoration-red-600 underline-offset-4" href="#contact" style="color: var(--primary);">Contact</a>
+            </div>
+            <div class="text-[10px] uppercase tracking-widest mt-2" style="font-family: var(--font-mono); color: var(--secondary);">
+              &copy; 2025 APEX ENGINEERING | TELEMETRY: OPTIMAL
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Office Footer -->
+    <div class="office-only">
+      <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+          <!-- Breakroom Quote -->
+          <div class="flex items-center gap-4 p-4" style="background: var(--surface-container-highest); border-left: 4px solid var(--primary);">
+            <span class="material-symbols-outlined text-xl animate-pulse" style="color: var(--primary); font-variation-settings: 'FILL' 1;">coffee</span>
+            <div class="text-[10px] uppercase tracking-widest leading-tight" style="font-family: var(--font-mono);">
+              <span class="font-bold block mb-1" style="color: var(--primary);">BREAKROOM MEMO // FINAL NOTICE</span>
+              "I'M NOT SUPERSTITIOUS. BUT I AM A LITTLE STITIOUS."
+            </div>
+          </div>
+          <div class="flex flex-col md:items-end gap-2">
+            <div class="flex gap-4 text-[10px] uppercase tracking-widest" style="font-family: var(--font-mono); color: var(--secondary);">
+              <a class="transition-all underline underline-offset-4" href="#hero" style="text-decoration-color: var(--primary);">Memos</a>
+              <a class="transition-all underline underline-offset-4" href="#projects" style="text-decoration-color: var(--primary);">Annex</a>
+              <a class="transition-all underline underline-offset-4" href="#experience" style="text-decoration-color: var(--primary);">Personnel</a>
+              <a class="transition-all underline underline-offset-4" href="#publications" style="text-decoration-color: var(--primary);">Files</a>
+              <a class="font-bold underline underline-offset-4" href="#contact" style="color: var(--primary); text-decoration-color: var(--primary);">Breakroom</a>
+            </div>
+            <div class="text-[10px] uppercase tracking-widest mt-2" style="font-family: var(--font-mono); color: var(--secondary);">
+              &copy; 2025 DUNDER MIFFLIN INFINITY | STATUS: CLOCKED IN
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
