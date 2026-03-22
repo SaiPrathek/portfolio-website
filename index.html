@@ -1625,15 +1625,19 @@
               <form id="contact-form-office" class="space-y-0 pl-12 contact-form" action="https://formspree.io/f/xbdzvjzy" method="POST">
                 <div class="flex items-baseline gap-4 mb-8">
                   <label class="text-[10px] uppercase tracking-widest opacity-50 w-20 shrink-0" style="font-family: var(--font-body);">From:</label>
-                  <input name="name" required class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30" style="color: #1a1a1a; font-family: var(--font-body); line-height: 32px;" placeholder="Identity or Department" type="text"/>
+                  <input name="name" required class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30" style="color: var(--on-surface); font-family: var(--font-body); line-height: 32px;" placeholder="Your name" type="text"/>
+                </div>
+                <div class="flex items-baseline gap-4 mb-8">
+                  <label class="text-[10px] uppercase tracking-widest opacity-50 w-20 shrink-0" style="font-family: var(--font-body);">Email:</label>
+                  <input name="email" required class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30" style="color: var(--on-surface); font-family: var(--font-body); line-height: 32px;" placeholder="Your email address" type="email"/>
                 </div>
                 <div class="flex items-baseline gap-4 mb-8">
                   <label class="text-[10px] uppercase tracking-widest opacity-50 w-20 shrink-0" style="font-family: var(--font-body);">Subject:</label>
-                  <input name="email" required class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30" style="color: #1a1a1a; font-family: var(--font-body); line-height: 32px;" placeholder="Email Address" type="email"/>
+                  <input name="subject" class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30" style="color: var(--on-surface); font-family: var(--font-body); line-height: 32px;" placeholder="Grievance or commendation" type="text"/>
                 </div>
-                <div class="flex flex-col gap-2 min-h-[250px]">
+                <div class="flex flex-col gap-2 min-h-[200px]">
                   <label class="text-[10px] uppercase tracking-widest opacity-50" style="font-family: var(--font-body);">Observation:</label>
-                  <textarea name="message" required class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30 min-h-[200px] resize-none" style="color: #1a1a1a; font-family: var(--font-body); line-height: 32px;" placeholder="Write clearly, HR is watching..."></textarea>
+                  <textarea name="message" required class="bg-transparent border-none focus:ring-0 w-full p-0 placeholder:italic placeholder:opacity-30 min-h-[160px] resize-none" style="color: var(--on-surface); font-family: var(--font-body); line-height: 32px;" placeholder="Write clearly, HR is watching..."></textarea>
                 </div>
                 <div class="pt-12 flex justify-end">
                   <button type="submit" class="px-10 py-4 font-bold uppercase tracking-widest text-xs flex items-center gap-3 hover:brightness-110 transition-all active:scale-95" style="background: var(--surface-container-highest); color: var(--primary); font-family: var(--font-body);">

@@ -24,7 +24,22 @@ function setTheme(theme) {
   }
 }
 
+function syncFormValues() {
+  const fields = ['name', 'email', 'message'];
+  const f1 = document.getElementById('contact-form-f1');
+  const office = document.getElementById('contact-form-office');
+  if (!f1 || !office) return;
+  const active = document.body.classList.contains(F1) ? f1 : office;
+  const passive = active === f1 ? office : f1;
+  fields.forEach(name => {
+    const src = active.querySelector('[name="' + name + '"]');
+    const dst = passive.querySelector('[name="' + name + '"]');
+    if (src && dst) dst.value = src.value;
+  });
+}
+
 function toggleTheme() {
+  syncFormValues();
   const current = document.body.classList.contains(F1) ? F1 : OFFICE;
   const next = current === F1 ? OFFICE : F1;
   setTheme(next);
