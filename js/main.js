@@ -189,6 +189,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ============================================
+   CONTACT FORM (Formspree)
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.contact-form').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">progress_activity</span> Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          showToast('Message sent successfully!', 'success');
+          form.reset();
+        } else {
+          showToast('Something went wrong. Please try again.', 'error');
+        }
+      } catch {
+        showToast('Network error. Please try again.', 'error');
+      }
+
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    });
+  });
+
+  function showToast(message, type) {
+    const existing = document.querySelector('.toast-notification');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification toast-' + type;
+    toast.innerHTML = '<span class="material-symbols-outlined text-lg" style="font-variation-settings: \'FILL\' 1;">' +
+      (type === 'success' ? 'check_circle' : 'error') + '</span>' + message;
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => toast.classList.add('toast-visible'));
+    setTimeout(() => {
+      toast.classList.remove('toast-visible');
+      setTimeout(() => toast.remove(), 300);
+    }, 4000);
+  }
+});
+
+
+/* ============================================
    TEAM RADIO GENERATOR (F1)
    ============================================ */
 
