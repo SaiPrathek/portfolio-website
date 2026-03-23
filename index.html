@@ -388,208 +388,264 @@
         <div class="h-0.5 w-20 mt-4" style="background: var(--primary);"></div>
       </div>
 
-      <!-- F1: Bento Grid Projects -->
-      <div class="f1-only">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-20">
+      <!-- F1: Projects stacked -->
+      <div class="f1-only space-y-6 mb-20">
 
-          <!-- Project 1: MIRA (8 cols) -->
-          <div class="md:col-span-8 group relative overflow-hidden fade-in transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-lowest);">
-            <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
-            <div class="p-8 md:p-10 h-full flex flex-col">
-              <!-- Header row: Title + Stats -->
-              <div class="flex justify-between items-start mb-6">
+        <!-- F1 Project 1: MIRA -->
+        <div class="group relative overflow-hidden fade-in transition-all duration-300 hover:shadow-xl" style="background: var(--surface-container-lowest);">
+          <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+          <div class="flex flex-col md:flex-row gap-0">
+            <!-- Content -->
+            <div class="flex-1 p-8 md:p-10 flex flex-col gap-4">
+              <div class="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Project ID: APX-01</span>
-                  <h3 class="text-4xl font-extrabold tracking-tighter uppercase italic" style="font-family: var(--font-headline);">MIRA</h3>
-                  <p class="text-sm font-medium mt-1" style="color: var(--secondary);">Multi-Intelligence Response Agent</p>
+                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Project ID: APX-01</span>
+                  <h3 class="text-5xl font-extrabold tracking-tighter uppercase italic leading-none" style="font-family: var(--font-headline);">MIRA</h3>
+                  <p class="text-sm mt-1" style="color: var(--secondary);">Multi-Intelligence Response Agent</p>
                 </div>
-                <div class="flex gap-6">
+                <div class="flex gap-6 shrink-0">
                   <div class="text-right">
                     <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Accuracy</span>
-                    <span class="block text-2xl font-bold tracking-tight" style="color: var(--primary); font-family: var(--font-headline);">99.4%</span>
+                    <span class="block text-2xl font-bold" style="color: var(--primary); font-family: var(--font-headline);">99.4%</span>
                   </div>
                   <div class="text-right">
                     <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Latency</span>
-                    <span class="block text-2xl font-bold tracking-tight" style="font-family: var(--font-headline);">12ms</span>
+                    <span class="block text-2xl font-bold" style="font-family: var(--font-headline);">12ms</span>
                   </div>
                 </div>
               </div>
-
-              <!-- Full-width image -->
-              <div class="w-full h-48 relative overflow-hidden border mb-6" style="background: var(--surface-container-low); border-color: var(--outline-variant);">
-                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 opacity-50 group-hover:opacity-100" src="img/mira-app.jpg" alt="MIRA AI" loading="lazy" />
-                <div class="absolute inset-0 carbon-overlay"></div>
+              <p class="text-sm leading-relaxed" style="color: var(--secondary);">Fine-tuned Meta-LLaMA-3.1-8B on 8.4M+ tokens from therapist–patient conversations using Unsloth AI. Deployed on Hugging Face for open community access and research in AI-driven mental health support.</p>
+              <div class="flex flex-wrap gap-2 mt-1">
+                <span class="project-tag">LLaMA 3.1</span><span class="project-tag">Fine-tuning</span><span class="project-tag">NLP</span><span class="project-tag">Hugging Face</span><span class="project-tag">Mental Health AI</span>
               </div>
-
-              <!-- Description + CTA -->
-              <p class="text-xs leading-relaxed mb-6 max-w-xl" style="color: var(--secondary); font-family: var(--font-mono);">Fine-tuned Meta-LLaMA-3.1-8B on 8.4M+ tokens. Real-time multidimensional data analysis using proprietary neural chassis architecture. Optimized for low-drag decision making.</p>
-              <div class="mt-auto">
-                <a href="https://kzmluwnx39bq0ja6grhx.lite.vusercontent.net/" target="_blank" rel="noopener" class="inline-block text-white font-bold uppercase text-xs tracking-widest px-6 py-3 active:scale-90 transition-transform" style="background: var(--speed-gradient); font-family: var(--font-headline);">Launch MIRA</a>
+              <div class="mt-auto pt-4">
+                <a href="https://kzmluwnx39bq0ja6grhx.lite.vusercontent.net/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-white font-bold uppercase text-xs tracking-widest px-6 py-3 transition-all hover:shadow-lg active:scale-95" style="background: var(--speed-gradient); font-family: var(--font-headline);">
+                  <span class="material-symbols-outlined text-base">rocket_launch</span> Launch MIRA
+                </a>
               </div>
             </div>
+            <!-- Image -->
+            <div class="w-full md:w-2/5 min-h-[280px] relative overflow-hidden" style="background: var(--surface-container-low);">
+              <img class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500" src="img/mira-app.jpg" alt="MIRA Mental Health App" loading="lazy" />
+              <div class="absolute inset-0 carbon-overlay pointer-events-none"></div>
+            </div>
           </div>
+        </div>
 
-          <!-- Project 2: SQL Runner (4 cols) -->
-          <div class="md:col-span-4 relative overflow-hidden flex flex-col fade-in fade-delay-100 transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-lowest);">
-            <div class="absolute top-0 left-0 w-full h-1" style="background: var(--primary);"></div>
-            <div class="p-8 flex-1 flex flex-col">
-              <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Project ID: APX-02</span>
-              <h3 class="text-4xl font-extrabold tracking-tighter uppercase italic" style="font-family: var(--font-headline);">SQL Runner</h3>
-              <p class="text-sm font-medium mt-1 mb-6" style="color: var(--secondary);">Natural Language Engine</p>
-
-              <div class="space-y-3 mb-6">
-                <div class="p-3 relative" style="background: var(--surface-container-low); border-left: 2px solid var(--primary);">
-                  <span class="text-[10px] uppercase block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Query Efficiency</span>
-                  <div class="h-1 w-full" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--primary); width: 88%;"></div></div>
+        <!-- F1 Project 2: SQL Runner -->
+        <div class="group relative overflow-hidden fade-in fade-delay-100 transition-all duration-300 hover:shadow-xl" style="background: var(--surface-container-lowest);">
+          <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+          <div class="flex flex-col md:flex-row-reverse gap-0">
+            <!-- Content -->
+            <div class="flex-1 p-8 md:p-10 flex flex-col gap-4">
+              <div class="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Project ID: APX-02</span>
+                  <h3 class="text-5xl font-extrabold tracking-tighter uppercase italic leading-none" style="font-family: var(--font-headline);">SQL Runner</h3>
+                  <p class="text-sm mt-1" style="color: var(--secondary);">Natural Language → SQL → Dashboard</p>
                 </div>
-                <div class="p-3 relative" style="background: var(--surface-container-low); border-left: 2px solid var(--secondary);">
-                  <span class="text-[10px] uppercase block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Schema Mapping</span>
-                  <div class="h-1 w-full" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--secondary); width: 94%;"></div></div>
+                <div class="flex gap-6 shrink-0">
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Users</span>
+                    <span class="block text-2xl font-bold" style="color: var(--primary); font-family: var(--font-headline);">80+</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Time Saved</span>
+                    <span class="block text-2xl font-bold" style="font-family: var(--font-headline);">~2 days</span>
+                  </div>
                 </div>
               </div>
-
-              <div class="mt-auto h-28 bg-zinc-900 p-4 text-zinc-400 overflow-hidden leading-tight rounded-sm" style="font-family: var(--font-mono); font-size: 10px;">
-                <span class="text-emerald-500">SELECT</span> * <span class="text-emerald-500">FROM</span> telemetry<br/>
-                <span class="text-emerald-500">WHERE</span> driver_id = 'LECLERC'<br/>
-                <span class="text-emerald-500">AND</span> session_type = 'QUALIFYING'<br/>
-                <span class="text-zinc-600">_</span>
+              <p class="text-sm leading-relaxed" style="color: var(--secondary);">Text-to-SQL-to-Dashboard system adopted across 3 business teams at State Street. Reduced reporting time from 1–2 days to minutes. Internally deployed — research paper available.</p>
+              <div class="flex flex-wrap gap-2 mt-1">
+                <span class="project-tag">Python</span><span class="project-tag">SQL</span><span class="project-tag">Azure</span><span class="project-tag">Snowflake</span><span class="project-tag">LLM</span>
+              </div>
+              <div class="mt-auto pt-4">
+                <a href="#publications" class="inline-flex items-center gap-2 font-bold uppercase text-xs tracking-widest px-6 py-3 transition-all hover:brightness-90 active:scale-95" style="background: var(--surface-container-high); color: var(--on-surface); font-family: var(--font-headline);">
+                  <span class="material-symbols-outlined text-base">article</span> View Research Paper
+                </a>
               </div>
             </div>
-            <a href="#publications" class="block w-full py-4 text-center font-bold uppercase text-[10px] tracking-widest transition-colors" style="background: var(--surface-container-high); color: var(--on-surface); font-family: var(--font-headline);">View Research Paper</a>
-          </div>
-
-          <!-- Project 3: OSINT Hub (12 cols) -->
-          <div class="md:col-span-12 p-8 md:p-10 relative overflow-hidden fade-in fade-delay-200 transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-lowest);">
-            <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
-            <div class="flex flex-col md:flex-row gap-10 items-center">
-              <div class="w-full md:w-1/3">
-                <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Project ID: APX-03</span>
-                <h3 class="text-4xl font-extrabold tracking-tighter uppercase italic mb-4" style="font-family: var(--font-headline);">OSINT Hub</h3>
-                <p class="text-sm font-medium mb-6" style="color: var(--secondary);">Real-time open-source intelligence gathering and pattern recognition for competitive advantage.</p>
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <div class="border p-3" style="border-color: var(--outline-variant);">
-                    <span class="block text-xl font-bold" style="font-family: var(--font-headline);">1.4 TB</span>
-                    <span class="block text-[9px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Daily Throughput</span>
-                  </div>
-                  <div class="border p-3" style="border-color: var(--outline-variant);">
-                    <span class="block text-xl font-bold" style="font-family: var(--font-headline);">0.8s</span>
-                    <span class="block text-[9px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Pattern ID</span>
-                  </div>
-                </div>
-                <a href="#contact" class="inline-block text-white font-bold uppercase text-xs tracking-widest px-6 py-3 active:scale-90 transition-transform" style="background: var(--speed-gradient); font-family: var(--font-headline);">Request Access</a>
-              </div>
-              <div class="w-full md:w-2/3 flex gap-3">
-                <div class="h-48 flex-1 overflow-hidden relative grayscale hover:grayscale-0 transition-all rounded-sm" style="background: var(--surface-container-low);">
-                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Data visualization" loading="lazy" />
-                </div>
-                <div class="h-48 flex-1 overflow-hidden relative grayscale hover:grayscale-0 transition-all rounded-sm" style="background: var(--surface-container-low);">
-                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Server room" loading="lazy" />
-                </div>
-                <div class="h-48 flex-1 overflow-hidden relative grayscale hover:grayscale-0 transition-all rounded-sm" style="background: var(--surface-container-low);">
-                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Code on monitor" loading="lazy" />
-                </div>
+            <!-- Code block as visual -->
+            <div class="w-full md:w-2/5 min-h-[280px] bg-zinc-900 p-8 flex flex-col justify-center" style="font-family: var(--font-mono); font-size: 12px; line-height: 1.8;">
+              <div class="text-zinc-500 mb-4 text-[10px] uppercase tracking-widest">// Live Query Preview</div>
+              <div class="text-zinc-300">
+                <span class="text-emerald-400">SELECT</span> analyst, report_type,<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;COUNT(*) <span class="text-emerald-400">AS</span> queries_run<br/>
+                <span class="text-emerald-400">FROM</span> alpha_copilot_logs<br/>
+                <span class="text-emerald-400">WHERE</span> week = <span class="text-amber-400">'current'</span><br/>
+                <span class="text-emerald-400">GROUP BY</span> analyst<br/>
+                <span class="text-emerald-400">ORDER BY</span> queries_run <span class="text-emerald-400">DESC</span>;<br/>
+                <br/>
+                <span class="text-zinc-500">-- 80+ users · 3 teams · ~2 days saved/week</span>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- F1 Project 3: OSINT Hub -->
+        <div class="group relative overflow-hidden fade-in fade-delay-200 transition-all duration-300 hover:shadow-xl" style="background: var(--surface-container-lowest);">
+          <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
+          <div class="flex flex-col md:flex-row gap-0">
+            <!-- Content -->
+            <div class="flex-1 p-8 md:p-10 flex flex-col gap-4">
+              <div class="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Project ID: APX-03</span>
+                  <h3 class="text-5xl font-extrabold tracking-tighter uppercase italic leading-none" style="font-family: var(--font-headline);">OSINT Hub</h3>
+                  <p class="text-sm mt-1" style="color: var(--secondary);">K2K Discovery — Credential & Threat Intelligence</p>
+                </div>
+                <div class="flex gap-6 shrink-0">
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Throughput</span>
+                    <span class="block text-2xl font-bold" style="color: var(--primary); font-family: var(--font-headline);">1.4 TB</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Pattern ID</span>
+                    <span class="block text-2xl font-bold" style="font-family: var(--font-headline);">0.8s</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-sm leading-relaxed" style="color: var(--secondary);">Real-time aggregation of Qualys, Shodan, DeHashed, HIBP, and internal logs into actionable security insights. Includes anomaly detection for adversarial ML risks and IAM posture assessments mapped to MITRE ATT&amp;CK.</p>
+              <div class="flex flex-wrap gap-2 mt-1">
+                <span class="project-tag">OSINT</span><span class="project-tag">MITRE ATT&amp;CK</span><span class="project-tag">Python</span><span class="project-tag">IAM</span><span class="project-tag">Anomaly Detection</span>
+              </div>
+              <div class="mt-auto pt-4">
+                <a href="#contact" class="inline-flex items-center gap-2 text-white font-bold uppercase text-xs tracking-widest px-6 py-3 transition-all hover:shadow-lg active:scale-95" style="background: var(--speed-gradient); font-family: var(--font-headline);">
+                  <span class="material-symbols-outlined text-base">lock</span> Request Access
+                </a>
+              </div>
+            </div>
+            <!-- Image -->
+            <div class="w-full md:w-2/5 min-h-[280px] relative overflow-hidden" style="background: var(--surface-container-low);">
+              <img class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500" src="img/k2k-dashboard.png" alt="K2K OSINT Dashboard" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Office: Bento Grid Projects -->
-      <div class="office-only">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-20">
+      <!-- Office: Projects stacked -->
+      <div class="office-only space-y-6 mb-20">
 
-          <!-- Project 1: MIRA (8 cols) -->
-          <div class="md:col-span-8 group relative overflow-hidden fade-in transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-low);">
-            <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
-            <div class="p-8 md:p-10 h-full flex flex-col">
-              <div class="flex justify-between items-start mb-6">
+        <!-- Office Project 1: MIRA -->
+        <div class="group relative overflow-hidden fade-in transition-all duration-300" style="background: var(--surface-container-low); border-left: 3px solid var(--primary);">
+          <div class="flex flex-col md:flex-row gap-0">
+            <div class="flex-1 p-8 md:p-10 flex flex-col gap-4">
+              <div class="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Case File: DM-01</span>
-                  <h3 class="text-4xl font-semibold tracking-tight italic" style="font-family: var(--font-headline);">Project MIRA</h3>
-                  <p class="text-sm font-medium mt-1" style="color: var(--secondary);">The Therapist Nobody Hired</p>
+                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Case File: DM-01</span>
+                  <h3 class="text-4xl font-semibold italic leading-none" style="font-family: var(--font-headline);">Project MIRA</h3>
+                  <p class="text-sm mt-1" style="color: var(--secondary);">The Therapist Nobody Hired (But Everyone Needs)</p>
                 </div>
-                <div class="flex gap-4">
+                <div class="flex gap-6 shrink-0">
                   <div class="text-right">
-                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Empathy</span>
-                    <span class="block text-2xl font-semibold tracking-tight" style="color: var(--primary); font-family: var(--font-headline);">99.4%</span>
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Empathy Score</span>
+                    <span class="block text-2xl font-semibold" style="color: var(--primary); font-family: var(--font-headline);">99.4%</span>
                   </div>
                   <div class="text-right">
                     <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Response</span>
-                    <span class="block text-2xl font-semibold tracking-tight" style="font-family: var(--font-headline);">12ms</span>
+                    <span class="block text-2xl font-semibold" style="font-family: var(--font-headline);">12ms</span>
                   </div>
                 </div>
               </div>
-              <div class="w-full h-48 relative overflow-hidden border mb-6" style="background: var(--surface-container); border-color: var(--outline-variant);">
-                <img class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-all duration-500" src="img/mira-app.jpg" alt="Project MIRA" loading="lazy" />
+              <p class="text-sm leading-relaxed" style="color: var(--secondary);">Fine-tuned Meta-LLaMA-3.1-8B on 8.4M+ tokens from real therapist–patient conversations. Open-sourced on Hugging Face for community research in AI-driven mental health support.</p>
+              <div class="flex flex-wrap gap-2 mt-1">
+                <span class="project-tag">LLaMA 3.1</span><span class="project-tag">Fine-tuning</span><span class="project-tag">NLP</span><span class="project-tag">Hugging Face</span>
               </div>
-              <p class="text-xs leading-relaxed mb-6 max-w-xl" style="color: var(--secondary); font-family: var(--font-mono);">Fine-tuned Meta-LLaMA-3.1-8B on 8.4M+ tokens. An AI therapist that actually listens &mdash; open-sourced on Hugging Face.</p>
-              <div class="mt-auto">
-                <a href="https://kzmluwnx39bq0ja6grhx.lite.vusercontent.net/" target="_blank" rel="noopener" class="inline-block font-semibold uppercase text-xs tracking-widest px-6 py-3 active:scale-90 transition-transform" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);">Launch MIRA</a>
+              <div class="mt-auto pt-4">
+                <a href="https://kzmluwnx39bq0ja6grhx.lite.vusercontent.net/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-semibold uppercase text-xs tracking-widest px-6 py-3 transition-all active:scale-95" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);">
+                  <span class="material-symbols-outlined text-base">rocket_launch</span> Launch MIRA
+                </a>
               </div>
             </div>
+            <div class="w-full md:w-2/5 min-h-[280px] relative overflow-hidden" style="background: var(--surface-container);">
+              <img class="w-full h-full object-cover object-top opacity-50 group-hover:opacity-80 transition-all duration-500" src="img/mira-app.jpg" alt="MIRA Mental Health App" loading="lazy" />
+            </div>
           </div>
+        </div>
 
-          <!-- Project 2: The Auditor (4 cols) -->
-          <div class="md:col-span-4 relative overflow-hidden flex flex-col fade-in fade-delay-100 transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-low);">
-            <div class="absolute top-0 left-0 w-full h-1" style="background: var(--primary);"></div>
-            <div class="p-8 flex-1 flex flex-col">
-              <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Case File: DM-02</span>
-              <h3 class="text-4xl font-semibold tracking-tight italic" style="font-family: var(--font-headline);">The Auditor</h3>
-              <p class="text-sm font-medium mt-1 mb-6" style="color: var(--secondary);">Spreadsheets, But Make It AI</p>
-              <div class="space-y-3 mb-6">
-                <div class="p-3 relative" style="background: var(--surface-container); border-left: 2px solid var(--primary);">
-                  <span class="text-[10px] uppercase block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Query Efficiency</span>
-                  <div class="h-1 w-full" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--primary); width: 88%;"></div></div>
+        <!-- Office Project 2: The Auditor -->
+        <div class="group relative overflow-hidden fade-in fade-delay-100 transition-all duration-300" style="background: var(--surface-container-low); border-left: 3px solid var(--primary);">
+          <div class="flex flex-col md:flex-row-reverse gap-0">
+            <div class="flex-1 p-8 md:p-10 flex flex-col gap-4">
+              <div class="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Case File: DM-02</span>
+                  <h3 class="text-4xl font-semibold italic leading-none" style="font-family: var(--font-headline);">The Auditor</h3>
+                  <p class="text-sm mt-1" style="color: var(--secondary);">Spreadsheets, But Make It AI</p>
                 </div>
-                <div class="p-3 relative" style="background: var(--surface-container); border-left: 2px solid var(--secondary);">
-                  <span class="text-[10px] uppercase block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Schema Mapping</span>
-                  <div class="h-1 w-full" style="background: var(--surface-container-highest);"><div class="h-full" style="background: var(--secondary); width: 94%;"></div></div>
+                <div class="flex gap-6 shrink-0">
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Users</span>
+                    <span class="block text-2xl font-semibold" style="color: var(--primary); font-family: var(--font-headline);">80+</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Time Saved</span>
+                    <span class="block text-2xl font-semibold" style="font-family: var(--font-headline);">~2 days</span>
+                  </div>
                 </div>
               </div>
-              <div class="mt-auto h-28 p-4 overflow-hidden leading-tight rounded-sm" style="background: #1a1a2e; color: #8b8ba7; font-family: var(--font-mono); font-size: 10px;">
-                <span style="color: var(--primary);">SELECT</span> * <span style="color: var(--primary);">FROM</span> quarterly_reports<br/>
-                <span style="color: var(--primary);">WHERE</span> dept = 'ACCOUNTING'<br/>
-                <span style="color: var(--primary);">AND</span> status = 'FILED'<br/>
-                <span style="color: #444;">_</span>
+              <p class="text-sm leading-relaxed" style="color: var(--secondary);">Text-to-SQL-to-Dashboard system deployed across 3 business teams at State Street. Reduced reporting time from 1–2 days to minutes, serving 80+ analysts. Internally deployed — research paper available.</p>
+              <div class="flex flex-wrap gap-2 mt-1">
+                <span class="project-tag">Python</span><span class="project-tag">SQL</span><span class="project-tag">Azure</span><span class="project-tag">Snowflake</span><span class="project-tag">LLM</span>
+              </div>
+              <div class="mt-auto pt-4">
+                <a href="#publications" class="inline-flex items-center gap-2 font-semibold uppercase text-xs tracking-widest px-6 py-3 transition-all active:scale-95" style="background: var(--surface-container-highest); color: var(--on-surface); font-family: var(--font-headline);">
+                  <span class="material-symbols-outlined text-base">article</span> View Research Paper
+                </a>
               </div>
             </div>
-            <a href="#publications" class="block w-full py-4 text-center font-semibold uppercase text-[10px] tracking-widest transition-colors" style="background: var(--surface-container-highest); color: var(--on-surface); font-family: var(--font-headline);">View Research Paper</a>
-          </div>
-
-          <!-- Project 3: Echo Command (12 cols) -->
-          <div class="md:col-span-12 p-8 md:p-10 relative overflow-hidden fade-in fade-delay-200 transition-all duration-300 hover:shadow-lg" style="background: var(--surface-container-low);">
-            <div class="absolute top-0 left-0 w-1 h-full" style="background: var(--primary);"></div>
-            <div class="flex flex-col md:flex-row gap-10 items-center">
-              <div class="w-full md:w-1/3">
-                <span class="text-[10px] uppercase tracking-widest mb-1 block" style="color: var(--secondary); font-family: var(--font-mono);">Case File: DM-03</span>
-                <h3 class="text-4xl font-semibold tracking-tight italic mb-4" style="font-family: var(--font-headline);">Echo Command</h3>
-                <p class="text-sm font-medium mb-6" style="color: var(--secondary);">K2K Discovery &mdash; The Office Surveillance Network that even Dwight would approve of.</p>
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <div class="border p-3" style="border-color: var(--outline-variant);">
-                    <span class="block text-xl font-semibold" style="font-family: var(--font-headline);">1.4 TB</span>
-                    <span class="block text-[9px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Daily Throughput</span>
-                  </div>
-                  <div class="border p-3" style="border-color: var(--outline-variant);">
-                    <span class="block text-xl font-semibold" style="font-family: var(--font-headline);">0.8s</span>
-                    <span class="block text-[9px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Pattern ID</span>
-                  </div>
-                </div>
-                <a href="#contact" class="inline-block font-semibold uppercase text-xs tracking-widest px-6 py-3 active:scale-90 transition-transform" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);">Request Access</a>
-              </div>
-              <div class="w-full md:w-2/3 flex gap-3">
-                <div class="h-48 flex-1 overflow-hidden relative opacity-60 hover:opacity-100 transition-all rounded-sm" style="background: var(--surface-container);">
-                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Data visualization" loading="lazy" />
-                </div>
-                <div class="h-48 flex-1 overflow-hidden relative opacity-60 hover:opacity-100 transition-all rounded-sm" style="background: var(--surface-container);">
-                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Server room" loading="lazy" />
-                </div>
-                <div class="h-48 flex-1 overflow-hidden relative opacity-60 hover:opacity-100 transition-all rounded-sm" style="background: var(--surface-container);">
-                  <img class="w-full h-full object-cover" src="img/k2k-dashboard.png" alt="Code on monitor" loading="lazy" />
-                </div>
+            <div class="w-full md:w-2/5 min-h-[280px] bg-zinc-900 p-8 flex flex-col justify-center" style="font-family: var(--font-mono); font-size: 12px; line-height: 1.8;">
+              <div class="text-zinc-500 mb-4 text-[10px] uppercase tracking-widest">// Quarterly Report Query</div>
+              <div class="text-zinc-300">
+                <span style="color: var(--primary);">SELECT</span> dept, SUM(hours_saved)<br/>
+                <span style="color: var(--primary);">FROM</span> alpha_copilot_logs<br/>
+                <span style="color: var(--primary);">WHERE</span> week = <span class="text-amber-400">'current'</span><br/>
+                <span style="color: var(--primary);">GROUP BY</span> dept;<br/>
+                <br/>
+                <span class="text-zinc-500">-- 80 hrs saved/week · 3 teams</span>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Office Project 3: Echo Command -->
+        <div class="group relative overflow-hidden fade-in fade-delay-200 transition-all duration-300" style="background: var(--surface-container-low); border-left: 3px solid var(--primary);">
+          <div class="flex flex-col md:flex-row gap-0">
+            <div class="flex-1 p-8 md:p-10 flex flex-col gap-4">
+              <div class="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--secondary); font-family: var(--font-mono);">Case File: DM-03</span>
+                  <h3 class="text-4xl font-semibold italic leading-none" style="font-family: var(--font-headline);">Echo Command</h3>
+                  <p class="text-sm mt-1" style="color: var(--secondary);">K2K Discovery — The Surveillance Network Dwight Approved</p>
+                </div>
+                <div class="flex gap-6 shrink-0">
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Throughput</span>
+                    <span class="block text-2xl font-semibold" style="color: var(--primary); font-family: var(--font-headline);">1.4 TB</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Pattern ID</span>
+                    <span class="block text-2xl font-semibold" style="font-family: var(--font-headline);">0.8s</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-sm leading-relaxed" style="color: var(--secondary);">Real-time aggregation of Qualys, Shodan, DeHashed, HIBP, and internal logs into actionable security insights. Anomaly detection for adversarial ML risks and IAM posture mapped to MITRE ATT&amp;CK.</p>
+              <div class="flex flex-wrap gap-2 mt-1">
+                <span class="project-tag">OSINT</span><span class="project-tag">MITRE ATT&amp;CK</span><span class="project-tag">Python</span><span class="project-tag">IAM</span>
+              </div>
+              <div class="mt-auto pt-4">
+                <a href="#contact" class="inline-flex items-center gap-2 font-semibold uppercase text-xs tracking-widest px-6 py-3 transition-all active:scale-95" style="background: var(--primary); color: var(--surface); font-family: var(--font-headline);">
+                  <span class="material-symbols-outlined text-base">lock</span> Request Access
+                </a>
+              </div>
+            </div>
+            <div class="w-full md:w-2/5 min-h-[280px] relative overflow-hidden" style="background: var(--surface-container);">
+              <img class="w-full h-full object-cover object-top opacity-50 group-hover:opacity-80 transition-all duration-500" src="img/k2k-dashboard.png" alt="K2K OSINT Dashboard" loading="lazy" />
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Radio Check (F1) / Water Cooler (Office) -->
