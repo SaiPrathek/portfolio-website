@@ -187,15 +187,19 @@ body.theme-office #navbar {
   position: relative;
 }
 
+.theme-toggle-btn .material-symbols-outlined {
+  color: var(--primary) !important;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
 .theme-toggle-btn:hover {
-  background: var(--primary);
-  color: var(--on-primary, #fff);
-  transform: scale(1.03);
-  box-shadow: 0 4px 16px color-mix(in srgb, var(--primary) 30%, transparent);
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface-container));
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--primary) 18%, transparent);
 }
 
 .theme-toggle-btn:hover .material-symbols-outlined {
-  color: var(--on-primary, #fff);
+  color: var(--primary) !important;
 }
 
 .toggle-switch-track {
