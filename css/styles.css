@@ -194,18 +194,8 @@ body.theme-office #navbar {
   box-shadow: 0 4px 16px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
-.theme-toggle-btn:hover .material-symbols-outlined,
-.theme-toggle-btn:hover .toggle-label {
+.theme-toggle-btn:hover .material-symbols-outlined {
   color: var(--on-primary, #fff);
-}
-
-.toggle-label {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--primary);
-  transition: color 0.3s ease;
 }
 
 .toggle-switch-track {
@@ -1618,11 +1608,6 @@ body.theme-office #projects .group:hover {
 
   .theme-toggle-btn .material-symbols-outlined {
     font-size: 16px !important;
-  }
-
-  .toggle-label {
-    font-size: 9px;
-    letter-spacing: 0.1em;
   }
 
   .toggle-switch-track {

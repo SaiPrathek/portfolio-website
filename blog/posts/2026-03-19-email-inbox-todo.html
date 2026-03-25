@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Email Inbox Is a To-Do List Other People Write For You | The Debrief</title>
+  <meta name="description" content="The fundamental problem with email: it gives everyone write access to your priority queue." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-03-19-email-inbox-todo.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Your Email Inbox Is a To-Do List Other People Write For You" />
+  <meta property="og:description" content="The fundamental problem with email: it gives everyone write access to your priority queue." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-03-19-email-inbox-todo.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; } .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); } body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">&#8592; All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">&#8592; All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #026 &middot; 19 Mar 2026 &middot; 9 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">Your Email Inbox Is a To-Do List Other People Write For You</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #026 &middot; 19 Mar 2026 &middot; 9 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">Your Email Inbox Is a To-Do List Other People Write For You</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">The fundamental problem with email: it gives everyone write access to your priority queue.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Productivity</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Work</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+      <p>I want you to imagine something. You wake up tomorrow, walk into your kitchen, and discover that overnight, forty-seven strangers have let themselves in and left handwritten notes on your counter. Some are urgent. One is from your bank. Three are from people you've never met who want "just five minutes of your time." Seven are newsletters you apparently signed up for in 2019 during a moment of weakness. One is a reply to a conversation you forgot you were having. And fourteen of them say, with varying degrees of passive aggression, "Just following up on my previous note."</p>
+
+      <p>You would call the police. You would change the locks. You would, at minimum, be quite annoyed.</p>
+
+      <p>And yet this is exactly what happens inside your email inbox every single morning, and we've all just decided that's fine.</p>
+
+      <h2>The Fundamental Asymmetry That Ruins Everything</h2>
+
+      <p>Here is the core problem with email, the original sin from which all other email sins descend: <strong>sending an email is cheap, but processing one is expensive.</strong> This asymmetry is the root of everything wrong with how we work in the twenty-first century, and nobody talks about it because we've all been marinating in it for so long that it feels like weather.</p>
+
+      <p>Let's put some numbers on it. Sending an email takes, on average, about 30 seconds to two minutes. You dash off a few lines, maybe CC three people who don't need to be there, hit send, and it's gone. Done. Off your plate. You feel productive. You feel like you've <em>accomplished</em> something.</p>
+
+      <p>On the receiving end, that same email might take ten minutes to process. You have to read it. Parse what's actually being asked. Figure out whether it's urgent or just formatted urgently. Decide whether you need more context. Draft a reply. Rewrite the reply because the first version sounded too blunt. Add a softening "Hope you're well!" at the top even though you manifestly do not care how they are. Hit send. Lose your train of thought on whatever you were doing before. Spend four minutes getting back into the zone.</p>
+
+      <p>That's a 10:1 cost ratio, minimum. For every thirty seconds someone spends sending you an email, you spend five to fifteen minutes dealing with it. And the sender bears precisely none of that cost. It's like being able to assign homework to anyone on Earth with no consequences.</p>
+
+      <div class="ascii-diagram">
+EMAIL: COST TO SENDER vs COST TO RECEIVER
+──────────────────────────────────────────────────────
+
+Sender's Experience:              Receiver's Experience:
+┌─────────────────────┐           ┌──────────────────────────────────┐
+│ 0:00  Open compose  │           │ 0:00  See notification           │
+│ 0:15  Type message  │           │ 0:30  Context switch from work   │
+│ 0:25  Add 4 CCs     │           │ 1:00  Read email                 │
+│ 0:30  Hit send      │           │ 2:00  Re-read email (unclear)    │
+│                     │           │ 3:00  Check attachment           │
+│ DONE. Total: 30 sec │           │ 4:30  Draft reply                │
+│                     │           │ 6:00  Rewrite reply (tone)       │
+│ Feels: productive   │           │ 7:30  Add "Hope you're well!"   │
+│ Cost:  near zero    │           │ 8:00  Send reply                 │
+│                     │           │ 8:30  Try to remember what       │
+│                     │           │       you were doing before      │
+│                     │           │ 12:00 Finally back in flow       │
+│                     │           │                                  │
+│                     │           │ DONE. Total: 12 min              │
+│                     │           │                                  │
+│                     │           │ Feels: exhausted                 │
+│                     │           │ Cost:  significant               │
+└─────────────────────┘           └──────────────────────────────────┘
+
+Cost ratio:  1 : 24
+
+This is not a communication tool.
+This is a liability transfer mechanism.
+      </div>
+
+      <p>Economists have a name for this: an <strong>externality</strong>. The sender gets the benefit (task delegated, question asked, arse covered) while the receiver pays the cost (time lost, focus destroyed, mild existential dread). Email is a system that privatises the benefits of communication and socialises the costs. It is, when you think about it, a kind of tiny tragedy of the commons playing out a hundred times a day in every office on earth.</p>
+
+      <h2>Inbox Zero: The Treadmill That Goes Uphill</h2>
+
+      <p>Somewhere around 2007, a productivity guru named Merlin Mann gave a famous talk at Google about a concept he called "Inbox Zero." The idea was simple and appealing: process every email in your inbox, get it to zero, and achieve a state of organisational nirvana. The crowd loved it. Blogs were written. Careers were built. An entire generation of knowledge workers adopted "getting to zero" as a daily goal.</p>
+
+      <p>There's just one problem: it doesn't work. Or rather, it works in the same way that bailing water works on a boat with a hole in it. You can bail furiously all day long, and you'll feel very busy, and the boat will still be sinking.</p>
+
+      <div class="pull-quote">"Inbox Zero is a productivity philosophy built on the assumption that you can drain a bathtub faster than the tap can fill it. You cannot. The tap is connected to 7.8 billion people, and they all have your address."</div>
+
+      <p>The maths is against you. The average office worker receives 121 emails per day. If each one takes even five minutes to process (and many take much longer), that's over ten hours of email processing. In an eight-hour workday. You are already underwater before you start, and the only way to "catch up" is to do email instead of your actual job, which generates more email, because people notice you're responsive and start sending you more things.</p>
+
+      <p>Merlin Mann himself eventually abandoned the concept. In a beautifully honest moment, he admitted that Inbox Zero had become the very thing it was meant to fight: a source of anxiety and busywork that displaced real work. The tool ate the craftsman.</p>
+
+      <p>And yet people still pursue it. They set up elaborate filter systems. They colour-code labels. They schedule "email blocks." They subscribe to email management apps that promise to tame the chaos. All of this is rearranging deckchairs on the Titanic, except the Titanic is your calendar and the iceberg is a reply-all thread about the office fridge.</p>
+
+      <h2>The Illusion of Productivity (Or: Why Clearing Your Inbox Feels Like Work But Isn't)</h2>
+
+      <p>Here's the most insidious thing about email: it <em>feels</em> productive. You sit down, you clear thirty messages, you archive, you reply, you forward, you delegate. At the end of an hour, you have a clean inbox and a satisfying sense of accomplishment. You have Done Things.</p>
+
+      <p>But what have you actually done? In most cases, you've responded to other people's priorities. You've answered their questions, attended to their timelines, moved their projects forward. Your own priorities &mdash; the deep work, the strategy, the creative thinking, the stuff that actually moves the needle &mdash; haven't been touched. They're sitting in a neglected corner of your brain, gathering dust, while you reply to Karen from procurement about the Q3 stationery budget.</p>
+
+      <div class="callout">
+        Think about the last time you had a genuinely productive day &mdash; one where you made real progress on something that mattered. Now think about how much email you processed that day. I'm willing to bet the correlation is inverse. Your best days are almost certainly the ones where you ignored your inbox entirely.
+      </div>
+
+      <p>This is what Cal Newport, the computer science professor and productivity writer, calls the <strong>hyperactive hive mind</strong>. It's a mode of working where all collaboration happens through unstructured, ad-hoc messaging &mdash; emails pinging back and forth, Slack messages firing at random, everyone constantly interrupting everyone else. It feels like teamwork. It feels collaborative and responsive and agile. It is, in practice, a catastrophically inefficient way to get anything done.</p>
+
+      <p>Newport's argument, laid out in his book <em>A World Without Email</em>, is that we need to replace the hive mind with <strong>structured communication protocols</strong>. Instead of "email me whenever you have a thought," you get "post your request to the project board, and I'll review it during my processing block on Tuesday and Thursday." Instead of ambient, always-on, interrupt-driven communication, you get systems with clear boundaries and expectations.</p>
+
+      <p>It sounds bureaucratic. It sounds slow. It sounds like the kind of thing a middle manager would invent to justify their existence. But it works, because it does something revolutionary: it puts the cost of communication back on the sender. If you want my attention, you have to structure your request properly, put it in the right place, and wait for the designated time. You can't just lob a grenade into my inbox and walk away.</p>
+
+      <h2>Reply All: A Weapon of Mass Distraction</h2>
+
+      <p>We need to talk about Reply All. Not the podcast &mdash; that was excellent &mdash; but the button. The small, nuclear button sitting right next to "Reply" in every email client, waiting to be pressed by someone who doesn't understand what they're about to unleash.</p>
+
+      <p>Here is how a Reply All disaster unfolds. Someone sends an email to fifteen people. One person replies to all with a minor clarification. Another replies to all saying "Thanks!" (just "Thanks!" &mdash; an email containing no information that nonetheless demands cognitive processing from fourteen people). A third person replies to all asking to be removed from the thread, which is itself a reply to all. Now someone responds to <em>that</em> with "Can everyone please stop replying to all?" &mdash; sent, naturally, via Reply All. The thread has now generated forty-seven emails containing approximately zero useful information, and every person on the chain has lost twenty minutes of their day.</p>
+
+      <p>The Reply All button is the only weapon in the modern workplace that can waste a hundred person-hours in under a minute. If you could quantify the economic damage caused by unnecessary reply-all emails since 1995, the figure would be large enough to make an economist weep. It is a weapon of mass distraction disguised as a feature, and the fact that every email client still puts it prominently in the interface is a design decision for which someone should face a tribunal.</p>
+
+      <div class="ascii-diagram">
+YOUR INTENDED SCHEDULE vs EMAIL-MODIFIED SCHEDULE
+──────────────────────────────────────────────────────
+
+YOUR PLAN:                       WHAT ACTUALLY HAPPENS:
+┌────────────────────────┐       ┌────────────────────────────┐
+│ 9:00  Deep work        │       │ 9:00  "Quick" email check  │
+│       (project brief)  │       │ 9:08  Reply to boss        │
+│                        │       │ 9:14  Reply-all thread     │
+│                        │       │ 9:23  Forward to Sarah     │
+│                        │       │ 9:31  Try to start work    │
+│                        │       │ 9:33  Notification ping    │
+│                        │       │ 9:35  "Urgent" from Dave   │
+│                        │       │ 9:42  Calendar invite      │
+│                        │       │ 9:48  Start deep work      │
+│                        │       │ 9:51  Phone buzzes (email) │
+│                        │       │ 9:52  Check it "real quick"│
+│ 10:30 Meeting          │       │ 10:30 Meeting              │
+│                        │       │                            │
+│ Deep work completed:   │       │ Deep work completed:       │
+│ ████████████████ 90min │       │ ██░░░░░░░░░░░░░░  7min    │
+└────────────────────────┘       └────────────────────────────┘
+
+│ 11:00 Email block      │       │ 11:00 "Where was I?"       │
+│       (30 min)         │       │ 11:15 More email           │
+│                        │       │ 11:45 Still email           │
+│ 11:30 Strategy work    │       │ 12:00 Lunch (at desk,      │
+│                        │       │        doing email)         │
+│                        │       │ 13:00 Guilt spiral about   │
+│                        │       │       not doing real work   │
+│ 14:00 Creative block   │       │ 14:00 Email again          │
+│                        │       │ 15:00 Give up, call it     │
+│                        │       │       a "busy day"          │
+└────────────────────────┘       └────────────────────────────┘
+
+Hours of deep work planned: 4.5
+Hours of deep work achieved: 0.12
+Emails processed: 67
+Sense of accomplishment: HIGH
+Actual accomplishment: LOW
+      </div>
+
+      <p>The diagram above is not exaggeration. Studies consistently show that the average knowledge worker checks email every six minutes and takes roughly twenty-three minutes to fully regain focus after an interruption. If you check email ten times before lunch, you haven't had ten brief interruptions &mdash; you've had ten <em>focus-destroying events</em>, each with a twenty-three-minute recovery tail. Your morning isn't a series of productive sprints punctuated by quick email breaks. It's a series of email breaks punctuated by brief, futile attempts to think clearly.</p>
+
+      <h2>Why AI Email Assistants Are Solving the Wrong Problem</h2>
+
+      <p>Now, here's where things get interesting. The tech industry has noticed that email is broken, and their solution is, as always, artificial intelligence. Every major tech company is building or has built an AI email assistant. Gmail has smart compose. Outlook has Copilot. There are dozens of startups promising to "revolutionise your inbox" with machine learning.</p>
+
+      <p>The problem is that almost all of them are solving the wrong problem. They're trying to make you <em>faster at replying</em>. Smart compose suggests sentence completions. AI summarisers condense long threads. Auto-responders draft replies for you. The entire thrust of the technology is: "You have too many emails. Let us help you process them faster."</p>
+
+      <p>But faster replies to bad emails is not a solution. It's an accelerant. If you can reply in thirty seconds instead of five minutes, you'll just reply to more emails, which will generate more replies, which will generate more emails. You're not draining the bathtub faster &mdash; you're widening the drain slightly while the tap opens further. The equilibrium doesn't change; the volume just increases.</p>
+
+      <p>The <em>right</em> application of AI to email isn't on the receiving end. It's on the sending end. What if, instead of helping you reply faster, AI helped the <em>sender</em> write better emails? What if your email client, before letting you hit send, said: "This email doesn't contain a clear ask. What specifically do you need from the recipient?" Or: "You've CC'd six people. Which of them actually need to act on this?" Or, most powerfully: "This could be resolved with a two-minute conversation. Would you like to schedule one instead?"</p>
+
+      <p>This is the radical idea: <strong>add friction to the sender, not speed to the receiver.</strong> Make it slightly harder to send an email and slightly easier to send a <em>good</em> email. The problem isn't that we're too slow at processing messages. The problem is that it's too easy to create them.<sup>1</sup></p>
+
+      <p>Think about how Stack Overflow works. You can't just fire off a vague question. The platform forces you to structure your query, show what you've already tried, and tag it appropriately. The result? Questions are higher quality, answers are more useful, and the whole system works better. Stack Overflow added friction to the asker, and it made the platform dramatically more valuable for everyone.</p>
+
+      <p>Now imagine that principle applied to email. Before you can send a message, you have to categorise it: is this a request, an FYI, a decision needed, or a social nicety? If it's a request, you have to specify the deadline and the desired output format. If it's an FYI, the recipient gets it in a daily digest, not as a real-time interruption. If it's a social nicety ("Thanks!" "Got it!" "Sounds good!"), it gets converted into a reaction emoji and never enters the inbox at all.</p>
+
+      <p>This would reduce email volume by, conservatively, sixty per cent overnight. But no one will build it, because email clients are free, and free products are monetised through engagement, and engagement means more emails, not fewer. The incentive structure is exactly backwards. Gmail doesn't make money when you have a clean inbox. Gmail makes money when you're in Gmail.</p>
+
+      <h2>The Radical Art of Not Replying</h2>
+
+      <p>Here is perhaps the most counterintuitive productivity insight I've ever encountered, and one that has genuinely changed how I work: <strong>sometimes the most productive thing you can do with an email is absolutely nothing.</strong></p>
+
+      <p>Not "reply later." Not "mark as unread." Not "add to task list." Simply: do not reply. Let it sit. Let it age. Let it resolve itself, which &mdash; and this is the part that will horrify the Inbox Zero crowd &mdash; it often does.</p>
+
+      <p>A remarkable number of emails, if left unanswered for 48 hours, become irrelevant. The question gets answered by someone else. The meeting gets rescheduled. The "urgent" request turns out to have been neither urgent nor, upon reflection, a request. The sender forgets they sent it. The problem solves itself through the natural entropy of organisational life.</p>
+
+      <p>I'm not suggesting you ignore everything. There are emails that genuinely require timely responses: from your manager, your clients, your team on active projects. But the idea that <em>every</em> email deserves a reply, and that the reply should come within hours, is a social norm masquerading as a professional obligation. It's not a rule. It's not in your contract. It's just a thing we all started doing because the technology made it easy and then the ease made it expected.</p>
+
+      <p>Tim Ferriss, in <em>The 4-Hour Work Week</em>, suggested checking email twice a day: at noon and at 4pm. People thought he was mad. Some people still think he's mad. But the underlying insight is sound: batching your email processing into discrete blocks, rather than monitoring it continuously, is objectively better for both your productivity and your mental health. The emails don't go anywhere. They wait. And the sky does not fall.<sup>2</sup></p>
+
+      <h2>What Email Was Supposed to Be (And What It Became)</h2>
+
+      <p>Email was invented in the early 1970s as a way to leave digital messages for colleagues &mdash; the electronic equivalent of a sticky note on someone's desk. It was asynchronous by design. The whole point was that you could send a message without requiring the other person to be present. It was meant to <em>reduce</em> interruptions, not create them.</p>
+
+      <p>Somewhere between 1995 and 2010, this changed completely. Email became synchronous. People started expecting replies within hours, then within minutes. "Did you get my email?" became a common follow-up, spoken aloud, in person, to someone sitting three desks away. Email stopped being a convenient alternative to interruption and became the primary vector for it. The asynchronous medium got colonised by synchronous expectations, and the result is the worst of both worlds: something that interrupts you like a phone call but requires the effort of a written document.</p>
+
+      <p>The smartphone completed the transformation. Once email lived in your pocket, it became impossible to ignore. The notification badge &mdash; that little red circle with a number in it &mdash; is one of the most psychologically effective anxiety generators ever designed. It sits there, silently screaming, telling you that <em>something</em> needs your attention, right now, always, forever. The number only goes up. Every time you clear it, it refills. It is, essentially, a progress bar that runs backwards.</p>
+
+      <p>We've accepted this as normal. We've accepted that our attention &mdash; the single most valuable cognitive resource we possess &mdash; should be available on demand to anyone who knows our email address. We've accepted that the correct response to receiving forty-seven messages from strangers is not to change the locks but to <em>reply to each one politely and in a timely fashion</em>.</p>
+
+      <p>This is deranged. And the fact that it's universal makes it more deranged, not less.</p>
+
+      <h2>A Modest Proposal</h2>
+
+      <p>Here's what I think should happen. I don't think it <em>will</em> happen, because the incentives are wrong and inertia is strong and people love complaining about email more than they love fixing it. But in an ideal world:</p>
+
+      <p><strong>1. Email clients should require a category for every message.</strong> Request, FYI, Decision, Social. Each category gets different delivery rules. Requests go to your task queue. FYIs go to a daily digest. Decisions get flagged. Social responses ("Thanks!") become reactions, not emails.</p>
+
+      <p><strong>2. CC should require justification.</strong> Adding someone to CC should trigger a prompt: "What action do you expect from this person?" If the answer is "none," they don't need to be on the email.</p>
+
+      <p><strong>3. Reply All should require a two-second delay and a confirmation.</strong> "You are about to send this message to 23 people. Are you sure all 23 need to read 'Sounds good!'?" This alone would save the global economy billions.</p>
+
+      <p><strong>4. Send should have a cost.</strong> Not monetary. But something. A friction tax. A required pause. A moment where the system asks: "Is this email worth twelve minutes of someone else's life?" Because that's what you're spending. Every time you hit send, you're withdrawing from someone else's attention bank account. The least we can do is make the withdrawal feel real.</p>
+
+      <p>Until then, we're stuck with the system we have: a global, open-access to-do list that anyone can write to and only you can clear. A system that rewards speed over thought, volume over value, and busyness over productivity.</p>
+
+      <p>Your inbox is not a measure of how important you are. It's a measure of how many people have found a way to make their problems your problems, at no cost to themselves.</p>
+
+      <p>The most productive thing you can do today might just be closing the tab.</p>
+
+      <div class="footnote">
+        <p><sup>1</sup> This is the same principle behind the "Are you sure you want to post this?" prompts that social media platforms experimented with. Adding a single moment of reflection before an action reduces impulsive, low-quality output by about 40%. Applied to email, this would be transformative. Applied to the Reply All button specifically, it might qualify for a Nobel Peace Prize.</p>
+        <p><sup>2</sup> The caveat here is that Ferriss was self-employed and selling books about working less, which is not the same context as being a mid-level analyst at a bank where your boss expects a reply within fifteen minutes. Context matters. But the direction of travel is right even if the specific implementation needs adjusting.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);">
+        <span class="material-symbols-outlined text-base">arrow_back</span>
+        <span class="f1-only">All Lap Reports</span>
+        <span class="office-only">All Memos</span>
+      </a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>

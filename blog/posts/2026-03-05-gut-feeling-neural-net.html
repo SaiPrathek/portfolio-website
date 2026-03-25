@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Gut Feeling Is Just a Neural Network With No Documentation | The Debrief</title>
+  <meta name="description" content="Intuition is pattern matching from compressed experience — a biological neural network that produces outputs without showing its work." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-03-05-gut-feeling-neural-net.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Your Gut Feeling Is Just a Neural Network With No Documentation" />
+  <meta property="og:description" content="Intuition is pattern matching from compressed experience — a biological neural network that produces outputs without showing its work." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-03-05-gut-feeling-neural-net.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; } .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); } body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">&#8592; All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">&#8592; All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #024 &middot; 05 Mar 2026 &middot; 11 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">Your Gut Feeling Is Just a Neural Network With No Documentation</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #024 &middot; 05 Mar 2026 &middot; 11 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">Your Gut Feeling Is Just a Neural Network With No Documentation</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">Intuition is pattern matching from compressed experience &mdash; a biological neural network that produces outputs without showing its work.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Neuroscience</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Decision-Making</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+      <p>Last week I was crossing a road in central London &mdash; one of those chaotic junctions near King's Cross where the traffic lights seem to exist purely as decorative suggestions &mdash; and I stopped dead on the kerb for no apparent reason. Half a second later, a cyclist doing roughly Mach 2 blew through the red light and missed me by about eighteen inches.</p>
+
+      <p>My friend, who was behind me and witnessed the whole thing, said "Bloody hell, how did you know?" And the honest answer was: I didn't know. I didn't <em>see</em> the cyclist. I didn't <em>hear</em> the cyclist. I didn't perform any conscious risk calculation. Something in my body just said <strong>stop</strong>, and I stopped. No reasoning. No deliberation. Just an output from a system I have no access to and cannot inspect.</p>
+
+      <p>I had, in other words, a gut feeling. And that gut feeling almost certainly saved me from a very unpleasant interaction with a Deliveroo rider's handlebars.</p>
+
+      <p>The question is: what the hell actually <em>is</em> a gut feeling? Where does it come from? Why does it sometimes save your life and other times tell you to bet your entire savings on a cryptocurrency called DogeMoonRocket? And why does it feel so remarkably similar to what happens inside a large language model?</p>
+
+      <p>Let me explain.</p>
+
+      <h2>Your Body Is Running Code You Can't Read</h2>
+
+      <p>In the early 1990s, a Portuguese-American neuroscientist named Antonio Damasio had a genuinely brilliant insight. He'd been studying patients with damage to a specific part of the brain called the ventromedial prefrontal cortex (which I will mercifully abbreviate to vmPFC, because life is short). These patients were fascinating: their IQ was intact, their memory was fine, their logical reasoning worked perfectly. By every traditional measure of intelligence, they were completely normal.</p>
+
+      <p>And yet they could not make decisions to save their lives. Literally. They'd deliberate for forty-five minutes over where to eat lunch. They'd weigh the pros and cons of blue vs black pen until the meeting was over. They'd lose their jobs, their marriages, their savings &mdash; all because they couldn't <em>decide</em> anything without the emotional machinery that the rest of us take for granted.</p>
+
+      <p>Damasio's insight, which he called the <strong>somatic marker hypothesis</strong>, was this: your body stores emotional memories as physical sensations &mdash; what he called "somatic markers" &mdash; and these markers influence your decisions <em>before</em> your conscious mind gets involved. That tightness in your chest when you're about to do something risky? That's not anxiety. That's data. It's your body's compressed, non-verbal summary of every similar situation you've ever been in, delivered as a physical sensation rather than a sentence.</p>
+
+      <div class="callout">
+        The vmPFC patients weren't stupid. They were <em>over-rational</em>. Without the body's emotional shorthand to pre-filter options, they were forced to evaluate everything from scratch using pure logic. And pure logic, it turns out, is absolutely useless for most real-world decisions because the solution space is too large and the variables too many. You need the gut to narrow the field before the brain can pick a winner.
+      </div>
+
+      <p>This is, when you think about it, an absolutely extraordinary finding. It means that the folk wisdom of "trust your gut" isn't just sentimental nonsense. Your gut is <em>actually processing information</em>. It's running a pattern-matching algorithm over your entire history of embodied experience and producing a compressed output: approach, avoid, or wait. It just does this in the language of sensation rather than the language of logic, which is why it feels like intuition rather than reasoning.</p>
+
+      <p>Your gut, in other words, is a neural network. A biological one, trained on the dataset of your entire life, producing outputs without any documentation, logging, or explainability layer whatsoever.</p>
+
+      <h2>The Architecture of Intuition (An Unflattering Diagram)</h2>
+
+      <p>If we're going to take the neural network metaphor seriously &mdash; and I think we should, because it's not really a metaphor &mdash; then let's actually map it out. What does the architecture of human intuition look like compared to the kind of neural network you'd find inside, say, GPT-5?</p>
+
+      <div class="ascii-diagram">
+HUMAN INTUITION                          ARTIFICIAL NEURAL NETWORK
+(The Gut Model)                          (The LLM)
+────────────────────────                 ────────────────────────
+
+INPUT LAYER                              INPUT LAYER
+┌──────────────────────┐                 ┌──────────────────────┐
+│ Visual fragments     │                 │ Token embeddings     │
+│ Sounds / smells      │                 │ Positional encoding  │
+│ Social cues          │                 │ Context window       │
+│ Bodily sensations    │                 │ (e.g. 128k tokens)   │
+│ Emotional context    │                 │                      │
+└──────┬───────────────┘                 └──────┬───────────────┘
+       │                                        │
+  HIDDEN LAYERS                            HIDDEN LAYERS
+  (completely opaque)                      (technically inspectable,
+       │                                   practically opaque)
+┌──────┴───────────────┐                 ┌──────┴───────────────┐
+│ ████████████████████ │                 │ ████████████████████ │
+│ ██ 86 billion ██████ │                 │ ██ ~1.8 trillion ███ │
+│ ██ neurons █████████ │                 │ ██ parameters ██████ │
+│ ████████████████████ │                 │ ████████████████████ │
+│ (NO DOCUMENTATION)   │                 │ (SOME DOCUMENTATION) │
+│ (NO LOGGING)         │                 │ (MOSTLY USELESS)     │
+│ (NO STACK TRACES)    │                 │ (ATTENTION MAPS?)    │
+└──────┬───────────────┘                 └──────┬───────────────┘
+       │                                        │
+  OUTPUT LAYER                             OUTPUT LAYER
+┌──────┴───────────────┐                 ┌──────┴───────────────┐
+│ "Something feels     │                 │ "The answer is 42"   │
+│  off about this"     │                 │                      │
+│                      │                 │ Confidence: 94.2%    │
+│ Confidence: ¯\_(ツ)_/¯│                │ Explanation: [none]  │
+└──────────────────────┘                 └──────────────────────┘
+
+EXPLAINABILITY:                          EXPLAINABILITY:
+"I just... feel it"                      "Based on the patterns
+                                          in my training data"
+(same energy)                            (same energy)
+      </div>
+
+      <p>The parallels are unsettling. Both systems take in massive amounts of high-dimensional input. Both process it through layers of transformations that even their creators can't fully trace. Both produce outputs that are often surprisingly accurate. And both, when asked to explain <em>why</em> they produced that output, offer answers that are essentially confabulation &mdash; plausible-sounding stories constructed after the fact to justify a conclusion that was reached through entirely opaque means.</p>
+
+      <p>When you say "I just had a feeling about that person," you're doing exactly what ChatGPT does when it says "Based on the context provided." Neither of you is lying, exactly. But neither of you is telling the truth either. You're both describing the output of a black box in language that sounds like reasoning but isn't.</p>
+
+      <h2>When the Black Box Gets It Right: Expert Intuition</h2>
+
+      <p>Here's where it gets properly interesting. The psychologist Gary Klein spent decades studying people who make life-or-death decisions under extreme time pressure: firefighters, combat medics, fighter pilots, neonatal intensive care nurses. And he found something remarkable: <strong>expert intuition is real, and it's astonishingly reliable &mdash; but only in certain kinds of domains.</strong></p>
+
+      <p>Klein's most famous case study involves a fire commander who ordered his crew out of a burning building moments before the floor collapsed. When Klein asked him why, the commander couldn't explain it. He said the fire "didn't feel right." It was too hot for its apparent size. The living room was too quiet. Something about the pattern of the flames was wrong. He couldn't articulate any of this at the time. He just <em>knew</em>.</p>
+
+      <p>What had actually happened was that the fire was in the basement, directly below where the crew was standing. The floor was about to give way. The commander's brain had processed thousands of fires over twenty years, and the pattern of this one &mdash; the heat distribution, the sound profile, the colour of the smoke &mdash; didn't match any safe scenario in his mental database. His gut fired an alarm. He listened. Everyone survived.</p>
+
+      <div class="pull-quote">"Expert intuition is not mystical. It is pattern recognition operating below the threshold of conscious awareness, drawing on a training dataset of thousands of hours of domain-specific experience. It is, in every meaningful sense, a biological neural network making inferences."</div>
+
+      <p>The Nobel laureate Daniel Kahneman &mdash; who is generally quite sceptical of intuition &mdash; eventually reached an agreement with Klein on when intuition can be trusted. Their joint paper identified two conditions that must <em>both</em> be true:</p>
+
+      <p><strong>1. The domain must be sufficiently regular (i.e., predictable).</strong> Chess is regular. Poker is regular. Firefighting is regular. The patterns repeat. The rules are consistent. If you see a certain configuration of pieces on a chess board, it means roughly the same thing every time.</p>
+
+      <p><strong>2. The practitioner must have had adequate opportunity to learn the regularities through prolonged practice with feedback.</strong> The key word is <em>feedback</em>. A chess player knows immediately whether a move was good. A firefighter gets feedback within minutes. A doctor in a fast-feedback speciality (emergency medicine, surgery) develops much better intuition than one in a slow-feedback speciality (psychiatry, oncology), because the signal arrives quickly enough to update the model.</p>
+
+      <p>When both conditions are met, expert intuition is genuinely remarkable. Chess grandmasters can glance at a board for a few seconds and identify the best move with accuracy that rivals hours of deliberate analysis. Emergency room nurses can look at a newborn and sense that something is wrong before any diagnostic test confirms it. Experienced pilots can feel an aircraft behaving incorrectly through vibrations that don't register on any instrument.<sup>1</sup></p>
+
+      <h2>When the Black Box Gets It Catastrophically Wrong</h2>
+
+      <p>Now for the bad news. When those two conditions are <em>not</em> met &mdash; when the domain is irregular and feedback is delayed or absent &mdash; intuition doesn't just become unreliable. It becomes <em>confidently, systematically, spectacularly wrong</em>.</p>
+
+      <p>And this is where it gets dangerous, because the <em>feeling</em> of intuitive certainty is identical regardless of whether the intuition is valid. The gut feeling of a chess grandmaster spotting a winning combination feels exactly the same as the gut feeling of a day trader who's about to lose his house. The subjective experience of "I just know" provides no information whatsoever about whether you actually know.</p>
+
+      <div class="ascii-diagram">
+GUT FEELING RELIABILITY BY DOMAIN
+══════════════════════════════════════════════════════════════
+
+                          REGULARITY OF DOMAIN
+                    Low ◄─────────────────────► High
+                    │                              │
+              High  │  DANGEROUS          RELIABLE │
+                    │  ZONE               ZONE     │
+  FEEDBACK          │                              │
+  SPEED             │  Stock trading      Chess    │
+                    │  Political punditry Firefight│
+                    │  Dating ("the one") Surgery  │
+                    │  VC investing       Nursing  │
+                    │  Predicting wars    Piloting │
+                    │                              │
+              Low   │  TERRIBLE           SLOW BUT │
+                    │  ZONE               DECENT   │
+                    │                              │
+                    │  Long-term economic Farming  │
+                    │    forecasting      Brewing  │
+                    │  Predicting tech    Climate  │
+                    │    trends 10yr out  science  │
+                    │  Hiring decisions   (with    │
+                    │  (unstructured      data)    │
+                    │   interviews)                │
+                    │                              │
+                    └──────────────────────────────┘
+
+CONFIDENCE LEVEL OF THE PERSON:  ████████████████████████████
+(equally high in ALL quadrants, which is the entire problem)
+      </div>
+
+      <p>Look at that top-left quadrant. That's where human suffering lives. Stock traders who "feel" a rally coming. Political commentators who "sense" which way an election will go. Hiring managers who "just know" within the first thirty seconds of an interview whether someone's right for the role. Venture capitalists who invest millions based on "founder energy." These people are all operating in low-regularity, low-feedback domains, which means their intuition is essentially random noise dressed up in the clothes of expertise.</p>
+
+      <p>And yet &mdash; and this is the truly maddening part &mdash; they report <em>exactly the same subjective certainty</em> as the firefighter whose intuition is genuinely saving lives. The feeling is identical. The reliability is not. There is no internal signal that distinguishes valid intuition from confident nonsense.</p>
+
+      <p>Philip Tetlock demonstrated this brutally in his research on political forecasting. He tracked 28,000 predictions by 284 experts over twenty years, and found that the average expert was roughly as accurate as a dart-throwing chimpanzee. But the experts who were <em>most</em> confident in their predictions &mdash; the ones with the strongest gut feelings &mdash; were actually <em>less</em> accurate than average. Their intuition wasn't just wrong; it was anti-correlated with reality. They'd have done better by flipping a coin.</p>
+
+      <h2>The AI Interpretability Problem (It's the Same Problem)</h2>
+
+      <p>Now, here is the part where I'm going to make the computer scientists uncomfortable. Because everything I've just said about human intuition applies almost perfectly to large language models.</p>
+
+      <p>When GPT-4 produces a correct answer to a complex reasoning question, it cannot explain <em>why</em> that answer is correct. It can generate an explanation &mdash; it's very good at generating explanations, in fact &mdash; but the explanation is produced by the same black-box process that produced the answer. It's not a window into the model's reasoning. It's another output.</p>
+
+      <p>This is exactly what humans do. When your gut tells you not to trust someone, and someone asks why, you confabulate. "I don't know, something about their eyes." "They seemed too eager." "It was their handshake." These are post-hoc rationalisations generated by your language centres to explain a conclusion your somatic markers reached through entirely non-verbal means. You're not describing your actual reasoning process. You're <em>narrating</em> a story that sounds plausible on top of it.</p>
+
+      <p>The AI safety community calls this the <strong>interpretability problem</strong>: we can build systems that produce correct outputs, but we can't reliably verify <em>why</em> they produce those outputs. This makes it very hard to know when to trust them, because a system that's right for the wrong reasons will eventually be wrong in catastrophic and unpredictable ways.</p>
+
+      <p>Humans have the exact same problem. We've just had several hundred thousand years to get comfortable with it.</p>
+
+      <h2>"Trust Your Gut" vs "Trust the Model"</h2>
+
+      <p>Consider the structural similarity between these two statements:</p>
+
+      <p><strong>"I can't explain why, but my gut says we should pull out of this deal."</strong></p>
+
+      <p><strong>"The model can't explain why, but it predicts this patient has a 94% chance of sepsis."</strong></p>
+
+      <p>Both are appeals to a black box. Both may be correct. Both may be catastrophically wrong. And in both cases, the inability to explain the reasoning is not a bug &mdash; it's a fundamental feature of how the system works. Pattern matching at scale <em>requires</em> compression, and compression <em>requires</em> discarding the reasoning chain. You can have fast, accurate, intuitive outputs, or you can have fully explainable step-by-step logic. You generally cannot have both.</p>
+
+      <p>This puts us in an awkward position. We live in a culture that simultaneously worships intuition ("follow your heart," "trust your instincts," "go with your gut") and demands interpretability ("show your working," "explain your reasoning," "justify this decision to the board"). These two impulses are fundamentally in tension, because the systems that produce the best intuitive outputs are precisely the ones that <em>cannot</em> show their working.</p>
+
+      <p>The grandmaster who spends two seconds choosing a move will often beat the club player who spends twenty minutes &mdash; but if you ask the grandmaster to explain every step of their reasoning, they'll slow down, lose accuracy, and play worse. The intuition only works at the speed of intuition. Forcing it through the bottleneck of conscious explanation degrades it.<sup>2</sup></p>
+
+      <h2>A Field Guide to Trusting (and Ignoring) Your Gut</h2>
+
+      <p>So where does this leave us? If intuition is a biological neural network that sometimes produces brilliant outputs and sometimes produces garbage, and there's no internal signal telling you which is which, how do you know when to listen?</p>
+
+      <p>Here is my honest attempt at a practical framework:</p>
+
+      <p><strong>Trust your gut when:</strong></p>
+
+      <p>You have genuine expertise in a regular domain with fast feedback. If you're a nurse who's seen ten thousand patients, and something about this one makes your stomach tighten, listen. If you're a developer who's debugged a thousand systems, and the error message gives you a "feeling" about where the bug is, follow it. Your gut has earned the right to an opinion.</p>
+
+      <p>You need to make a fast decision with incomplete information. If you're crossing a road and something feels wrong, stop. If you're in a negotiation and the other party's offer gives you a bad feeling, stall. In time-pressured situations with stakes, the gut's compressed, sub-second processing is genuinely superior to deliberation, because deliberation is too slow to be useful.</p>
+
+      <p>The decision is about people you know well. Your social brain has been training on human behaviour since infancy. If someone you know well is acting differently and it bothers you, that's signal, not noise.</p>
+
+      <p><strong>Ignore your gut when:</strong></p>
+
+      <p>The domain is novel. If you've never done this before, your gut has no training data. It's hallucinating. A first-time entrepreneur's gut feeling about market timing is not data. It's optimism wearing a disguise.</p>
+
+      <p>The question is statistical. Humans are catastrophically bad at intuitive probability. If the question involves base rates, conditional probabilities, or any form of quantitative reasoning, your gut will lie to you with absolute confidence. Do the maths. Every time.</p>
+
+      <p>You're emotionally activated. Fear, anger, lust, and greed all hijack the somatic marker system and override the pattern-matching with raw emotional impulse. Your gut feeling during a market crash is not wisdom. It's panic. Your gut feeling about a romantic prospect after three glasses of wine is not intuition. It's something else entirely.</p>
+
+      <p>Feedback is delayed or absent. If you won't know whether your decision was correct for months or years &mdash; investment decisions, hiring decisions, strategic bets &mdash; then your gut never gets the feedback it needs to calibrate. It's running on vibes, and vibes don't compound into expertise.</p>
+
+      <h2>The Uncomfortable Conclusion</h2>
+
+      <p>Here is the thing that bothers me most about all of this, and the reason I've been thinking about it for weeks since the King's Cross near-miss.</p>
+
+      <p>We are building artificial systems that work exactly the way we do &mdash; pattern matching at scale, compressed experience, outputs without explanations &mdash; and then we're panicking about the fact that we can't interpret them. We're demanding that AI systems meet a standard of explainability that we have never, in the entire history of our species, required of ourselves.</p>
+
+      <p>No one asks the firefighter to produce a formal proof of why he ordered the evacuation. No one asks the grandmaster to derive her move from first principles. No one asks the mother to explain, in rigorous causal terms, why she knew her child was ill before any symptoms appeared. We accept that human intuition is a black box, and we've built entire cultures around trusting it.</p>
+
+      <p>But when a neural network does the exact same thing &mdash; produces a correct output through opaque pattern matching &mdash; we call it an alignment problem and write papers about existential risk. Which, to be fair, we probably should. But we might also want to acknowledge that we've been trusting black-box pattern matchers since before we had language, and the results have been, on balance, okay. Not perfect. But okay.</p>
+
+      <p>The real lesson of the somatic marker hypothesis isn't "trust your gut" or "don't trust your gut." It's that <strong>intuition is a tool, and like all tools, it has a domain of applicability.</strong> A hammer is excellent for nails and terrible for screws. Intuition is excellent for pattern-rich, fast-feedback, familiar domains and terrible for novel, statistical, slow-feedback ones. The skill isn't in the tool. It's in knowing which tool to reach for.</p>
+
+      <p>So the next time your gut tells you something, don't automatically trust it. But don't automatically dismiss it either. Instead, ask yourself two questions: <em>Is this a domain where my gut has enough training data to be reliable? And am I in an emotional state where the signal is clean?</em></p>
+
+      <p>If the answer to both is yes, listen. Your biological neural network has 86 billion parameters, a training dataset spanning your entire life, and a track record that's better than you think.</p>
+
+      <p>If the answer to either is no, do the maths instead. Your gut may feel strongly about this. Your gut is wrong. Your gut has no documentation, and in this particular domain, it never will.</p>
+
+      <p>Either way, stop at the kerb and look both ways. Some intuitions are worth acting on immediately, and "that cyclist is going to kill me" is one of them.</p>
+
+      <div class="footnote">
+        <p><sup>1</sup> There's a wonderful study where chess grandmasters and novices were shown chess positions for five seconds and then asked to reconstruct them from memory. Grandmasters could reproduce the board almost perfectly &mdash; but only if the positions came from real games. When the pieces were arranged randomly, grandmasters performed no better than novices. Their "memory" wasn't memory at all. It was pattern recognition. They weren't storing positions; they were recognising structures. The random boards had no structure to recognise, so the advantage vanished. This is the single best demonstration I know of that expert intuition is literally compressed pattern matching, not some mystical extra sense.</p>
+        <p><sup>2</sup> This is also why asking someone to "explain their intuition" in a job interview is a fairly pointless exercise. What you get isn't an explanation of their intuition. It's an explanation of their ability to construct post-hoc narratives. These are completely different skills, and selecting for the second one when you actually want the first one is how you end up with a team of excellent storytellers and no one who can actually spot problems before they happen.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);">
+        <span class="material-symbols-outlined text-base">arrow_back</span>
+        <span class="f1-only">All Lap Reports</span>
+        <span class="office-only">All Memos</span>
+      </a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>

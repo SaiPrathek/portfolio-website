@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Internet Was Supposed to Make Us Smarter | The Debrief</title>
+  <meta name="description" content="We have all of human knowledge in our pockets and use it to argue about whether a hot dog is a sandwich." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-01-06-internet-smarter.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="The Internet Was Supposed to Make Us Smarter and I Have the Graph to Prove It Didn't" />
+  <meta property="og:description" content="All of human knowledge, in your pocket, used primarily to settle bar arguments and watch cats." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-01-06-internet-smarter.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); } body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body p { margin-bottom: 1.4rem; } .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); } body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); } body.theme-office .callout { background: var(--surface-container-low); }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; } body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">&#8592; All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">&#8592; All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #005 &middot; 06 Jan 2026 &middot; 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">The Internet Was Supposed to Make Us Smarter and I Have the Graph to Prove It Didn't</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #005 &middot; 06 Jan 2026 &middot; 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">The Internet Was Supposed to Make Us Smarter and I Have the Graph to Prove It Didn't</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">All of human knowledge, in your pocket. Used primarily to settle bar arguments and watch cats fall off tables.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Internet</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Culture</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+      <p>In 1995, Nicholas Negroponte &mdash; co-founder of the MIT Media Lab, professional futurist, owner of an extremely confident jawline &mdash; published <em>Being Digital</em>. In it, he predicted that the internet would democratise knowledge, eliminate ignorance, and usher in a golden age of informed citizenry.</p>
+
+      <p>It is now 2026. The most-searched question on Google last year was "what day is the Super Bowl." The third was "is a hot dog a sandwich."<sup>1</sup></p>
+
+      <p>Something went wrong. Let's talk about what.</p>
+
+      <h2>The Promise vs. The Reality</h2>
+
+      <p>The optimistic vision of the internet went something like this: give everyone access to the sum total of human knowledge, and they'll use it to educate themselves, engage with complex ideas, and become better-informed participants in democracy and public discourse.</p>
+
+      <p>The reality went like this: give everyone access to the sum total of human knowledge, and they'll use it to watch a man get hit in the groin with a football, argue about vaccines in a comments section, and develop a parasocial relationship with a stranger who opens toys on camera.</p>
+
+      <div class="ascii-diagram">
+  INFORMATION AVAILABLE vs INFORMATION ABSORBED
+  ──────────────────────────────────────────────
+
+  Amount
+    |
+    |                              _______________
+    |                          ___/  INFORMATION
+    |                      ___/      AVAILABLE
+    |                  ___/          (all human
+    |              ___/               knowledge)
+    |          ___/
+    |      ___/
+    |  ___/
+    | /
+    |/    .  .  .  .  .  .  .  .  .  .  .  .  .
+    |     INFORMATION ACTUALLY ABSORBED
+    |     (mostly memes and hot takes)
+    |_____________________________________________
+    1990  1995  2000  2005  2010  2015  2020  2026
+
+    The gap between these lines is called
+    "scrolling Instagram on the toilet"
+      </div>
+
+      <p>This isn't a failure of the internet. It's a failure of the assumption that access to information equals consumption of information. Which is like assuming that owning a gym membership equals being fit. Technically, the gym is right there. Practically, you haven't been in seven months.</p>
+
+      <h2>Sturgeon's Law and the Content Tsunami</h2>
+
+      <p>Theodore Sturgeon was a science fiction author who, in 1957, responded to criticism that "90% of science fiction is crud" by pointing out that <strong>90% of everything is crud.</strong> This became known as Sturgeon's Law, and it is the single most useful heuristic for understanding the internet.</p>
+
+      <p>The internet didn't change the ratio. It changed the <em>volume</em>. If 90% of everything is garbage and you go from 1,000 things to 10,000,000,000 things, you now have 9,000,000,000 pieces of garbage to wade through. The 10% that's brilliant is still out there, but it's buried under a landfill of content that ranges from "mildly misleading" to "actively harmful" to "a 45-minute video essay about the lore of a children's restaurant chain."</p>
+
+      <div class="callout">
+        "The internet didn't make information scarce or abundant. It made <em>attention</em> scarce. And whoever controls what you pay attention to controls what you know, what you believe, and what you buy."
+      </div>
+
+      <p>This is the core shift. Before the internet, the bottleneck was information supply. After the internet, the bottleneck is attention. And the entire economy of the modern web is structured around competing for that attention, which means the content that wins isn't the most true, the most useful, or the most educational. It's the most <em>engaging</em>. And "engaging" usually means "emotionally activating," which usually means "outrage, fear, novelty, or cats."</p>
+
+      <h2>The Paradox of Choice, Knowledge Edition</h2>
+
+      <p>There's a parallel here to the Netflix problem. When you have infinite entertainment options, you end up watching nothing. When you have infinite information, you end up learning nothing. The mechanism is the same: the sheer volume overwhelms your decision-making capacity, so you default to whatever requires the least cognitive effort.</p>
+
+      <p>This is why the most-consumed content on the internet is short-form video. Not because people prefer it intrinsically, but because it has the lowest decision cost. You don't choose a TikTok. TikTok chooses you. It removes the burden of selection entirely, replacing it with an algorithm that serves you a continuous stream of content calibrated to your dopamine response.</p>
+
+      <div class="pull-quote">"We didn't get the Library of Alexandria in everyone's pocket. We got the Library of Alexandria in everyone's pocket, on fire, surrounded by people shouting their opinions about the fire."</div>
+
+      <h2>Can AI Fix This?</h2>
+
+      <p>The optimistic take is that AI &mdash; specifically, AI-powered curation &mdash; might be the thing that finally delivers on the original promise. Instead of wading through 9 billion pieces of garbage to find the good stuff, you let an AI do the filtering. It knows what you've read, what you've learned, what gaps exist in your knowledge, and what would be most valuable for you to read next.</p>
+
+      <p>In theory, this is the "personalised tutor for everyone" vision that people like Sal Khan have been promoting. An AI that doesn't just serve you what's engaging, but what's <em>educational</em>. What fills gaps. What challenges you appropriately. What makes you smarter.</p>
+
+      <p>The pessimistic take is that AI will make this worse, not better. Because the same companies building AI are the ones whose business model depends on attention capture. An AI that makes you smarter might also make you spend less time on the platform. That's bad for revenue. An AI that keeps you scrolling forever is much more profitable, even if it leaves you dumber and more anxious.</p>
+
+      <div class="ascii-diagram">
+  TWO POSSIBLE AI FUTURES
+  ─────────────────────────────────────────
+
+  Timeline A: AI as Curator
+  ┌─────────────────────────────────────┐
+  │ AI filters noise → surfaces signal  │
+  │ Personalised learning paths         │
+  │ Knowledge compounds over time       │
+  │ Humans become more informed         │
+  │ Democracy functions better          │
+  │                                     │
+  │ Status: POSSIBLE                    │
+  │ Business model: UNCLEAR             │
+  │ Probability: ██░░░░░░░░ ~20%       │
+  └─────────────────────────────────────┘
+
+  Timeline B: AI as Super-Scroller
+  ┌─────────────────────────────────────┐
+  │ AI gets better at attention capture │
+  │ Content becomes more addictive      │
+  │ Information diet gets worse         │
+  │ Humans become less informed         │
+  │ But engagement metrics are great!   │
+  │                                     │
+  │ Status: ALREADY HAPPENING           │
+  │ Business model: EXTREMELY CLEAR     │
+  │ Probability: ████████░░ ~80%       │
+  └─────────────────────────────────────┘
+      </div>
+
+      <h2>What Actually Works</h2>
+
+      <p>The honest answer is boring. The internet is a tool, and like any tool, it does what you use it for. If you use a hammer to hit yourself in the face, that's not the hammer's fault, but also maybe someone should have mentioned that's not what it's for.</p>
+
+      <p>The people who actually get smarter from the internet do a few things differently. They <strong>curate aggressively</strong> &mdash; following specific people, subscribing to specific newsletters, reading specific publications. They <strong>time-box their consumption</strong> &mdash; thirty minutes of reading, then they stop. They <strong>write about what they read</strong>, because writing forces comprehension in a way that scrolling doesn't.<sup>2</sup></p>
+
+      <p>They treat the internet as a library, not a casino. Both are technically open to everyone. One makes you smarter. The other is designed to keep you in your seat.</p>
+
+      <p>The internet was supposed to make us smarter. It gave us the tools. Whether we use them is &mdash; infuriatingly, as always &mdash; up to us.</p>
+
+      <p>Now if you'll excuse me, I need to go settle a very important argument about whether a hot dog is a sandwich. (It isn't. The bun is connected on one side. That makes it a taco. Fight me.)</p>
+
+      <div class="footnote">
+        <p><sup>1</sup> I may be slightly misremembering the exact ranking, but the vibe is accurate. The actual top searches are always a mixture of calendar events, celebrity gossip, and "how to" questions that suggest humanity is fundamentally confused about basic household tasks.</p>
+        <p><sup>2</sup> This is, to be fair, exactly what I'm doing right now. I am writing about information overload on the internet, which you are reading on the internet. The irony is not lost on me. It is, however, completely inescapable.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+  <script src="/js/main.js"></script>
+  <script>const bar = document.getElementById('progress-bar'); window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });</script>
+</body>
+</html>
