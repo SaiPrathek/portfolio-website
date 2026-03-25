@@ -5,7 +5,27 @@
     "date": "2026-03-25",
     "readTime": "9 min",
     "excerpt": "Everyone procrastinates. Everyone knows they shouldn't. And yet here we are, 45 minutes deep into whether octopuses dream, having completely forgotten what we were supposed to be doing. The weird thing? AI has exactly the same problem.",
-    "tags": ["AI", "Procrastination", "Life", "Neuroscience"],
+    "tags": [
+      "AI",
+      "Procrastination",
+      "Life",
+      "Neuroscience"
+    ],
     "id": "001"
+  },
+  {
+    "slug": "2026-03-25-how-pok-mon-go-players-accidentally-built-the-world-s-best-r",
+    "title": "How Pokémon Go Players Accidentally Built the World's Best Robot Navigation System (And What That Says About Us)",
+    "date": "2026-03-25",
+    "readTime": "11 min",
+    "excerpt": "For ten years, millions of people walked around catching imaginary creatures. Turns out they were also training the most sophisticated pedestrian navigation dataset ever created. This is a story about games, labour, and the strange ways we accidentally build the future.",
+    "tags": [
+      "AI",
+      "crowdsourcing",
+      "gaming",
+      "machine-learning",
+      "human-behaviour"
+    ],
+    "id": "002"
   }
 ]
