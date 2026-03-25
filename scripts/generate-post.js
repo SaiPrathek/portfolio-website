@@ -219,13 +219,8 @@ function buildPostHTML({ slug, title, date, readTime, excerpt, tags, content, id
     </div>
   </section>
 
+  <script src="/js/main.js"><\/script>
   <script>
-    const btn = document.getElementById('theme-toggle');
-    document.body.className = localStorage.getItem('theme') || 'theme-f1';
-    btn.addEventListener('click', () => {
-      document.body.className = document.body.classList.contains('theme-f1') ? 'theme-office' : 'theme-f1';
-      localStorage.setItem('theme', document.body.className);
-    });
     const bar = document.getElementById('progress-bar');
     window.addEventListener('scroll', () => {
       bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%';

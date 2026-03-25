@@ -125,17 +125,6 @@
 
   <script src="/js/main.js"></script>
   <script>
-    // Theme toggle (reuse main site logic)
-    const toggleBtn = document.getElementById('theme-toggle');
-    const saved = localStorage.getItem('theme') || 'theme-f1';
-    document.body.className = saved;
-
-    toggleBtn.addEventListener('click', () => {
-      const isF1 = document.body.classList.contains('theme-f1');
-      document.body.className = isF1 ? 'theme-office' : 'theme-f1';
-      localStorage.setItem('theme', document.body.className);
-    });
-
     // Load and render posts
     async function loadPosts() {
       const grid = document.getElementById('posts-grid');
