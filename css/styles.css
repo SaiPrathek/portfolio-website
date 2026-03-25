@@ -1609,6 +1609,38 @@ body.theme-office #projects .group:hover {
    ============================================ */
 
 @media (max-width: 640px) {
+  .theme-toggle-btn {
+    height: 32px;
+    padding: 0 10px;
+    gap: 6px;
+    border-width: 1px;
+  }
+
+  .theme-toggle-btn .material-symbols-outlined {
+    font-size: 16px !important;
+  }
+
+  .toggle-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .toggle-switch-track {
+    width: 22px;
+    height: 12px;
+  }
+
+  .toggle-switch-thumb {
+    width: 8px;
+    height: 8px;
+    top: 2px;
+    left: 2px;
+  }
+
+  body.theme-office .toggle-switch-thumb {
+    transform: translateX(10px);
+  }
+
   .stat-card-f1,
   .stat-card-office {
     padding: 12px 16px;
