@@ -13,6 +13,17 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
+
+// Load .env file if present (fallback for scheduled task context)
+const envFile = path.join(ROOT, '.env');
+if (fs.existsSync(envFile)) {
+  fs.readFileSync(envFile, 'utf8').split('\n').forEach(line => {
+    const [key, ...rest] = line.split('=');
+    if (key && rest.length && !process.env[key.trim()]) {
+      process.env[key.trim()] = rest.join('=').trim();
+    }
+  });
+}
 const POSTS_JSON = path.join(ROOT, 'blog', 'posts.json');
 const POSTS_DIR = path.join(ROOT, 'blog', 'posts');
 
