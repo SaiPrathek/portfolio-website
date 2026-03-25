@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Trolley Problem Is Easy. The Real Problem Is the Pedestrian Detection. | The Debrief</title>
+  <meta name="description" content="Everyone debates the trolley problem for self-driving cars. The actual hard problem is way more boring and way more important: making the car see the pedestrian in the first place." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-02-19-trolley-problem-pedestrian.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="The Trolley Problem Is Easy. The Real Problem Is the Pedestrian Detection." />
+  <meta property="og:description" content="The actual hard problem in self-driving cars is way more boring and way more important than you think." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-02-19-trolley-problem-pedestrian.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; }
+    .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); }
+    body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all" style="border-color: var(--primary);">
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">directions_car</span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">F1</span>
+        <span class="w-8 h-4 rounded-full relative" style="background: var(--primary);"><span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="left: 2px;"></span><span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="right: 2px;"></span></span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">OFFICE</span>
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">assignment</span>
+      </button>
+    </div>
+  </nav>
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #016 · 19 Feb 2026 · 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">The Trolley Problem Is Easy. The Real Problem Is the Pedestrian Detection.</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #016 · 19 Feb 2026 · 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">The Trolley Problem Is Easy. The Real Problem Is the Pedestrian Detection.</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">Everyone debates the trolley problem for self-driving cars. The actual hard problem is way more boring and way more important: making the car see the pedestrian in the first place.</p>
+    <div class="flex flex-wrap gap-2 mt-4"><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Ethics</span><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Autonomous Vehicles</span></div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+  <main class="px-6 pb-24 max-w-3xl mx-auto"><div class="post-body">
+
+<p>You're at a dinner party. Someone finds out you work in tech. They lean forward with the gleam of someone who's about to ask the most original question ever posed to a technologist. "So," they say, "what about self-driving cars and the trolley problem? Like, if the car has to choose between hitting a grandmother or a child, what does it do?"</p>
+
+<p>I've been asked this question approximately four hundred times. At dinner parties, in job interviews, by taxi drivers (who have a professional interest), by my mother (who does not), and by at least three first dates who were clearly testing whether I was a sociopath. Each time, I take a deep breath and explain that the trolley problem, while philosophically interesting, is <strong>roughly the 847th most important problem in autonomous vehicle safety</strong>.</p>
+
+<p>The actual hard problems are much, much more boring. And much, much more important.</p>
+
+<h2>The Problem Nobody Talks About</h2>
+
+<p>Here's the thing about the trolley problem as applied to self-driving cars: it assumes the car has <em>perfect information</em>. It knows there's a grandmother on the left and a child on the right. It knows the exact speed, trajectory, and stopping distance. It has time to make a decision. It just needs to know which decision to make.</p>
+
+<p>In reality, the car doesn't have any of this information. In reality, the car is trying to figure out whether that dark shape on the road ahead is a pedestrian, a bin bag, a shadow, a pothole, or a piece of cardboard. It's processing camera feeds that are partially obscured by rain. It's trying to reconcile conflicting data from its lidar, radar, and camera systems. It's working with a neural network that was trained predominantly on daytime images of American roads and is currently driving through a drizzly British November evening in Croydon.</p>
+
+<p>The trolley problem assumes you've already solved perception. Perception is the actual problem.</p>
+
+<div class="ascii-diagram">
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  WHAT PHILOSOPHERS THINK AI ETHICS IS:                          ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║                                                                  ║
+  ║    ┌─────────────────────────────────────────────┐               ║
+  ║    │         DRAMATIC MORAL DILEMMA               │               ║
+  ║    │                                              │               ║
+  ║    │   👵 Grandmother          Child 👶           │               ║
+  ║    │      ←LEFT                RIGHT→             │               ║
+  ║    │              🚗                               │               ║
+  ║    │          (car must choose)                    │               ║
+  ║    │                                              │               ║
+  ║    │  "Should the car swerve left or right?"      │               ║
+  ║    │  "What value do we place on each life?"      │               ║
+  ║    │  "Does the car have moral agency?"           │               ║
+  ║    └─────────────────────────────────────────────┘               ║
+  ║                                                                  ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║  WHAT AI ETHICS ACTUALLY IS:                                     ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║                                                                  ║
+  ║    ┌─────────────────────────────────────────────┐               ║
+  ║    │         TUESDAY AFTERNOON IN CROYDON         │               ║
+  ║    │                                              │               ║
+  ║    │   [dark blob]   [shadow]   [bin bag?]        │               ║
+  ║    │       ???          ???        ???             │               ║
+  ║    │              🚗                               │               ║
+  ║    │          (car has no idea)                    │               ║
+  ║    │                                              │               ║
+  ║    │  "Is that a person or a bin bag?"             │               ║
+  ║    │  "Why is the lidar saying there's nothing    │               ║
+  ║    │   there but the camera says there is?"       │               ║
+  ║    │  "It's raining and the camera is foggy."     │               ║
+  ║    │  "The neural net has never seen this before." │               ║
+  ║    │  "Confidence: 34%. Threshold: 50%."          │               ║
+  ║    │  "Default: do nothing."                      │               ║
+  ║    └─────────────────────────────────────────────┘               ║
+  ╚══════════════════════════════════════════════════════════════════╝
+</div>
+
+<h2>The Edge Cases That Actually Kill People</h2>
+
+<p>In March 2018, an Uber self-driving test vehicle struck and killed Elaine Herzberg in Tempe, Arizona. She was walking a bicycle across a road at night. The car's system detected her six seconds before impact. But it couldn't figure out <em>what</em> she was.</p>
+
+<p>First, the system classified her as an unknown object. Then as a vehicle. Then as a bicycle. Then as an unknown object again. Each reclassification reset the predicted path, preventing the system from initiating emergency braking. The car had six full seconds of sensor data showing something in its path. It killed her because it couldn't decide whether that something was a person.</p>
+
+<p>This is not a trolley problem. This is a perception problem. The car didn't face a dilemma between two bad options. It faced a failure to identify that there was a problem at all. And this is the kind of failure that actually happens in the real world, over and over, in ways that are far less philosophically glamorous than the trolley problem but far more lethal.</p>
+
+<div class="callout">The Uber crash investigation revealed that the system had been programmed to suppress false positives — to avoid slamming on the brakes every time it saw a shadow or a plastic bag. This is a reasonable engineering decision in isolation. But it meant the system needed a very high confidence score before it would brake, and a pedestrian pushing a bicycle at night didn't register with sufficient confidence. The car was essentially told: "Don't brake unless you're really sure." It was never really sure. She died because of a threshold parameter.</div>
+
+<p>Let me list some of the actual computer vision edge cases that autonomous vehicle engineers lose sleep over:</p>
+
+<p><strong>Rain.</strong> Water droplets on camera lenses create distortion. Wet roads reflect headlights, creating phantom obstacles. Lidar beams scatter off rain, creating noise. The entire sensor suite degrades. And it rains, on average, 156 days per year in London. The system needs to work in rain not as an edge case but as a <em>baseline condition</em>.</p>
+
+<p><strong>Shadows.</strong> A hard shadow from a building can look, to a camera-based system, remarkably similar to a dark object on the road. The system needs to distinguish between "dark area where an object blocks light" and "dark area where an object IS." Humans do this intuitively using context and depth perception. Neural networks frequently get it wrong.</p>
+
+<p><strong>Unusual appearances.</strong> Person in a wheelchair. Person in a mobility scooter. Person in a costume. Person carrying a large object that changes their silhouette. Child in an unusual position. Person lying on the ground. Any deviation from the "standard pedestrian" that the model was predominantly trained on increases the failure rate. And the people most likely to deviate from the "standard pedestrian" model — disabled people, elderly people, children — are also the most vulnerable.<sup>1</sup></p>
+
+<p><strong>Construction zones.</strong> Temporary lane markings that conflict with permanent ones. Workers in high-vis jackets standing in the road. Cones, barriers, and signs that weren't in the map data. These are environments where the rules change, and autonomous systems are notoriously bad at adapting to changed rules.</p>
+
+<p><strong>Low sun.</strong> When the sun is low on the horizon and directly in the camera's field of view, the image is essentially whited out. The camera that the car relies on for perception is temporarily blind. Humans squint and hold up a hand. Cars don't have hands.</p>
+
+<h2>The Boring Apocalypse</h2>
+
+<p>There's a broader point here that extends well beyond self-driving cars. When we talk about AI risk, we tend to imagine dramatic scenarios. The paperclip maximiser. The rogue superintelligence. The Terminator. These make great movies and interesting thought experiments. They also distract from the actual way AI is most likely to cause harm.</p>
+
+<p>I call it the <strong>boring apocalypse</strong>. It's not a single dramatic event. It's a thousand small failures of perception, classification, and decision-making, distributed across millions of systems, each one individually minor, collectively devastating.</p>
+
+<div class="pull-quote">The AI apocalypse won't look like Terminator. It will look like a thousand systems each making slightly wrong decisions, all day, every day, with no one person responsible and no single point of failure. It will be boring. It will be diffuse. It will be very, very hard to fix.</div>
+
+<p>It's a facial recognition system that works 99.5% of the time but fails disproportionately on dark-skinned faces, leading to wrongful arrests. It's a hiring algorithm that's 95% accurate but systematically disadvantages women because its training data reflects historical hiring bias. It's a medical diagnostic AI that performs brilliantly on the demographics well-represented in its training data and terribly on everyone else. It's a content moderation system that removes legitimate political speech in one language because it was predominantly trained on another.</p>
+
+<p>None of these failures are dramatic. None of them make good movies. All of them are happening right now. And the discourse around AI ethics spends an absurd amount of time on the trolley problem and an absurd amount of not-enough-time on these actual, occurring, documented failures.</p>
+
+<h2>Why Thought Experiments Distract</h2>
+
+<p>I'm not against the trolley problem. As a philosophical tool for exploring moral intuitions, it's brilliant. Philippa Foot invented it in 1967 and it's been productively generating argument in ethics departments ever since. The problem isn't the thought experiment itself — it's the way it's been transplanted into the autonomous vehicle debate as though it's the central question.</p>
+
+<p>Here's why it's not:</p>
+
+<p><strong>Trolley-problem scenarios are vanishingly rare in practice.</strong> The situation where a car has perfect information about two groups of people and must choose which to hit almost never arises. In the vast majority of real accidents, the car either (a) failed to detect the hazard at all, (b) detected the hazard too late to take any action, or (c) detected the hazard but misclassified it. The decision isn't "who do I hit?" — it's "is there something to hit?"</p>
+
+<p><strong>The trolley problem implies a false precision.</strong> It assumes the car knows exactly how many people are in each group, their ages, their identities. Real perception systems deal in probability distributions. "There's a 73% chance that's a pedestrian." "There's a 45% chance they'll cross the road in the next 2 seconds." You can't run a trolley-problem calculation on these inputs because you don't have the clean, certain information the thought experiment requires.</p>
+
+<p><strong>It centres individual dramatic choices over systemic design.</strong> The trolley problem asks "what should the car do in this moment?" The more important questions are systemic: "How was the perception system trained?" "What demographics are underrepresented in the training data?" "What are the failure modes and who bears the cost of failure?" "Who is liable when the system fails?" These are boring institutional design questions. They're also the questions that will determine whether autonomous vehicles save lives or cost them.</p>
+
+<div class="ascii-diagram">
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║     WHERE THE ACTUAL RISK LIVES: AN HONEST BREAKDOWN            ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║                                                                  ║
+  ║  Source of Risk              │ Media       │ Actual              ║
+  ║                              │ Attention   │ Importance          ║
+  ║  ────────────────────────────│─────────────│──────────────       ║
+  ║  Trolley-problem dilemmas    │ ████████████ │ ░              (1%)║
+  ║  Rogue superintelligence     │ ██████████   │ ░              (1%)║
+  ║  Dramatic hacking scenarios  │ ████████     │ █              (3%)║
+  ║  Sensor failure in bad       │ ██           │ ████████████  (25%)║
+  ║   weather                    │              │                    ║
+  ║  Training data bias          │ ███          │ ███████████   (22%)║
+  ║  Edge case perception        │ █            │ ██████████    (20%)║
+  ║   failures                   │              │                    ║
+  ║  Software bugs / system      │ █            │ █████████     (15%)║
+  ║   integration failures       │              │                    ║
+  ║  Map data staleness          │              │ ████           (8%)║
+  ║  Human-machine handoff       │ █            │ ███            (5%)║
+  ║   failures (L2/L3)          │              │                    ║
+  ╚══════════════════════════════════════════════════════════════════╝
+</div>
+
+<h2>The Real Ethics: Who's In the Training Data?</h2>
+
+<p>If the trolley problem isn't the central ethical question for autonomous vehicles, what is? I'd argue it's this: <strong>whose bodies were used to train the perception system, and whose bodies are underrepresented?</strong></p>
+
+<p>Because here's the dirty secret of computer vision: the models are only as good as their training data. If the training data contains millions of images of light-skinned pedestrians in American cities during daytime, the model will be excellent at detecting light-skinned pedestrians in American cities during daytime. It will be worse — potentially much worse — at detecting dark-skinned pedestrians, pedestrians in non-Western clothing, pedestrians in wheelchairs, pedestrians in cities with different road layouts, and pedestrians in any conditions that differ from the training distribution.</p>
+
+<p>A 2019 study by researchers at Georgia Tech found that leading pedestrian detection models were, on average, <strong>5% less accurate</strong> at detecting pedestrians with darker skin tones. Five percent might sound small. When applied across millions of autonomous vehicle miles, it means a systematic increase in the risk of harm for an entire demographic group. And the people most at risk are, by a cruel circularity, the same people who are least likely to be well-represented in Silicon Valley training datasets.</p>
+
+<p>This is an ethical problem — a genuine, urgent, present-tense ethical problem. But it doesn't fit neatly into the trolley problem framework because it's not about a single dramatic choice. It's about the slow, boring, systemic consequences of what data you collected, who collected it, where it was collected, and who was in the room when training decisions were made.<sup>2</sup></p>
+
+<h2>What Would Actually Help</h2>
+
+<p>If you care about the ethics of autonomous vehicles — and you should, because they're coming whether or not we resolve the trolley problem — here are the questions worth asking:</p>
+
+<p><strong>1. Mandate diverse testing environments.</strong> Autonomous vehicles should be tested in conditions that represent where they'll actually be deployed: different climates, different lighting conditions, different road types, different pedestrian demographics. Not just sunny California. This sounds obvious. It is obvious. It's also not being done systematically.</p>
+
+<p><strong>2. Audit training data for demographic bias.</strong> Every perception model should be audited to ensure it performs equally across demographic groups. Not just on average — stratified by skin tone, age, mobility status, body type, and clothing style. Require the results to be published. Make companies accountable for disparities.</p>
+
+<p><strong>3. Design for graceful degradation.</strong> Instead of asking "what should the car do in a trolley problem?", ask "what should the car do when it doesn't know what's happening?" The answer should be conservative: slow down, increase following distance, pull over if uncertainty exceeds a threshold. This is less exciting than programming trolley-problem solutions. It's also the thing that will actually save lives.</p>
+
+<p><strong>4. Rethink the human-machine handoff.</strong> Level 2 and Level 3 autonomous systems — where the car drives itself most of the time but expects the human to take over in emergencies — are arguably more dangerous than no automation at all. Humans are terrible at maintaining vigilance when they're not actively engaged. Asking a human to go from passively monitoring a self-driving system to actively controlling a vehicle in an emergency, with no warning, is a design decision that ignores everything we know about human attention and reaction time. The trolley problem assumes a binary between human and machine control. Reality is much messier.</p>
+
+<p><strong>5. Accept that 99% isn't good enough.</strong> A perception system that works 99% of the time sounds impressive. But if an autonomous vehicle encounters one pedestrian per mile of urban driving, and drives 10,000 miles per year, that's 100 perception failures per year. Per car. In a fleet of a million vehicles, that's 100 million annual failures. The tolerance for error in safety-critical systems is not "pretty good." It's "five nines" — 99.999%. And we're not there yet. Not close.</p>
+
+<h2>The Boring Conclusion</h2>
+
+<p>I know this isn't as fun as the trolley problem. The trolley problem is dramatic and clean and lets you feel like a philosopher for ten minutes at a dinner party. The perception problem is messy and technical and involves words like "lidar point cloud sparsity" and "domain adaptation" that make normal people's eyes glaze over.</p>
+
+<p>But the perception problem is the one that's going to determine whether autonomous vehicles save the approximately 1.35 million people who die in road accidents globally every year, or whether they just create new, different, and more boring ways to die.</p>
+
+<p>The trolley problem is easy. Two options, clear consequences, pick one. The real problem — seeing the world clearly enough to avoid the trolley scenario entirely — is hard. It requires better sensors, better training data, better testing, better regulation, and a willingness to engage with the unglamorous details of how these systems actually work.</p>
+
+<p>So the next time someone asks you about the trolley problem and self-driving cars, you have my permission to redirect the conversation. "The trolley problem is interesting," you can say. "But let me tell you about pedestrian detection in rain. It's less fun, it's more important, and it might actually save someone's life."</p>
+
+<p>They will immediately change the subject. But you'll know you were right. And that's something.</p>
+
+<div class="footnote">
+<p><sup>1</sup> There's a particularly grim irony in the fact that wheelchair users — people who are already underserved by transport infrastructure — are also the demographic most likely to be misclassified by autonomous vehicle perception systems. The system was trained predominantly on standing pedestrians. A person in a wheelchair has a fundamentally different silhouette, a different height profile, and moves at a different speed. If you wanted to design a transportation technology that systematically disadvantaged disabled people, you'd struggle to do worse than "train it on able-bodied people and hope for the best." Which is, roughly, what we've done.</p>
+<p><sup>2</sup> I once sat in a meeting where someone suggested solving the trolley problem by programming the car to "minimise total harm." Nobody in the room noticed that the word "minimise" was doing about forty metric tonnes of ethical lifting. Minimise according to whom? Measured how? Is the life of a 25-year-old worth more than the life of a 75-year-old because they have more expected years remaining? Is a group of five worth more than a single individual? By what framework? The entire field of moral philosophy exists because these questions don't have clean answers. Slapping the word "minimise" on it and shipping it to production is not an ethics strategy. It's an abdication of one.</p>
+</div>
+
+</div></main>
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>

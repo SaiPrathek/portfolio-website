@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Dunning-Kruger Peak | The Debrief</title>
+  <meta name="description" content="The sweet spot where you know just enough to be dangerously wrong — and why AI models go through the exact same thing during training." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-01-14-dunning-kruger-peak.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="The Dunning-Kruger Peak Is Where All the Confidence Lives" />
+  <meta property="og:description" content="The sweet spot where you know just enough to be dangerously wrong — and why AI models go through the exact same thing during training." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-01-14-dunning-kruger-peak.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    .f1-only { display: none; }
+    .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; }
+    body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; }
+    .post-body strong { font-weight: 700; }
+    .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); }
+    body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all" style="border-color: var(--primary);">
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">directions_car</span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">F1</span>
+        <span class="w-8 h-4 rounded-full relative" style="background: var(--primary);">
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="left: 2px;"></span>
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="right: 2px;"></span>
+        </span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">OFFICE</span>
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">assignment</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #007 · 14 Jan 2026 · 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">The Dunning-Kruger Peak Is Where All the Confidence Lives</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #007 · 14 Jan 2026 · 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">The Dunning-Kruger Peak Is Where All the Confidence Lives</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">On knowing just enough to be dangerously wrong — and why large language models go through the exact same crisis.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Psychology</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Learning</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+<h2>The Most Dangerous Place on the Knowledge Curve</h2>
+
+<p>There is a specific moment in every learning journey — a golden, luminous, catastrophically misguided moment — where you feel like you've basically figured it out. You've read one book. You've watched three YouTube tutorials. You've had a shower thought that felt like it connected everything. You are, in that moment, absolutely electric with confidence. You could give a TED talk. You could probably <em>run</em> TED.</p>
+
+<p>This moment has a name. Psychologists David Dunning and Justin Kruger identified it in 1999 in their seminal paper, which bore the magnificent title "Unskilled and Unaware of It: How Difficulties in Recognising One's Own Incompetence Lead to Inflated Self-Assessments." The title alone tells you everything you need to know, and yet — in perfect Dunning-Kruger fashion — most people who cite this effect have only a surface-level understanding of what it actually describes.</p>
+
+<p>Let me show you the curve. You've probably seen it before, usually in a LinkedIn post by someone who is themselves perched confidently at its peak.</p>
+
+<div class="ascii-diagram">
+  Confidence
+  ▲
+  │        ╭──╮
+  │       ╱    ╲          "I basically mass from
+  │      ╱      ╲          first principles"
+  │     ╱        ╲
+  │    ╱  MOUNT   ╲                           ╭────────
+  │   ╱  STUPID    ╲                        ╱
+  │  ╱              ╲                     ╱
+  │ ╱                ╲    ╭─╮          ╱
+  │╱                  ╲  ╱   ╲       ╱  PLATEAU OF
+  │ "I know            ╲╱     ╲    ╱   SUSTAINABILITY
+  │  nothing"      VALLEY OF   ╲ ╱    "I know enough to
+  │                 DESPAIR    ╱      know what I don't"
+  │                          ╱
+  ├──────────────────────────────────────────────▶ Knowledge
+  │
+  "What's a      "Oh no.     "Actually   "OK. Fine.
+   variable?"     Oh NO."     maybe I     Let me just
+                              should      be useful."
+                              just quit"
+</div>
+
+<p>The shape is iconic. The left side climbs steeply — you learn a little, and your confidence rockets up because you don't yet know enough to understand how much you don't know. Then comes the peak. Mount Stupid. The summit of misplaced conviction. You've just enough knowledge to construct an argument, but not enough to realise the argument has a load-bearing wall made of tissue paper.</p>
+
+<p>Then reality arrives. It arrives in the form of a bug that takes three days to fix, or a question from someone senior that you can't answer, or the quiet horror of reading your own code from six months ago. Confidence collapses. You tumble into the Valley of Despair, which is a dramatic name but an accurate description of what it feels like at 2am when you've been debugging a race condition and you're starting to suspect that you've never truly understood anything.</p>
+
+<p>And then — slowly, painfully, unglamorously — you climb the Slope of Enlightenment. This is where real knowledge lives. It's boring up here. Nobody writes LinkedIn posts about it. The view is mostly just "I know enough to recognise complexity when I see it."</p>
+
+<h2>The Confidence Factory: A Closer Look at Mount Stupid</h2>
+
+<p>The thing about Mount Stupid that Dunning and Kruger identified — and that most pop-psychology summaries miss — is that it's not about <em>stupid people</em>. It's about <em>everyone</em>, at the beginning of learning <em>anything</em>. Every expert was, at some point, on Mount Stupid for their own field. The difference is that they kept going.</p>
+
+<p>I want to be very specific about what happens at the peak, because it's genuinely fascinating. When you know a little bit about something, your brain does this beautiful, terrible thing: it pattern-matches your tiny fragment of knowledge against everything else you know and goes, "Ah yes, I see how this all fits together." Your brain is, at its core, a pattern-completion engine. Give it 5% of a pattern, and it will cheerfully hallucinate the other 95%.</p>
+
+<div class="pull-quote">The peak of the Dunning-Kruger curve isn't where stupid people live. It's where everyone lives, for about fifteen minutes, in every domain they'll ever learn.</div>
+
+<p>Think about the last time you learned a new board game. Someone explained the rules for ten minutes, and by minute eight you were already planning your strategy. "Right, so I'll do <em>this</em> and then <em>that</em> and I'll win by turn four." Then you played the actual game and got absolutely destroyed, because the rules are just the skeleton — the muscle, the connective tissue, the subtle dynamics that emerge from the interaction of simple rules — that's all invisible until you've lost twenty times.</p>
+
+<p>Or think about cooking. You watch one Jamie Oliver video and suddenly you're the sort of person who "just throws things together." Three burnt pans later, you start to appreciate that there might be a reason professional chefs train for years. But for a brief, glorious window, you genuinely believed your instincts were sound. Your instincts were based on watching a man who has cooked approximately forty thousand meals make it look effortless. You have cooked approximately six meals. Your instincts are, statistically, noise.<sup>1</sup></p>
+
+<h2>Now Let's Talk About Large Language Models</h2>
+
+<p>Here's where it gets properly interesting. If you've spent any time watching the training curves of large language models, you'll notice something that should look very familiar.</p>
+
+<p>In the early stages of training, an LLM — let's call it a baby model — has seen a relatively small portion of its training data. It's learned some patterns. It can generate plausible-looking text. And it does so with <em>tremendous</em> confidence. It will tell you that the capital of France is "the Eiffel Tower," that water boils at "a thousand miles per hour," and that the author of Hamlet was "a man called Hamlet." These answers are structurally correct — they're the right <em>shape</em> of answer — but substantively they're unhinged.</p>
+
+<p>This is Mount Stupid for neural networks. The model has learned the <em>form</em> of knowledge without the <em>content</em>. It knows that a question about a capital city should be answered with a proper noun and a place-sounding word. It just doesn't yet have the actual mapping between countries and capitals locked down. But it doesn't hesitate. It doesn't say "I'm not sure." It produces an answer with the same breezy assurance as a first-year philosophy student explaining consciousness.</p>
+
+<div class="callout">
+  <strong>The parallel is almost too perfect:</strong> Early-training LLMs and junior developers share the same fundamental bug — they've learned the syntax of competence without the semantics. They can produce things that look right to someone who doesn't know better, and they have no internal mechanism for flagging their own uncertainty.
+</div>
+
+<p>As training continues and the model sees more data, something interesting happens. The loss curve drops. The model starts getting things <em>right</em>. But it also starts getting things wrong in more <em>subtle</em> ways. Instead of saying the capital of France is the Eiffel Tower, it might say it's Lyon. Lyon is a real city in France. It's a reasonable guess. It's also wrong, and the wrongness is now much harder to detect from the outside.</p>
+
+<p>This is the descent from Mount Stupid. The model is getting better, but it's entering a phase where its errors are more dangerous precisely because they're more plausible. A confidently wrong answer that <em>sounds</em> right is far more hazardous than a confidently wrong answer that's obviously absurd.</p>
+
+<h2>The Junior Developer Problem</h2>
+
+<p>Let me tell you about a developer I once worked with — let's call him Dave, because his name was Dave and this was ten years ago and he'll never read this.<sup>2</sup> Dave had just completed a React tutorial. Not a course, mind you. A tutorial. One of those "Build a Todo App in 45 Minutes" jobs on YouTube.</p>
+
+<p>Dave emerged from that tutorial like a butterfly from a chrysalis, except the butterfly was wearing a t-shirt that said "REACT EXPERT" and it couldn't actually fly. Within twenty-four hours, Dave had:</p>
+
+<p>1. Rewritten a perfectly functional jQuery component in React "because it's better"<br>
+2. Introduced a state management bug that took two days to find<br>
+3. Told a senior developer that their approach was "not how you do it in React"<br>
+4. Started a Slack thread titled "Should we migrate the entire codebase to React?"</p>
+
+<p>Dave was on Mount Stupid. He knew what a component was. He knew what state was. He knew what props were. And because those three concepts are enough to build a Todo app, he assumed they were enough to build anything. The gap between "I can build a Todo app" and "I can architect a production application" is roughly the same as the gap between "I can boil water" and "I can run a Michelin-starred restaurant."</p>
+
+<div class="ascii-diagram">
+  THE DAVE SCALE OF FRAMEWORK MASTERY
+
+  Day 1:  "What's React?"                    ░░░░░░░░░░░░░░░░░░░░
+  Day 2:  [Watches tutorial]                  ░░░░░░░░░░░░░░░░░░░░
+  Day 3:  "I KNOW REACT"                      ████████████████████  ← PEAK DAVE
+  Day 4:  [Rewrites production code]          ████████████████░░░░
+  Day 5:  [Production breaks]                 ████████░░░░░░░░░░░░
+  Day 6:  "React has some nuances"            ████░░░░░░░░░░░░░░░░
+  Day 30: "State management is hard"          ██░░░░░░░░░░░░░░░░░░
+  Day 90: "I'm starting to understand React"  ████████░░░░░░░░░░░░
+  Day 365: [Quietly effective, never brags]   ████████████░░░░░░░░
+
+  ░ = Remaining knowledge to acquire
+  █ = Confidence level
+</div>
+
+<p>The tragedy of Dave — and I say this with genuine affection, because we've all been Dave at some point — is that his confidence was highest at the exact moment his competence was lowest. By day 365, when he was actually good at React, he'd describe himself as "still learning." The people who know the most are the most aware of what they don't know. The people who know the least think they know everything.</p>
+
+<h2>Why This Happens: The Metacognition Gap</h2>
+
+<p>Dunning and Kruger's key insight wasn't just "beginners are overconfident." It was deeper than that. They showed that <em>the skills required to produce competent work are the same skills required to recognise competent work.</em> If you don't know enough about cooking to cook well, you also don't know enough about cooking to evaluate whether your cooking is good. The incompetence is self-concealing.</p>
+
+<p>This is a metacognition problem. Metacognition is thinking about your own thinking — the ability to step back and assess the quality of your own reasoning. And metacognition is itself a skill that develops with expertise. A beginner doesn't just lack knowledge; they lack the ability to assess their own lack of knowledge. It's not just that they don't know things. They don't know that they don't know things. They don't know that they don't know that they don't know things. It's ignorance all the way down.</p>
+
+<p>And this maps onto LLMs in a way that should make us very uncomfortable. Current language models have essentially zero metacognition. They cannot reliably assess their own confidence. When a model says "The capital of France is Paris" and "The capital of Molvania is Lutenblag," it says both with the same flat, calm, authoritative tone. One is correct. The other is about a fictional country from a comedy travel guide. The model does not know the difference, because knowing the difference would require the ability to evaluate its own knowledge — which is precisely the capability it lacks.</p>
+
+<p>This is why "hallucination" in LLMs is such a persistent problem. It's not a bug in the traditional sense. It's a structural consequence of a system that learned to produce confident-sounding text without developing the metacognitive architecture to flag when it's guessing. It's Mount Stupid, baked into the architecture.</p>
+
+<h2>The Valley of Despair Is Where Growth Actually Lives</h2>
+
+<p>Let's talk about the Valley of Despair, because it gets a bad reputation and I think it deserves better press. The Valley of Despair is the moment when you realise how much you don't know. It feels terrible. It is also, objectively, the most important moment in any learning process. Because recognising incompetence <em>is</em> competence. The moment you think "oh God, I'm in over my head" is the moment your metacognition has come online.</p>
+
+<p>The Valley is where most people quit. It's where Dave nearly quit React (he didn't, thankfully, and he's a very good engineer now). It's where every PhD student has their crisis. It's where every startup founder has the 3am moment of "what have I done." The ones who make it through aren't the ones with the most talent or the most resources. They're the ones who can tolerate the discomfort of knowing they're not good enough yet.</p>
+
+<p>For LLMs, the analogue is the middle phase of training where the loss function has plateaued and the model keeps getting things subtly wrong. Researchers sometimes call these "loss plateaus" — periods where the model seems to stop improving. What's actually happening, often, is that the model is reorganising its internal representations. It's moving from shallow pattern matching to deeper structural understanding. It's painful-looking on a graph. It's also where the magic happens.</p>
+
+<div class="callout">
+  <strong>A useful heuristic:</strong> If you feel confident about a new skill, you're probably on Mount Stupid. If you feel confused and slightly hopeless, congratulations — you're probably learning something real.
+</div>
+
+<h2>The Social Dynamics of Confidence</h2>
+
+<p>There's a pernicious social dimension to all of this. In most professional environments, confidence is rewarded. The person who speaks first in a meeting, with conviction, tends to set the frame. The person who hesitates, qualifies, and says "I think, but I'm not sure" gets steamrolled.</p>
+
+<p>This means that Mount Stupid has a built-in amplifier. The people who know the least are the most confident, and the most confident people get the most airtime, and the most airtime makes them appear the most competent, which reinforces their confidence. It's a feedback loop that actively selects for overconfidence and punishes calibrated uncertainty.</p>
+
+<p>This is why, in my experience, the most dangerous person in a technical discussion is not the person who knows nothing (they're easy to identify) and not the person who knows a lot (they'll flag complexity). It's the person who knows a little — the person who's read the blog post but not the paper, who's completed the tutorial but not the project, who's seen the demo but not the source code. That person will advocate loudly for simple solutions to complex problems, because they genuinely cannot perceive the complexity.</p>
+
+<p>And — I cannot stress this enough — I have been that person. Multiple times. In multiple domains. If you're reading this and thinking "I'd never do that," I have some news for you about which part of the curve you're probably on regarding self-awareness.</p>
+
+<h2>What We Can Actually Do About It</h2>
+
+<p>So is there a cure for Mount Stupid? Not really. You can't skip it. The Dunning-Kruger effect isn't a character flaw; it's a structural feature of how learning works. You <em>have</em> to pass through the peak to get to the valley, and you have to pass through the valley to reach the plateau. But there are some things that help.</p>
+
+<p><strong>First: build a habit of asking "what am I probably wrong about?"</strong> This is artificially engaging your metacognition before it's fully developed. It won't give you the right answer, but it'll give you the right attitude. The question alone shifts you from "I know this" to "I think I know this, but let me check."</p>
+
+<p><strong>Second: seek out people who know more than you and actually listen to them.</strong> Not in the "I'll listen politely and then do what I was going to do anyway" sense. In the "I will update my mental model based on what they say" sense. This is harder than it sounds, because Mount Stupid specifically impairs your ability to recognise that someone else knows more.</p>
+
+<p><strong>Third: develop a taste for being wrong.</strong> This sounds perverse, but experts get comfortable with being wrong all the time. A good scientist expects most of their hypotheses to fail. A good engineer expects their first design to have flaws. The difference between an expert and a novice isn't that the expert is always right — it's that the expert has a healthy, productive relationship with being wrong.</p>
+
+<p>For LLMs, the equivalent is ongoing research into calibration — teaching models to express uncertainty when they're uncertain. This is genuinely hard, because the training process optimises for producing answers, not for producing calibrated confidence assessments. But it's crucial. An AI that says "I'm not sure" when it isn't sure is vastly more useful than one that's confidently wrong 10% of the time.</p>
+
+<h2>The View From the Plateau</h2>
+
+<p>I want to end with a defence of the Plateau of Sustainability, the boring right side of the curve that nobody writes about. The plateau doesn't feel like mastery. It doesn't feel like the crackling, electric confidence of Mount Stupid. It feels like... competence. Quiet, calibrated, unglamorous competence.</p>
+
+<p>You know what you know. You know what you don't know. You can estimate, roughly, how long something will take, and you'll be roughly right. You can look at a problem and identify whether it's genuinely hard or just unfamiliar. You can tell the difference between a good idea that sounds crazy and a crazy idea that sounds good.</p>
+
+<p>It's not exciting. It's useful. And in a world that's increasingly full of systems — both human and artificial — that are stuck on Mount Stupid, being quietly competent might be the most valuable thing you can be.</p>
+
+<p>The next time someone tells you, with absolute conviction, that something is simple, ask them how long they've been doing it. If the answer is "three weeks," smile politely. They're on the peak. They'll come down eventually. And when they do — when they hit the valley and feel the full weight of their own ignorance — be kind. We've all been there. We'll all be there again, in some new domain, feeling that intoxicating rush of false understanding.</p>
+
+<p>Mount Stupid is not a place you visit once. It's a place you visit every time you learn something new. The only question is how long you stay.</p>
+
+      <div class="footnote">
+        <p><sup>1</sup> There's a wonderful study from 2010 that found novice wine tasters rated their own ability as "above average" more often than expert tasters did. The experts, who could actually identify grape varieties by smell, routinely described themselves as "still learning." The novices, who couldn't tell a Merlot from a Ribena, thought they had "a natural palate." This is the Dunning-Kruger effect in its purest, most grape-flavoured form.</p>
+        <p><sup>2</sup> Dave, if you're reading this: you're great now. Genuinely. Also, I'm sorry about the incident with the production database. That was actually my fault. I was on my own Mount Stupid at the time. About databases. Which is a terrible thing to be on Mount Stupid about.</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);">
+        <span class="material-symbols-outlined text-base">arrow_back</span>
+        <span class="f1-only">All Lap Reports</span>
+        <span class="office-only">All Memos</span>
+      </a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = Math.min(100, (scrolled / total) * 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>

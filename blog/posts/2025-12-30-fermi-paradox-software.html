@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Fermi Paradox But For Good Software | The Debrief</title>
+  <meta name="description" content="Millions of developers, decades of practice, and your bank's app still crashes when you rotate your phone. Where is everybody?" />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2025-12-30-fermi-paradox-software.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="The Fermi Paradox But For Good Software (Where Is Everybody?)" />
+  <meta property="og:description" content="If we have millions of developers and decades of practice, why does most software still suck?" />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2025-12-30-fermi-paradox-software.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    .f1-only { display: none; }
+    .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; }
+    body.theme-office .office-only { display: block; }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+
+    .post-body {
+      font-size: 1.0625rem;
+      line-height: 1.85;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+
+    .post-body h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      line-height: 1.3;
+    }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+
+    .post-body h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-body p { margin-bottom: 1.4rem; }
+    .post-body strong { font-weight: 700; }
+    body.theme-f1 .post-body strong { color: var(--on-surface); }
+    body.theme-office .post-body strong { color: var(--on-surface); }
+    .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); }
+    body.theme-office .post-body a { color: var(--primary); }
+
+    .callout {
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-left: 4px solid var(--primary);
+      font-style: italic;
+      font-size: 0.975rem;
+    }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+
+    .ascii-diagram {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+
+    .footnote {
+      font-size: 0.8rem;
+      opacity: 0.65;
+      border-top: 1px solid var(--outline-variant);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+    }
+    .footnote p { margin-bottom: 0.5rem; }
+
+    sup {
+      color: var(--primary);
+      font-size: 0.65em;
+      font-weight: 700;
+      cursor: default;
+    }
+
+    .pull-quote {
+      font-size: 1.4rem;
+      font-style: italic;
+      font-weight: 300;
+      padding: 1.5rem 0;
+      margin: 2rem 0;
+      border-top: 2px solid var(--primary);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+
+  <div id="progress-bar"></div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">&#8592; All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">&#8592; All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme"
+        class="flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all"
+        style="border-color: var(--primary);">
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">directions_car</span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">F1</span>
+        <span class="w-8 h-4 rounded-full relative" style="background: var(--primary);">
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="left: 2px;"></span>
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="right: 2px;"></span>
+        </span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">OFFICE</span>
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">assignment</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #003 &middot; 30 Dec 2025 &middot; 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">The Fermi Paradox But For Good Software (Where Is Everybody?)</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #003 &middot; 30 Dec 2025 &middot; 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">The Fermi Paradox But For Good Software (Where Is Everybody?)</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">Millions of developers. Decades of practice. Trillions of dollars. Your bank's app still crashes when you rotate your phone.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Software</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Engineering</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Rant</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+      <p>In 1950, the physicist Enrico Fermi was having lunch with his colleagues at Los Alamos when the conversation turned to UFOs and extraterrestrial life. Given the sheer size of the universe &mdash; hundreds of billions of stars in our galaxy alone, many with planets, the universe billions of years old &mdash; the probability of intelligent alien civilisations seemed overwhelming. The math said they should be everywhere.</p>
+
+      <p>Fermi looked up from his lunch and asked a question that has haunted astrophysicists ever since: <strong>"Where is everybody?"</strong></p>
+
+      <p>I had the same experience last week, except I was trying to book a doctor's appointment through my GP's online portal, and instead of contemplating the cosmos, I was contemplating why a website built in 2024 requires Internet Explorer compatibility mode and crashes if you use an apostrophe in your surname. Given the sheer number of software developers on Earth &mdash; roughly 27 million as of 2025 &mdash; given the decades of accumulated knowledge, the billions in venture capital, the frameworks, the methodologies, the agile coaches, the stand-ups, the retrospectives, the post-mortems...</p>
+
+      <p><strong>Where is all the good software?</strong></p>
+
+      <p>I don't mean "good" in some platonic, ivory-tower sense. I mean: works reliably, doesn't crash, does what it says it does, and doesn't make you want to hurl your laptop into the sea. By this extremely generous standard, the vast majority of software &mdash; software we use every day, software that costs millions to develop, software made by some of the richest companies in human history &mdash; fails.</p>
+
+      <p>This is the Software Fermi Paradox, and I think it deserves the same kind of serious, slightly unhinged analysis that the original Fermi Paradox has received.</p>
+
+      <h2>The Drake Equation, But For Apps</h2>
+
+      <p>The original Fermi Paradox has a companion formula: the Drake Equation, which tries to estimate the number of detectable alien civilisations by multiplying a bunch of probabilities together. Rate of star formation times fraction of stars with planets times fraction of those that could support life, and so on.</p>
+
+      <p>Let's do the same thing for good software.</p>
+
+      <p><strong>N = D &times; F &times; C &times; T &times; M &times; R &times; L</strong></p>
+
+      <p>Where:</p>
+      <p><strong>D</strong> = Number of developers (~27 million)<br/>
+      <strong>F</strong> = Fraction working on user-facing products (~0.4)<br/>
+      <strong>C</strong> = Fraction with adequate competence (~0.7)<br/>
+      <strong>T</strong> = Fraction given adequate time (~0.15)<br/>
+      <strong>M</strong> = Fraction with sane management (~0.2)<br/>
+      <strong>R</strong> = Fraction where requirements don't change weekly (~0.1)<br/>
+      <strong>L</strong> = Fraction that survive long enough to mature (~0.3)</p>
+
+      <p>Plug in those numbers: 27,000,000 &times; 0.4 &times; 0.7 &times; 0.15 &times; 0.2 &times; 0.1 &times; 0.3 = <strong>~6,804</strong></p>
+
+      <p>Out of 27 million developers, my extremely rough, somewhat tongue-in-cheek Drake Equation for software suggests that roughly 6,804 of them are in conditions that would produce genuinely good software. That's 0.025%. One in four thousand.</p>
+
+      <p>And honestly? That number feels about right.</p>
+
+      <h2>The Great Filter Theory, Applied to Codebases</h2>
+
+      <p>The most popular explanation for the original Fermi Paradox is the "Great Filter" &mdash; the idea that somewhere between dead matter and galaxy-spanning civilisation, there's a step so improbable that almost nobody makes it through. Maybe it's the jump from single-celled to multicellular life. Maybe it's the development of intelligence. Maybe it's surviving your own technology long enough to colonise other stars.</p>
+
+      <p>Software has its own Great Filters. Multiple ones, in fact, arranged in a gauntlet of doom that every software project must pass through. Most don't survive.</p>
+
+      <div class="ascii-diagram">
+  THE SOFTWARE QUALITY GREAT FILTER
+  ==================================
+
+  Stage 1         Stage 2         Stage 3         Stage 4         Stage 5
+  Good Idea  --&gt;  Funded    --&gt;  V1 Ships  --&gt;  Scales    --&gt;  STILL GOOD
+                                                                AFTER 5 YRS
+  ████████████   ██████████     ████████       ████           █
+  ████████████   ██████████     ████████       ████
+  ████████████   ██████████     ████████
+  ████████████   ██████████
+  ████████████
+
+  100% of         60%            35%            8%             ~1%
+  projects        survive        ship something  handle         remain
+  start here      funding/       that works      real-world     maintainable
+                  planning                       scale          and good
+
+  GREAT FILTERS:
+  ├── Filter 1: "Let's add blockchain" (idea corruption)
+  ├── Filter 2: "We need it by Q2" (time compression)
+  ├── Filter 3: "The intern built the auth system" (skill mismatch)
+  ├── Filter 4: "It works on my machine" (scaling reality)
+  └── Filter 5: "Nobody understands this code anymore" (entropy)</div>
+
+      <p>Let me walk through each filter, because they're all fascinating in their own horrible way.</p>
+
+      <h2>Filter 1: The Idea Corruption Phase</h2>
+
+      <p>Every piece of software starts as someone's genuine attempt to solve a problem. This is the purest moment in a project's lifecycle. Someone says, "You know what would be useful? An app that does X." And X is simple, clear, and obviously valuable.</p>
+
+      <p>Then other people get involved.</p>
+
+      <p>"That's great, but could it also do Y?"<br/>
+      "What if we added a social component?"<br/>
+      "The VP wants a dashboard."<br/>
+      "Can we make it work offline?"<br/>
+      "What about blockchain?"<br/>
+      "The competitor has a feature where..."</p>
+
+      <p>By the time the first line of code is written, the original simple idea has metastasised into a fourteen-page requirements document that reads like a hostage negotiation between six people who've never met a user. The thing that was going to be a clean, elegant solution to one problem is now trying to be a mediocre solution to seventeen problems, three of which are imaginary.</p>
+
+      <p>This is how you get a printer that requires a 500MB app, an internet connection, and a user account just to print a page. Someone, somewhere, had a meeting where they decided the printer needed a "cloud ecosystem." And nobody stopped them, because in that meeting room, it sounded reasonable.<sup>1</sup></p>
+
+      <h2>Filter 2: The Time Compression Catastrophe</h2>
+
+      <p>Hofstadter's Law states: "It always takes longer than you expect, even when you take into account Hofstadter's Law." This is funny and it is also the single most consistently validated finding in the history of software engineering.</p>
+
+      <p>Every software project in history has taken longer than estimated. This is not an exaggeration. Academic studies of project estimation accuracy consistently show that developers underestimate by a factor of 2-3x on average, and that this bias is resistant to experience, training, and explicit warnings about the bias itself. You can tell a developer "you will underestimate this," and they will nod sagely and then underestimate it anyway.</p>
+
+      <div class="callout">
+        <strong>The fundamental theorem of software estimation:</strong> The time required to build software is determined by the complexity of the problem. The time allocated to build software is determined by a date someone picked in a meeting. These two numbers have never been the same, and they never will be.
+      </div>
+
+      <p>When time runs out &mdash; and it always runs out &mdash; quality is the first casualty. Not features, mind you. Features are sacred. Features were promised to customers, listed on slides, demoed to the board. Features survive. What dies is everything underneath the features: error handling, edge cases, performance optimisation, accessibility, documentation, tests, and that refactoring everyone agreed was necessary four months ago but kept deferring.</p>
+
+      <p>The result is software that technically <em>does</em> everything it's supposed to do, in the same way that a car with no brakes technically <em>does</em> drive.</p>
+
+      <h2>Filter 3: The Complexity Ceiling</h2>
+
+      <p>Here's something that non-developers rarely understand: software complexity doesn't scale linearly. It scales <em>combinatorially</em>.</p>
+
+      <p>A system with 10 features doesn't have 10 things that can go wrong. It has something closer to 2<sup>10</sup> = 1,024 possible states, each of which might contain a bug. A system with 100 features has 2<sup>100</sup> possible states, which is roughly the number of atoms in the observable universe. Obviously not all states are reachable, but the point stands: every feature you add doesn't just add its own complexity. It multiplies the complexity of everything already there.</p>
+
+      <div class="pull-quote">Software doesn't degrade like a building, slowly weathering over decades. It degrades like a conversation &mdash; each addition changes the meaning of everything that came before.</div>
+
+      <p>This is the filter that kills most ambitious software projects. You build version 1 and it's clean, fast, elegant. Version 2 adds some features and it's still pretty good. Version 3 adds more features and now things are getting complicated. By version 5, nobody fully understands the system anymore, and every change risks breaking something in a seemingly unrelated area. Engineers start adding code with the delicacy and terror of someone defusing a bomb.</p>
+
+      <p>This is tech debt, and it's not a metaphor. Like financial debt, it compounds. Like financial debt, it's easy to take on and hard to pay off. And like financial debt, the people who take it on are rarely the ones who have to pay it back. The engineers who built version 1 have moved on to other companies. The ones maintaining version 5 are the ones dealing with their legacy, trying to figure out why there's a function called <code>handleSpecialCase_DONT_TOUCH</code> with a comment that just says "// I'm sorry."<sup>2</sup></p>
+
+      <h2>Filter 4: The Scaling Wall</h2>
+
+      <p>Some software makes it through the first three filters. It has a clear purpose, adequate time, manageable complexity. It works beautifully for 100 users. Then it gets popular, and 100 users become 100,000 users, and everything falls apart.</p>
+
+      <p>Scaling is a different kind of engineering problem. It's the difference between cooking dinner for your family and running a restaurant. The recipe might be the same, but the challenges are completely different. When you're cooking for four, you don't need to worry about supply chain logistics, parallel food preparation, or what happens when forty people order the same dish at the same time. But at scale, those are the <em>only</em> things that matter.</p>
+
+      <div class="ascii-diagram">
+  THE SCALING WALL
+  ================
+
+  Performance
+  (response time)
+       │
+  200ms│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ "acceptable"
+       │
+       │                                         ╱
+  500ms│                                       ╱
+       │                                     ╱
+    1s │                                   ╱
+       │                                 ╱
+    2s │                         ╭─────╯
+       │                    ╭───╯
+    5s │               ╭───╯
+       │          ╭───╯       &lt;-- "the wall"
+  10s  │     ╭───╯                 (where prayers begin)
+       │╭───╯
+  30s  │╯
+       │    Everything      │     Your app in     │
+       │    is fine         │     production       │
+       └────────────────────┼─────────────────────┼────
+                           10k                  500k
+                                Users
+
+  Note: The line after 500k users is actually vertical
+  but my ASCII art can't convey "infinite response time"</div>
+
+      <p>The software that we think of as "good" &mdash; the Googles, the Stripes, the VSCodes &mdash; have all passed through this filter, often multiple times. Google famously rewrote its infrastructure at least three times in its first decade. Stripe rebuilt its payment processing system from scratch. These are not signs of failure; they're signs of the extraordinary effort required to maintain quality at scale. Most companies can't or won't invest that effort.</p>
+
+      <h2>Filter 5: The Entropy Death</h2>
+
+      <p>The final Great Filter, and the one that gets almost everyone: <strong>time</strong>.</p>
+
+      <p>Software exists in a constantly changing environment. Operating systems update. Browsers update. Libraries update. Security vulnerabilities are discovered. User expectations evolve. Regulations change. Hardware changes. The team that built the original system turns over. Institutional knowledge is lost.</p>
+
+      <p>Every piece of software that isn't actively, continuously maintained is slowly dying. Not from wear and tear, like physical objects, but from environmental drift. The world moves forward and the software stays still, and the gap between "what the software does" and "what the world needs" widens imperceptibly but relentlessly.</p>
+
+      <p>This is why five-year-old software feels ancient. It's not that the software has gotten worse. It's that everything around it has gotten better, and the contrast is brutal. Using a web app from 2019 in 2025 feels like using a web app from 1999 in 2005. The half-life of software quality is shockingly short.</p>
+
+      <h2>So... Is There Any Hope?</h2>
+
+      <p>The original Fermi Paradox has dozens of proposed solutions, ranging from the plausible ("intelligent life is rare") to the terrifying ("civilisations inevitably destroy themselves") to the creative ("the zoo hypothesis: aliens are watching but not interfering").</p>
+
+      <p>The Software Fermi Paradox has its own spectrum of explanations, and I think the honest answer is: most of them are depressing.</p>
+
+      <p><strong>The "rare earth" explanation:</strong> Good software is just genuinely hard, maybe harder than we acknowledge. The number of things that need to go right &mdash; clear requirements, adequate time, competent team, sane management, stable environment, good architecture &mdash; is so large that the probability of all of them aligning is vanishingly small. This is probably the most accurate explanation and also the least satisfying.</p>
+
+      <p><strong>The "self-destruction" explanation:</strong> Even software that achieves quality inevitably destroys it through growth. Success breeds complexity breeds decay. Every feature request is a step towards entropy. Good software doesn't stay good because the economic incentives point towards adding features, not maintaining elegance. The market rewards breadth over depth, every time.</p>
+
+      <p><strong>The "dark forest" explanation:</strong> Good software exists, but you can't see it. It's running quietly in the background, doing its job without drawing attention to itself. The software you notice is the software that's broken, the same way you notice bad drivers but not good ones. There's a massive survivorship bias in our perception of software quality. Every good API you've used, every well-designed command-line tool, every library that just <em>works</em> &mdash; those are the quiet successes.</p>
+
+      <p>I find that last explanation the most comforting, and I think it contains a genuine insight. We tend to think of software quality in terms of user-facing applications &mdash; websites, apps, the things we interact with directly. And those are, by and large, pretty rough. But the infrastructure layer underneath &mdash; operating system kernels, database engines, networking protocols, compilers &mdash; is often extraordinarily good. Linux runs most of the internet. PostgreSQL is a masterpiece. The TCP/IP stack is one of the most reliable pieces of engineering in human history.</p>
+
+      <div class="pull-quote">The best software is invisible. You've been using incredible engineering all day and didn't notice, because incredible engineering doesn't draw attention to itself. It's the mediocre stuff that waves its arms.</div>
+
+      <p>Maybe the answer to "where is all the good software?" is the same as the answer to "where are the best referees in football?" &mdash; the ones you don't notice. You don't notice them because they're doing their job perfectly, and perfect execution is, by definition, invisible.</p>
+
+      <p>But that's cold comfort when your banking app crashes for the third time this week. Some software needs to be visible <em>and</em> good, and the Great Filters make that vanishingly rare. Not impossible &mdash; there are apps and websites that are genuinely delightful to use &mdash; but far, far rarer than the sheer volume of talent and money in the industry would suggest.</p>
+
+      <p>Fermi looked at the sky and asked where everybody was. I look at my phone and ask the same thing. And I suspect the answer, for both questions, is the same:</p>
+
+      <p><strong>Getting from "possible" to "actual" is much, much harder than it looks.</strong></p>
+
+      <p>The universe is vast and mostly empty. The software industry is vast and mostly... well, you've used it. You know.</p>
+
+      <div class="footnote">
+        <p><sup>1</sup> HP's printer ecosystem is the canonical example, but honourable mentions go to: the BMW heated seat subscription, the juicer that needed Wi-Fi, and any smart fridge that has ever existed. The urge to add connectivity to things that don't need connectivity is apparently the strongest force in the universe, stronger even than gravity or middle management's desire for a dashboard.</p>
+        <p><sup>2</sup> I once inherited a codebase that contained a function called <code>fixEverything()</code>. It did not fix everything. It set a single boolean to true. The git blame showed it was written at 2:47 AM on a Friday. I have never felt more solidarity with a stranger.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);">
+        <span class="material-symbols-outlined text-base">arrow_back</span>
+        <span class="f1-only">All Lap Reports</span>
+        <span class="office-only">All Memos</span>
+      </a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = Math.min(100, (scrolled / total) * 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>

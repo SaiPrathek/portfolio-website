@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 10,000 Hour Rule Is a Lie | The Debrief</title>
+  <meta name="description" content="Malcolm Gladwell misquoted the research. The truth about expertise is weirder, more nuanced, and has surprising parallels to how we train AI models." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-02-07-ten-thousand-hours-lie.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="The 10,000 Hour Rule Is a Lie (But the Truth Is Weirder)" />
+  <meta property="og:description" content="Malcolm Gladwell misquoted the research. The truth about expertise is weirder and more nuanced." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-02-07-ten-thousand-hours-lie.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; }
+    .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); }
+    body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all" style="border-color: var(--primary);">
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">directions_car</span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">F1</span>
+        <span class="w-8 h-4 rounded-full relative" style="background: var(--primary);"><span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="left: 2px;"></span><span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="right: 2px;"></span></span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">OFFICE</span>
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">assignment</span>
+      </button>
+    </div>
+  </nav>
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #013 · 07 Feb 2026 · 12 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">The 10,000 Hour Rule Is a Lie (But the Truth Is Weirder)</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #013 · 07 Feb 2026 · 12 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">The 10,000 Hour Rule Is a Lie (But the Truth Is Weirder)</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">Malcolm Gladwell misquoted the research. The truth about expertise is weirder, more nuanced, and has surprising parallels to how we train AI models.</p>
+    <div class="flex flex-wrap gap-2 mt-4"><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Learning</span><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Science</span><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span></div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+  <main class="px-6 pb-24 max-w-3xl mx-auto"><div class="post-body">
+
+<p>In 2008, Malcolm Gladwell published <em>Outliers</em> and introduced the world to a seductively simple idea: put 10,000 hours into anything and you'll become an expert. The Beatles played 10,000 hours in Hamburg. Bill Gates programmed 10,000 hours as a teenager. Just rack up the hours, baby. Excellence is a time card.</p>
+
+<p>There was just one small problem. The researcher whose work Gladwell based this on — K. Anders Ericsson, a Swedish psychologist who spent his entire career studying expertise — thought Gladwell had botched it. Not a little bit. Fundamentally. Ericsson was so annoyed that he spent the next decade writing papers and eventually an entire book (<em>Peak</em>, published in 2016) correcting the record.</p>
+
+<p>The 10,000 hour rule isn't just an oversimplification. It's wrong in a way that actively misleads people about how expertise actually works. And the truth — which involves something called "deliberate practice," the psychology of plateaus, and a surprising connection to how we train large language models — is both more complicated and more useful than anything Gladwell wrote.</p>
+
+<h2>What Ericsson Actually Found</h2>
+
+<p>Let's go back to the original 1993 study. Ericsson and his colleagues studied violin students at the Berlin Academy of Music. They divided the students into three groups based on ability: the elite soloists (the ones professors thought had a shot at international careers), the merely good students, and the ones headed for careers as music teachers rather than performers.</p>
+
+<p>The key finding: by age 20, the elite group had accumulated an <em>average</em> of about 10,000 hours of practice. The good group averaged about 8,000. The future teachers averaged about 4,000.</p>
+
+<p>Gladwell read this and concluded: 10,000 hours = expertise. Simple. Clean. Great for book sales.</p>
+
+<p>Ericsson read Gladwell's book and essentially said: <em>that is not what I said at all</em>.</p>
+
+<p>Here's what Gladwell missed:</p>
+
+<p><strong>First</strong>, 10,000 was an average, not a threshold. Some elite violinists had fewer hours. Some mediocre violinists had more. The correlation between hours and performance existed, but it wasn't a magic number. Treating it as one is like saying "the average British person drinks 3.4 cups of tea per day" and concluding that drinking exactly 3.4 cups per day makes you British.<sup>1</sup></p>
+
+<p><strong>Second</strong> — and this is the big one — not all practice is equal. Ericsson's entire career was built on a distinction that Gladwell essentially ignored: the difference between <em>deliberate practice</em> and <em>mere repetition</em>. And this distinction changes everything.</p>
+
+<h2>Deliberate Practice vs. Just Showing Up</h2>
+
+<p>Deliberate practice, as Ericsson defined it, has very specific characteristics:</p>
+
+<p>1. It targets a specific weakness, not a general skill.<br>
+2. It operates at the edge of your current ability — hard enough to be challenging, not so hard as to be impossible.<br>
+3. It involves immediate, high-quality feedback.<br>
+4. It requires full concentration. No autopilot.<br>
+5. It's often not enjoyable in the moment.</p>
+
+<p>That last point is important. Deliberate practice is, by definition, uncomfortable. You're constantly working on the things you're bad at. You're failing frequently. You're getting corrected constantly. It's the opposite of the flow state that people romanticise. Flow feels great because you're operating within your current competence. Deliberate practice feels awful because you're deliberately pushing beyond it.</p>
+
+<div class="ascii-diagram">
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║                  SKILL vs. HOURS OF PRACTICE                    ║
+  ║  Skill                                                          ║
+  ║  Level                                                          ║
+  ║    │                                                            ║
+  ║  E │                                          .-·*  ← Deliberate║
+  ║  x │                                     .-·*´      practice    ║
+  ║  p │                                .-·*´           (targeted,  ║
+  ║  e │                           .-·*´                 coached,   ║
+  ║  r │                      .-·*´                      painful)   ║
+  ║  t │                 .-·*´                                      ║
+  ║    │            .-·*´                                           ║
+  ║    │       .-·*´                                                ║
+  ║    │  .-·*´    ___________..............................         ║
+  ║    │*´ ___..--´           ← Naive practice                     ║
+  ║    │--´                     (repetition w/o feedback,           ║
+  ║    │                         comfortable, autopilot)            ║
+  ║  B │                                                            ║
+  ║  e │  . . . . . . . . . . . . . . . . . . . . . . . .          ║
+  ║  g │  ↑                                                         ║
+  ║    │  Both start here                                           ║
+  ║    │                                                            ║
+  ║    └──────────────────────────────────────────────── Hours      ║
+  ║         1k      2k      3k      5k      7k     10k             ║
+  ╚══════════════════════════════════════════════════════════════════╝
+</div>
+
+<p>Consider two guitarists. Guitarist A practises for 10,000 hours by playing the songs they already know, in their bedroom, at a comfortable tempo, never recording themselves, never getting feedback, never pushing into unfamiliar territory. Guitarist B practises for 3,000 hours but spends those hours with a teacher who identifies specific weaknesses, assigns targeted exercises, provides immediate feedback, and continuously pushes them into slightly-too-hard territory.</p>
+
+<p>Guitarist B will be dramatically better than Guitarist A. It's not even close. The 10,000 hour guitarist will plateau somewhere around "pretty good at the songs they know" and stay there forever. The 3,000 hour deliberate practiser will blow past them.</p>
+
+<div class="pull-quote">The 10,000 hour rule is comforting because it implies expertise is democratic — just put in the time and you'll get there. The truth is less comforting: expertise requires a specific kind of suffering that most people are either unwilling or unable to sustain.</div>
+
+<p>This is what Ericsson called the "OK Plateau." Most people, when learning a new skill, follow a predictable trajectory: rapid initial improvement, then a gradual levelling off into a plateau that they never leave. Think about how you type. You probably learnt to type as a teenager, improved quickly for a few months, then settled into a stable typing speed that you've maintained ever since. That's not because you've reached the limit of human typing ability. It's because you stopped practising deliberately. You started typing on autopilot, and autopilot doesn't improve.</p>
+
+<h2>The Desirable Difficulty Principle</h2>
+
+<p>There's a related concept in cognitive psychology that makes this even more counterintuitive. Robert Bjork at UCLA calls it "desirable difficulties" — the finding that <strong>making learning harder in specific ways actually makes it more effective</strong>.</p>
+
+<p>Examples of desirable difficulties:</p>
+
+<p><strong>Spacing effect:</strong> Studying material in spaced sessions (e.g., 30 minutes today, 30 minutes next week) produces dramatically better retention than studying the same material in one block (e.g., 60 minutes today). This feels wrong. The massed practice session feels more productive because the material feels familiar. But that feeling of familiarity is an illusion — it's recognition, not recall, and it evaporates within days.</p>
+
+<p><strong>Interleaving:</strong> Practising different skills in mixed order (ABCABC) produces better learning than practising each skill in blocks (AABBCC). Again, this feels worse. Block practice feels smoother and more productive. Interleaved practice feels confusing and slow. But the confusion is the point — it forces your brain to constantly discriminate between different problem types, building more flexible mental representations.</p>
+
+<p><strong>Testing effect:</strong> Practising retrieval (trying to remember something) is dramatically more effective than re-studying (reading it again). Testing doesn't just assess knowledge — it <em>builds</em> knowledge. Every time you struggle to recall something, you're strengthening the neural pathways for that memory, even if you fail to recall it.</p>
+
+<div class="callout">Here's the cruel irony: the learning strategies that feel the most effective (massed practice, blocked practice, re-reading) are actually the least effective. And the strategies that feel the most confusing and frustrating (spacing, interleaving, self-testing) are actually the most effective. Your subjective sense of how well you're learning is, it turns out, almost completely useless as an indicator of actual learning. Your brain is lying to you, and it's doing it with a straight face.</div>
+
+<p>This maps perfectly onto the deliberate practice framework. Deliberate practice feels bad <em>because</em> it incorporates desirable difficulties. It's spaced (you don't cram). It's interleaved (you mix different skills). It's test-like (you perform under pressure, get feedback, try again). The discomfort is the signal that learning is happening.</p>
+
+<h2>The AI Parallel: More Data Isn't Always Better</h2>
+
+<p>Here's where things get properly interesting. The naive version of the 10,000 hour rule — "more time = more skill" — has an exact parallel in machine learning: the assumption that <strong>more training data = better model</strong>.</p>
+
+<p>And just like the 10,000 hour rule, it's kind of true and kind of catastrophically wrong.</p>
+
+<p>In the early days of deep learning, scaling was everything. More data, more parameters, more compute. GPT-2 was trained on 40GB of text. GPT-3 was trained on 570GB. The assumption was simple: keep feeding the model more data and it will keep getting better. The machine learning equivalent of "just practice more."</p>
+
+<p>But then something interesting happened. Researchers started noticing that <strong>data quality mattered far more than data quantity</strong>. A model trained on a carefully curated, high-quality dataset could outperform a model trained on a much larger but noisier dataset. This is, essentially, the deliberate practice finding all over again: the structure and quality of training matters more than the sheer volume.</p>
+
+<div class="ascii-diagram">
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║           HUMAN EXPERTISE vs. LLM TRAINING: PARALLELS           ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║                                                                  ║
+  ║  HUMAN LEARNING              │  LLM TRAINING                    ║
+  ║  ────────────────────────────│──────────────────────────────     ║
+  ║  Naive practice (10k hrs)    │  Massive raw dataset              ║
+  ║  → Plateau, overfitting to   │  → Plateau, overfitting to       ║
+  ║    comfortable patterns      │    common patterns                ║
+  ║                              │                                   ║
+  ║  Deliberate practice         │  Curated fine-tuning data         ║
+  ║  → Targeted, challenging,    │  → High-quality, diverse,         ║
+  ║    feedback-driven           │    carefully structured            ║
+  ║                              │                                   ║
+  ║  Desirable difficulties      │  Curriculum learning              ║
+  ║  → Spacing, interleaving,    │  → Ordering data easy→hard,       ║
+  ║    retrieval practice        │    mixing domains, self-play      ║
+  ║                              │                                   ║
+  ║  Expert coach / teacher      │  RLHF / Constitutional AI        ║
+  ║  → Identifies weaknesses,    │  → Human feedback on outputs,     ║
+  ║    designs targeted drills   │    targets failure modes          ║
+  ║                              │                                   ║
+  ║  OK Plateau                  │  Scaling wall                     ║
+  ║  → Autopilot, no             │  → More data doesn't help,        ║
+  ║    improvement despite       │    model stops improving          ║
+  ║    continued practice        │    despite more compute           ║
+  ║                              │                                   ║
+  ║  Sleep & consolidation       │  Distillation & pruning           ║
+  ║  → Compress, generalise,     │  → Compress knowledge into        ║
+  ║    discard irrelevant        │    smaller, faster model          ║
+  ╚══════════════════════════════════════════════════════════════════╝
+</div>
+
+<p>Consider the case of Meta's LLaMA models. LLaMA was trained on significantly less data than GPT-3 but performed comparably or better on many benchmarks. Why? Because the training data was more carefully selected and the training process was more deliberate. Quality over quantity. Deliberate practice over naive repetition.</p>
+
+<p>Or consider fine-tuning. When you fine-tune a large language model for a specific task, you don't need millions of examples. Sometimes a few thousand carefully chosen, high-quality examples will transform a model's performance on a task. This is the AI equivalent of a targeted practice session with a great coach: a small amount of the right training is worth more than an ocean of mediocre data.</p>
+
+<p>The parallel extends further. In reinforcement learning from human feedback (RLHF) — the technique used to make models like ChatGPT more helpful and less toxic — human evaluators provide targeted feedback on the model's outputs. "This response was good. This one was bad. Here's why." This is, functionally, identical to what a good coach does in deliberate practice: identifying specific failures, explaining why they failed, and guiding improvement. The model doesn't just see more data; it sees data that's specifically designed to address its weaknesses.</p>
+
+<h2>Why Chess Grandmasters Break the Rule</h2>
+
+<p>If you want a clean demonstration of why the 10,000 hour rule fails, look at chess. It's the perfect test case: skill is precisely measurable (Elo ratings), practice hours are well-documented, and there are millions of players at every level.</p>
+
+<p>A landmark 2014 study by Hambrick et al. analysed the relationship between practice hours and chess skill across hundreds of players. Their findings:</p>
+
+<p>Practice hours accounted for only about 34% of the variance in chess performance. That means <strong>66% of the difference between players was explained by something other than how much they practised</strong>.</p>
+
+<p>Some grandmasters reached that level with as few as 3,000 hours of deliberate practice. Some players with over 25,000 hours never made it past intermediate level. The range was enormous.<sup>2</sup></p>
+
+<p>What accounted for the remaining 66%? Several things: age of starting (earlier was better, but not in the way you might think — it wasn't about total hours, it was about hitting critical developmental windows), working memory capacity, visuospatial ability, and general intelligence. In other words: natural aptitude matters. A lot.</p>
+
+<p>This is the part of the story that Gladwell — and the entire "growth mindset" industry that followed — really doesn't want to talk about. Deliberate practice is necessary for expertise, but it's not sufficient. Talent exists. Genetic differences in cognitive ability exist. Some people have biological advantages that make them learn certain skills faster, no matter how much practice someone else puts in.</p>
+
+<p>This isn't a reason for fatalism. It's a reason for realism. The question isn't "can I become a grandmaster if I practise 10,000 hours?" The question is "what is the most effective way for <em>me</em> to improve, given <em>my</em> specific aptitudes and limitations?" The first question is useless. The second question is actionable.</p>
+
+<h2>The Plateau Problem (And How to Escape It)</h2>
+
+<p>Most people who try to learn a skill hit a plateau and stay there forever. They play guitar at the same level for 20 years. They write at the same level for a decade. They code at the same level for their entire career. Not because they stop practising, but because they stop practising <em>deliberately</em>.</p>
+
+<p>The escape from a plateau almost always involves the same ingredients:</p>
+
+<p><strong>1. Identify the specific bottleneck.</strong> Not "I need to get better at guitar" but "my alternate picking speed breaks down above 120 BPM on string changes." Not "I need to write better code" but "my functions are too long because I don't extract abstractions early enough." Specificity is everything.</p>
+
+<p><strong>2. Design targeted practice for that bottleneck.</strong> Isolate the weakness and drill it in contexts of increasing difficulty. The chess equivalent is studying endgame patterns you consistently misplay. The coding equivalent is doing focused exercises on the specific design pattern you struggle with.</p>
+
+<p><strong>3. Get feedback from someone better than you.</strong> This is the hardest one. Most people practise in isolation and wonder why they're not improving. You need someone who can see the mistakes you can't see — because if you could see them, you'd have fixed them already.</p>
+
+<p><strong>4. Embrace the discomfort.</strong> Escaping a plateau means leaving the comfortable zone where you perform well and entering the uncomfortable zone where you perform badly. This feels like regression. It's not. It's the desirable difficulty that precedes the next jump in skill.</p>
+
+<p>This is also, I'd argue, the single biggest advantage that formal education offers over self-teaching. Not the curriculum content — most of that is available for free online. The advantage is <strong>structured difficulty and expert feedback</strong>. A good teacher is essentially a deliberate-practice-designing machine: they know where you are, they know where you need to be, and they know the specific exercises that will bridge the gap. Trying to do that for yourself is like trying to perform surgery on your own brain. You need the external perspective.</p>
+
+<h2>What This Actually Means for You</h2>
+
+<p>If you've read this far, you might be feeling one of two things. Either: "Great, so raw talent matters and practice quality matters more than practice quantity — what do I actually do with this information?" Or: "I've already spent 10,000 hours on something mediocre and I'm having a small existential crisis." Both valid responses.</p>
+
+<p>Here's what I'd say to both:</p>
+
+<p>The 10,000 hour rule, despite being wrong, contained a kernel of truth that Gladwell accidentally obscured: <strong>expertise requires a sustained, long-term commitment</strong>. You can't become an expert in a weekend. You can't shortcut your way to mastery. The journey is long, and there's no way around that.</p>
+
+<p>But the journey is much shorter and much more navigable if you walk it deliberately. If you practise the right things, in the right way, with the right feedback, you can reach a level of expertise in 3,000 hours that naive practice won't reach in 30,000. That's not a small difference. That's a decade of your life.</p>
+
+<div class="pull-quote">The question isn't how many hours you've put in. The question is: during those hours, were you comfortable? Because if you were, you probably weren't improving.</div>
+
+<p>So next time someone tells you it takes 10,000 hours to master something, here's what you can tell them: it depends. On what you're practising, how you're practising it, who's giving you feedback, and — yes — on the biological hardware you're running on. The hours are a crude measure. The real question is whether those hours contained the right kind of struggle.</p>
+
+<p>Just like the real question for an AI model isn't "how much data did you train on?" but "how good was the data, how was it structured, and what kind of feedback shaped the training?"</p>
+
+<p>In both cases — human and machine — the answer turns out to be the same: it's not about more. It's about better.</p>
+
+<p>And if that's a less catchy book title than "10,000 hours," well, the truth rarely fits on a dust jacket.</p>
+
+<div class="footnote">
+<p><sup>1</sup> Although, having lived in England for several years, I can confirm that 3.4 cups is, if anything, a conservative estimate. Some of my colleagues treat the kettle as a load-bearing appliance. Remove it and the entire office collapses.</p>
+<p><sup>2</sup> Imagine being the person with 25,000 hours of chess practice who still can't beat a grandmaster with 3,000. Actually, don't imagine it. That's the most depressing thought experiment since the heat death of the universe, and at least that one is trillions of years away.</p>
+</div>
+
+</div></main>
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>

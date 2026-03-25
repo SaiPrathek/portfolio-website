@@ -174,14 +174,14 @@ function buildPostHTML({ slug, title, date, readTime, excerpt, tags, content, id
       <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color:var(--secondary);font-family:var(--font-mono);">← All Posts</a>
       <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color:var(--secondary);">← All Memos</a>
       <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all" style="border-color:var(--primary);">
-        <span class="material-symbols-outlined text-base f1-only" style="color:var(--primary);font-variation-settings:'FILL' 1;">directions_car</span>
-        <span class="text-xs font-black uppercase tracking-widest f1-only" style="color:var(--primary);font-family:var(--font-headline);">F1</span>
+        <span class="material-symbols-outlined text-base" style="color:var(--primary);font-variation-settings:'FILL' 1;">directions_car</span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color:var(--primary);font-family:var(--font-headline);">F1</span>
         <span class="w-8 h-4 rounded-full relative" style="background:var(--primary);">
-          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="right:2px;"></span>
-          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="left:2px;"></span>
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="left:2px;"></span>
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="right:2px;"></span>
         </span>
-        <span class="text-xs font-black uppercase tracking-widest office-only" style="color:var(--primary);font-family:var(--font-headline);">OFFICE</span>
-        <span class="material-symbols-outlined text-base office-only" style="color:var(--primary);font-variation-settings:'FILL' 1;">assignment</span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color:var(--primary);font-family:var(--font-headline);">OFFICE</span>
+        <span class="material-symbols-outlined text-base" style="color:var(--primary);font-variation-settings:'FILL' 1;">assignment</span>
       </button>
     </div>
   </nav>

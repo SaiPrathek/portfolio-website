@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imposter Syndrome as Antivirus | The Debrief</title>
+  <meta name="description" content="Imposter syndrome isn't a bug — it's your brain's overzealous threat detection system running a full scan on your confidence. And it might be the best thing about you." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-03-03-imposter-syndrome-antivirus.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Imposter Syndrome Is Just Your Brain Running Antivirus on Your Confidence" />
+  <meta property="og:description" content="Why high performers doubt themselves, why incompetent people don't, and what AI hallucinations have to do with all of it." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-03-03-imposter-syndrome-antivirus.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; } .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); } body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all" style="border-color: var(--primary);">
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">directions_car</span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">F1</span>
+        <span class="w-8 h-4 rounded-full relative" style="background: var(--primary);"><span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="left: 2px;"></span><span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="right: 2px;"></span></span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">OFFICE</span>
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">assignment</span>
+      </button>
+    </div>
+  </nav>
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #019 · 03 Mar 2026 · 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">Imposter Syndrome Is Just Your Brain Running Antivirus on Your Confidence</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #019 · 03 Mar 2026 · 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">Imposter Syndrome Is Just Your Brain Running Antivirus on Your Confidence</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">Why high performers doubt themselves, why incompetent people don't, and what AI hallucinations have to do with all of it.</p>
+    <div class="flex flex-wrap gap-2 mt-4"><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Psychology</span><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Career</span><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span></div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+  <main class="px-6 pb-24 max-w-3xl mx-auto"><div class="post-body">
+
+<p>It's your first week at the new job. You've been hired because you're good — genuinely good — at what you do. Your CV is solid. Your interview went well. Three separate people told you that you were the strongest candidate. The hiring manager used the phrase "exactly what we're looking for."</p>
+
+<p>And yet.</p>
+
+<p>You're sitting at your desk on day three, staring at your screen, and a voice in the back of your head is whispering: <em>they're going to find out. They're going to realise you don't actually know what you're doing. Any day now, someone is going to tap you on the shoulder and say, "We've made a terrible mistake. Please leave. Security will escort you out. We're keeping the laptop."</em></p>
+
+<p>This is imposter syndrome. And if you've experienced it — which, statistically, you almost certainly have, since studies suggest roughly 70% of people experience it at some point — you probably think of it as a bug. A malfunction. A cruel trick your brain plays on you for no good reason.</p>
+
+<p>But what if it's not a bug? What if it's a feature? What if imposter syndrome is your brain's antivirus software — a threat detection system that's doing exactly what it was designed to do, just a bit too enthusiastically?</p>
+
+<h2>The Antivirus Analogy</h2>
+
+<p>Think about how antivirus software works on your computer. It runs in the background, scanning files, checking processes, looking for anything suspicious. When it finds something that <em>might</em> be a threat, it flags it. Sometimes it's right — the file really is malware. But often, it's a false positive. That perfectly legitimate programme you just installed? Flagged. Quarantined. Removed from your desktop while you weren't looking.</p>
+
+<p>This is exactly what imposter syndrome does to your confidence.</p>
+
+<p>Your brain has a threat detection system — a network centred on the amygdala and the anterior cingulate cortex — that monitors your social environment for signs that you might be exposed, embarrassed, or ejected from the group. This system evolved when social exclusion was literally life-threatening. Getting kicked out of the tribe in the Palaeolithic meant death. Your brain therefore treats social threats with the same urgency it treats physical threats.<sup>1</sup></p>
+
+<p>When you enter a new environment — a new job, a new social circle, a new level of responsibility — this system goes on high alert. It starts scanning. <em>Am I qualified to be here? Do these people know more than me? What if I get caught out?</em> It's running a full scan of your competence, checking every file against its threat database.</p>
+
+<p>And just like antivirus software, it's calibrated for <em>false positives over false negatives</em>. It would rather flag a hundred legitimate files than miss one piece of malware. It would rather make you doubt yourself unnecessarily than allow you to be confidently wrong in front of the group. The cost asymmetry makes paranoia the optimal strategy.</p>
+
+<div class="ascii-diagram">
+    ACTUAL COMPETENCE vs FELT COMPETENCE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    FELT COMPETENCE
+    │
+    │  "I'm                                ╱
+    │   amazing"  ──────────────╲         ╱
+    │                            ╲       ╱
+    │  "I'm                       ╲     ╱
+    │   pretty    ─────╲           ╲   ╱
+    │   good"           ╲          ═╳═
+    │                    ╲        ╱  ╲
+    │  "I'm okay" ─╲     ╲      ╱    ╲    ← IDEAL: felt ≈ actual
+    │               ╲     ╲    ╱      ╲     (this person does
+    │                ╲     ╲  ╱        ╲     not exist)
+    │  "I'm a        ╲     ╲╱          ╲
+    │   fraud" ─╲     ╲    ╱╲           ╲
+    │            ╲     ╲  ╱  ╲           ╲
+    │             ╲     ╲╱    ╲
+    │  "Send       ╲    ╱      DUNNING-KRUGER
+    │   help"       ╲  ╱       ZONE: "I'm great!"
+    │                ╲╱        (narrator: they were not)
+    │                ╱
+    └──────────────────────────────────────────────
+    NOVICE        LEARNING      COMPETENT       EXPERT
+
+                ACTUAL COMPETENCE ──────────────►
+
+    ╲  = IMPOSTER SYNDROME curve (high competence, low felt)
+    ╱  = DUNNING-KRUGER curve (low competence, high felt)
+    ═╳═ = The crossover point where you know just enough
+          to know how much you don't know
+</div>
+
+<h2>Why Smart People Get It Worse</h2>
+
+<p>Here's the deeply counterintuitive thing about imposter syndrome: it disproportionately affects high performers. The people who are most qualified are often the ones who feel least qualified. And the mechanism is beautifully simple once you see it.</p>
+
+<p>When you're genuinely competent and you enter an environment filled with other competent people — a top university, a high-performing team, a competitive industry — your reference class shifts. You're no longer comparing yourself to the general population. You're comparing yourself to the best people you've ever met.</p>
+
+<p>At school, you were the smart one. At university, everyone was the smart one. At your new job, everyone seems to know things you don't, have experiences you lack, and speak with a confidence you can't quite muster. Your brain's threat detection system sees all of this and concludes, reasonably: <em>relative to this group, you are below average.</em></p>
+
+<p>And in many cases, it's not even wrong! When you first join a group of experts, you <em>are</em> below the group average in domain-specific knowledge. The mistake isn't the observation — it's the <em>inference</em>. Your brain jumps from "I know less than these specific people" to "I am fundamentally inadequate and will be discovered," which is like jumping from "I can't bench-press as much as this professional weightlifter" to "I should probably never leave the house again."</p>
+
+<div class="pull-quote">"Imposter syndrome is the tax you pay for being in rooms where you're not the smartest person. It's expensive, but the rooms are worth it."</div>
+
+<p>This reference class problem is a known cognitive bias called <strong>local comparison</strong>, and it affects everything from happiness (you feel poor in a rich neighbourhood even if you're objectively wealthy) to academic confidence (the "big fish, little pond" effect, where the same student feels brilliant at an average school and mediocre at a top one).</p>
+
+<p>Imposter syndrome is, at its core, a reference class error amplified by threat detection. Your brain correctly observes that you're less experienced than your peers and incorrectly concludes that you're a fraud.</p>
+
+<h2>The Dunning-Kruger Mirror</h2>
+
+<p>And now for the darkly comic flip side.</p>
+
+<p>In 1999, psychologists David Dunning and Justin Kruger published a study that demonstrated the opposite pattern: people with low competence in a domain tend to <em>overestimate</em> their ability. They dubbed this the Dunning-Kruger effect, and it's become one of the most cited (and most misunderstood) findings in psychology.</p>
+
+<p>The mechanism is elegant: to accurately assess how good you are at something, you need the very skills you're trying to assess. If you're terrible at logic, you lack the logical skills needed to recognise that you're terrible at logic. If you know nothing about wine, you can't recognise that your palate is unsophisticated, because recognising unsophistication <em>requires</em> sophistication.</p>
+
+<p>So the people who most need imposter syndrome — the genuinely incompetent, the dangerously overconfident — don't get it. And the people who least need it — the competent, the conscientious, the people actually doing good work — get clobbered by it.</p>
+
+<div class="callout">
+This is one of nature's cruellest jokes: the cognitive machinery that makes you good at your job (self-awareness, high standards, ability to recognise excellence) is the same machinery that makes you feel like a fraud. Your imposter syndrome is, paradoxically, evidence of competence. The very fact that you're worried about being inadequate suggests that you have the awareness and standards that inadequate people lack.
+</div>
+
+<p>It's as if your antivirus software gets <em>more aggressive</em> the cleaner your system is. A computer riddled with actual malware? No alerts. A perfectly clean system? THREAT DETECTED. QUARANTINE EVERYTHING. SHUT IT ALL DOWN.</p>
+
+<h2>AI's Version of the Confidence Problem</h2>
+
+<p>Now here's where things get interesting, because artificial intelligence has its own version of this problem — and it's the exact inverse of imposter syndrome.</p>
+
+<p>Large language models don't experience self-doubt. They can't. They have no mechanism for it. When an LLM generates an answer, it produces it with the same fluent, confident tone regardless of whether the answer is correct, partially correct, or completely fabricated. This is what researchers call <strong>hallucination</strong> — the model states something false with the same conviction it states something true.</p>
+
+<p>In human terms, LLMs have <em>permanent Dunning-Kruger syndrome</em>. They don't know what they don't know, and they can't flag their own uncertainty, because they lack the self-monitoring circuitry that produces doubt in human brains.<sup>2</sup></p>
+
+<div class="ascii-diagram">
+    THE CONFIDENCE-ACCURACY MATRIX
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                        HIGH CONFIDENCE    LOW CONFIDENCE
+                    ┌──────────────────┬──────────────────┐
+                    │                  │                  │
+    HIGH            │    COMPETENT     │    IMPOSTER      │
+    ACCURACY        │    EXPERT        │    SYNDROME      │
+                    │                  │                  │
+                    │  ✓ Knows stuff   │  ✓ Knows stuff   │
+                    │  ✓ Knows they    │  ✗ Thinks they   │
+                    │    know stuff    │    don't         │
+                    │                  │                  │
+                    │  (Rare. Very     │  (70% of high    │
+                    │   rare.)         │   performers)    │
+                    ├──────────────────┼──────────────────┤
+                    │                  │                  │
+    LOW             │   DUNNING-       │    HEALTHY       │
+    ACCURACY        │   KRUGER         │    UNCERTAINTY   │
+                    │                  │                  │
+                    │  ✗ Doesn't know  │  ✗ Doesn't know  │
+                    │  ✗ Doesn't know  │  ✓ Knows they    │
+                    │    they don't    │    don't know    │
+                    │    know          │                  │
+                    │                  │  (The beginning  │
+                    │  (AI models      │   of wisdom)     │
+                    │   live here)     │                  │
+                    └──────────────────┴──────────────────┘
+
+    THE IDEAL SYSTEM (human or AI) lives on the diagonal:
+    high confidence when right, low confidence when wrong.
+
+    Neither humans nor AI models achieve this reliably.
+    Humans err towards low confidence (imposter syndrome).
+    AI models err towards high confidence (hallucination).
+</div>
+
+<p>This is genuinely one of the biggest unsolved problems in AI safety. A model that confidently states "the capital of France is Paris" and equally confidently states "the capital of Australia is Sydney" (it's Canberra) provides no signal to the user about when to trust it. It's like having a colleague who speaks with absolute authority about everything, including the things they're making up. You've probably worked with someone like this. It's terrifying.</p>
+
+<p>The AI research community is working hard on this — techniques like calibrated uncertainty estimation, chain-of-thought reasoning that makes the model "show its working," and retrieval-augmented generation that grounds outputs in verifiable sources. These are all, in effect, attempts to give AI models a version of imposter syndrome. To make them <em>doubt themselves</em> when they should.</p>
+
+<p>Which means that the thing you experience as a painful, debilitating character flaw is actually something that the most brilliant AI researchers in the world are desperately trying to <em>engineer into their systems</em>. Your imposter syndrome is a feature that costs billions of pounds to replicate artificially.</p>
+
+<h2>The Evolutionary Logic of Self-Doubt</h2>
+
+<p>Why did evolution build us this way? Why give competent people crippling self-doubt instead of, say, accurate self-assessment?</p>
+
+<p>The answer, I think, lies in the social structure of early human groups. In a small tribe, the cost of overconfidence was catastrophic. If you claimed to be a great hunter and then failed on the hunt, you lost social standing — and in a world where social standing determined access to food, mates, and protection, losing standing could be fatal. The cost of <em>under</em>confidence, by contrast, was relatively low. If you were quietly competent, you might not get the top position, but you'd survive.</p>
+
+<p>Evolution therefore calibrated our confidence system to err on the side of humility. It's better to doubt yourself and be pleasantly surprised than to overestimate yourself and face social punishment. Imposter syndrome is the residue of this calibration — a system optimised for survival in small tribal groups, now operating in a world of LinkedIn profiles and performance reviews.</p>
+
+<p>And here's the thing: in many modern contexts, it still works. People with imposter syndrome tend to prepare more thoroughly (because they're convinced they'll be found out otherwise), seek more feedback (because they genuinely want to know if they're doing okay), and continue learning long after they've achieved competence (because they never quite believe they've achieved it). The doubt drives improvement.</p>
+
+<p>The people who lack it — the Dunning-Kruger cases, the unshakeable overconfident — often plateau early. They don't prepare because they think they already know enough. They don't seek feedback because they assume they're doing well. They don't learn because they don't think they need to.</p>
+
+<h2>Calibrating Your Inner Antivirus</h2>
+
+<p>So should you try to eliminate imposter syndrome? I'd argue no. You should try to <em>calibrate</em> it.</p>
+
+<p>The goal isn't to feel permanently confident (that's Dunning-Kruger territory) or permanently doubtful (that's clinical anxiety). The goal is to feel <em>appropriately</em> uncertain — to have a confidence level that roughly matches your actual competence, updated in real time as you gather evidence.</p>
+
+<p>Here's how that works in practice:</p>
+
+<p><strong>Track your predictions.</strong> When your imposter syndrome says "this meeting will go terribly because you don't know enough," write that prediction down. Then, after the meeting, check: did it go terribly? Usually, it didn't. Over time, you build a dataset of your brain's false positive rate — and it's almost always much higher than you'd think. Your antivirus is flagging clean files. The evidence proves it.</p>
+
+<p><strong>Distinguish between feelings and evidence.</strong> "I feel like a fraud" is a feeling. "My last three projects were delivered late and over budget" is evidence. Imposter syndrome trades in feelings; competence assessment requires evidence. When the feeling strikes, ask: what would an objective third party say about my performance, based on actual outcomes?</p>
+
+<p><strong>Remember the reference class.</strong> When you feel inadequate compared to your colleagues, remind yourself that your comparison group is not representative of the general population. Being the least experienced person in a room full of experts still makes you a person in a room full of experts. You got into the room. That's not nothing.</p>
+
+<div class="callout">
+The best scientists, the best engineers, the best leaders all share a common trait: they know what they don't know. They hold their confidence conditionally, updating it as new evidence arrives. They are, in the language of statistics, well-calibrated. Imposter syndrome, in its healthiest form, is the same impulse — a drive to check, verify, and update rather than assume. The trick is keeping the volume at "healthy scepticism" instead of letting it crank up to "existential dread."
+</div>
+
+<h2>The Confident Fraud and the Doubtful Expert</h2>
+
+<p>I want to close with a thought experiment.</p>
+
+<p>Imagine two people applying for the same job. Person A is moderately competent but supremely confident. They speak in declarative sentences. They don't hedge. They project certainty. In the interview, they say things like "I know exactly how to solve this problem" and "I've never failed at anything I've put my mind to."</p>
+
+<p>Person B is highly competent but riddled with imposter syndrome. They hedge. They caveat. They say things like "I think I could probably handle this, based on my experience with similar problems" and "I've had some successes, though there's always more to learn."</p>
+
+<p>Who gets the job?</p>
+
+<p>In most hiring processes, Person A wins. Confidence reads as competence. Certainty reads as expertise. The system selects for the trait that correlates <em>least</em> with actual ability.</p>
+
+<p>This is a profound systemic failure, and it mirrors the AI hallucination problem perfectly. When we can't directly observe competence (which is often), we use confidence as a proxy. And confidence is a terrible proxy because it's inversely correlated with self-awareness. The people who are most confident are often the people who are least aware of their limitations. The people who are most uncertain are often the people with the most sophisticated understanding of the problem's complexity.</p>
+
+<p>We've built organisations, institutions, and now AI systems that select for confidence over calibration. And then we wonder why we end up with leaders who are wrong but never in doubt, and models that hallucinate with perfect fluency.</p>
+
+<p>Maybe the real imposters aren't the people with imposter syndrome. Maybe the real imposters are the people without it — the ones who've never once wondered if they actually deserve to be where they are.</p>
+
+<p>Your antivirus might be overzealous. It might generate too many false positives. It might make you doubt yourself in moments when you really shouldn't. But at least it's <em>running</em>. At least it's <em>checking</em>. At least it cares enough about accuracy to question itself.</p>
+
+<p>That's more than can be said for most AI models. And, if we're honest, more than can be said for quite a few humans.</p>
+
+<div class="footnote">
+<p><sup>1</sup> Brain imaging studies have shown that social rejection activates some of the same neural regions as physical pain. The phrase "hurt feelings" is not a metaphor — it's a reasonably accurate description of the neurology. Your brain processes "nobody sat next to me at lunch" with some of the same circuitry it uses for "I have been hit with a rock."</p>
+<p><sup>2</sup> Some researchers have experimented with having models express confidence scores alongside their outputs, but these are often poorly calibrated — the model might say "I'm 90% confident" on answers where it's actually right only 60% of the time. Teaching machines to doubt themselves accurately turns out to be extraordinarily difficult. Which, if you've ever tried to teach a human to doubt themselves accurately, should not come as a surprise.</p>
+</div>
+
+</div></main>
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>

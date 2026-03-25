@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meetings vs Emails | The Debrief</title>
+  <meta name="description" content="The bandwidth problem in communication — why meetings are terrible for information but essential for alignment, explained through network protocols." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-01-26-meetings-emails.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Why Every Meeting Could Have Been an Email (But Also Shouldn't Have Been)" />
+  <meta property="og:description" content="The bandwidth problem in communication — meetings, emails, and Slack as network protocols." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-01-26-meetings-emails.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    .f1-only { display: none; }
+    .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; }
+    body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; }
+    .post-body strong { font-weight: 700; }
+    .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); }
+    body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all" style="border-color: var(--primary);">
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">directions_car</span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">F1</span>
+        <span class="w-8 h-4 rounded-full relative" style="background: var(--primary);">
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="left: 2px;"></span>
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="right: 2px;"></span>
+        </span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">OFFICE</span>
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">assignment</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #010 · 26 Jan 2026 · 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">Why Every Meeting Could Have Been an Email (But Also Shouldn't Have Been)</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #010 · 26 Jan 2026 · 10 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">Why Every Meeting Could Have Been an Email (But Also Shouldn't Have Been)</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">On communication bandwidth, network protocols, and why the most hated part of your job might also be the most necessary.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Productivity</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Communication</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Work</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+<h2>The Sacred Complaint</h2>
+
+<p>"This meeting could have been an email." It's the most universal workplace grievance since "the printer is jammed," and it has the added advantage of being true roughly 70% of the time. You know the meetings I'm talking about. The ones where eight people sit in a room (or, God help us, a Zoom call) for an hour while one person reads aloud from a document that could have been distributed as a PDF. The ones where the stated agenda is "quick sync" but the actual duration is forty-five minutes and the only thing that got synced was everyone's collective desire to be somewhere else.</p>
+
+<p>These meetings are genuinely terrible. They consume hours of productive time, they fragment attention, and they create the illusion of progress without the substance. If you work in a knowledge-economy job, meetings are probably the single largest tax on your productivity. You could give every employee a four-day work week simply by eliminating the meetings that didn't need to happen.</p>
+
+<p>And yet — and I need you to stay with me here — meetings also do something that no other communication medium can do. They serve a function that emails, Slack messages, documents, and carrier pigeons fundamentally cannot replicate. And until we understand what that function is, we're going to keep having the wrong argument about whether meetings are good or bad.</p>
+
+<p>The argument isn't about meetings. It's about <em>bandwidth</em>.</p>
+
+<h2>Communication as Network Protocol</h2>
+
+<p>If you'll indulge me in a metaphor that will either illuminate everything or alienate everyone who doesn't work in technology (sorry, and also, please keep reading), every communication channel in your workplace is essentially a network protocol. It has a bandwidth — how much information it can carry per unit of time. It has latency — how long it takes for a message to arrive. It has overhead — how much effort is required just to establish the connection. And it has a reliability model — how confident you can be that the message was received correctly.</p>
+
+<p>Let's map this out.</p>
+
+<div class="ascii-diagram">
+  INFORMATION BANDWIDTH BY CHANNEL TYPE
+
+  Channel         Bandwidth  Latency  Overhead  Reliability  Protocol
+  ─────────────── ────────── ──────── ───────── ──────────── ──────────
+  Face-to-face    Very High  Zero     Very High Very High    Full TCP
+  meeting                                                    (handshake,
+                                                             ACK, error
+                                                             correction)
+
+  Video call      High       Low      High      High         TCP over
+                                                             lossy link
+                                                             (buffering)
+
+  Phone call      Medium     Low      Medium    Medium       TCP lite
+                                                             (no visual
+                                                             channel)
+
+  Email           Low        High     Low       Medium       UDP with
+                                                             receipt
+                                                             confirmation
+
+  Slack/Teams     Very Low   Low      Very Low  Low          UDP broadcast
+  message                                                    (fire and
+                                                             hope)
+
+  Jira ticket     Minimal    V. High  High      Varies       Packet sent
+                                                             into void;
+                                                             may arrive
+                                                             in 2027
+
+  Post-it note    Variable   Zero     Zero      Zero         Physical
+  on monitor                                                 token ring
+</div>
+
+<p><strong>Email</strong> is UDP — User Datagram Protocol. You fire off a packet of information with no guarantee it will be received, read, understood, or acted upon. There's no handshake. There's no acknowledgement built into the protocol (you can <em>request</em> read receipts, but everyone hates those, and the kind of person who requests read receipts is the kind of person whose emails you're already ignoring). Email is low overhead, low bandwidth, high latency, and unreliable. It's great for one-way information transfer where you don't need confirmation. "Here's the document." "Here's the updated schedule." "Here are my findings." Perfect email territory.</p>
+
+<p><strong>Slack</strong> is UDP broadcast with lossy compression. You throw a message into a channel and hope the right people see it. The bandwidth is even lower than email — Slack messages are shorter, less structured, and more easily lost in the noise. But the latency is very low, which means it's excellent for quick, ephemeral communication. "Is anyone in the office?" "What's the WiFi password?" "Has anyone seen my mug?" This is ideal Slack territory. The problem is that people use Slack for things that require TCP-level reliability — complex technical discussions, important decisions, nuanced feedback — and then wonder why things get lost. You wouldn't stream a surgery over a walkie-talkie. Stop having architectural debates in Slack threads.</p>
+
+<p><strong>Meetings</strong> are full TCP — Transmission Control Protocol. Massive overhead. You need to schedule them (SYN). Everyone needs to accept (SYN-ACK). You need to find a room or set up a call (ACK). The connection is established, and only <em>then</em> does data transfer begin. The overhead is enormous. But once the connection is live, the bandwidth is extraordinary. You get words, tone, facial expressions, body language, real-time feedback, immediate clarification, and — crucially — <em>acknowledgement</em>. When someone nods in a meeting, you know they've received your message. When someone frowns, you know to rephrase. The error-correction is built into the protocol.<sup>1</sup></p>
+
+<div class="pull-quote">The problem with meetings isn't that they're high-bandwidth. The problem is that we use a high-bandwidth, high-overhead protocol for low-bandwidth tasks. It's like hiring a moving lorry to deliver a letter.</div>
+
+<h2>The Information Transfer Fallacy</h2>
+
+<p>Here's where the "this meeting could have been an email" crowd goes wrong. They're evaluating meetings purely on <em>information transfer</em> — the movement of facts from point A to point B. And on that metric, meetings are terrible. They're slow, they're expensive, and the information-to-time ratio is appalling. A status update that takes thirty seconds to read in an email takes twenty minutes in a meeting, because meetings have latency penalties (small talk, technical difficulties, "can everyone hear me?") and bandwidth waste (tangential discussions, repeated questions, Dave's anecdote about his weekend that somehow lasted eight minutes).</p>
+
+<p>But information transfer is not the only thing that matters in a workplace. In fact, it might not even be the most important thing. There are at least three other functions that meetings serve, and they're all things that emails cannot do.</p>
+
+<p><strong>1. Alignment.</strong> Alignment is not information transfer. It's the creation of shared understanding — not just "does everyone know the facts?" but "does everyone interpret the facts the same way?" Email can transfer facts. It cannot verify interpretation. In a meeting, you can watch people's faces as you explain a decision. You can see who's confused, who disagrees, who's checked out. You can address misunderstandings in real time rather than discovering them three weeks later when someone builds the wrong thing because they misread paragraph four of your email.</p>
+
+<p><strong>2. Trust.</strong> Trust is built through presence. Not through information. You don't trust someone because they write good emails. You trust them because you've sat in a room with them, seen how they handle disagreement, watched them admit when they're wrong, and experienced the subtle social cues that signal reliability. This is why fully remote teams often struggle with trust, and why the most effective remote teams schedule regular face-to-face meetings for exactly this purpose. Trust is a TCP phenomenon. You cannot build it over UDP.</p>
+
+<p><strong>3. Commitment.</strong> There is a fundamental psychological difference between reading a decision in an email and being present when that decision is made. When you're in the room, you're a participant. You had the opportunity to object. You didn't (or you did, and the group decided differently, and you accepted it). This creates buy-in in a way that a unilateral email announcement never can. "We decided in the meeting" carries more weight than "per my email" because the first implies shared ownership and the second implies top-down decree.</p>
+
+<div class="callout">
+  <strong>The alignment test:</strong> Before scheduling a meeting, ask yourself: "Do I need people to <em>know</em> something, or do I need people to <em>agree</em> on something?" If it's the former, write an email. If it's the latter, you probably need a meeting. Agreement requires bandwidth that email cannot provide.
+</div>
+
+<h2>The Tragedy of the Hybrid Meeting</h2>
+
+<p>I need to take a brief detour to address the specific horror of the hybrid meeting — the meeting where some people are in a room and some people are on a screen. This is the worst of all possible worlds. It is the communication equivalent of a conference call conducted partly by telephone and partly by semaphore.</p>
+
+<p>The people in the room have full TCP bandwidth with each other. They can see expressions, read body language, have side conversations. The people on the screen have degraded bandwidth — compressed video, audio lag, the constant awareness that they might be on mute when they think they're not. And the connection between the two groups is asymmetric: the in-room people can see the screen, but the screen people can only see whatever the camera is pointed at, which is usually the back of someone's head or a whiteboard at an angle that renders it illegible.</p>
+
+<p>Hybrid meetings violate a fundamental principle of network design: all nodes on the network should have equivalent connectivity. When some nodes have high bandwidth and others have low bandwidth, the entire network degrades to the lowest common denominator — except it doesn't, because the high-bandwidth nodes don't realise the low-bandwidth nodes are struggling. The people in the room have a great meeting. The people on Zoom have a terrible time. Nobody notices the asymmetry until someone remote says "I literally could not hear anything for the last ten minutes" and the room goes quiet with the specific guilt of people who forgot the remote participants existed.<sup>2</sup></p>
+
+<h2>The Optimal Communication Stack</h2>
+
+<p>So if every channel has its strengths and weaknesses, the question isn't "meetings or emails?" — it's "which channel for which purpose?" Here's my opinionated guide to the optimal communication stack for a modern team.</p>
+
+<div class="ascii-diagram">
+  THE COMMUNICATION PROTOCOL STACK
+  (use the lowest-overhead protocol that gets the job done)
+
+  ┌─────────────────────────────────────────────────────┐
+  │  LAYER 5: FACE-TO-FACE MEETING                      │
+  │  Use for: Difficult conversations, conflict          │
+  │  resolution, trust building, major decisions,        │
+  │  brainstorming where you need to see each other     │
+  │  think. Also: delivering bad news. Never over email. │
+  ├─────────────────────────────────────────────────────┤
+  │  LAYER 4: VIDEO CALL                                 │
+  │  Use for: Alignment sessions, sprint planning,       │
+  │  design reviews, anything where real-time visual     │
+  │  feedback matters. Keep under 45 minutes. Always     │
+  │  have an agenda. Camera on or don't bother.          │
+  ├─────────────────────────────────────────────────────┤
+  │  LAYER 3: PHONE CALL / VOICE NOTE                    │
+  │  Use for: Quick unblocking, tone-sensitive messages,  │
+  │  anything where text might be misinterpreted.        │
+  │  Criminally underused. Call people more.             │
+  ├─────────────────────────────────────────────────────┤
+  │  LAYER 2: EMAIL / LONG-FORM DOCUMENT                 │
+  │  Use for: One-way information transfer, proposals,   │
+  │  status updates, anything that needs a paper trail.  │
+  │  The backbone of async communication. Respect it.    │
+  ├─────────────────────────────────────────────────────┤
+  │  LAYER 1: SLACK / TEAMS MESSAGE                      │
+  │  Use for: Quick questions, social chat, ephemeral    │
+  │  coordination. NOT for decisions. NOT for complex     │
+  │  discussions. NOT for anything you'll need to find   │
+  │  again in three months.                              │
+  └─────────────────────────────────────────────────────┘
+</div>
+
+<p>The key insight is that each layer up adds bandwidth but also adds overhead. You want to use the <em>lowest</em> layer that is sufficient for the task. Sending a quick question in a meeting is like using a cargo ship to deliver a postcard. Having a difficult conversation over Slack is like trying to perform surgery through a letterbox. Match the medium to the message.</p>
+
+<h2>Why We Get It Wrong</h2>
+
+<p>If the framework is this simple, why do we get it so catastrophically wrong? Why do we have meetings about things that should be emails and send emails about things that need meetings?</p>
+
+<p>Three reasons.</p>
+
+<p><strong>First: meetings are the default.</strong> In most organisations, the response to any uncertainty is "let's schedule a meeting." This is because meetings feel productive even when they're not. You sat in a room for an hour. Things were discussed. It <em>feels</em> like progress. The fact that nothing was decided, no actions were assigned, and the same meeting will happen again next week — that's less visible. Meetings provide the sensation of work without necessarily providing the substance. They're the organisational equivalent of running on a treadmill: lots of movement, no distance covered.</p>
+
+<p><strong>Second: email anxiety.</strong> Many people are genuinely afraid of writing emails that might be misinterpreted. A meeting lets you hedge, clarify, read the room, and adjust in real time. An email is a fixed text that will be read without your tone, your facial expressions, or your ability to say "no, what I meant was..." This fear is legitimate — email <em>is</em> regularly misinterpreted — but the solution isn't to replace emails with meetings. The solution is to get better at writing emails. Clear, structured, unambiguous emails are a skill, and it's a skill that most professionals never develop because they default to meetings instead.</p>
+
+<p><strong>Third: Slack has eaten everything.</strong> Slack (and Teams, and Discord, and whatever your organisation uses) has become the default for far too many communication tasks. Decisions that should be documented in emails get made in ephemeral Slack threads. Complex technical discussions happen in message chains that are impossible to follow if you weren't online at the right moment. Important context is buried in channels with names like #general-misc-stuff-2. Slack is Layer 1 — it should handle Layer 1 tasks. Instead, it's been promoted to handle Layers 1 through 4, and it's terrible at all of them except the one it was designed for.</p>
+
+<h2>The Meeting That Should Have Been a Meeting</h2>
+
+<p>I want to end by defending the meeting. Not the bad meeting — the status update read aloud, the pointless sync, the calendar-filler with no agenda and no purpose. Those can burn. I mean the <em>good</em> meeting. The meeting that couldn't have been anything else.</p>
+
+<p>The meeting where two people who disagree sit down and, through the high-bandwidth channel of face-to-face conversation, reach an understanding they never would have reached over email. The meeting where a team looks at a whiteboard together and something clicks — an idea emerges from the collision of perspectives that no individual would have generated alone. The meeting where a manager delivers difficult feedback with the compassion and nuance that text simply cannot convey.</p>
+
+<p>These meetings are rare. They are also irreplaceable. And the reason they're rare is that they're hard to create. A good meeting requires an agenda, a clear purpose, the right people, and — most importantly — the willingness to use the high-bandwidth channel for high-bandwidth tasks rather than for reading out spreadsheets.</p>
+
+<p>So the next time you catch yourself thinking "this meeting could have been an email," ask yourself the reverse question too: "Is there an email I sent recently that should have been a meeting?" Somewhere in your inbox there is a message that was misinterpreted, a decision that was made without buy-in, a piece of feedback that landed wrong because it arrived as text instead of as a conversation.</p>
+
+<p>The meeting isn't the enemy. The mismatched protocol is the enemy. Use the right channel for the right task, and the "meetings could have been emails" mug becomes unnecessary.</p>
+
+<p>Though admittedly, it would still make an excellent mug.</p>
+
+      <div class="footnote">
+        <p><sup>1</sup> There's a reason why diplomats still fly across the world to have face-to-face meetings despite having access to every communication technology ever invented. The bandwidth of physical presence is genuinely irreplaceable for high-stakes communication. You cannot negotiate a peace treaty over Slack. You probably shouldn't negotiate a sprint scope over Slack either, but here we are.</p>
+        <p><sup>2</sup> I once participated in a hybrid meeting where the remote participants staged a silent protest by turning off their cameras and muting their microphones. The in-room participants didn't notice for twenty-two minutes. Twenty-two minutes. The remote team could have been replaced by a screensaver and the meeting would have proceeded identically. This is not a communication format. This is a hostage situation with better lighting.</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);">
+        <span class="material-symbols-outlined text-base">arrow_back</span>
+        <span class="f1-only">All Lap Reports</span>
+        <span class="office-only">All Memos</span>
+      </a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = Math.min(100, (scrolled / total) * 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>

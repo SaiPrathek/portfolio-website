@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Turing Test Was Wrong | The Debrief</title>
+  <meta name="description" content="Why fooling a human into thinking a machine is human is a terrible benchmark for intelligence — and what we should test instead." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-01-22-turing-test-wrong.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="The Turing Test Was Always the Wrong Test (And Alan Would Probably Agree)" />
+  <meta property="og:description" content="Why fooling a human into thinking a machine is human is a terrible benchmark for intelligence." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-01-22-turing-test-wrong.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    .f1-only { display: none; }
+    .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; }
+    body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; }
+    .post-body strong { font-weight: 700; }
+    .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); }
+    body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all" style="border-color: var(--primary);">
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">directions_car</span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">F1</span>
+        <span class="w-8 h-4 rounded-full relative" style="background: var(--primary);">
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="left: 2px;"></span>
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="right: 2px;"></span>
+        </span>
+        <span class="text-xs font-black uppercase tracking-widest" style="color: var(--primary); font-family: var(--font-headline);">OFFICE</span>
+        <span class="material-symbols-outlined text-base" style="color: var(--primary); font-variation-settings: 'FILL' 1;">assignment</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #009 · 22 Jan 2026 · 13 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">The Turing Test Was Always the Wrong Test (And Alan Would Probably Agree)</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #009 · 22 Jan 2026 · 13 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">The Turing Test Was Always the Wrong Test (And Alan Would Probably Agree)</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">On why "can it fool a human" was never the right question — and what we should be asking instead.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Philosophy</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">History</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+<h2>The Most Famous Test Nobody Actually Read</h2>
+
+<p>In 1950, Alan Turing published a paper called "Computing Machinery and Intelligence" in the journal <em>Mind</em>. It is one of the most cited, most discussed, and most misunderstood papers in the history of science. Roughly 95% of the people who reference "the Turing test" have not read the actual paper, which is a shame, because the actual paper is brilliant, weird, and far more nuanced than the cartoon version that lives in the public imagination.</p>
+
+<p>Here is what most people think the Turing test says: "If a computer can fool a human into thinking it's also a human, the computer is intelligent."</p>
+
+<p>Here is what Turing actually wrote about: a parlour game. Specifically, he described what he called "the imitation game," in which an interrogator communicates via text with two hidden participants — one human and one machine — and tries to determine which is which. Turing's question was not "does this prove the machine is intelligent?" His question was far more slippery: "Are there imaginable digital computers which would do well in the imitation game?" He was trying to <em>reframe</em> the question of machine intelligence, not <em>answer</em> it.</p>
+
+<p>And here's the part that always gets left out: Turing spent a significant portion of his paper addressing <em>objections</em> to his own test. He anticipated, with remarkable clarity, nearly every criticism that would be levelled at the imitation game over the next seventy-five years. He knew it was imperfect. He proposed it anyway, because in 1950, the alternative was endless philosophical wrangling about the word "think," and Turing — ever the pragmatist — wanted something you could actually <em>test</em>.<sup>1</sup></p>
+
+<h2>The Problem: Deception Is Not Intelligence</h2>
+
+<p>Let's get to the core issue. The Turing test, as popularly understood, measures one thing: the ability to <em>deceive</em>. Can a machine produce text that is indistinguishable from human text? Can it simulate human conversational patterns well enough to fool an interrogator?</p>
+
+<p>This is a terrible measure of intelligence. And I say this not because deception is easy (it isn't — the linguistic and contextual sophistication required to pass a rigorous Turing test is genuinely impressive), but because deception and intelligence are fundamentally different capabilities.</p>
+
+<p>Consider: a skilled con artist can fool people into thinking they're a doctor. That doesn't mean they can perform surgery. An actor can convincingly portray a physicist. That doesn't mean they understand quantum mechanics. The ability to <em>seem</em> like something is entirely separate from the ability to <em>be</em> that thing. And yet the Turing test conflates the two. It says: if you can seem intelligent to a human observer, you are intelligent. Or at least, you should be treated as if you are.</p>
+
+<div class="pull-quote">The Turing test doesn't measure whether a machine can think. It measures whether a machine can make a human think it can think. These are not the same thing, and the gap between them is where all the interesting questions live.</div>
+
+<p>This might have been a reasonable approximation in 1950, when the idea of a machine producing natural-sounding text was so far-fetched that achieving it would have implied extraordinary underlying capabilities. Turing was reasoning, implicitly, that the only way to <em>seem</em> intelligent in unconstrained conversation would be to actually <em>be</em> intelligent. In 1950, that seemed like a safe bet.</p>
+
+<p>In 2026, we know it isn't. Large language models can produce text that is fluent, contextually appropriate, and convincingly human-like. They can pass casual versions of the Turing test with ease. And yet they can also confidently state that there are three R's in "strawberry," struggle with spatial reasoning, and fail to reliably count the number of words in a sentence. They are brilliant imitators with genuine capability gaps — the exact scenario that the Turing test wasn't designed to handle.</p>
+
+<h2>What Turing Actually Cared About</h2>
+
+<p>Here's where it gets interesting. If you actually read Turing's paper — and I really do recommend it; it's only about twenty pages and it's available free online — you'll notice that the imitation game is just the first section. The rest of the paper is a sprawling, eclectic, genuinely delightful exploration of what it would mean for a machine to think.</p>
+
+<p>Turing discusses, among other things: Lady Lovelace's objection that machines can only do what we tell them to do (he disagrees); the theological argument that thinking requires a soul (he's politely dismissive); the mathematical argument from Gödel's incompleteness theorems (he engages seriously); and, most fascinatingly, the idea that a machine might learn like a child.</p>
+
+<p>"Instead of trying to produce a programme to simulate the adult mind," Turing wrote, "why not rather try to produce one which simulates the child's?" He envisioned a machine that would start with basic capabilities and learn through interaction with the world, gradually developing more sophisticated cognitive abilities. He was describing, in remarkably prescient terms, something that looks a lot like modern machine learning.</p>
+
+<p>Turing's real interest was not in deception. It was in <em>learning</em>. The imitation game was a concrete, testable proxy for a much deeper question: can machines develop the kind of flexible, adaptive intelligence that characterises human thought? He chose deception as the metric because it was measurable. But the thing he wanted to measure was something else entirely.</p>
+
+<h2>The Alternatives: Tests That Actually Matter</h2>
+
+<p>So if the Turing test is the wrong test, what's the right one? Over the decades, researchers have proposed a menagerie of alternatives, each targeting a different facet of intelligence. Let me walk you through the most interesting ones.</p>
+
+<div class="ascii-diagram">
+  WHAT WE TEST vs WHAT MATTERS
+
+  ┌─────────────────────────────────────────────────────────┐
+  │                    THE TURING TEST                       │
+  │                                                         │
+  │  Tests: Can it fool a human in conversation?            │
+  │  Misses: Reasoning, learning, creativity, physical      │
+  │          understanding, novel problem-solving            │
+  │  Status: Basically passed (by chatbots, not by AGI)     │
+  └─────────────────────────────────────────────────────────┘
+          │
+          ▼
+  ┌─────────────────────────────────────────────────────────┐
+  │              THE COFFEE TEST (Wozniak, 2010)             │
+  │                                                         │
+  │  Tests: Walk into any random house, find the kitchen,   │
+  │         find the coffee machine, find the mugs, find    │
+  │         the coffee, and brew a cup of coffee.           │
+  │  Why it's good: Requires physical understanding,        │
+  │         spatial reasoning, object recognition,          │
+  │         and improvisation in novel environments.        │
+  │  Status: Nowhere close                                  │
+  └─────────────────────────────────────────────────────────┘
+          │
+          ▼
+  ┌─────────────────────────────────────────────────────────┐
+  │         THE FLAT PACK FURNITURE TEST (me, just now)      │
+  │                                                         │
+  │  Tests: Given an IKEA KALLAX and its instructions,      │
+  │         assemble it correctly with no prior experience.  │
+  │  Why it's good: Requires interpreting ambiguous visual  │
+  │         instructions, 3D spatial reasoning, fine motor  │
+  │         control, and the ability to recover from the    │
+  │         inevitable moment where you realise panel B     │
+  │         is upside down.                                 │
+  │  Status: Humanity itself barely passes this test        │
+  └─────────────────────────────────────────────────────────┘
+          │
+          ▼
+  ┌─────────────────────────────────────────────────────────┐
+  │                 ARC-AGI (Chollet, 2019)                   │
+  │                                                         │
+  │  Tests: Novel abstract reasoning tasks that require     │
+  │         identifying patterns never seen in training.     │
+  │  Why it's good: Explicitly designed to be unsolvable    │
+  │         by memorisation. Requires genuine abstraction.  │
+  │  Status: Improving, but still hard for AI               │
+  └─────────────────────────────────────────────────────────┘
+</div>
+
+<p><strong>Steve Wozniak's Coffee Test</strong> is my favourite for its elegant simplicity. The idea is: a truly intelligent robot should be able to walk into any random home it's never been in, navigate to the kitchen, figure out how to use whatever coffee machine is there (and there are hundreds of different models), find the mugs, find the coffee, and make a cup. This requires no language. No deception. Just the ability to understand a novel physical environment and accomplish a goal within it.</p>
+
+<p>No AI system comes close to passing the Coffee Test. And this tells us something important: the capabilities we've been testing (language, conversation, text generation) are not the hard parts of intelligence. They're the <em>easy</em> parts. The hard parts — physical reasoning, novel problem-solving, adaptation to unfamiliar environments — remain largely unsolved.</p>
+
+<p><strong>The ARC-AGI benchmark</strong>, created by Fran&ccedil;ois Chollet, takes a different approach. It presents abstract visual reasoning puzzles — grids of coloured cells with patterns that the test-taker must identify and extend. The key design principle is that each puzzle is novel: you can't solve it by memorising patterns from training data. You have to actually <em>reason</em>.</p>
+
+<p>This is important because a huge amount of what LLMs do is sophisticated pattern matching against their training data. They've seen billions of examples and learned to interpolate between them. ARC-AGI specifically targets the gap between "can it interpolate from training data" and "can it extrapolate to genuinely new situations." And while AI performance on ARC-AGI has been improving, it remains a significantly harder challenge than conversational fluency.<sup>2</sup></p>
+
+<h2>The Original Thought Problem</h2>
+
+<p>Let me propose a different way of thinking about the whole question. Instead of asking "can it fool a human," what if we asked "can it surprise an expert?"</p>
+
+<p>Not surprise in the sense of "I didn't expect it to say that" — LLMs do that all the time, usually by being wrong in creative ways. I mean surprise in the sense of producing an insight, a connection, or a solution that an expert in the relevant domain would look at and think "huh, I hadn't considered that, and it's actually right."</p>
+
+<p>This is closer to what we mean when we talk about intelligence in humans. We don't consider someone intelligent because they can imitate other intelligent people. We consider them intelligent because they can produce <em>original</em> contributions — novel solutions, unexpected connections, ideas that didn't exist before they thought of them.</p>
+
+<div class="callout">
+  <strong>The real question isn't "can it pass as human?" It's "can it do something a human hasn't done yet?"</strong> Imitation is a skill. Creation is intelligence. The Turing test measures the first and says nothing about the second.
+</div>
+
+<p>Now, there's a philosophical minefield here. What does "original" mean for a system trained on human-generated data? If an LLM combines ideas from two papers its training data contained, and the resulting combination is novel, is that creativity? Or is it just sophisticated recombination? Humans, after all, also build on prior knowledge. Newton famously stood on the shoulders of giants. The difference between "creative synthesis" and "really good pattern matching" is genuinely unclear, and I don't think anyone has a satisfying answer.</p>
+
+<p>But the <em>question</em> is better than the Turing test's question. "Can it produce something new and valuable?" is at least asking about the right capability, even if we can't perfectly measure it. "Can it fool someone in a chat window?" is asking about the wrong capability with precision. I'd rather have the right question with fuzzy measurement than the wrong question with crisp measurement.</p>
+
+<h2>What Would Alan Think?</h2>
+
+<p>I've been careful throughout this essay to criticise the popular understanding of the Turing test rather than Turing himself, because I genuinely believe Turing would agree with most of these objections. He was too smart not to.</p>
+
+<p>Remember: Turing proposed the imitation game in 1950 as a way to <em>sidestep</em> the question "can machines think?" not to <em>answer</em> it. He was frustrated by the vagueness of the question and wanted something concrete. The imitation game was a tool for making progress, not a final definition of intelligence.</p>
+
+<p>If Turing were alive today and you showed him GPT-4 passing casual Turing tests, I suspect his reaction would be something like: "Interesting. But that's not what I was really asking about. Show me a machine that can learn something genuinely new. Show me a machine that can do mathematics that no human has done. Show me a machine that can walk into a room it's never been in and navigate it. <em>That's</em> what I want to know about."</p>
+
+<p>Turing was, above all, interested in the <em>possibility space</em> of computation. What can machines, in principle, do? The imitation game was his opening move in a much larger investigation. It's our fault, not his, that we treated the opening move as the endgame.</p>
+
+<h2>The Danger of Passing the Wrong Test</h2>
+
+<p>There's a practical dimension to all of this that matters a great deal. When we use the Turing test — or, more broadly, "can it seem intelligent?" — as our benchmark for AI capability, we create perverse incentives. We incentivise AI systems that are optimised for seeming smart rather than being smart. We reward fluency over accuracy, confidence over calibration, and surface-level plausibility over deep understanding.</p>
+
+<p>This is exactly what we've got. Current LLMs are extraordinarily fluent. They produce text that reads like it was written by a knowledgeable human. And this fluency is powerful and useful. But it also makes errors harder to detect. A system that writes beautifully but reasons poorly is, in many ways, more dangerous than a system that's obviously crude. At least with the crude system, you know to check its work.</p>
+
+<div class="ascii-diagram">
+  THE INTELLIGENCE MEASUREMENT PROBLEM
+
+    What we can measure          What actually matters
+    easily:                      but is hard to measure:
+  ┌─────────────────────┐     ┌─────────────────────────┐
+  │                     │     │                         │
+  │  Fluency            │     │  Genuine understanding   │
+  │  Conversational     │     │  Novel reasoning         │
+  │    naturalness      │     │  Learning from few       │
+  │  Vocabulary         │     │    examples              │
+  │  Grammar            │     │  Physical intuition      │
+  │  Tone matching      │     │  Causal reasoning        │
+  │  Style mimicry      │     │  Self-knowledge          │
+  │                     │     │  Knowing what you        │
+  │  (THE PARROT ZONE)  │     │    don't know            │
+  │                     │     │                         │
+  │                     │     │  (THE INTELLIGENCE ZONE) │
+  └─────────────────────┘     └─────────────────────────┘
+           │                             │
+           │    "Goodhart's Law:         │
+           │     When a measure          │
+           │     becomes a target,       │
+           │     it ceases to be a       │
+           │     good measure."          │
+           │                             │
+           └──────────┬──────────────────┘
+                      │
+                ┌─────▼──────┐
+                │  WE MOSTLY  │
+                │  OPTIMISE   │
+                │  FOR THE    │
+                │  LEFT SIDE  │
+                └─────────────┘
+</div>
+
+<p>The Turing test, as a cultural benchmark, has pushed us towards building very impressive parrots. And parrots are useful! I'm not being dismissive. A very impressive parrot that can draft emails, summarise documents, write code, and answer questions is an extraordinary tool. But a parrot is not general intelligence, and treating parrot-level capability as the finish line means we might stop pushing towards the things that actually matter: robust reasoning, genuine learning, and the ability to handle truly novel situations.</p>
+
+<h2>Towards Better Questions</h2>
+
+<p>So where do we go from here? I think the answer is that we need not one test but many. Intelligence is not a single axis. It's a high-dimensional space, and any single test captures only a few of those dimensions.</p>
+
+<p>We need tests for <strong>reasoning</strong> — not just "can it solve a maths problem it might have seen in training" but "can it solve a novel problem that requires combining concepts in unfamiliar ways." ARC-AGI is a start.</p>
+
+<p>We need tests for <strong>learning</strong> — can it learn a new concept from a handful of examples, the way a child can learn what a "blicket" is after seeing three examples? Few-shot learning benchmarks exist but they're still inadequate.</p>
+
+<p>We need tests for <strong>physical understanding</strong> — not just text-based reasoning but the kind of intuitive physics that lets you predict that a ball will roll off a table, or that a tower of blocks is about to fall. The Coffee Test captures this beautifully.</p>
+
+<p>We need tests for <strong>metacognition</strong> — can it reliably tell you when it doesn't know something? Can it identify the boundaries of its own competence? This might be the most important test of all, and it's the one we're worst at measuring.</p>
+
+<p>And we need tests for <strong>originality</strong> — not just recombination of existing ideas, but the generation of genuinely new ones. This is the hardest to define and the hardest to measure, but it's arguably the core of what we mean by intelligence.</p>
+
+<p>Alan Turing gave us a starting point. It was a brilliant starting point for 1950. But the field of AI has outgrown it, in the same way that a child outgrows their first bicycle. The Turing test got us moving. It's time to graduate to something bigger.</p>
+
+<p>And I suspect that if you could somehow tell Alan Turing all of this — that his test had been passed by a statistical model trained on internet text, and that the result had proved his test inadequate — he'd pause for a moment, and then he'd grin, and then he'd say: "Right. So what's the next test?"</p>
+
+<p>Because that's what scientists do. They don't mourn their outdated tests. They design better ones.</p>
+
+      <div class="footnote">
+        <p><sup>1</sup> Turing's paper also contains one of my favourite sentences in the history of academic writing. When addressing the theological objection — that God gave souls only to humans and therefore machines cannot think — Turing writes: "I am not very impressed with theological arguments whatever they may be used to support. Such arguments have often been found unsatisfactory in the past." This is the 1950s academic equivalent of typing "lol no."</p>
+        <p><sup>2</sup> There's a lovely irony in the ARC-AGI challenge results. Humans typically score around 85% on the benchmark. Early LLMs scored in the single digits. More recent systems have climbed to 50-70% depending on the setup. But here's the key: human performance doesn't correlate strongly with education level or IQ. A twelve-year-old can solve many ARC puzzles that stump frontier AI systems. This suggests that whatever capability ARC is measuring, it's something fundamental to human cognition that we develop early — and that current AI architectures still struggle with.</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="flex justify-between items-center pt-8" style="border-top: 1px solid var(--outline-variant);">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);">
+        <span class="material-symbols-outlined text-base">arrow_back</span>
+        <span class="f1-only">All Lap Reports</span>
+        <span class="office-only">All Memos</span>
+      </a>
+      <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+    </div>
+  </section>
+
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = Math.min(100, (scrolled / total) * 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
