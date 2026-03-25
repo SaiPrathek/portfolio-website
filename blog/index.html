@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Debrief | Sai Prathek Kotha</title>
+  <meta name="description" content="Long-form posts on AI, life, and the weird intersections between them. Tim Urban vibes, xkcd energy." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="The Debrief — Blog by Sai Prathek Kotha" />
+  <meta property="og:description" content="AI, life, and the weird stuff in between. Written like nobody's watching." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    .f1-only { display: none; }
+    .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; }
+    body.theme-office .office-only { display: block; }
+    body.theme-f1 .f1-flex { display: flex; }
+    body.theme-office .office-flex { display: flex; }
+    .f1-flex, .office-flex { display: none; }
+
+    .post-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .post-card:hover { transform: translateY(-3px); }
+    body.theme-f1 .post-card:hover { box-shadow: 0 12px 32px rgba(179,4,0,0.12); }
+    body.theme-office .post-card:hover { box-shadow: 0 12px 32px rgba(242,202,80,0.1); }
+
+    .tag-chip {
+      display: inline-block;
+      padding: 2px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    body.theme-f1 .tag-chip { background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono); }
+    body.theme-office .tag-chip { background: var(--surface-container-highest); color: var(--secondary); font-family: var(--font-body); }
+
+    #posts-grid { min-height: 200px; }
+  </style>
+</head>
+<body class="theme-f1">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">APEX ENGINEERING</a>
+    <a href="/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">THE BRANCH</a>
+
+    <div class="flex items-center gap-6">
+      <a href="/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← Portfolio</a>
+      <a href="/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← Back to Office</a>
+
+      <button id="theme-toggle" aria-label="Toggle theme"
+        class="flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all"
+        style="border-color: var(--primary);">
+        <span class="material-symbols-outlined text-base f1-only" style="color: var(--primary); font-variation-settings: 'FILL' 1;">directions_car</span>
+        <span class="text-xs font-black uppercase tracking-widest f1-only" style="color: var(--primary); font-family: var(--font-headline);">F1</span>
+        <span class="w-8 h-4 rounded-full relative" style="background: var(--primary);">
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all f1-only" style="right: 2px;"></span>
+          <span class="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all office-only" style="left: 2px;"></span>
+        </span>
+        <span class="text-xs font-black uppercase tracking-widest office-only" style="color: var(--primary); font-family: var(--font-headline);">OFFICE</span>
+        <span class="material-symbols-outlined text-base office-only" style="color: var(--primary); font-variation-settings: 'FILL' 1;">assignment</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 px-6 max-w-5xl mx-auto">
+    <!-- F1 Header -->
+    <div class="f1-only">
+      <span class="text-[10px] tracking-[0.3em] uppercase mb-3 block" style="color: var(--primary); font-family: var(--font-mono);">Post-Race Analysis // Open Transmission</span>
+      <h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase italic leading-none mb-4" style="font-family: var(--font-headline);">THE <span style="color: var(--primary);">DEBRIEF</span></h1>
+      <p class="text-base max-w-xl" style="color: var(--secondary); font-family: var(--font-body);">Long-form posts on AI, life, and the weird intersections between them. Expect deep dives, unexpected tangents, and the occasional ASCII diagram.</p>
+      <div class="flex items-center gap-4 mt-6">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full animate-pulse" style="background: var(--primary);"></div>
+          <span class="text-[10px] font-mono uppercase tracking-widest" style="color: var(--secondary);">New post drops daily · 09:00 local</span>
+        </div>
+      </div>
+    </div>
+    <!-- Office Header -->
+    <div class="office-only">
+      <span class="text-[10px] tracking-[0.2em] uppercase mb-3 block" style="color: var(--primary);">Internal Memos // Open to All Staff</span>
+      <h1 class="text-5xl md:text-7xl font-semibold leading-none mb-4" style="font-family: var(--font-headline);">The <span style="color: var(--primary);">Bulletin</span><br/>Board</h1>
+      <p class="text-base max-w-xl" style="color: var(--secondary);">Long-form posts on AI, life, and productivity. Think Tim Urban but with more spreadsheets and fewer stick figures. (Fewer. Not none.)</p>
+      <div class="flex items-center gap-4 mt-6">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full animate-pulse" style="background: var(--primary);"></div>
+          <span class="text-[10px] uppercase tracking-widest" style="color: var(--secondary);">New post drops daily · 09:00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTS GRID -->
+  <section class="px-6 pb-32 max-w-5xl mx-auto">
+    <div id="posts-grid" class="space-y-8">
+      <div class="text-center py-12 opacity-40" style="color: var(--secondary);">
+        <span class="material-symbols-outlined text-4xl block mb-2">sync</span>
+        <span class="text-xs uppercase tracking-widest">Loading posts...</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t px-6 py-8 text-center" style="border-color: var(--outline-variant);">
+    <p class="text-xs uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono);">
+      <a href="/" class="hover:opacity-70 transition-opacity" style="color: var(--primary);">saiprathek.com</a>
+      <span class="mx-2">·</span>
+      Written by Sai Prathek Kotha
+      <span class="mx-2">·</span>
+      Generated with Claude
+    </p>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    // Theme toggle (reuse main site logic)
+    const toggleBtn = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'theme-f1';
+    document.body.className = saved;
+
+    toggleBtn.addEventListener('click', () => {
+      const isF1 = document.body.classList.contains('theme-f1');
+      document.body.className = isF1 ? 'theme-office' : 'theme-f1';
+      localStorage.setItem('theme', document.body.className);
+    });
+
+    // Load and render posts
+    async function loadPosts() {
+      const grid = document.getElementById('posts-grid');
+      try {
+        const res = await fetch('/blog/posts.json');
+        const posts = await res.json();
+
+        if (!posts.length) {
+          grid.innerHTML = `<div class="text-center py-12 opacity-40" style="color: var(--secondary);">
+            <span class="text-xs uppercase tracking-widest">No posts yet. Check back tomorrow.</span>
+          </div>`;
+          return;
+        }
+
+        grid.innerHTML = posts.slice().reverse().map((p, i) => `
+          <article class="post-card" onclick="window.location='/blog/posts/${p.slug}.html'">
+            <!-- F1 Card -->
+            <div class="f1-only p-8 relative overflow-hidden" style="background: var(--surface-container-lowest); border-left: 4px solid var(--primary);">
+              <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #${p.id || String(posts.length - i).padStart(3,'0')}</span>
+                  <h2 class="text-2xl md:text-3xl font-extrabold italic tracking-tight leading-tight" style="font-family: var(--font-headline);">${p.title}</h2>
+                </div>
+                <div class="flex gap-4 shrink-0 text-right">
+                  <div>
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Filed</span>
+                    <span class="block text-sm font-bold" style="font-family: var(--font-mono);">${p.date}</span>
+                  </div>
+                  <div>
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Read</span>
+                    <span class="block text-sm font-bold" style="color: var(--primary); font-family: var(--font-mono);">${p.readTime}</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--secondary); font-family: var(--font-body);">${p.excerpt}</p>
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <div class="flex flex-wrap gap-2">${p.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
+                <span class="text-xs font-bold uppercase tracking-widest flex items-center gap-1" style="color: var(--primary); font-family: var(--font-headline);">
+                  Read Full Debrief <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+              </div>
+            </div>
+            <!-- Office Card -->
+            <div class="office-only p-8 relative overflow-hidden" style="background: var(--surface-container-low); border-left: 4px solid var(--primary);">
+              <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--primary);">MEMO #${p.id || String(posts.length - i).padStart(3,'0')}</span>
+                  <h2 class="text-2xl md:text-3xl font-semibold italic leading-tight" style="font-family: var(--font-headline);">${p.title}</h2>
+                </div>
+                <div class="flex gap-4 shrink-0 text-right">
+                  <div>
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary);">Filed</span>
+                    <span class="block text-sm font-semibold">${p.date}</span>
+                  </div>
+                  <div>
+                    <span class="block text-[10px] uppercase" style="color: var(--secondary);">Read</span>
+                    <span class="block text-sm font-semibold" style="color: var(--primary);">${p.readTime}</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--secondary);">${p.excerpt}</p>
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <div class="flex flex-wrap gap-2">${p.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
+                <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-1" style="color: var(--primary);">
+                  Read Memo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      } catch(e) {
+        grid.innerHTML = `<div class="text-center py-12 opacity-40" style="color: var(--secondary);">
+          <span class="text-xs uppercase tracking-widest">Could not load posts.</span>
+        </div>`;
+      }
+    }
+
+    loadPosts();
+  </script>
+</body>
+</html>
