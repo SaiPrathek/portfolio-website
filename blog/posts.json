@@ -5,26 +5,77 @@
     "date": "2025-12-26",
     "readTime": "11 min",
     "excerpt": "Your brain's best work happens when you stop trying. Here's why, and what AI diffusion models accidentally proved about creativity.",
-    "tags": ["Neuroscience", "Creativity", "Productivity"],
-    "id": "002"
+    "tags": [
+      "Neuroscience",
+      "Creativity",
+      "Productivity"
+    ],
+    "id": "001"
   },
   {
     "slug": "2025-12-30-fermi-paradox-software",
     "title": "The Fermi Paradox But For Good Software (Where Is Everybody?)",
     "date": "2025-12-30",
     "readTime": "10 min",
-    "excerpt": "If we have millions of developers and decades of practice, why does most software still suck? Apply Fermi paradox logic.",
-    "tags": ["Software", "Engineering", "Rant"],
-    "id": "003"
+    "excerpt": "If we have millions of developers and decades of practice, why does most software still suck?",
+    "tags": [
+      "Software",
+      "Engineering",
+      "Rant"
+    ],
+    "id": "002"
   },
   {
     "slug": "2026-01-02-new-years-resolution",
     "title": "Every New Year's Resolution Is a Negotiation With a Stranger",
     "date": "2026-01-02",
     "readTime": "12 min",
-    "excerpt": "Your future self is basically a different person and you're making promises on their behalf. On temporal discounting and doing RLHF on yourself.",
-    "tags": ["Psychology", "Life", "AI"],
+    "excerpt": "On temporal discounting, personal identity, and why you're basically doing RLHF on yourself with a 365-day feedback loop.",
+    "tags": [
+      "Psychology",
+      "Life",
+      "AI"
+    ],
+    "id": "003"
+  },
+  {
+    "slug": "2026-01-03-paradox-choice-netflix",
+    "title": "The Paradox of Choice But For Netflix (Why You Spend 45 Minutes Choosing a 90-Minute Movie)",
+    "date": "2026-01-03",
+    "readTime": "10 min",
+    "excerpt": "More options should mean more satisfaction. Instead, they mean more paralysis, more regret, and more time staring at thumbnails.",
+    "tags": [
+      "Psychology",
+      "Netflix",
+      "AI"
+    ],
     "id": "004"
+  },
+  {
+    "slug": "2026-01-06-internet-smarter",
+    "title": "The Internet Was Supposed to Make Us Smarter and I Have the Graph to Prove It Didn't",
+    "date": "2026-01-06",
+    "readTime": "10 min",
+    "excerpt": "All of human knowledge, in your pocket, used primarily to settle bar arguments and watch cats.",
+    "tags": [
+      "Internet",
+      "AI",
+      "Culture"
+    ],
+    "id": "005"
+  },
+  {
+    "slug": "2026-01-10-autocomplete-therapist",
+    "title": "Why Autocomplete Knows You Better Than Your Therapist",
+    "date": "2026-01-10",
+    "readTime": "11 min",
+    "excerpt": "Your typing patterns, search history, and autocomplete suggestions form a more accurate psychological profile than most self-assessments.",
+    "tags": [
+      "AI",
+      "Privacy",
+      "Psychology"
+    ],
+    "id": "006"
   },
   {
     "slug": "2026-01-14-dunning-kruger-peak",
@@ -32,8 +83,12 @@
     "date": "2026-01-14",
     "readTime": "10 min",
     "excerpt": "The sweet spot where you know just enough to be dangerously wrong — and why AI models go through the exact same thing during training.",
-    "tags": ["Psychology", "Learning", "AI"],
-    "id": "005"
+    "tags": [
+      "Psychology",
+      "Learning",
+      "AI"
+    ],
+    "id": "007"
   },
   {
     "slug": "2026-01-18-phone-battery-metaphor",
@@ -41,26 +96,38 @@
     "date": "2026-01-18",
     "readTime": "9 min",
     "excerpt": "How we manage phone battery maps perfectly onto how we manage energy, attention, motivation, and relationships.",
-    "tags": ["Life", "Attention", "Productivity"],
-    "id": "006"
+    "tags": [
+      "Life",
+      "Attention",
+      "Productivity"
+    ],
+    "id": "008"
   },
   {
     "slug": "2026-01-22-turing-test-wrong",
     "title": "The Turing Test Was Always the Wrong Test (And Alan Would Probably Agree)",
     "date": "2026-01-22",
     "readTime": "13 min",
-    "excerpt": "Why fooling a human into thinking a machine is human is a terrible benchmark for intelligence. What we should actually measure.",
-    "tags": ["AI", "Philosophy", "History"],
-    "id": "007"
+    "excerpt": "Why fooling a human into thinking a machine is human is a terrible benchmark for intelligence.",
+    "tags": [
+      "AI",
+      "Philosophy",
+      "History"
+    ],
+    "id": "009"
   },
   {
     "slug": "2026-01-26-meetings-emails",
     "title": "Why Every Meeting Could Have Been an Email (But Also Shouldn't Have Been)",
     "date": "2026-01-26",
     "readTime": "10 min",
-    "excerpt": "The bandwidth problem in communication. Meetings are TCP with massive overhead, emails are UDP, and Slack is lossy compression.",
-    "tags": ["Productivity", "Communication", "Work"],
-    "id": "008"
+    "excerpt": "The bandwidth problem in communication — meetings, emails, and Slack as network protocols.",
+    "tags": [
+      "Productivity",
+      "Communication",
+      "Work"
+    ],
+    "id": "010"
   },
   {
     "slug": "2026-01-30-algorithm-puppet",
@@ -68,62 +135,90 @@
     "date": "2026-01-30",
     "readTime": "11 min",
     "excerpt": "Recommendation algorithms don't model the real you — they model a simplified statistical puppet built from your clicks.",
-    "tags": ["AI", "Privacy", "Philosophy"],
-    "id": "009"
+    "tags": [
+      "AI",
+      "Privacy",
+      "Philosophy"
+    ],
+    "id": "011"
   },
   {
     "slug": "2026-02-03-sleep-garbage-collection",
     "title": "Sleep Is Just Your Brain's Garbage Collection Day",
     "date": "2026-02-03",
     "readTime": "11 min",
-    "excerpt": "Your brain literally pressure-washes itself every night. Dreams are just the test suite running edge cases. Skip it at your own risk.",
-    "tags": ["Neuroscience", "Sleep", "AI"],
-    "id": "010"
+    "excerpt": "Your brain literally pressure-washes itself every night. Dreams are just the test suite running edge cases.",
+    "tags": [
+      "Neuroscience",
+      "Sleep",
+      "AI"
+    ],
+    "id": "012"
   },
   {
     "slug": "2026-02-07-ten-thousand-hours-lie",
     "title": "The 10,000 Hour Rule Is a Lie (But the Truth Is Weirder)",
     "date": "2026-02-07",
     "readTime": "12 min",
-    "excerpt": "Malcolm Gladwell misquoted the research. The truth about expertise is weirder, more nuanced, and maps perfectly to how we train AI.",
-    "tags": ["Learning", "Science", "AI"],
-    "id": "011"
+    "excerpt": "Malcolm Gladwell misquoted the research. The truth about expertise is weirder and more nuanced.",
+    "tags": [
+      "Learning",
+      "Science",
+      "AI"
+    ],
+    "id": "013"
   },
   {
     "slug": "2026-02-11-running-someone-elses-code",
     "title": "Why We're All Running Someone Else's Code",
     "date": "2026-02-11",
     "readTime": "10 min",
-    "excerpt": "Your beliefs, habits, and identity are programs you didn't write, installed by people you didn't choose. Sound familiar? So is AI.",
-    "tags": ["Memetics", "Culture", "AI"],
-    "id": "012"
+    "excerpt": "Your beliefs, habits, and identity are programs you didn't write. So are an AI's.",
+    "tags": [
+      "Memetics",
+      "Culture",
+      "AI"
+    ],
+    "id": "014"
   },
   {
     "slug": "2026-02-15-love-reward-functions",
     "title": "Love Is Just Two Reward Functions That Accidentally Aligned (A Valentine's Day Special)",
     "date": "2026-02-15",
     "readTime": "11 min",
-    "excerpt": "Oxytocin, dopamine, serotonin, and the alignment problem — in relationships and in AI. A Valentine's Day investigation.",
-    "tags": ["Relationships", "AI", "Neuroscience"],
-    "id": "013"
+    "excerpt": "Oxytocin, dopamine, and the alignment problem — in relationships and in AI.",
+    "tags": [
+      "Relationships",
+      "AI",
+      "Neuroscience"
+    ],
+    "id": "015"
   },
   {
     "slug": "2026-02-19-trolley-problem-pedestrian",
     "title": "The Trolley Problem Is Easy. The Real Problem Is the Pedestrian Detection.",
     "date": "2026-02-19",
     "readTime": "10 min",
-    "excerpt": "Everyone debates the trolley problem for self-driving cars. The actual hard problem is way more boring and way more important.",
-    "tags": ["AI", "Ethics", "Autonomous Vehicles"],
-    "id": "014"
+    "excerpt": "The actual hard problem in self-driving cars is way more boring and way more important than you think.",
+    "tags": [
+      "AI",
+      "Ethics",
+      "Autonomous Vehicles"
+    ],
+    "id": "016"
   },
   {
     "slug": "2026-02-23-keys-movie-quotes",
     "title": "Why You Can't Remember Where You Put Your Keys But Can Quote Entire Movie Scenes",
     "date": "2026-02-23",
     "readTime": "10 min",
-    "excerpt": "Memory encoding isn't about importance — it's about emotional weight, narrative structure, and repetition. Your brain is a terrible filing clerk.",
-    "tags": ["Memory", "Neuroscience", "AI"],
-    "id": "015"
+    "excerpt": "Memory encoding isn't about importance — it's about emotional weight, narrative structure, and repetition.",
+    "tags": [
+      "Memory",
+      "Neuroscience",
+      "AI"
+    ],
+    "id": "017"
   },
   {
     "slug": "2026-02-27-map-not-territory",
@@ -131,8 +226,12 @@
     "date": "2026-02-27",
     "readTime": "11 min",
     "excerpt": "On models, reality, and the strange loop where Google Maps reshapes the world it claims to merely describe.",
-    "tags": ["Philosophy", "AI", "Maps"],
-    "id": "016"
+    "tags": [
+      "Philosophy",
+      "AI",
+      "Maps"
+    ],
+    "id": "018"
   },
   {
     "slug": "2026-03-03-imposter-syndrome-antivirus",
@@ -140,43 +239,118 @@
     "date": "2026-03-03",
     "readTime": "10 min",
     "excerpt": "Why high performers doubt themselves, why incompetent people don't, and what AI hallucinations have to do with all of it.",
-    "tags": ["Psychology", "Career", "AI"],
-    "id": "017"
+    "tags": [
+      "Psychology",
+      "Career",
+      "AI"
+    ],
+    "id": "019"
+  },
+  {
+    "slug": "2026-03-05-gut-feeling-neural-net",
+    "title": "Your Gut Feeling Is Just a Neural Network With No Documentation",
+    "date": "2026-03-05",
+    "readTime": "11 min",
+    "excerpt": "Intuition is pattern matching from compressed experience — a biological neural network that produces outputs without showing its work.",
+    "tags": [
+      "Neuroscience",
+      "AI",
+      "Decision-Making"
+    ],
+    "id": "020"
   },
   {
     "slug": "2026-03-07-attention-economy-ponzi",
     "title": "The Attention Economy Is a Ponzi Scheme (And We're All Invested)",
     "date": "2026-03-07",
     "readTime": "12 min",
-    "excerpt": "Attention is the new currency, but the supply is fixed at ~16 waking hours and every app wants more. The maths doesn't work.",
-    "tags": ["Attention", "Tech", "Culture"],
-    "id": "018"
+    "excerpt": "Attention is the new currency, but the supply is fixed and every app wants more. The maths doesn't work.",
+    "tags": [
+      "Attention",
+      "Tech",
+      "Culture"
+    ],
+    "id": "021"
   },
   {
     "slug": "2026-03-11-smart-home-dumb",
     "title": "Why Your Smart Home Is Actually a Dumb Home With Good Marketing",
     "date": "2026-03-11",
     "readTime": "9 min",
-    "excerpt": "The reality of 'smart' home devices: connected, not intelligent. The light bulb that needs a firmware update. The fridge that tweets.",
-    "tags": ["IoT", "AI", "Rant"],
-    "id": "019"
+    "excerpt": "The reality of 'smart' home devices: connected, not intelligent. The gap between the brochure and your kitchen.",
+    "tags": [
+      "IoT",
+      "AI",
+      "Rant"
+    ],
+    "id": "022"
+  },
+  {
+    "slug": "2026-03-15-butterfly-effect-typos",
+    "title": "The Butterfly Effect But For Typos (How Tiny Mistakes Destroy Everything)",
+    "date": "2026-03-15",
+    "readTime": "10 min",
+    "excerpt": "How a missing hyphen destroyed a rocket, a wrong unit killed a Mars probe, and a software flag cost $440 million in 45 minutes.",
+    "tags": [
+      "Software",
+      "Chaos",
+      "History"
+    ],
+    "id": "023"
+  },
+  {
+    "slug": "2026-03-19-email-inbox-todo",
+    "title": "Your Email Inbox Is a To-Do List Other People Write For You",
+    "date": "2026-03-19",
+    "readTime": "9 min",
+    "excerpt": "The fundamental problem with email: it gives everyone write access to your priority queue.",
+    "tags": [
+      "Productivity",
+      "Work",
+      "AI"
+    ],
+    "id": "024"
+  },
+  {
+    "slug": "2026-03-22-sand-think-grammar",
+    "title": "We Taught Sand to Think and Now It's Correcting Our Grammar",
+    "date": "2026-03-22",
+    "readTime": "13 min",
+    "excerpt": "The absurd journey from silicon to ChatGPT, told as the universe's most unlikely supply chain story.",
+    "tags": [
+      "AI",
+      "History",
+      "Computing"
+    ],
+    "id": "025"
   },
   {
     "slug": "2026-03-25-brain-two-employees",
     "title": "Your Brain Has Two Employees and Neither of Them Have Read the Job Description",
     "date": "2026-03-25",
     "readTime": "9 min",
-    "excerpt": "Everyone procrastinates. Everyone knows they shouldn't. And yet here we are, 45 minutes deep into whether octopuses dream. The weird thing? AI has exactly the same problem.",
-    "tags": ["AI", "Procrastination", "Life", "Neuroscience"],
-    "id": "020"
+    "excerpt": "On procrastination, AI alignment, and why your monkey brain is actually a misconfigured language model.",
+    "tags": [
+      "AI",
+      "Procrastination",
+      "Life",
+      "Neuroscience"
+    ],
+    "id": "026"
   },
   {
     "slug": "2026-03-25-how-pok-mon-go-players-accidentally-built-the-world-s-best-r",
-    "title": "How Pokemon Go Players Accidentally Built the World's Best Robot Navigation System",
+    "title": "How Pokémon Go Players Accidentally Built the World's Best Robot Navigation System (And What That Says About Us)",
     "date": "2026-03-25",
     "readTime": "11 min",
-    "excerpt": "For ten years, millions walked around catching imaginary creatures. Turns out they were also training the most sophisticated pedestrian navigation dataset ever created.",
-    "tags": ["AI", "Crowdsourcing", "Gaming"],
-    "id": "021"
+    "excerpt": "For ten years, millions of people walked around catching imaginary creatures. Turns out they were also training the most sophisticated pedestrian navigation dat",
+    "tags": [
+      "AI",
+      "crowdsourcing",
+      "gaming",
+      "machine-learning",
+      "human-behaviour"
+    ],
+    "id": "027"
   }
 ]
