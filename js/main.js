@@ -65,6 +65,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ============================================
+   BLOG FOOTNOTE HOVER TOOLTIP
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const postBody = document.querySelector('.post-body');
+  const footnoteSection = document.querySelector('.footnote');
+  if (!postBody || !footnoteSection) return;
+
+  const footnoteMap = new Map();
+  footnoteSection.querySelectorAll('p').forEach((paragraph) => {
+    const marker = paragraph.querySelector('sup');
+    if (!marker) return;
+    const index = (marker.textContent || '').trim();
+    if (!index) return;
+
+    // Remove the numeric marker from tooltip copy.
+    const noteText = paragraph.textContent.replace(marker.textContent, '').trim();
+    if (noteText) {
+      footnoteMap.set(index, noteText);
+    }
+  });
+
+  postBody.querySelectorAll('sup').forEach((citation) => {
+    if (citation.closest('.footnote')) return;
+    const index = (citation.textContent || '').trim();
+    const noteText = footnoteMap.get(index);
+    if (!noteText) return;
+
+    citation.classList.add('footnote-cite');
+    citation.setAttribute('tabindex', '0');
+    citation.setAttribute('aria-label', `Footnote ${index}: ${noteText}`);
+    citation.setAttribute('data-footnote', noteText);
+  });
+});
+
+
+/* ============================================
    MOBILE MENU
    ============================================ */
 
