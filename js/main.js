@@ -504,10 +504,10 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>` : '';
 
-      // ── Inject before the back-link section ───────────────────────
-      const backSection = document.querySelector('section.px-6.pb-16');
-      if (backSection) {
-        backSection.insertAdjacentHTML('beforebegin', navHTML + relatedHTML);
+      // ── Inject after <main> — consistent across all post formats ──
+      const mainEl = document.querySelector('main');
+      if (mainEl) {
+        mainEl.insertAdjacentHTML('afterend', navHTML + relatedHTML);
       }
     })
     .catch(() => {}); // silently fail — nav is a nice-to-have
