@@ -35,18 +35,18 @@ body.theme-f1 {
 body.theme-office {
   --primary: #f2ca50;
   --primary-container: #d4af37;
-  --surface: #131313;
-  --surface-container: #20201f;
-  --surface-container-low: #1c1b1b;
-  --surface-container-high: #2a2a2a;
-  --surface-container-highest: #353535;
-  --surface-container-lowest: #0e0e0e;
-  --on-surface: #e5e2e1;
-  --on-surface-variant: #d0c5af;
-  --secondary: #cbcb6a;
+  --surface: #0f0f0f;
+  --surface-container: #242423;
+  --surface-container-low: #1a1a19;
+  --surface-container-high: #303030;
+  --surface-container-highest: #3e3e3d;
+  --surface-container-lowest: #080808;
+  --on-surface: #eceae9;
+  --on-surface-variant: #d8cdb7;
+  --secondary: #a8a880;
   --tertiary: #bfcdff;
-  --outline: #9a9389;
-  --outline-variant: #4d4635;
+  --outline: #6a6256;
+  --outline-variant: #38322a;
   --error: #ffb4ab;
   --font-headline: 'Newsreader', serif;
   --font-body: 'Space Grotesk', sans-serif;
@@ -54,12 +54,12 @@ body.theme-office {
   --speed-gradient: linear-gradient(135deg, #d4af37 0%, #f2ca50 100%);
   --carbon-texture: none;
   --carbon-size: 0;
-  --navbar-bg: rgba(28, 27, 27, 0.8);
-  --navbar-border: none;
-  --card-bg: #20201f;
-  --card-border: 1px solid #353535;
-  --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  --card-shadow-hover: 0 10px 30px rgba(242, 202, 80, 0.08), 0 4px 12px rgba(0,0,0,0.3);
+  --navbar-bg: rgba(15, 15, 15, 0.85);
+  --navbar-border: 1px solid rgba(255,255,255,0.06);
+  --card-bg: #242423;
+  --card-border: 1px solid rgba(255,255,255,0.07);
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.55);
+  --card-shadow-hover: 0 12px 32px rgba(242, 202, 80, 0.1), 0 4px 16px rgba(0,0,0,0.55);
 }
 
 
@@ -1552,7 +1552,65 @@ body.theme-f1 #projects .group:hover {
 
 body.theme-office #projects .group:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px var(--outline-variant);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(242,202,80,0.12);
+}
+
+/* ---- Office dark theme: component contrast & readability ---- */
+
+/* Project cards — lift off the background */
+body.theme-office #projects .office-only .group {
+  background: var(--surface-container) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 4px 20px rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  border-left: 3px solid var(--primary) !important;
+}
+
+/* Alternating section backgrounds so page has depth */
+body.theme-office #experience {
+  background: var(--surface-container-lowest);
+}
+body.theme-office #skills {
+  background: var(--surface-container-lowest);
+}
+body.theme-office #contact {
+  background: var(--surface-container-lowest);
+}
+
+/* Experience content cards — more separation */
+body.theme-office .experience-content-card {
+  background: var(--surface-container) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-left: 3px solid var(--primary) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+}
+
+/* Quote / Water Cooler cards */
+body.theme-office .quote-card-office {
+  background: var(--surface-container) !important;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+}
+
+/* Skill bars section cards */
+body.theme-office .skill-bar {
+  background: var(--surface-container-high);
+}
+
+/* Publications cards */
+body.theme-office #publications .group,
+body.theme-office #publications article {
+  background: var(--surface-container) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+}
+
+/* Section top-edge dividers for visual separation */
+body.theme-office #projects,
+body.theme-office #experience,
+body.theme-office #skills,
+body.theme-office #publications,
+body.theme-office #contact {
+  border-top: 1px solid rgba(255,255,255,0.04);
 }
 
 /* ============================================
