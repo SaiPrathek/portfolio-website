@@ -83,15 +83,15 @@
   <main class="px-6 pb-24 max-w-3xl mx-auto">
     <div class="post-body">
 
-<p>Last Tuesday, I watched Abhishek do something I've seen him do a hundred times. We were at Tesco. Five checkout lanes open. He stood at the entrance to the queuing area, scanning each line like a general surveying a battlefield. He counted heads. He estimated basket volumes. He peered at the cashiers, trying to psychically assess their scanning speed. He factored in the elderly gentleman in lane three who was still writing a cheque in the year 2026.<sup>[1]</sup></p>
+<p>Last Tuesday, I watched Abhishek do something I've seen him do a hundred times. We were at DMart. Five checkout lanes open. He stood at the entrance to the queuing area, scanning each line like a general surveying a battlefield. He counted heads. He estimated basket volumes. He peered at the cashiers, trying to psychically assess their scanning speed. He factored in the elderly gentleman in lane three who was still paying by exact change in the year 2026.<sup>[1]</sup></p>
 
 <p>After roughly fifteen seconds of this &mdash; an eternity in supermarket time &mdash; he chose lane four. "Trust me," he said, "I've got a system."</p>
 
-<p>Lane four had the woman who needed a price check on reduced-sugar hobnobs. Then her card was declined. Then she found a different card. Then <em>that</em> card was declined. By the time Abhishek paid for his meal deal and single banana, every other lane had cycled through twice.</p>
+<p>Lane four had the woman who needed a price check on sugar-free Marie biscuits. Then her card was declined. Then she found a different card. Then <em>that</em> card was declined. By the time Abhishek paid for his cutting chai and a packet of Parle-G, every other lane had cycled through twice.</p>
 
-<p>"Every time," he muttered in the car park. "Every. Single. Time."</p>
+<p>"Every time," he muttered in the parking area. "Every. Single. Time."</p>
 
-<p>Here's the thing: Abhishek isn't unlucky. He isn't cursed. He isn't the victim of a cosmic conspiracy orchestrated by Tesco's checkout allocation algorithm. He is, like every other human being on the planet, simply <strong>mathematically destined to feel like he always picks the wrong queue</strong>. And the reason why is one of the most elegant little results in probability theory &mdash; a result that, it turns out, computer scientists solved decades ago, and we're all too stubborn to listen.</p>
+<p>Here's the thing: Abhishek isn't unlucky. He isn't cursed. He isn't the victim of a cosmic conspiracy orchestrated by DMart's checkout allocation algorithm. He is, like every other human being on the planet, simply <strong>mathematically destined to feel like he always picks the wrong queue</strong>. And the reason why is one of the most elegant little results in probability theory &mdash; a result that, it turns out, computer scientists solved decades ago, and we're all too stubborn to listen.</p>
 
 <h2>The Fundamental Theorem of Queue Disappointment</h2>
 
@@ -154,7 +154,7 @@
 ║   Normal queue, fine       ──▶   ░░░ (was I even there?)  ║
 ║   Slow queue, mild         ──▶   ████░ (I noticed)        ║
 ║   Slow queue, price check  ──▶   ████████░ (fuming)       ║
-║   Slow queue, coupon lady  ──▶   ██████████████ (SEARED   ║
+║   Slow queue, biscuit lady ──▶   ██████████████ (SEARED   ║
 ║                                   INTO MY SOUL FOREVER)   ║
 ║                                                           ║
 ║   Result: "I literally always pick the slow queue"        ║
@@ -164,7 +164,7 @@
 ╚══════════════════════════════════════════════════════════╝
 </pre></div>
 
-<p>My friend Abhishek is convinced he has the worst queue luck of any human alive. I once asked him to actually track it. For two weeks, he logged every queue experience &mdash; fast, slow, medium. At the end, his success rate was 23%. Which, for five-lane Tesco, is almost exactly what you'd expect from random chance. He was, statistically speaking, perfectly average. He looked at the data and said, "Yeah, but it doesn't <em>feel</em> like 23%."</p>
+<p>My friend Abhishek is convinced he has the worst queue luck of any human alive. I once asked him to actually track it. For two weeks, he logged every queue experience &mdash; fast, slow, medium. At the end, his success rate was 23%. Which, for five-lane DMart, is almost exactly what you'd expect from random chance. He was, statistically speaking, perfectly average. He looked at the data and said, "Yeah, but it doesn't <em>feel</em> like 23%."</p>
 
 <p>Abhishek had accidentally discovered the core problem of machine learning: <strong>the model's confidence and the model's accuracy are two entirely different things</strong>.</p>
 
@@ -194,7 +194,7 @@
 
 <p>This is what's called a <strong>single-queue, multi-server model</strong> &mdash; or in CS terms, a <strong>load balancer</strong>. Instead of each server (cashier, CPU core, API endpoint) having its own dedicated queue, you have one queue that feeds into all servers. The next available server takes the next person in line.</p>
 
-<p>If you've ever been to a bank with the rope maze that feeds into whichever teller is free next, you've experienced this. If you've ever used a website that didn't crash under heavy load, a load balancer did this invisibly behind the scenes. Nginx, HAProxy, AWS ALB &mdash; they're all just very sophisticated versions of "form one line, please."</p>
+<p>If you've ever been to a government bank with the token system that feeds into whichever teller is free next, you've experienced this. If you've ever used a website that didn't crash under heavy load, a load balancer did this invisibly behind the scenes. Nginx, HAProxy, AWS ALB &mdash; they're all just very sophisticated versions of "form one line, please."</p>
 
 <div class="ascii-diagram"><pre>
 ╔══════════════════════════════════════════════════════════╗
@@ -223,7 +223,7 @@
 
 <p>This is, in queuing theory terms, the difference between <strong>M/M/c</strong> (single queue, c servers) and <strong>c × M/M/1</strong> (c separate queues with one server each). The M/M/c system has lower expected wait times, lower worst-case wait times, and — critically — a fairer distribution of wait times across all customers.</p>
 
-<p>Wendy's figured this out in the 1990s. Banks figured it out even earlier. Airports use it for security. Theme parks use it for every ride. And yet, in 2026, Tesco still lets you pick your own lane, guaranteeing that roughly 80% of the British population will experience mild to moderate existential distress every time they buy groceries.</p>
+<p>McDonald's India figured this out decades ago. Banks figured it out even earlier. Airports use it for security. Theme parks use it for every ride. And yet, in 2026, DMart still lets you pick your own lane, guaranteeing that roughly 80% of shoppers will experience mild to moderate existential distress every time they buy groceries.</p>
 
 <h2>Round-Robin, Least Connections, and Why Your Brain Uses the Wrong Algorithm</h2>
 
@@ -238,7 +238,7 @@
 <p><strong>Random with Two Choices (the Power of Two):</strong> This is the clever one. Instead of surveying all options, you just pick two at random and choose the better one. It sounds lazy, but a 2001 paper by Michael Mitzenmacher proved that this gets you <em>exponentially</em> better performance than picking one at random, and almost as good as knowing the full state of every server. The math is wild: going from one random choice to two random choices reduces expected queue length from &Theta;(log n) to &Theta;(log log n). Going from two to three barely helps at all.</p>
 
 <div class="callout">
-<strong>The Power of Two Choices:</strong> In load balancing, randomly sampling just two servers and picking the less loaded one gives you exponentially better wait times than random assignment. The lesson: you don't need perfect information. You just need slightly more than zero information. Two choices. That's the sweet spot. More than that is diminishing returns, and you're just standing in Tesco staring at cashiers like a weirdo.
+<strong>The Power of Two Choices:</strong> In load balancing, randomly sampling just two servers and picking the less loaded one gives you exponentially better wait times than random assignment. The lesson: you don't need perfect information. You just need slightly more than zero information. Two choices. That's the sweet spot. More than that is diminishing returns, and you're just standing in DMart staring at cashiers like a weirdo.
 </div>
 
 <p>This is genuinely one of the most beautiful results in computer science, and it applies directly to your life. You don't need to survey all five queues, estimate basket volumes, factor in cashier typing speed, and compute a weighted service-time projection. Just look at two random queues. Pick the shorter one. Move on with your life. You'll do almost as well as the person with perfect information, and you'll save fifteen seconds of agonised decision-making that Abhishek will never get back.</p>
@@ -253,7 +253,7 @@
 
 <p>In computer science, this is equivalent to a <strong>thrashing</strong> problem. When an operating system's memory manager keeps swapping pages in and out of RAM because it's chasing recently-accessed pages without understanding the broader access pattern, it spends all its time switching and none of its time making progress. The CPU is 100% busy doing absolutely nothing useful.</p>
 
-<p>Abhishek, standing in Tesco, clutching his meal deal, switching from lane 4 to lane 2 to lane 5, is a human operating system experiencing thrash. Maximum effort. Zero progress. Pure overhead.</p>
+<p>Abhishek, standing in DMart, clutching his chai and Parle-G, switching from lane 4 to lane 2 to lane 5, is a human operating system experiencing thrash. Maximum effort. Zero progress. Pure overhead.</p>
 
 <div class="pull-quote">Queue-switching is just thrashing with a shopping basket. Maximum effort, zero progress, and the vague sense that the system has failed you.</div>
 
@@ -271,13 +271,13 @@
 
 <p>And it turns out this isn't just a computer science problem. It's a <em>moral</em> problem. Hospital A&E departments use triage (basically priority scheduling with estimated severity as the weight). Immigration queues use first-come-first-served. Airlines use a hybrid: priority boarding for premium classes (weighted scheduling), then group numbers (batched FCFS). Every queueing system you interact with is making an implicit statement about whose time matters more.<sup>[5]</sup></p>
 
-<p>Abhishek once pointed out that the "10 items or fewer" express lane at Tesco is essentially a priority queue that discriminates based on basket size. "It's classist," he said, completely seriously, holding a single banana. "What if I have 11 items but I'm faster than everyone in the express lane?" He's accidentally describing the <strong>priority inversion problem</strong> in real-time operating systems, where a low-priority task holds a resource that a high-priority task needs. But I didn't tell him that, because he was already upset about the hobnobs incident.</p>
+<p>Abhishek once pointed out that the DMart express counter is essentially a priority queue that discriminates based on basket size. "It's unfair," he said, completely seriously, holding a single packet of Parle-G. "What if I have 11 items but I'm faster than everyone in the express lane?" He's accidentally describing the <strong>priority inversion problem</strong> in real-time operating systems, where a low-priority task holds a resource that a high-priority task needs. But I didn't tell him that, because he was already upset about the sugar-free Marie biscuit incident.</p>
 
 <h2>The Supermarket of the Future (Spoiler: It's Just a Load Balancer)</h2>
 
-<p>Some supermarkets are starting to figure this out. Aldi and Lidl, interestingly, have always been ahead of the curve &mdash; their stores are designed with minimal queuing friction. Fewer options, faster scanning, no price checks because everything is already labeled. They've reduced variance in service time, which is, as Erlang could tell you, the single most effective way to reduce queue wait times.</p>
+<p>Some supermarkets are starting to figure this out. D-Mart and More Supermarket, interestingly, have always been ahead of the curve &mdash; their stores are designed with minimal queuing friction. Fewer options, faster scanning, no price checks because everything is already labeled. They've reduced variance in service time, which is, as Erlang could tell you, the single most effective way to reduce queue wait times.</p>
 
-<p>Amazon Go stores eliminated queues entirely by making checkout invisible &mdash; sensors track what you pick up, and your account gets charged when you leave. This is, in load balancing terms, a <strong>connection-less architecture</strong>. There is no queue because there is no server to queue for. The processing happens asynchronously, distributed across cameras and ML models. It's elegant. It's also slightly dystopian, but that's a different blog post.</p>
+<p>Amazon Go stores have eliminated queues entirely by making checkout invisible &mdash; sensors track what you pick up, and your account gets charged when you leave. This is, in load balancing terms, a <strong>connection-less architecture</strong>. There is no queue because there is no server to queue for. The processing happens asynchronously, distributed across cameras and ML models. It's elegant. It's also slightly dystopian, but that's a different blog post.</p>
 
 <p>The most mathematically elegant solution, though, remains the single-queue system. One line. Multiple servers. Next available. It's what banks do. It's what every well-designed web service does. It's what Nginx does to handle millions of concurrent connections. And it's what supermarkets stubbornly refuse to do, because apparently the psychological illusion of "choosing your own lane" is more important than actually having a good experience.</p>
 
@@ -295,16 +295,16 @@
 
 <p>The lesson from load balancing is even better: <strong>stop trying to optimise which queue you're in and start thinking about the system design.</strong> Are you in a system that's fair? Are you in a system that minimises variance? Are you in a system where one bad day doesn't cascade into a catastrophe?</p>
 
-<p>And if you're Abhishek, standing in Tesco, staring at five checkout lanes, desperately trying to calculate which one will move fastest &mdash; just pick any two, choose the shorter one, and put your phone away. The math says you'll be fine. And if you're not fine, well, there's always self-checkout.<sup>[6]</sup></p>
+<p>And if you're Abhishek, standing in DMart, staring at five checkout lanes, desperately trying to calculate which one will move fastest &mdash; just pick any two, choose the shorter one, and put your phone away. The math says you'll be fine. And if you're not fine, well, there's always self-checkout.<sup>[6]</sup></p>
 
 <p>Which, let's be honest, has its own problems entirely.</p>
 
 <div class="footnote">
-  <p><sup>[1]</sup> Yes, a cheque. In 2026. Abhishek said he respected the man's commitment to obsolete financial instruments. I said the man was committing a war crime against the people behind him. We agreed to disagree.</p>
+  <p><sup>[1]</sup> Yes, paying by exact change. In 2026. Abhishek said he respected the man's commitment to tactile financial transactions. I said the man was committing a war crime against the people behind him. We agreed to disagree.</p>
   <p><sup>[2]</sup> Psychologists call this the <strong>negativity bias</strong> &mdash; negative experiences are processed more thoroughly and remembered more vividly than positive ones. From an evolutionary perspective, this makes perfect sense: remembering where the predator was is more important than remembering where the nice berries were. From a supermarket perspective, it means you will carry the trauma of the coupon lady to your grave while forgetting the five hundred times you breezed through in two minutes.</p>
   <p><sup>[3]</sup> Erlang's work was so foundational that the unit of telecom traffic is literally called the "erlang." One erlang equals one hour of continuous phone usage per hour. It's the only SI-adjacent unit named after a man whose entire career was about waiting, which feels appropriate.</p>
-  <p><sup>[4]</sup> Abhishek once tried to estimate queue speed by looking at the <em>payment method</em> each person was likely to use. Cash: slow. Chip and PIN: medium. Contactless: fast. Cheque: leave immediately. His model had an accuracy of roughly 40%, which he described as "better than chance" and I described as "basically guessing."</p>
-  <p><sup>[5]</sup> The NHS A&amp;E triage system is genuinely one of the best real-world implementations of a priority queue with dynamic re-evaluation. Your priority can change while you wait. In computer science terms, it's a priority queue where the comparator function is non-static. In human terms, it's the reason you see someone who arrived after you go in before you, and you should be glad, because it means your condition is less urgent than theirs. Or it means the system is broken. It's sometimes hard to tell.</p>
+  <p><sup>[4]</sup> Abhishek once tried to estimate queue speed by looking at the <em>payment method</em> each person was likely to use. Cash: slow. Debit card with PIN: medium. UPI / contactless: fast. Exact change in coins: leave immediately. His model had an accuracy of roughly 40%, which he described as "better than chance" and I described as "basically guessing."</p>
+  <p><sup>[5]</sup> The government hospital triage system is genuinely one of the best real-world implementations of a priority queue with dynamic re-evaluation. Your priority can change while you wait. In computer science terms, it's a priority queue where the comparator function is non-static. In human terms, it's the reason you see someone who arrived after you go in before you, and you should be glad, because it means your condition is less urgent than theirs. Or it means the system is broken. It's sometimes hard to tell.</p>
   <p><sup>[6]</sup> Self-checkout: the system where the customer becomes the server, the variance in service time goes through the roof because half the population doesn't know what a barcode is, and the "unexpected item in bagging area" message has caused more human suffering than any error code in history. It is, without question, the worst load balancing decision in the history of retail. A distributed system where every node is untrained, unmotivated, and passive-aggressively arguing with a scale.</p>
 </div>
 

@@ -87,7 +87,7 @@
 
 <p>Here's the thing about the trolley problem as applied to self-driving cars: it assumes the car has <em>perfect information</em>. It knows there's a grandmother on the left and a child on the right. It knows the exact speed, trajectory, and stopping distance. It has time to make a decision. It just needs to know which decision to make.</p>
 
-<p>In reality, the car doesn't have any of this information. In reality, the car is trying to figure out whether that dark shape on the road ahead is a pedestrian, a bin bag, a shadow, a pothole, or a piece of cardboard. It's processing camera feeds that are partially obscured by rain. It's trying to reconcile conflicting data from its lidar, radar, and camera systems. It's working with a neural network that was trained predominantly on daytime images of American roads and is currently driving through a drizzly British November evening in Croydon.</p>
+<p>In reality, the car doesn't have any of this information. In reality, the car is trying to figure out whether that dark shape on the road ahead is a pedestrian, a bin bag, a shadow, a pothole, or a piece of cardboard. It's processing camera feeds that are partially obscured by rain. It's trying to reconcile conflicting data from its lidar, radar, and camera systems. It's working with a neural network that was trained predominantly on daytime images of American roads and is currently driving through a drizzly monsoon evening in Bangalore.</p>
 
 <p>The trolley problem assumes you've already solved perception. Perception is the actual problem.</p>
 
@@ -114,7 +114,7 @@
   ╠══════════════════════════════════════════════════════════════════╣
   ║                                                                  ║
   ║    ┌─────────────────────────────────────────────┐               ║
-  ║    │         TUESDAY AFTERNOON IN CROYDON         │               ║
+  ║    │         TUESDAY AFTERNOON IN BANGALORE        │               ║
   ║    │                                              │               ║
   ║    │   [dark blob]   [shadow]   [bin bag?]        │               ║
   ║    │       ???          ???        ???             │               ║
@@ -144,7 +144,7 @@
 
 <p>Let me list some of the actual computer vision edge cases that autonomous vehicle engineers lose sleep over:</p>
 
-<p><strong>Rain.</strong> Water droplets on camera lenses create distortion. Wet roads reflect headlights, creating phantom obstacles. Lidar beams scatter off rain, creating noise. The entire sensor suite degrades. And it rains, on average, 156 days per year in London. The system needs to work in rain not as an edge case but as a <em>baseline condition</em>.</p>
+<p><strong>Rain.</strong> Water droplets on camera lenses create distortion. Wet roads reflect headlights, creating phantom obstacles. Lidar beams scatter off rain, creating noise. The entire sensor suite degrades. And it rains, on average, over 100 days per year in Mumbai. The system needs to work in rain not as an edge case but as a <em>baseline condition</em>.</p>
 
 <p><strong>Shadows.</strong> A hard shadow from a building can look, to a camera-based system, remarkably similar to a dark object on the road. The system needs to distinguish between "dark area where an object blocks light" and "dark area where an object IS." Humans do this intuitively using context and depth perception. Neural networks frequently get it wrong.</p>
 

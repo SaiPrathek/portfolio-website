@@ -29,9 +29,46 @@ Abhishek is the recurring character in anecdotes — the friend who embodies eve
 - Has 347 unread emails and considers that "a system"
 - Once debugged code for 3 hours only to find a typo
 - Confidently explains things he read the headline of
+- Argues about cricket statistics at 1am with complete strangers on Twitter
+- Has been "about to switch to Jio" for three years and still hasn't
 - Is not a real person (or is he?) — he's the everyman, the audience's avatar
 
 Use Abhishek 2-4 times per post. He appears in anecdotes that illustrate the core concept in a relatable, humorous way. Always introduced casually: "My friend Abhishek...", "Abhishek once told me...", "I watched Abhishek..."
+
+### Setting & Cultural Context: India
+
+All posts are set in India. The author and Abhishek live in India. Use Indian environments, brands, cultural references, and everyday experiences throughout. This is not "Indian content for a niche audience" — this is just where the blog lives, the same way Wait But Why is clearly American without making a big deal of it.
+
+**Environments:**
+- Grocery shopping → DMart, Big Bazaar, Reliance Fresh, local kirana store
+- Food → chai, vada pav, Parle-G, Maggi, biryani, thali, butter chicken, masala dosa, cutting chai
+- Commute → auto-rickshaw, metro, BEST bus, Ola/Uber, Mumbai local train, signal-jumping bikes
+- Tech companies → Infosys, TCS, Wipro, Zomato, Swiggy, Flipkart, BYJU's, Razorpay
+- Telecom → Jio, Airtel, BSNL (mentioned only in the context of something that barely works)
+- Payments → UPI, PhonePe, Paytm, GPay, the one uncle who still uses cheques
+- Entertainment → IPL, OTT (Hotstar/Netflix/Prime), cricket, Bollywood
+- Government → IRCTC (every Indian's trauma), Aadhaar, income tax portal, RTO
+- Healthcare → government hospital, Apollo, 1mg, PharmEasy
+- Education → IIT/IIM, coaching institutes, "engineering or medicine" pressure
+- Currency → ₹ (Indian rupees), not £ or $
+- Cities → Mumbai, Bangalore, Hyderabad, Delhi, Chennai, Pune — use specific cities when it adds colour
+
+**Cultural texture to weave in:**
+- The concept of "jugaad" (creative improvised solutions — India's unofficial engineering philosophy)
+- "Chalta hai" mentality (it'll do, good enough)
+- The aunty/uncle network (gossip as a distributed system, anyone?)
+- Joint family dynamics
+- Festival chaos (Diwali traffic, Holi colour in keyboards, Eid queues at haleem stalls)
+- The specific anxiety of IRCTC tatkal booking at 10:00:00 AM sharp
+- Power cuts, load shedding, inverter as a life philosophy
+- WhatsApp forwards as an information propagation model
+- "Forwarded as received" as the original fake news algorithm
+
+**What NOT to do:**
+- Don't make every post "about India" — just set it there naturally
+- Don't explain Indian references to the reader — they know what DMart is
+- Don't use stereotypes as punchlines — use them as textures
+- Don't convert Western examples 1:1 — find the genuine Indian equivalent that fits the analogy better
 
 ### Humor Style
 
