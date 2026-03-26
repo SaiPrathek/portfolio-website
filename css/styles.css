@@ -1715,3 +1715,175 @@ body.theme-office #projects .group:hover {
     transform: none;
   }
 }
+
+
+/* ============================================
+   BLOG POST NAVIGATION (prev / next)
+   ============================================ */
+
+.blog-nav-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+.blog-nav-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  border: 1px solid var(--outline-variant);
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+body.theme-f1  .blog-nav-card { background: var(--surface-container-lowest); }
+body.theme-office .blog-nav-card { background: var(--surface-container-low); }
+
+.blog-nav-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.blog-nav-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+}
+
+body.theme-f1  .blog-nav-label { font-family: var(--font-mono); }
+body.theme-office .blog-nav-label { font-family: var(--font-body); }
+
+.blog-nav-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  line-height: 1.4;
+}
+
+body.theme-f1  .blog-nav-title { font-family: var(--font-headline); font-style: italic; }
+body.theme-office .blog-nav-title { font-family: 'Newsreader', serif; font-style: italic; }
+
+.blog-nav-next { align-items: flex-end; }
+.blog-nav-prev { align-items: flex-start; }
+
+
+/* ============================================
+   BLOG RELATED POSTS
+   ============================================ */
+
+.blog-related {
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.blog-related-header {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+}
+
+body.theme-f1  .blog-related-header { font-family: var(--font-mono); }
+body.theme-office .blog-related-header { font-family: var(--font-body); }
+
+.blog-rel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.blog-rel-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  text-decoration: none;
+  border-left: 3px solid var(--primary);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+body.theme-f1  .blog-rel-card { background: var(--surface-container-lowest); }
+body.theme-office .blog-rel-card { background: var(--surface-container-low); }
+
+.blog-rel-card:hover {
+  transform: translateY(-3px);
+}
+
+body.theme-f1  .blog-rel-card:hover { box-shadow: 0 8px 24px rgba(179,4,0,0.1); }
+body.theme-office .blog-rel-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+
+.blog-rel-id {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+}
+
+body.theme-f1  .blog-rel-id { font-family: var(--font-mono); }
+
+.blog-rel-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--on-surface);
+  line-height: 1.35;
+}
+
+body.theme-f1  .blog-rel-title { font-family: var(--font-headline); font-style: italic; }
+body.theme-office .blog-rel-title { font-family: 'Newsreader', serif; font-style: italic; }
+
+.blog-rel-excerpt {
+  font-size: 0.775rem;
+  color: var(--secondary);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.blog-rel-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--secondary);
+  margin-top: 0.25rem;
+}
+
+body.theme-f1  .blog-rel-meta { font-family: var(--font-mono); }
+
+.blog-rel-read { color: var(--primary); font-weight: 700; }
+
+.blog-rel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.blog-rel-tag {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 1px 7px;
+  background: var(--surface-container-high);
+  color: var(--secondary);
+}
+
+body.theme-f1  .blog-rel-tag { font-family: var(--font-mono); }
+
+@media (max-width: 640px) {
+  .blog-nav-row { grid-template-columns: 1fr; }
+  .blog-nav-next { align-items: flex-start; }
+  .blog-rel-grid { grid-template-columns: 1fr; }
+}

@@ -423,6 +423,98 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ============================================
+   BLOG POST NAVIGATION + RELATED POSTS
+   ============================================ */
+
+(function initBlogNav() {
+  if (!window.location.pathname.includes('/blog/posts/')) return;
+
+  // Extract current slug from URL, e.g. "2026-03-26-slowest-queue"
+  const slug = window.location.pathname.split('/').pop().replace('.html', '');
+
+  fetch('/blog/posts.json')
+    .then(r => r.json())
+    .then(posts => {
+      // posts.json is chronological; find current index
+      const idx = posts.findIndex(p => p.slug === slug);
+      if (idx === -1) return;
+
+      const cur  = posts[idx];
+      const prev = idx > 0 ? posts[idx - 1] : null;
+      const next = idx < posts.length - 1 ? posts[idx + 1] : null;
+
+      // ── Related posts: score by shared tags, exclude current ──────
+      const related = posts
+        .filter((_, i) => i !== idx)
+        .map(p => ({
+          post: p,
+          score: p.tags.filter(t => cur.tags.includes(t)).length
+        }))
+        .filter(x => x.score > 0)
+        .sort((a, b) => b.score - a.score || (b.post.id > cur.id ? -1 : 1))
+        .slice(0, 3)
+        .map(x => x.post);
+
+      // ── Build prev/next HTML ───────────────────────────────────────
+      function navCard(p, dir) {
+        const label = dir === 'prev' ? '← PREV' : 'NEXT →';
+        const officeLabel = dir === 'prev' ? '← Previous' : 'Next →';
+        const align = dir === 'prev' ? 'text-left' : 'text-right';
+        return `
+          <a href="/blog/posts/${p.slug}.html" class="blog-nav-card blog-nav-${dir} ${align}">
+            <span class="blog-nav-label f1-only">${label}</span>
+            <span class="blog-nav-label office-only">${officeLabel}</span>
+            <span class="blog-nav-title">${p.title}</span>
+          </a>`;
+      }
+
+      const navHTML = `
+        <div class="blog-nav-row px-6 max-w-3xl mx-auto">
+          ${prev ? navCard(prev, 'prev') : '<div></div>'}
+          ${next ? navCard(next, 'next') : '<div></div>'}
+        </div>`;
+
+      // ── Build related posts HTML ───────────────────────────────────
+      function relatedCard(p) {
+        const tags = p.tags.map(t =>
+          `<span class="blog-rel-tag">${t}</span>`
+        ).join('');
+        return `
+          <a href="/blog/posts/${p.slug}.html" class="blog-rel-card">
+            <div class="blog-rel-id f1-only">LAP REPORT #${p.id}</div>
+            <div class="blog-rel-id office-only">MEMO #${p.id}</div>
+            <div class="blog-rel-title">${p.title}</div>
+            <div class="blog-rel-excerpt">${p.excerpt}</div>
+            <div class="blog-rel-meta">
+              <span class="blog-rel-date">${p.date}</span>
+              <span class="blog-rel-read">${p.readTime}</span>
+            </div>
+            <div class="blog-rel-tags">${tags}</div>
+          </a>`;
+      }
+
+      const relatedHTML = related.length ? `
+        <div class="blog-related px-6 max-w-3xl mx-auto">
+          <div class="blog-related-header">
+            <span class="f1-only">MORE FROM THE PITS</span>
+            <span class="office-only">FROM THE FILING CABINET</span>
+          </div>
+          <div class="blog-rel-grid">
+            ${related.map(relatedCard).join('')}
+          </div>
+        </div>` : '';
+
+      // ── Inject before the back-link section ───────────────────────
+      const backSection = document.querySelector('section.px-6.pb-16');
+      if (backSection) {
+        backSection.insertAdjacentHTML('beforebegin', navHTML + relatedHTML);
+      }
+    })
+    .catch(() => {}); // silently fail — nav is a nice-to-have
+})();
+
+
+/* ============================================
    THEME TOGGLE EASTER EGG
    ============================================ */
 
