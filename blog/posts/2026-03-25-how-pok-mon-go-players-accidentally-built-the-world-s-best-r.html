@@ -189,6 +189,84 @@
 
 <p>Because the Pokémon Go revelation isn't that Niantic did something nefarious. It's that they did something <em>clever</em> — so clever that most people didn't even realise they were part of it until a decade later.</p>
 
+<h2>The Desire Path Problem</h2>
+
+<p>There's a concept in urban planning called "desire paths" — those worn muddy trails across grass where people actually walk, as opposed to the paved paths where planners <em>wanted</em> them to walk. Every university campus has them. Every park. Every bit of green space between a car park and a building entrance. They're the physical manifestation of the gap between how architects think humans should behave and how humans actually behave.</p>
+
+<p>Pokémon Go data revealed the digital equivalent of desire paths, but at a scale that urban planners could only dream about.</p>
+
+<p>Think about it. Traditional methods for understanding pedestrian flow involve hiring people to stand at intersections with clipboards, or installing expensive sensors, or analysing grainy CCTV footage. You might get data on a few hundred people over a few days at a single location. Pokémon Go gave researchers data on millions of people over years across entire cities. Every shortcut through an alley. Every jaywalking hotspot. Every place where the pavement is so bad that people walk in the road instead. Every desire path, mapped in exquisite detail, without anyone having to commission a single study.<sup>3</sup></p>
+
+<p>And this data isn't just useful for robotics — it's gold for city planning itself. Where should you put zebra crossings? Where people actually cross, not where the Highway Code says they should. Where should you widen pavements? Wherever the data shows pedestrians constantly stepping into the road because the current pavement is too narrow. Where should you put benches? Wherever people cluster and linger, which is often nowhere near where current benches are.</p>
+
+<div class="callout">
+<p>Urban planners have spent decades trying to answer the question: "How do people actually use this space?" Pokémon Go players answered it by accident, in higher resolution than any planned study could achieve, while trying to hatch a virtual egg by walking 10 kilometres.</p>
+</div>
+
+<p>There's a wonderful irony here. Cities spend millions on "smart city" sensor networks to understand how people move through urban spaces. Meanwhile, Niantic collected better data for free because they understood something fundamental: you don't need sensors if you can convince people to <em>be</em> the sensors. You just need to give them a reason to turn their phones on and start walking.</p>
+
+<p>The desire path data also reveals something deeper about the relationship between infrastructure and behaviour. We tend to assume that if you build infrastructure, people will use it as intended. Build a path, people walk on it. Build a crossing, people cross there. But the Pokémon Go data shows just how wrong this assumption is. Humans are relentless optimisers. They will always find the most efficient route, the most convenient crossing point, the shortest line between where they are and where they want to be — and they will cheerfully ignore any infrastructure that doesn't align with those preferences.</p>
+
+<p>This has profound implications for how we design cities, buildings, and public spaces. But it also has implications for how we design digital spaces, software interfaces, and yes, robot behaviour. Because if a delivery robot follows the "correct" path while every human around it is taking the shortcut, that robot isn't going to blend in. It's going to look like the one person at a party who actually uses the front door instead of cutting through the garden like everyone else.</p>
+
+<h2>The Mechanical Turk Problem</h2>
+
+<p>Let's talk about something uncomfortable.</p>
+
+<p>In the late 18th century, a Hungarian inventor named Wolfgang von Kempelen built a chess-playing machine called "The Turk." It was a mechanical automaton that could beat nearly any human opponent. It toured Europe, defeating Napoleon and Benjamin Franklin. It was, by every appearance, artificial intelligence two centuries before the term existed.</p>
+
+<p>It was also, of course, a fraud. Inside the cabinet, hidden by an ingenious arrangement of gears and mirrors, sat a human chess master who operated the machine.</p>
+
+<p>We have not moved on from this as much as we'd like to believe.</p>
+
+<p>Amazon literally named its crowdsourcing platform "Mechanical Turk" — a service where thousands of humans perform tiny tasks that computers can't do well: labelling images, transcribing audio, moderating content, categorising products. The entire pitch is right there in the name: <em>artificial artificial intelligence</em>. Human labour, dressed up to look like machine intelligence.</p>
+
+<p>Content moderation at social media companies? Largely humans, sitting in offices in the Philippines and Kenya, watching the worst things the internet has to offer for wages that would make you wince. Self-driving car training data? Annotated by armies of gig workers drawing bounding boxes around pedestrians, cyclists, and traffic lights, frame by frame, for hours on end. That voice assistant that seems so clever? Its responses were refined by thousands of human raters who evaluated outputs and corrected errors.</p>
+
+<p>So much of what we call "AI" is really just human labour with extra steps.</p>
+
+<p>And Pokémon Go might be the most elegant example of this phenomenon in history. Millions of humans, performing the labour of pedestrian navigation data collection — work that would normally require trained surveyors, expensive equipment, and months of fieldwork — and doing it for free. Not even for free, actually. They <em>paid</em> for the privilege. In-app purchases for the game totalled billions of dollars. People paid money to do work they didn't know they were doing.</p>
+
+<div class="ascii-diagram">
+<pre>
+    TRADITIONAL DATA               POKÉMON GO DATA
+    COLLECTION                     COLLECTION
+
+    ┌──────────────────┐           ┌──────────────────┐
+    │ Cost: £££££      │           │ Cost: £0          │
+    │                  │           │ (users pay YOU)   │
+    │ Speed: Months    │           │                   │
+    │                  │           │ Speed: Real-time   │
+    │ Scale: 1 city    │           │                   │
+    │                  │           │ Scale: Global      │
+    │ Coverage: Major  │           │                   │
+    │  roads only      │           │ Coverage: Every    │
+    │                  │           │  path, alley,      │
+    │ Accuracy: Good   │           │  shortcut, and     │
+    │  (but sampled)   │           │  desire path       │
+    │                  │           │                   │
+    │ Sample: 500      │           │ Accuracy: Superb   │
+    │  paid surveyors  │           │  (natural behaviour)│
+    │                  │           │                   │
+    │ Bias: Surveyors  │           │ Sample: 500M+      │
+    │  behave like     │           │  unpaid players     │
+    │  surveyors       │           │                   │
+    │                  │           │ Bias: Players       │
+    │                  │           │  behave like humans │
+    └──────────────────┘           └──────────────────┘
+</pre>
+</div>
+
+<p>Now, is this exploitation? I keep turning this question over in my head, and I keep landing on: it's complicated.</p>
+
+<p>On one hand, Niantic created genuine value for players. The game was fun. It improved health outcomes. It built communities. Nobody was coerced. The terms of service were available to read (though let's be honest, nobody reads terms of service — another form of the Mechanical Turk problem, now that I think about it).</p>
+
+<p>On the other hand, there's something uncomfortable about a company generating billions of dollars' worth of spatial data from labour that people didn't know they were performing. The informed consent question here is genuinely tricky. Can you consent to something you don't know is happening? Legally, yes — you agreed to the terms. Ethically? That's a much harder question.</p>
+
+<p>I think the honest answer is that Pokémon Go sits in a grey zone that we don't have good language for yet. It's not exploitation in the traditional sense — nobody was harmed, and most people got something valuable out of it. But it's also not a fully transparent exchange. It's something new. A kind of <em>ambient labour</em> where the work happens as a side effect of play, and the worker never knows they're working.</p>
+
+<p>And here's the really unsettling bit: this model is spreading. Every app that collects behavioural data is, in some sense, a Mechanical Turk. Every time you scroll, tap, pause, or swipe, you're performing micro-labour that trains a model somewhere. The question isn't whether this is happening — it is. The question is whether we're going to develop norms and frameworks for thinking about it, or whether we're just going to keep catching Pikachu and hoping for the best.</p>
+
 <h2>What This Means for You (Yes, You)</h2>
 
 <p>Three takeaways, because I'm contractually obligated to make this practical:</p>
@@ -220,6 +298,7 @@
 <div class="footnote">
 <p><sup>1</sup> This number is cumulative downloads, not active users. The actual number of people who played consistently is much smaller, but still in the hundreds of millions. The point stands.</p>
 <p><sup>2</sup> I'm genuinely convinced that at least three major technological breakthroughs in the next decade will trace their origins back to something that currently seems completely frivolous. If I had to guess: TikTok video analysis for something medical, Minecraft for architecture or urban planning, and dating apps for... actually, I don't want to think too hard about what dating apps are training.</p>
+<p><sup>3</sup> Researchers at various institutions have used aggregated and anonymised location data from games and apps to study pedestrian behaviour. The specific value of Pokémon Go's dataset is its sheer breadth: because the game incentivised walking <em>everywhere</em> — not just along commute routes or popular destinations — it captured movement patterns in places that traditional studies almost never cover. Side streets, residential areas, park interiors, industrial estates at odd hours. The long tail of human movement, basically.</p>
 </div>
     </div>
   </main>

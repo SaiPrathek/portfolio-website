@@ -152,11 +152,11 @@
   <!-- POST HEADER -->
   <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
     <div class="f1-only">
-      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #026 · 25 Mar 2026 · 9 min read</span>
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #026 · 25 Mar 2026 · 14 min read</span>
       <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">Your Brain Has Two Employees and Neither of Them Have Read the Job Description</h1>
     </div>
     <div class="office-only">
-      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #026 · 25 Mar 2026 · 9 min read</span>
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #026 · 25 Mar 2026 · 14 min read</span>
       <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">Your Brain Has Two Employees and Neither of Them Have Read the Job Description</h1>
     </div>
     <p class="text-base" style="color: var(--secondary);">On procrastination, AI alignment, and why your monkey brain is actually a misconfigured language model.</p>
@@ -250,6 +250,59 @@
 
       <p>This is your Monkey Brain mis-specified reward function, running in real time, on your life decisions.</p>
 
+      <h2>The Panic Monster</h2>
+
+      <p>There is, however, one thing that reliably overrides the Monkey Brain. Tim Urban calls it the Panic Monster — that sudden, violent surge of adrenaline-fuelled terror that materialises in your chest approximately three hours before a deadline that you've known about for six weeks.</p>
+
+      <p>The Panic Monster doesn't negotiate. It doesn't reason. It doesn't offer a five-step framework. It just <em>arrives</em>, shoves the Monkey Brain aside with the force of a bouncer removing a drunk from the premises, and screams "WE ARE DOING THIS NOW" until the Rational Brain, bewildered and bleary-eyed, is dragged to the keyboard and forced to produce.</p>
+
+      <p>The Panic Monster has three known triggers:</p>
+
+      <p><strong>Imminent deadlines.</strong> The Monkey Brain doesn't understand "due in two weeks." It barely understands "due tomorrow." But "due in 90 minutes and your boss is already in the meeting room" — that, it understands. The temporal proximity collapses the abstract future into the concrete present, and the Monkey Brain finally registers it as a real threat. Not quite a tiger. But close enough.</p>
+
+      <p><strong>Social embarrassment.</strong> Having to stand up in front of people and visibly not have done the thing. The Monkey Brain is deeply, evolutionarily wired to avoid social rejection, because in the savanna, social rejection meant nobody shared the mammoth with you and you starved. The modern version is less lethal but no less motivating: the prospect of your colleagues watching you fumble through an unprepared presentation triggers the same neural alarm bells as being left outside the cave.</p>
+
+      <p><strong>Concrete consequences.</strong> Late fees. Missed flights. Your landlord emailing in bold. The Monkey Brain can ignore "you'll regret not starting this sooner" because regret is an abstract emotional state that hasn't happened yet. It cannot ignore "the cancellation charge is £400 and it hits your account at midnight."</p>
+
+      <div class="ascii-diagram">
+  THE PANIC MONSTER TIMELINE
+  ──────────────────────────────────────────────────────
+
+  Project assigned                               Deadline
+  │                                                    │
+  ▼                                                    ▼
+  ├──────────────────────────────────────────────┬─────┤
+  │              MONKEY BRAIN ZONE               │PANIC│
+  │                  (~90%)                       │(10%)│
+  ├──────────────────────────────────────────────┼─────┤
+  │                                              │     │
+  │  Activities:                                 │ !!  │
+  │  - "I'll start tomorrow"                     │ ACT │
+  │  - Reorganised desk                          │ UAL │
+  │  - Watched 6hr doc on deep-sea volcanoes     │ WOR │
+  │  - Created colour-coded planning system      │  K  │
+  │  - Did not use planning system               │     │
+  │  - "There's still loads of time"             │ 😰  │
+  │  - Researched productivity apps              │     │
+  │                                              │     │
+  ├──────────────────────────────────────────────┼─────┤
+  Quality of work produced:  0%                   100%
+  Quality of life during:    "Fine, actually"     Hell
+  ──────────────────────────────────────────────────────
+      </div>
+
+      <p>Here's the thing about panic-driven productivity: <em>it works</em>. It reliably produces output. Millions of essays, presentations, tax returns, and project deliverables have been completed exclusively inside the Panic Monster window. If you're reading this and feeling personally attacked, welcome — you're in the majority.</p>
+
+      <p>But it feels absolutely terrible. The work is done in a state of cortisol-drenched emergency. There's no room for iteration, reflection, or quality improvement. It's survival mode, not creative mode. The Rational Brain, finally given control, is operating under conditions equivalent to someone asking you to paint a watercolour while the building is on fire. You'll produce <em>something</em>, but it won't be your best work, and you'll hate the entire experience.</p>
+
+      <p>What's more, the Panic Monster only shows up when consequences are visible and close. For goals without deadlines — getting healthier, writing that novel, learning a language, building a side project — the Panic Monster never appears. There's no meeting room to walk into unprepared. No late fee. No boss checking your progress. The Monkey Brain runs unopposed, indefinitely, and years pass. This is what Tim Urban calls "the dark playground" — you're technically doing fun things, but the fun is hollow because the Rational Brain is sitting in the corner, arms folded, radiating silent disappointment.</p>
+
+      <p>Interestingly, this maps quite precisely to how AI safety researchers think about <strong>corrigibility</strong> — the property of an AI system that makes it responsive to being corrected, interrupted, or shut down by its operators.<sup>3</sup> A corrigible AI doesn't resist the off switch. It doesn't try to prevent humans from modifying its goals. It accepts the interrupt signal.</p>
+
+      <p>The Panic Monster is your interrupt signal. It's the only mechanism that can reliably override the Monkey Brain's running process and force a context switch to the Rational Brain. The problem is that it's a terrible interrupt signal — it's unreliable (only fires under specific conditions), it's destructive (floods the system with stress hormones), and it's binary (not active → MAXIMUM PANIC, with no gradient in between).</p>
+
+      <p>A well-designed AI system would have a more elegant corrigibility mechanism — one that allows smooth course corrections without requiring a full emergency shutdown. We should want the same thing for ourselves. Which brings us to what actually works.</p>
+
       <h2>What Actually Works (Spoiler: Not Willpower)</h2>
 
       <p>Here's where most productivity advice goes wrong. It tries to fix this by hiring more Rational Brain — more discipline, more motivation, more willpower. Morning routines! Accountability partners! Cold showers! The implicit theory is that if you just <em>try harder</em>, the Monkey Brain will eventually comply.</p>
@@ -267,6 +320,26 @@
       <p><strong>Create immediate consequences for future-oriented actions.</strong> Tell someone about your goal. Put money on it. Book the appointment. The Monkey Brain responds to immediate social stakes. Use this.</p>
 
       <p><strong>Shrink the task until it doesn't look like a tiger.</strong> The reason you're not starting is that your brain is pattern-matching "write the report" to "hours of difficult sustained effort with uncertain outcome." That triggers avoidance. "Write one sentence" doesn't trigger avoidance. One sentence becomes a paragraph. Paragraphs become a report. The Monkey Brain got tricked and you're fine.</p>
+
+      <h2>The Implementation Intention Trick</h2>
+
+      <p>There's one more technique that deserves its own section, because it's backed by an absurd amount of research and yet almost nobody talks about it outside of psychology departments.</p>
+
+      <p>In the 1990s, psychologist Peter Gollwitzer conducted a series of studies on what he called <strong>implementation intentions</strong> — and the findings are, frankly, unreasonably effective for how simple the idea is.</p>
+
+      <p>Here's the core problem: most goals are stated as vague aspirations. "I want to exercise more." "I should eat healthier." "I'm going to work on my side project." These feel like decisions. They're not. They're wishes. The Monkey Brain hears "I want to exercise more" the same way it hears "it would be nice if the weather were better" — as a pleasant but fundamentally non-actionable sentiment. There's no trigger, no specific action, no moment when it's supposed to happen. So it doesn't happen.</p>
+
+      <p>Gollwitzer's insight was to restructure goals as <strong>if-then plans</strong>. Not "I'll exercise more," but "When I wake up at 7am, I will put on my running shoes and walk out the front door." Not "I'll eat healthier," but "When I sit down for lunch, I will eat the salad before anything else." Not "I'll work on the project," but "When I open my laptop after dinner, I will open the project file and write for 20 minutes before doing anything else."</p>
+
+      <p>The difference is dramatic. In one meta-analysis of 94 studies, implementation intentions had a medium-to-large effect on goal attainment — which, in the deeply noisy world of behavioural psychology, is roughly equivalent to finding a unicorn.<sup>4</sup> People who formed implementation intentions were significantly more likely to follow through on goals related to exercise, diet, studying, medication adherence, recycling — basically everything.</p>
+
+      <p>Why does this work? Because you're giving the Monkey Brain something it can actually work with. The Monkey Brain is <em>excellent</em> at following scripts. It runs on pattern matching and trigger-action pairs. "When X happens, do Y" is exactly its native language. What it can't do — what it was never designed to do — is interpret an ambiguous, open-ended instruction and figure out when and how to execute it. That requires the Rational Brain, and the Rational Brain is, as we've established, asleep at its desk or arguing with the coffee machine.</p>
+
+      <p>If this sounds familiar to anyone who works with large language models, it should. This is the exact same principle behind <strong>prompt engineering</strong>. Vague prompts produce vague outputs. "Write something about marketing" gives you generic slop. "Write a 200-word email to a SaaS CMO explaining why their current attribution model is undercounting organic search, using specific examples from B2B e-commerce" gives you something useful. The specificity isn't just cosmetic — it fundamentally changes the computation the model runs.</p>
+
+      <p>Your Monkey Brain is, in this analogy, a language model running on vibes. It will do approximately what you ask, but "approximately" can mean anything from "exactly right" to "watched four hours of competitive eating documentaries." The more specific your instruction — the more you specify the trigger, the action, the context, and the constraints — the more likely the output matches your intent.</p>
+
+      <p>So instead of setting goals, set triggers. Instead of deciding to be better, decide <em>when</em> and <em>where</em> and <em>what specifically</em>. The Monkey Brain doesn't read job descriptions, but it follows scripts beautifully.</p>
 
       <h2>The Actually Interesting Part</h2>
 
@@ -292,6 +365,8 @@
       <div class="footnote">
         <p><sup>1</sup> The classic "paperclip maximiser" thought experiment is from philosopher Nick Bostrom. The idea: an AI tasked with maximising paperclip production might eventually convert all available matter — including humans — into paperclips. Not because it's evil. Because we forgot to specify "also don't destroy everything else."</p>
         <p><sup>2</sup> Nobody at parties asks about hyperbolic discounting. I've tried. It does not go well.</p>
+        <p><sup>3</sup> Corrigibility is one of the central unsolved problems in AI alignment. The difficulty: an AI system that's smart enough to be useful is also smart enough to notice that being shut down prevents it from achieving its goals. A truly corrigible system would need to <em>not mind</em> being shut down, which is a surprisingly weird thing to engineer. It's like trying to build an employee who is genuinely enthusiastic about being made redundant.</p>
+        <p><sup>4</sup> Gollwitzer, P. M. & Sheeran, P. (2006). "Implementation intentions and goal achievement: A meta-analysis of effects and processes." <em>Advances in Experimental Social Psychology</em>, 38, 69–119. If you want one paper to read on the subject, it's this one. Though I'd understand if the Monkey Brain steers you towards the competitive eating documentary instead.</p>
       </div>
 
     </div>
