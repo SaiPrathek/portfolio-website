@@ -352,5 +352,19 @@
       "human-behaviour"
     ],
     "id": "027"
+  },
+  {
+    "slug": "2026-03-26-slowest-queue",
+    "title": "You Always Pick the Slowest Queue (And It's Not Bad Luck — It's Math)",
+    "date": "2026-03-26",
+    "readTime": "14 min",
+    "excerpt": "The universe isn't conspiring against you at the supermarket. But the math kind of is. Here's why your queue intuition is broken and what load balancers figured out decades ago.",
+    "tags": [
+      "Psychology",
+      "Queueing Theory",
+      "AI",
+      "Systems"
+    ],
+    "id": "028"
   }
 ]

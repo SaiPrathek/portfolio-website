@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You Always Pick the Slowest Queue (And It's Not Bad Luck &mdash; It's Math) | The Debrief</title>
+  <meta name="description" content="The universe isn't conspiring against you at the supermarket. But the math kind of is. Here's why your queue intuition is broken and what load balancers figured out decades ago." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-03-26-slowest-queue.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="You Always Pick the Slowest Queue (And It's Not Bad Luck &mdash; It's Math)" />
+  <meta property="og:description" content="The universe isn't conspiring against you at the supermarket. But the math kind of is." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-03-26-slowest-queue.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; } .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); } body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">&#8592; All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">&#8592; All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #028 &middot; 26 Mar 2026 &middot; 14 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">You Always Pick the Slowest Queue (And It's Not Bad Luck &mdash; It's Math)</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #028 &middot; 26 Mar 2026 &middot; 14 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">You Always Pick the Slowest Queue (And It's Not Bad Luck &mdash; It's Math)</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">The universe isn't conspiring against you at the supermarket. But the math kind of is. Here's why your queue intuition is broken and what load balancers figured out decades ago.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Psychology</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Queueing Theory</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Systems</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+<p>Last Tuesday, I watched Abhishek do something I've seen him do a hundred times. We were at Tesco. Five checkout lanes open. He stood at the entrance to the queuing area, scanning each line like a general surveying a battlefield. He counted heads. He estimated basket volumes. He peered at the cashiers, trying to psychically assess their scanning speed. He factored in the elderly gentleman in lane three who was still writing a cheque in the year 2026.<sup>[1]</sup></p>
+
+<p>After roughly fifteen seconds of this &mdash; an eternity in supermarket time &mdash; he chose lane four. "Trust me," he said, "I've got a system."</p>
+
+<p>Lane four had the woman who needed a price check on reduced-sugar hobnobs. Then her card was declined. Then she found a different card. Then <em>that</em> card was declined. By the time Abhishek paid for his meal deal and single banana, every other lane had cycled through twice.</p>
+
+<p>"Every time," he muttered in the car park. "Every. Single. Time."</p>
+
+<p>Here's the thing: Abhishek isn't unlucky. He isn't cursed. He isn't the victim of a cosmic conspiracy orchestrated by Tesco's checkout allocation algorithm. He is, like every other human being on the planet, simply <strong>mathematically destined to feel like he always picks the wrong queue</strong>. And the reason why is one of the most elegant little results in probability theory &mdash; a result that, it turns out, computer scientists solved decades ago, and we're all too stubborn to listen.</p>
+
+<h2>The Fundamental Theorem of Queue Disappointment</h2>
+
+<p>Let me set up the problem properly, because once you see it, you can't unsee it.</p>
+
+<p>You walk into a supermarket. There are five queues. You pick one. That means there are four queues you didn't pick. For you to feel like you made the <em>right</em> choice, your queue needs to move faster than <strong>all four</strong> other queues. For you to feel like you made the <em>wrong</em> choice, only <strong>one</strong> of the other four needs to beat you.</p>
+
+<p>If the queues are roughly equal in expected speed &mdash; and they usually are, because supermarkets aren't running some sort of secret fast lane &mdash; then your probability of picking the single fastest queue out of five is exactly <strong>1 in 5. Twenty percent.</strong></p>
+
+<p>Which means there's an <strong>80% chance</strong> that at least one other queue will finish before yours.</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════════╗
+║         PROBABILITY OF PICKING THE FASTEST QUEUE          ║
+╠══════════════════════════════════════════════════════════╣
+║                                                           ║
+║   Number of       Chance you       Chance you feel        ║
+║   queues          picked best      like a fool            ║
+║   ─────────       ───────────      ──────────────         ║
+║   2 queues          50.0%             50.0%               ║
+║   3 queues          33.3%             66.7%               ║
+║   5 queues          20.0%             80.0%  ◄── you      ║
+║   8 queues          12.5%             87.5%               ║
+║   10 queues         10.0%             90.0%               ║
+║   Self-checkout     0.0%             100.0%  (always)     ║
+║                                                           ║
+║   The more options you have, the worse you feel.          ║
+║   (See also: Netflix, dating apps, career choices)        ║
+║                                                           ║
+╚══════════════════════════════════════════════════════════╝
+</pre></div>
+
+<p>This isn't pessimism. It's combinatorics. The moment you choose one queue out of N, you've committed yourself to a game where you have a 1/N chance of winning and an (N-1)/N chance of noticing someone else winning instead. And because humans are <em>exquisitely</em> calibrated to notice when they're losing &mdash; thanks, evolution &mdash; that 80% registers as "this always happens to me" rather than "this is exactly what the math predicts."</p>
+
+<div class="callout">
+<strong>Key insight:</strong> You don't actually always pick the slowest queue. You always <em>notice</em> when you haven't picked the fastest one. These are very different statements, but they feel identical from inside your skull.
+</div>
+
+<p>This is a selection bias so universal that it has a name in psychology: the <strong>asymmetry of regret</strong>. When your queue moves fast, you barely register it. You're on your phone. You're thinking about dinner. The experience is frictionless and therefore invisible. But when your queue stalls &mdash; when the person ahead of you starts arguing about a coupon from 2019 &mdash; time dilates. You become hyper-aware. You start counting the items in other people's baskets. You begin to compose angry tweets in your head. The negative experience burns itself into memory with the intensity of a thousand suns, while the positive experiences evaporate like morning fog.<sup>[2]</sup></p>
+
+<h2>Why Your Brain Is Running a Biased Sampling Algorithm</h2>
+
+<p>Here's where it gets interesting, and here's where the computer science walks in wearing a lab coat and a slightly smug expression.</p>
+
+<p>What your brain is doing when it evaluates queue performance is essentially <strong>sampling</strong>. You're collecting data points &mdash; "that time I was in the slow queue," "that time I was in the fast queue" &mdash; and using them to build a model of reality. The problem is that your sampling mechanism is catastrophically biased.</p>
+
+<p>In machine learning, we have a name for this: <strong>selection bias in training data</strong>. If you train a model on data that over-represents certain outcomes, the model will learn a distorted version of reality. Your brain's queue-experience dataset massively over-represents negative outcomes, not because negative outcomes happen more often, but because your encoding mechanism &mdash; the emotional salience filter in your amygdala &mdash; gives them priority access to long-term memory.</p>
+
+<p>It's as if you were training a neural network to predict queue wait times, but every time the model saw a slow queue, you gave it a learning rate of 0.9, and every time it saw a fast queue, you gave it a learning rate of 0.01. After enough training, the model would "believe" that all queues are slow, because that's what its skewed gradient updates have taught it.</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════════╗
+║     YOUR BRAIN'S QUEUE EXPERIENCE ENCODING SYSTEM         ║
+╠══════════════════════════════════════════════════════════╣
+║                                                           ║
+║   EXPERIENCE                     MEMORY WEIGHT            ║
+║   ──────────                     ─────────────            ║
+║                                                           ║
+║   Fast queue, no drama     ──▶   ░░ (barely registers)    ║
+║   Normal queue, fine       ──▶   ░░░ (was I even there?)  ║
+║   Slow queue, mild         ──▶   ████░ (I noticed)        ║
+║   Slow queue, price check  ──▶   ████████░ (fuming)       ║
+║   Slow queue, coupon lady  ──▶   ██████████████ (SEARED   ║
+║                                   INTO MY SOUL FOREVER)   ║
+║                                                           ║
+║   Result: "I literally always pick the slow queue"        ║
+║   Reality: You pick the slow queue ~40% of the time       ║
+║   Feels like: 97%                                         ║
+║                                                           ║
+╚══════════════════════════════════════════════════════════╝
+</pre></div>
+
+<p>My friend Abhishek is convinced he has the worst queue luck of any human alive. I once asked him to actually track it. For two weeks, he logged every queue experience &mdash; fast, slow, medium. At the end, his success rate was 23%. Which, for five-lane Tesco, is almost exactly what you'd expect from random chance. He was, statistically speaking, perfectly average. He looked at the data and said, "Yeah, but it doesn't <em>feel</em> like 23%."</p>
+
+<p>Abhishek had accidentally discovered the core problem of machine learning: <strong>the model's confidence and the model's accuracy are two entirely different things</strong>.</p>
+
+<h2>Enter Agner Krarup Erlang and the Birth of Queueing Theory</h2>
+
+<p>The mathematics of queues were first formalised in 1909 by a Danish mathematician named <strong>Agner Krarup Erlang</strong>, who worked for the Copenhagen Telephone Company. His problem wasn't supermarkets &mdash; it was switchboards. How many telephone operators do you need to ensure that callers don't wait too long to be connected?<sup>[3]</sup></p>
+
+<p>Erlang's insight was that you can model arrivals (people joining the queue) as a <strong>Poisson process</strong> &mdash; random events occurring at a known average rate but with inherent unpredictability in their exact timing. And you can model service times (how long each person takes) as an <strong>exponential distribution</strong> &mdash; most people are quick, but occasionally someone takes absolutely ages.</p>
+
+<p>That "occasionally someone takes ages" part? That's the killer. In an exponential distribution, the variance is huge relative to the mean. In English: the average checkout time might be 3 minutes, but the <em>spread</em> around that average is enormous. Some people take 45 seconds. Some take 12 minutes. And because long service times contribute disproportionately to wait times, a single slow customer can obliterate the queue experience for everyone behind them.</p>
+
+<div class="callout">
+<strong>Erlang's uncomfortable truth:</strong> In any queueing system with random arrival and service times, the <em>expected</em> waiting time grows faster than you'd intuitively predict. A queue that's 85% utilised (busy 85% of the time) doesn't have 15% slack &mdash; it has wait times that are roughly 5.7x the service time. At 95% utilisation, it's 19x. The relationship isn't linear. It's a hyperbola. And it's why "just one more customer" can turn a fine queue into a disaster.
+</div>
+
+<p>This is formally described by the <strong>Pollaczek-Khinchine formula</strong> (yes, real name, not a Harry Potter spell), which shows that the expected number of people in a queue depends not just on the arrival rate and service rate, but on the <em>variance</em> of the service time. High variance means long queues, even when the average service speed is perfectly adequate.</p>
+
+<p>Your supermarket queue isn't slow because there aren't enough cashiers. It's slow because one person in seven has a trolley that could sustain a family of twelve through a nuclear winter, and that single outlier creates a ripple of delay that propagates through the system like a shockwave.</p>
+
+<div class="pull-quote">You're not unlucky. You're a victim of high-variance service time distributions. Which, admittedly, is harder to fit on a bumper sticker.</div>
+
+<h2>The Load Balancer Already Solved This (You're Just Not Using It)</h2>
+
+<p>Now here's the part that should genuinely annoy you. Computer scientists solved the "which queue should I pick?" problem in the 1960s. They solved it so thoroughly, so elegantly, that every single piece of internet infrastructure you use today relies on their solution. And the solution is embarrassingly simple.</p>
+
+<p><strong>Don't pick a queue. Use a single queue with multiple servers.</strong></p>
+
+<p>This is what's called a <strong>single-queue, multi-server model</strong> &mdash; or in CS terms, a <strong>load balancer</strong>. Instead of each server (cashier, CPU core, API endpoint) having its own dedicated queue, you have one queue that feeds into all servers. The next available server takes the next person in line.</p>
+
+<p>If you've ever been to a bank with the rope maze that feeds into whichever teller is free next, you've experienced this. If you've ever used a website that didn't crash under heavy load, a load balancer did this invisibly behind the scenes. Nginx, HAProxy, AWS ALB &mdash; they're all just very sophisticated versions of "form one line, please."</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════════╗
+║   MULTI-QUEUE (supermarket)  vs  SINGLE-QUEUE (bank)      ║
+╠══════════════════════════════════════════════════════════╣
+║                                                           ║
+║   MULTI-QUEUE:                 SINGLE-QUEUE:              ║
+║                                                           ║
+║   ○○○○○ ──▶ [Cashier 1]       ○○○○○○○○○○○○               ║
+║   ○○ ────▶ [Cashier 2]              │                     ║
+║   ○○○○○○○○ ▶ [Cashier 3]            ├──▶ [Server 1]      ║
+║   ○ ──────▶ [Cashier 4]             ├──▶ [Server 2]      ║
+║   ○○○○ ──▶ [Cashier 5]              ├──▶ [Server 3]      ║
+║                                      ├──▶ [Server 4]      ║
+║   Problem: You picked #3.            └──▶ [Server 5]      ║
+║   The coupon lady is in #3.                                ║
+║   You will die here.          No picking. No regret.       ║
+║                                Next available. Always.     ║
+║                                                           ║
+║   Avg wait: VARIABLE + PAIN   Avg wait: OPTIMAL + FAIR    ║
+║                                                           ║
+╚══════════════════════════════════════════════════════════╝
+</pre></div>
+
+<p>The mathematical advantage is staggering. In a multi-queue system, one slow customer only penalises the people in <em>that</em> queue. In a single-queue system, one slow customer delays everyone by only a fraction, because the other servers keep pulling from the front of the line. The single-queue system has the same average throughput but <strong>dramatically lower variance in wait times</strong>.</p>
+
+<p>This is, in queuing theory terms, the difference between <strong>M/M/c</strong> (single queue, c servers) and <strong>c × M/M/1</strong> (c separate queues with one server each). The M/M/c system has lower expected wait times, lower worst-case wait times, and — critically — a fairer distribution of wait times across all customers.</p>
+
+<p>Wendy's figured this out in the 1990s. Banks figured it out even earlier. Airports use it for security. Theme parks use it for every ride. And yet, in 2026, Tesco still lets you pick your own lane, guaranteeing that roughly 80% of the British population will experience mild to moderate existential distress every time they buy groceries.</p>
+
+<h2>Round-Robin, Least Connections, and Why Your Brain Uses the Wrong Algorithm</h2>
+
+<p>Let's go deeper into how load balancers actually decide where to send the next request, because the strategies are fascinating and they map perfectly onto how we <em>try</em> (and fail) to pick queues.</p>
+
+<p><strong>Round-Robin:</strong> The simplest approach. Send request 1 to server A, request 2 to server B, request 3 to server C, then back to A. It doesn't care about how busy each server is. It just cycles. This is roughly equivalent to you closing your eyes and pointing at a random queue. Dumb, but surprisingly effective when all servers are similar.</p>
+
+<p><strong>Least Connections:</strong> Send each new request to whichever server currently has the fewest active connections. This is what Abhishek <em>thinks</em> he's doing when he counts heads in each queue. The problem? He's counting heads, not estimating service time. A queue with two people might have someone buying forty-seven items and paying by stone tablet. A queue with six people might be all contactless-paying, basket-carrying speed demons.<sup>[4]</sup></p>
+
+<p><strong>Weighted Least Connections:</strong> Same as above, but each server gets a weight based on its capacity. The fast cashier with the rapid-fire scanning arm gets more traffic routed to them. This requires knowing the server capacities in advance, which in computer systems is easy (just benchmark them) and in supermarkets is basically impossible (you can't walk up to a cashier and say "what's your p95 latency?").</p>
+
+<p><strong>Random with Two Choices (the Power of Two):</strong> This is the clever one. Instead of surveying all options, you just pick two at random and choose the better one. It sounds lazy, but a 2001 paper by Michael Mitzenmacher proved that this gets you <em>exponentially</em> better performance than picking one at random, and almost as good as knowing the full state of every server. The math is wild: going from one random choice to two random choices reduces expected queue length from &Theta;(log n) to &Theta;(log log n). Going from two to three barely helps at all.</p>
+
+<div class="callout">
+<strong>The Power of Two Choices:</strong> In load balancing, randomly sampling just two servers and picking the less loaded one gives you exponentially better wait times than random assignment. The lesson: you don't need perfect information. You just need slightly more than zero information. Two choices. That's the sweet spot. More than that is diminishing returns, and you're just standing in Tesco staring at cashiers like a weirdo.
+</div>
+
+<p>This is genuinely one of the most beautiful results in computer science, and it applies directly to your life. You don't need to survey all five queues, estimate basket volumes, factor in cashier typing speed, and compute a weighted service-time projection. Just look at two random queues. Pick the shorter one. Move on with your life. You'll do almost as well as the person with perfect information, and you'll save fifteen seconds of agonised decision-making that Abhishek will never get back.</p>
+
+<h2>The Queue-Switching Paradox (Or: Why Lane-Hopping Makes Everything Worse)</h2>
+
+<p>There's a related behaviour that makes the problem even worse, and Abhishek is a grandmaster at it: <strong>queue-switching</strong>.</p>
+
+<p>Here's the scenario. You're in a queue. It's moving slowly. You notice another queue that seems to be moving faster. You switch. And then &mdash; with the reliability of a Greek tragedy &mdash; your old queue starts moving and your new queue stalls.</p>
+
+<p>This isn't entirely in your imagination, and the reason is devilishly counterintuitive. When you observe another queue "moving faster," you're often observing it <em>during a burst of fast service times</em>. You're seeing a local run of good luck. But service times are random &mdash; what you've just witnessed is regression to the mean in progress, and by the time you switch, the burst is likely over. Meanwhile, your old queue may have just finished its slow customer, and is about to have <em>its</em> burst of good luck. You're perpetually arriving at queues just as they slow down, because you keep selecting for recent past performance &mdash; which, in a random process, is a terrible predictor of near-future performance.</p>
+
+<p>In computer science, this is equivalent to a <strong>thrashing</strong> problem. When an operating system's memory manager keeps swapping pages in and out of RAM because it's chasing recently-accessed pages without understanding the broader access pattern, it spends all its time switching and none of its time making progress. The CPU is 100% busy doing absolutely nothing useful.</p>
+
+<p>Abhishek, standing in Tesco, clutching his meal deal, switching from lane 4 to lane 2 to lane 5, is a human operating system experiencing thrash. Maximum effort. Zero progress. Pure overhead.</p>
+
+<div class="pull-quote">Queue-switching is just thrashing with a shopping basket. Maximum effort, zero progress, and the vague sense that the system has failed you.</div>
+
+<h2>What Queueing Theory Teaches Us About Fairness (And Why It Matters Beyond Groceries)</h2>
+
+<p>Here's where the queue thing stops being a cute observation about supermarkets and becomes something genuinely important.</p>
+
+<p>The choice between single-queue and multi-queue systems is fundamentally a choice about <strong>fairness</strong>. In a multi-queue system, your wait time depends on luck &mdash; which queue you happened to pick, which customers happen to be in front of you. Two people who arrive at the same time can have wildly different experiences. In a single-queue system, your wait time depends only on when you arrived. First come, first served. No luck involved.</p>
+
+<p>This maps directly onto a debate happening right now in AI and algorithm design: <strong>when an algorithm allocates resources, should it optimise for throughput or for fairness?</strong></p>
+
+<p>Take job scheduling in operating systems. The <strong>Shortest Job First</strong> algorithm minimises average wait time &mdash; it's throughput-optimal. But it's brutally unfair: if you have a long job, you might wait forever while shorter jobs keep cutting in front of you. This is called <strong>starvation</strong>, and it's the computational equivalent of being the person with the full trolley who keeps getting overtaken by people with baskets.</p>
+
+<p>The alternative is <strong>First Come First Served</strong> (FCFS) &mdash; the single-queue approach. It's fair by design. Nobody gets starved. But it's not throughput-optimal, because short jobs sometimes wait behind long ones. Every operating system, every cloud provider, every API rate limiter is navigating this tradeoff.</p>
+
+<p>And it turns out this isn't just a computer science problem. It's a <em>moral</em> problem. Hospital A&E departments use triage (basically priority scheduling with estimated severity as the weight). Immigration queues use first-come-first-served. Airlines use a hybrid: priority boarding for premium classes (weighted scheduling), then group numbers (batched FCFS). Every queueing system you interact with is making an implicit statement about whose time matters more.<sup>[5]</sup></p>
+
+<p>Abhishek once pointed out that the "10 items or fewer" express lane at Tesco is essentially a priority queue that discriminates based on basket size. "It's classist," he said, completely seriously, holding a single banana. "What if I have 11 items but I'm faster than everyone in the express lane?" He's accidentally describing the <strong>priority inversion problem</strong> in real-time operating systems, where a low-priority task holds a resource that a high-priority task needs. But I didn't tell him that, because he was already upset about the hobnobs incident.</p>
+
+<h2>The Supermarket of the Future (Spoiler: It's Just a Load Balancer)</h2>
+
+<p>Some supermarkets are starting to figure this out. Aldi and Lidl, interestingly, have always been ahead of the curve &mdash; their stores are designed with minimal queuing friction. Fewer options, faster scanning, no price checks because everything is already labeled. They've reduced variance in service time, which is, as Erlang could tell you, the single most effective way to reduce queue wait times.</p>
+
+<p>Amazon Go stores eliminated queues entirely by making checkout invisible &mdash; sensors track what you pick up, and your account gets charged when you leave. This is, in load balancing terms, a <strong>connection-less architecture</strong>. There is no queue because there is no server to queue for. The processing happens asynchronously, distributed across cameras and ML models. It's elegant. It's also slightly dystopian, but that's a different blog post.</p>
+
+<p>The most mathematically elegant solution, though, remains the single-queue system. One line. Multiple servers. Next available. It's what banks do. It's what every well-designed web service does. It's what Nginx does to handle millions of concurrent connections. And it's what supermarkets stubbornly refuse to do, because apparently the psychological illusion of "choosing your own lane" is more important than actually having a good experience.</p>
+
+<p>There's a lesson here about humans and systems. We consistently prefer systems that give us the <em>feeling</em> of control over systems that give us <em>better outcomes</em>. We'd rather pick our own queue and have an 80% chance of regret than be assigned to a single queue with guaranteed fairness. We'd rather manually manage our own investment portfolio and underperform the S&amp;P 500 than buy an index fund and beat 90% of professional money managers. We'd rather choose our own adventure and end up in the swamp than follow the map.</p>
+
+<p>We are, as a species, addicted to the feeling of agency, even when that agency makes us measurably worse off.</p>
+
+<h2>The Queue at the End of the Universe</h2>
+
+<p>I want to leave you with one more thought, because I think the queue thing is actually a metaphor for something bigger.</p>
+
+<p>Every day, you're standing in queues you don't recognise as queues. Your career is a queue &mdash; you're waiting for the next promotion, the next opportunity, and you keep looking at other people's careers and thinking they're moving faster. Your social media feed is a queue &mdash; you're watching other people's highlight reels and wondering why your line is so slow. Your life, in a very real sense, is a queue that you're in, surrounded by other queues you didn't pick, constantly wondering if you chose wrong.</p>
+
+<p>And the lesson from queueing theory is always the same: <strong>the other queues aren't actually moving faster. You just notice them more when they are.</strong></p>
+
+<p>The lesson from load balancing is even better: <strong>stop trying to optimise which queue you're in and start thinking about the system design.</strong> Are you in a system that's fair? Are you in a system that minimises variance? Are you in a system where one bad day doesn't cascade into a catastrophe?</p>
+
+<p>And if you're Abhishek, standing in Tesco, staring at five checkout lanes, desperately trying to calculate which one will move fastest &mdash; just pick any two, choose the shorter one, and put your phone away. The math says you'll be fine. And if you're not fine, well, there's always self-checkout.<sup>[6]</sup></p>
+
+<p>Which, let's be honest, has its own problems entirely.</p>
+
+<div class="footnote">
+  <p><sup>[1]</sup> Yes, a cheque. In 2026. Abhishek said he respected the man's commitment to obsolete financial instruments. I said the man was committing a war crime against the people behind him. We agreed to disagree.</p>
+  <p><sup>[2]</sup> Psychologists call this the <strong>negativity bias</strong> &mdash; negative experiences are processed more thoroughly and remembered more vividly than positive ones. From an evolutionary perspective, this makes perfect sense: remembering where the predator was is more important than remembering where the nice berries were. From a supermarket perspective, it means you will carry the trauma of the coupon lady to your grave while forgetting the five hundred times you breezed through in two minutes.</p>
+  <p><sup>[3]</sup> Erlang's work was so foundational that the unit of telecom traffic is literally called the "erlang." One erlang equals one hour of continuous phone usage per hour. It's the only SI-adjacent unit named after a man whose entire career was about waiting, which feels appropriate.</p>
+  <p><sup>[4]</sup> Abhishek once tried to estimate queue speed by looking at the <em>payment method</em> each person was likely to use. Cash: slow. Chip and PIN: medium. Contactless: fast. Cheque: leave immediately. His model had an accuracy of roughly 40%, which he described as "better than chance" and I described as "basically guessing."</p>
+  <p><sup>[5]</sup> The NHS A&amp;E triage system is genuinely one of the best real-world implementations of a priority queue with dynamic re-evaluation. Your priority can change while you wait. In computer science terms, it's a priority queue where the comparator function is non-static. In human terms, it's the reason you see someone who arrived after you go in before you, and you should be glad, because it means your condition is less urgent than theirs. Or it means the system is broken. It's sometimes hard to tell.</p>
+  <p><sup>[6]</sup> Self-checkout: the system where the customer becomes the server, the variance in service time goes through the roof because half the population doesn't know what a barcode is, and the "unexpected item in bagging area" message has caused more human suffering than any error code in history. It is, without question, the worst load balancing decision in the history of retail. A distributed system where every node is untrained, unmotivated, and passive-aggressively arguing with a scale.</p>
+</div>
+
+    </div>
+  </main>
+
+  <section class="px-6 pb-16 max-w-3xl mx-auto flex justify-between items-center">
+    <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
+    <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+  </section>
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>
