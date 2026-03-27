@@ -548,3 +548,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+/* ============================================
+   BLOG PREVIEW — fetch latest 3 posts
+   ============================================ */
+
+function buildBlogCards(posts, theme) {
+  return posts.map(p => {
+    const label = theme === 'f1'
+      ? `LAP REPORT #${String(p.id).padStart(3, '0')}`
+      : `MEMO #${String(p.id).padStart(3, '0')}`;
+    const tags = (p.tags || []).slice(0, 3)
+      .map(t => `<span class="blog-prev-tag">${t}</span>`).join('');
+    return `
+      <a href="/blog/posts/${p.slug}.html" class="blog-prev-card group">
+        <div class="blog-prev-card-inner">
+          <div class="blog-prev-meta">
+            <span class="blog-prev-number">${label}</span>
+            <span class="blog-prev-time">${p.readTime}</span>
+          </div>
+          <h3 class="blog-prev-title">${p.title}</h3>
+          <p class="blog-prev-excerpt">${p.excerpt}</p>
+          <div class="blog-prev-tags">${tags}</div>
+        </div>
+      </a>`;
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const f1El = document.getElementById('blog-preview-cards-f1');
+  const officeEl = document.getElementById('blog-preview-cards-office');
+  if (!f1El && !officeEl) return;
+  try {
+    const res = await fetch('/blog/posts.json');
+    if (!res.ok) return;
+    const posts = await res.json();
+    // newest 3: posts are ordered oldest-first, so take last 3 and reverse
+    const latest = posts.slice(-3).reverse();
+    if (f1El) f1El.innerHTML = buildBlogCards(latest, 'f1');
+    if (officeEl) officeEl.innerHTML = buildBlogCards(latest, 'office');
+  } catch (_) {
+    // graceful fail — skeletons remain hidden
+    if (f1El) f1El.innerHTML = '';
+    if (officeEl) officeEl.innerHTML = '';
+  }
+});
