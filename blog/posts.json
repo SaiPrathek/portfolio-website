@@ -107,7 +107,7 @@
     "slug": "2026-01-22-turing-test-wrong",
     "title": "The Turing Test Was Always the Wrong Test (And Alan Would Probably Agree)",
     "date": "2026-01-22",
-    "readTime": "13 min",
+    "readTime": "14 min",
     "excerpt": "Why fooling a human into thinking a machine is human is a terrible benchmark for intelligence.",
     "tags": [
       "AI",
@@ -328,7 +328,7 @@
     "slug": "2026-03-25-brain-two-employees",
     "title": "Your Brain Has Two Employees and Neither of Them Have Read the Job Description",
     "date": "2026-03-25",
-    "readTime": "14 min",
+    "readTime": "13 min",
     "excerpt": "On procrastination, AI alignment, and why your monkey brain is actually a misconfigured language model.",
     "tags": [
       "AI",
@@ -357,7 +357,7 @@
     "slug": "2026-03-26-slowest-queue",
     "title": "You Always Pick the Slowest Queue (And It's Not Bad Luck — It's Math)",
     "date": "2026-03-26",
-    "readTime": "14 min",
+    "readTime": "13 min",
     "excerpt": "The universe isn't conspiring against you at the supermarket. But the math kind of is. Here's why your queue intuition is broken and what load balancers figured out decades ago.",
     "tags": [
       "Psychology",
@@ -366,5 +366,19 @@
       "Systems"
     ],
     "id": "028"
+  },
+  {
+    "slug": "2026-04-01-board-games-algorithms",
+    "title": "Board Games Are Just Algorithms in a Trench Coat Pretending to Be Fun",
+    "date": "2026-04-01",
+    "readTime": "14 min",
+    "excerpt": "You spent Saturday night laughing, arguing, and grabbing plastic totems. Your brain spent Saturday night solving constraint satisfaction problems, running Bayesian inference, and hitting race conditions.",
+    "tags": [
+      "Board Games",
+      "Game Theory",
+      "AI",
+      "Psychology"
+    ],
+    "id": "029"
   }
 ]
