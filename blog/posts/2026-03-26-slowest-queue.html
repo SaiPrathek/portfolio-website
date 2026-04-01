@@ -103,7 +103,8 @@
 
 <p>Which means there's an <strong>80% chance</strong> that at least one other queue will finish before yours.</p>
 
-<div class="ascii-diagram"><pre>
+<figure class="hilarious-diagram">
+  <div class="ascii-diagram"><pre>
 ╔══════════════════════════════════════════════════════════╗
 ║         PROBABILITY OF PICKING THE FASTEST QUEUE          ║
 ╠══════════════════════════════════════════════════════════╣
@@ -123,6 +124,8 @@
 ║                                                           ║
 ╚══════════════════════════════════════════════════════════╝
 </pre></div>
+  <figcaption class="hilarious-diagram-caption">Figure 1: The table says a one-in-five shot at fastest lane and four-in-five at watching another line win like it's personal.</figcaption>
+</figure>
 
 <p>This isn't pessimism. It's combinatorics. The moment you choose one queue out of N, you've committed yourself to a game where you have a 1/N chance of winning and an (N-1)/N chance of noticing someone else winning instead. And because humans are <em>exquisitely</em> calibrated to notice when they're losing &mdash; thanks, evolution &mdash; that 80% registers as "this always happens to me" rather than "this is exactly what the math predicts."</p>
 
@@ -142,7 +145,8 @@
 
 <p>It's as if you were training a neural network to predict queue wait times, but every time the model saw a slow queue, you gave it a learning rate of 0.9, and every time it saw a fast queue, you gave it a learning rate of 0.01. After enough training, the model would "believe" that all queues are slow, because that's what its skewed gradient updates have taught it.</p>
 
-<div class="ascii-diagram"><pre>
+<figure class="hilarious-diagram">
+  <div class="ascii-diagram"><pre>
 ╔══════════════════════════════════════════════════════════╗
 ║     YOUR BRAIN'S QUEUE EXPERIENCE ENCODING SYSTEM         ║
 ╠══════════════════════════════════════════════════════════╣
@@ -163,6 +167,8 @@
 ║                                                           ║
 ╚══════════════════════════════════════════════════════════╝
 </pre></div>
+  <figcaption class="hilarious-diagram-caption">Figure 2: Encoding weights go whisper-quiet for smooth runs and nuclear for biscuit chaos—that one row owns the legend.</figcaption>
+</figure>
 
 <p>My friend Abhishek is convinced he has the worst queue luck of any human alive. I once asked him to actually track it. For two weeks, he logged every queue experience &mdash; fast, slow, medium. At the end, his success rate was 23%. Which, for five-lane DMart, is almost exactly what you'd expect from random chance. He was, statistically speaking, perfectly average. He looked at the data and said, "Yeah, but it doesn't <em>feel</em> like 23%."</p>
 
@@ -196,7 +202,8 @@
 
 <p>If you've ever been to a government bank with the token system that feeds into whichever teller is free next, you've experienced this. If you've ever used a website that didn't crash under heavy load, a load balancer did this invisibly behind the scenes. Nginx, HAProxy, AWS ALB &mdash; they're all just very sophisticated versions of "form one line, please."</p>
 
-<div class="ascii-diagram"><pre>
+<figure class="hilarious-diagram">
+  <div class="ascii-diagram"><pre>
 ╔══════════════════════════════════════════════════════════╗
 ║   MULTI-QUEUE (supermarket)  vs  SINGLE-QUEUE (bank)      ║
 ╠══════════════════════════════════════════════════════════╣
@@ -218,6 +225,8 @@
 ║                                                           ║
 ╚══════════════════════════════════════════════════════════╝
 </pre></div>
+  <figcaption class="hilarious-diagram-caption">Figure 3: Five mini-lines behind separate tills versus one rope feeding whoever frees up next—pick-your-lane regret next to bank-token sanity.</figcaption>
+</figure>
 
 <p>The mathematical advantage is staggering. In a multi-queue system, one slow customer only penalises the people in <em>that</em> queue. In a single-queue system, one slow customer delays everyone by only a fraction, because the other servers keep pulling from the front of the line. The single-queue system has the same average throughput but <strong>dramatically lower variance in wait times</strong>.</p>
 

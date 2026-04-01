@@ -1758,6 +1758,34 @@ body.theme-office #contact {
 }
 
 /* ============================================
+   BLOG ASCII DIAGRAM FIGURES
+   ============================================ */
+
+.hilarious-diagram {
+  margin: 2rem 0;
+}
+
+.hilarious-diagram .ascii-diagram {
+  margin: 0;
+}
+
+.hilarious-diagram-caption {
+  margin-top: 0.65rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--secondary);
+  font-style: italic;
+}
+
+body.theme-f1 .hilarious-diagram-caption {
+  font-family: var(--font-mono);
+}
+
+body.theme-office .hilarious-diagram-caption {
+  font-family: var(--font-body);
+}
+
+/* ============================================
    RESPONSIVE REFINEMENTS
    ============================================ */
 

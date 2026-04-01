@@ -146,7 +146,8 @@
 
       <p>The root cause was a one-byte counter overflow in the software. When a specific variable rolled over from 255 to 0 &mdash; which happened approximately once every 256 treatment setups &mdash; the safety interlock was bypassed. That's it. One byte. One variable. One overflow. Three people dead.<sup>1</sup></p>
 
-      <div class="ascii-diagram">
+      <figure class="hilarious-diagram">
+        <div class="ascii-diagram">
 THE CASCADE: How Tiny Errors Become Catastrophic Failures
 ==========================================================
 
@@ -184,6 +185,8 @@ THE CASCADE: How Tiny Errors Become Catastrophic Failures
            Nobody checks the small cause because it looks trivial.
            The amplification is invisible until it's too late.
       </div>
+        <figcaption class="hilarious-diagram-caption">Figure 1: Each table row is a tiny typo riding shotgun to a headline-sized bill or worse.</figcaption>
+      </figure>
 
       <h2>Why Modern Software Makes This Exponentially Worse</h2>
 
@@ -201,7 +204,8 @@ THE CASCADE: How Tiny Errors Become Catastrophic Failures
 
       <p>Perrow was writing about nuclear power plants and chemical factories. He could just as easily have been writing about npm.</p>
 
-      <div class="ascii-diagram">
+      <figure class="hilarious-diagram">
+        <div class="ascii-diagram">
 BUG SIZE vs CONSEQUENCE: A Deeply Unfair Relationship
 ======================================================
 
@@ -235,6 +239,8 @@ BUG SIZE vs CONSEQUENCE: A Deeply Unfair Relationship
         The biggest consequences come from the smallest bugs.
         The universe has a sick sense of humour.
       </div>
+        <figcaption class="hilarious-diagram-caption">Figure 2: Dots cram the left edge under "tiny bug" while dollars rocket up—left-pad waving beside Mars money.</figcaption>
+      </figure>
 
       <h2>The Uncomfortable Truth About Testing</h2>
 

@@ -105,7 +105,8 @@
 
 <p>Let's map this out.</p>
 
-<div class="ascii-diagram">
+<figure class="hilarious-diagram">
+  <div class="ascii-diagram">
   INFORMATION BANDWIDTH BY CHANNEL TYPE
 
   Channel         Bandwidth  Latency  Overhead  Reliability  Protocol
@@ -139,6 +140,8 @@
   Post-it note    Variable   Zero     Zero      Zero         Physical
   on monitor                                                 token ring
 </div>
+  <figcaption class="hilarious-diagram-caption">Figure 1: Table rates channels like network gear—meetings get fat TCP truth while Slack row admits spray-and-pray ping bytes.</figcaption>
+</figure>
 
 <p><strong>Email</strong> is UDP — User Datagram Protocol. You fire off a packet of information with no guarantee it will be received, read, understood, or acted upon. There's no handshake. There's no acknowledgement built into the protocol (you can <em>request</em> read receipts, but everyone hates those, and the kind of person who requests read receipts is the kind of person whose emails you're already ignoring). Email is low overhead, low bandwidth, high latency, and unreliable. It's great for one-way information transfer where you don't need confirmation. "Here's the document." "Here's the updated schedule." "Here are my findings." Perfect email territory.</p>
 
@@ -176,7 +179,8 @@
 
 <p>So if every channel has its strengths and weaknesses, the question isn't "meetings or emails?" — it's "which channel for which purpose?" Here's my opinionated guide to the optimal communication stack for a modern team.</p>
 
-<div class="ascii-diagram">
+<figure class="hilarious-diagram">
+  <div class="ascii-diagram">
   THE COMMUNICATION PROTOCOL STACK
   (use the lowest-overhead protocol that gets the job done)
 
@@ -210,6 +214,8 @@
   │  again in three months.                              │
   └─────────────────────────────────────────────────────┘
 </div>
+  <figcaption class="hilarious-diagram-caption">Figure 2: Five-layer stack runs face-to-face at the top and chat at the bottom—the ladder you climb when tone gets dangerous.</figcaption>
+</figure>
 
 <p>The key insight is that each layer up adds bandwidth but also adds overhead. You want to use the <em>lowest</em> layer that is sufficient for the task. Sending a quick question in a meeting is like using a cargo ship to deliver a postcard. Having a difficult conversation over Slack is like trying to perform surgery through a letterbox. Match the medium to the message.</p>
 

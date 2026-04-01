@@ -199,7 +199,8 @@
 
       <p>Software has its own Great Filters. Multiple ones, in fact, arranged in a gauntlet of doom that every software project must pass through. Most don't survive.</p>
 
-      <div class="ascii-diagram">
+      <figure class="hilarious-diagram">
+        <div class="ascii-diagram">
   THE SOFTWARE QUALITY GREAT FILTER
   ==================================
 
@@ -223,6 +224,8 @@
   ├── Filter 3: "The intern built the auth system" (skill mismatch)
   ├── Filter 4: "It works on my machine" (scaling reality)
   └── Filter 5: "Nobody understands this code anymore" (entropy)</div>
+        <figcaption class="hilarious-diagram-caption">Figure 1: Stage bars shrink from bright idea to roughly one percent still good—each filter eats another slice.</figcaption>
+      </figure>
 
       <p>Let me walk through each filter, because they're all fascinating in their own horrible way.</p>
 
@@ -275,7 +278,8 @@
 
       <p>Scaling is a different kind of engineering problem. It's the difference between cooking dinner for your family and running a restaurant. The recipe might be the same, but the challenges are completely different. When you're cooking for four, you don't need to worry about supply chain logistics, parallel food preparation, or what happens when forty people order the same dish at the same time. But at scale, those are the <em>only</em> things that matter.</p>
 
-      <div class="ascii-diagram">
+      <figure class="hilarious-diagram">
+        <div class="ascii-diagram">
   THE SCALING WALL
   ================
 
@@ -304,6 +308,8 @@
 
   Note: The line after 500k users is actually vertical
   but my ASCII art can't convey "infinite response time"</div>
+        <figcaption class="hilarious-diagram-caption">Figure 2: Latency graph hugs the floor then hockey-sticks past acceptable—user count axis turns the corner into pain.</figcaption>
+      </figure>
 
       <p>The software that we think of as "good" &mdash; the Googles, the Stripes, the VSCodes &mdash; have all passed through this filter, often multiple times. Google famously rewrote its infrastructure at least three times in its first decade. Stripe rebuilt its payment processing system from scratch. These are not signs of failure; they're signs of the extraordinary effort required to maintain quality at scale. Most companies can't or won't invest that effort.</p>
 

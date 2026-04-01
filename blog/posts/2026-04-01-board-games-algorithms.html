@@ -93,7 +93,8 @@
       <p>Rule one: if an object on the card appears in its true color, grab that object. Rule two: if no object appears in its true color, grab the object whose shape and color are both absent from the card. Your conscious mind hears this and says, "cute." Your subconscious mind files an HR complaint.</p>
       <p>This is not random reflex. This is constraint satisfaction. You are evaluating clauses: NOT blue, NOT ghost, NOT bottle, maybe yes chair, wait no that's illegal, recompute. You are doing tiny SAT problems at high speed with a penalty function called public embarrassment.</p>
 
-      <div class="ascii-diagram"><pre>
+      <figure class="hilarious-diagram">
+        <div class="ascii-diagram"><pre>
 ╔════════════════════════════════════════════════════════════╗
 ║     GHOST BLITZ: WHAT YOUR BRAIN THINKS IT DOES           ║
 ║              vs. WHAT IT ACTUALLY DOES                     ║
@@ -115,6 +116,8 @@
 ║                     └──▶ Blame lighting conditions         ║
 ╚════════════════════════════════════════════════════════════╝
 </pre></div>
+        <figcaption class="hilarious-diagram-caption">Figure 1: That tidy SAT row is the brochure; the tangled panic ladder is me grabbing wrong ghosts and blaming the lights.</figcaption>
+      </figure>
 
       <p>Computer scientists call this pruning a search space. You and I call it "why did I grab the wrong thing before the card even fully landed?" The reason experts seem magically fast is not faster eyes. It is better elimination strategy. They do not inspect all possibilities. They cut branches early. Good players are DPLL solvers — the methodical type who try one assumption, hit a contradiction, backtrack, and try the next. Great players are CDCL solvers — the terrifying type who not only backtrack but <em>remember why</em> they failed and never make the same wrong assumption twice. Abhishek is a random number generator with hands.</p>
       <p>Abhishek operates on what I can only describe as a "Vibes-First, Verification-Never" architecture. He commits to an answer 20 milliseconds into card processing, before his visual cortex has even clocked in for the shift. When he is right, he looks at you like he invented logic. When he is wrong — which is often — he does this specific thing where his hand freezes mid-air, his eyes go wide, and his mouth forms a small "o" like a man who just realized he replied-all. Then he puts the wrong piece down gently, as if placing it softly will somehow undo the laws of the game.<sup>[2]</sup></p>
@@ -147,7 +150,8 @@
       <p>In machine learning terms, words can be represented as vectors in high-dimensional space. Words used in similar contexts end up close together. This is why "doctor" and "hospital" cluster, while "doctor" and "banana" usually do not, unless your fruit diet is medically concerning.</p>
       <p>A great Codenames clue behaves like a carefully positioned sphere in that space: it should include your target words and exclude dangerous neighbors. "River: 3" might nicely pull <em>BANK</em>, <em>BRIDGE</em>, and <em>FISH</em>. But if <em>CURRENT</em> is the assassin, that sphere now intersects a minefield.</p>
 
-      <div class="ascii-diagram"><pre>
+      <figure class="hilarious-diagram">
+        <div class="ascii-diagram"><pre>
 ╔════════════════════════════════════════════════════════════╗
 ║    CODENAMES SEMANTIC SPACE: ABHISHEK'S "WEEKEND: 2"      ║
 ╠════════════════════════════════════════════════════════════╣
@@ -177,6 +181,8 @@
 ║   Abhishek's clue radius: included literally everything    ║
 ╚════════════════════════════════════════════════════════════╝
 </pre></div>
+        <figcaption class="hilarious-diagram-caption">Figure 2: Weekend ties NAP and BIRYANI in one happy arc while SLEEP the assassin lounges in the middle like a trap at brunch.</figcaption>
+      </figure>
 
       <p>What makes Codenames brilliant is that it reveals hidden differences between your semantic model and everyone else's. You might think "Pitch" links <em>CRICKET</em> and <em>MUSIC</em> elegantly. Your team might confidently choose <em>FORK</em> because "pitchfork." Congratulations, you just discovered representation mismatch in collaborative systems. Your internal word2vec and their internal word2vec were trained on different corpora. This is the fundamental tragedy of communication, and Codenames turns it into a party game.</p>
       <p>Abhishek once gave the clue "Weekend: 2" for <em>NAP</em> and <em>BIRYANI</em>. In his head, this was poetic. In everyone's head, this was poetic. The problem was that <em>SLEEP</em> — the assassin — also lives in the "weekend" vector neighborhood, close enough that our teammate tapped it first with the calm certainty of a man walking into a glass door. We lost in eight seconds. Abhishek sat there with the specific face of someone who just deployed to production without running tests: mouth slightly open, eyes fixed on the middle distance, processing the gap between intention and catastrophe. It was the purest demonstration of how local coherence can still fail global optimization.</p>
@@ -210,7 +216,8 @@
       <p>Animal Circus looks adorable, which is always suspicious. Cute artwork is the Trojan horse of ruthless game design. Underneath the friendly elephants and cheerful seals is a memory stress test that would make your RAM blush. You must track positions, features, patterns, and the sequence of reveal events. Meanwhile, other players are moving faster than you, social pressure is compounding, and your brain's reliable memory subsystem has quietly filed for emergency leave.</p>
       <p>In computing, cache hierarchy matters because fast memory is limited and slow memory is vast. Your brain works the same way. Working memory — the L1 cache — is blazingly fast but holds maybe four to seven items on a good day with adequate chai intake. Long-term memory is huge and messy. Retrieval is probabilistic. And under speed pressure, your working set overflows and eviction begins, except nobody told your confidence module, which keeps broadcasting "I DEFINITELY know where the penguin is" while your actual memory subsystem is returning null.</p>
 
-      <div class="ascii-diagram"><pre>
+      <figure class="hilarious-diagram">
+        <div class="ascii-diagram"><pre>
 ╔════════════════════════════════════════════════════════════╗
 ║  YOUR BRAIN'S MEMORY DURING ANIMAL CIRCUS (BY ROUND)     ║
 ╠════════════════════════════════════════════════════════════╣
@@ -236,6 +243,8 @@
 ║  └─────────────────────────────────────────────────────┘   ║
 ╚════════════════════════════════════════════════════════════╝
 </pre></div>
+        <figcaption class="hilarious-diagram-caption">Figure 3: Memory notes dissolve by round but the bars still show sky-high confidence beside a stubby accuracy bar—classic finger-point energy.</figcaption>
+      </figure>
 
       <p>This is why you confidently remember the wrong square. Confidence is not a checksum. It is a feeling generated by your prediction machinery, and it is frequently, hilariously detached from correctness. Machine learning models do the same thing — output confident nonsense when calibration is poor. We call it hallucination when AI does it, but humans have been doing premium hallucination since we first pointed at constellations and said "that's a bear."</p>
       <p>Here is the thing nobody tells you at game night, and it might be the most important sentence in this post: <strong>you are not stupid for forgetting.</strong> Your cache eviction is not a bug. It is a survival mechanism. If your brain faithfully archived every OTP you ever entered, every auto-rickshaw fare, every awkward thing you said at a wedding in 2014, you would not be a genius. You would be non-functional. Forgetting is how your brain keeps the signal-to-noise ratio livable. Your L1 cache is small on purpose. The system is optimized for adaptive compression, not perfect archival. That is not a deficiency. That is engineering.</p>
