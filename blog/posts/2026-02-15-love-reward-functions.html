@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Love Is Just Two Reward Functions That Accidentally Aligned | The Debrief</title>
-  <meta name="description" content="A Valentine's Day special. Oxytocin, dopamine, and the alignment problem â€” in relationships and in AI. Why falling in love is basically a reward function hijack." />
+  <meta name="description" content="A Valentine's Day special. Oxytocin, dopamine, and the alignment problem — in relationships and in AI. Why falling in love is basically a reward function hijack." />
   <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-02-15-love-reward-functions.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta property="og:title" content="Love Is Just Two Reward Functions That Accidentally Aligned (A Valentine's Day Special)" />
-  <meta property="og:description" content="Oxytocin, dopamine, and the alignment problem â€” in relationships and in AI." />
+  <meta property="og:description" content="Oxytocin, dopamine, and the alignment problem — in relationships and in AI." />
   <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-02-15-love-reward-functions.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,8 +53,8 @@
     <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
     <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
     <div class="flex items-center gap-6">
-      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">â† All Posts</a>
-      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">â† All Memos</a>
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← All Memos</a>
       <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
         <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">light_mode</span>
         <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
@@ -64,14 +64,14 @@
   </nav>
   <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
     <div class="f1-only">
-      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #015 Â· 15 Feb 2026 Â· 11 min read</span>
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #015 · 15 Feb 2026 · 11 min read</span>
       <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">Love Is Just Two Reward Functions That Accidentally Aligned</h1>
     </div>
     <div class="office-only">
-      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #015 Â· 15 Feb 2026 Â· 11 min read</span>
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #015 · 15 Feb 2026 · 11 min read</span>
       <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">Love Is Just Two Reward Functions That Accidentally Aligned</h1>
     </div>
-    <p class="text-base" style="color: var(--secondary);">A Valentine's Day special. Oxytocin, dopamine, and the alignment problem â€” in relationships and in AI. Why falling in love is basically a reward function hijack.</p>
+    <p class="text-base" style="color: var(--secondary);">A Valentine's Day special. Oxytocin, dopamine, and the alignment problem — in relationships and in AI. Why falling in love is basically a reward function hijack.</p>
     <div class="flex flex-wrap gap-2 mt-4"><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Relationships</span><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span><span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Neuroscience</span></div>
     <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
   </header>
@@ -79,7 +79,7 @@
 
 <p>Happy Valentine's Day. Or, if you prefer a more neuroscientifically precise greeting: Happy Oxytocin-Mediated Pair-Bonding Reinforcement Day. I know. It doesn't fit on a card.</p>
 
-<p>Here's what's actually happening in your brain when you "fall in love." Your ventral tegmental area is flooding your nucleus accumbens with dopamine. Your hypothalamus is pumping out oxytocin. Your serotonin levels have dropped to levels clinically similar to obsessive-compulsive disorder (this is not a metaphor â€” a 1999 study by Marazziti et al. literally found that the serotonin transporter levels of people in the early stages of romantic love were indistinguishable from those of OCD patients). Your prefrontal cortex â€” the part responsible for rational judgement â€” is being actively suppressed.</p>
+<p>Here's what's actually happening in your brain when you "fall in love." Your ventral tegmental area is flooding your nucleus accumbens with dopamine. Your hypothalamus is pumping out oxytocin. Your serotonin levels have dropped to levels clinically similar to obsessive-compulsive disorder (this is not a metaphor — a 1999 study by Marazziti et al. literally found that the serotonin transporter levels of people in the early stages of romantic love were indistinguishable from those of OCD patients). Your prefrontal cortex — the part responsible for rational judgement — is being actively suppressed.</p>
 
 <p>In other words: you are not thinking clearly. You are, neurochemically, in approximately the same state as someone with a clinical disorder that compels them to check whether they've locked the door seventeen times. Except instead of the door, it's your phone. And instead of checking the lock, you're checking whether they've texted back yet.</p>
 
@@ -89,50 +89,50 @@
 
 <p>Anthropologist Helen Fisher, who has spent decades scanning the brains of people in love, identifies three distinct neurochemical systems involved in human pair-bonding, each with its own reward function:</p>
 
-<p><strong>1. Lust (testosterone + oestrogen).</strong> The crudest system. Its objective function is simple: reproduce. It doesn't care with whom. It doesn't care about compatibility, shared values, or whether this person will still be interesting over breakfast. It is the brute-force search algorithm of human mating â€” low specificity, high recall. "Is this person alive and approximately the right species? Good enough. Proceed."</p>
+<p><strong>1. Lust (testosterone + oestrogen).</strong> The crudest system. Its objective function is simple: reproduce. It doesn't care with whom. It doesn't care about compatibility, shared values, or whether this person will still be interesting over breakfast. It is the brute-force search algorithm of human mating — low specificity, high recall. "Is this person alive and approximately the right species? Good enough. Proceed."</p>
 
-<p><strong>2. Attraction (dopamine + norepinephrine + serotonin).</strong> This is the "falling in love" system. Its objective function is more targeted: focus on <em>this specific person</em>. The dopamine creates craving. The norepinephrine creates alertness and energy (this is why you can't sleep when you're newly in love). The serotonin drop creates obsessive thinking. Together, they produce a state that Fisher compares to addiction â€” and she's not being metaphorical. Brain scans of people in early romantic love show activation patterns in the reward system that are essentially identical to those of cocaine users.</p>
+<p><strong>2. Attraction (dopamine + norepinephrine + serotonin).</strong> This is the "falling in love" system. Its objective function is more targeted: focus on <em>this specific person</em>. The dopamine creates craving. The norepinephrine creates alertness and energy (this is why you can't sleep when you're newly in love). The serotonin drop creates obsessive thinking. Together, they produce a state that Fisher compares to addiction — and she's not being metaphorical. Brain scans of people in early romantic love show activation patterns in the reward system that are essentially identical to those of cocaine users.</p>
 
-<p><strong>3. Attachment (oxytocin + vasopressin).</strong> The long-game system. Its objective function is: stay together. This system activates during physical intimacy, shared experiences, and caregiving. It's what keeps couples together after the dopamine-fuelled insanity of early attraction fades. It's calmer, steadier, and considerably less exciting. It's the difference between a rocket launch and a satellite orbit â€” the launch is thrilling but unsustainable; the orbit is what actually gets the job done.</p>
+<p><strong>3. Attachment (oxytocin + vasopressin).</strong> The long-game system. Its objective function is: stay together. This system activates during physical intimacy, shared experiences, and caregiving. It's what keeps couples together after the dopamine-fuelled insanity of early attraction fades. It's calmer, steadier, and considerably less exciting. It's the difference between a rocket launch and a satellite orbit — the launch is thrilling but unsustainable; the orbit is what actually gets the job done.</p>
 
 <figure class="hilarious-diagram">
   <div class="ascii-diagram">
-  â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
-  â•‘     THE THREE REWARD FUNCTIONS OF HUMAN PAIR-BONDING            â•‘
-  â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£
-  â•‘                                                                  â•‘
-  â•‘  Intensity                                                       â•‘
-  â•‘    â”‚                                                             â•‘
-  â•‘    â”‚  â•±â•²                                                         â•‘
-  â•‘    â”‚ â•±  â•²    ATTRACTION                                          â•‘
-  â•‘    â”‚â•±    â•²   (dopamine, norepinephrine)                          â•‘
-  â•‘    â”‚      â•²  "I can't stop thinking about them"                  â•‘
-  â•‘    â”‚       â•²                                                     â•‘
-  â•‘    â”‚        â•²          â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€                 â•‘
-  â•‘    â”‚         â•²        â•±  ATTACHMENT                               â•‘
-  â•‘    â”‚          â•²      â•±   (oxytocin, vasopressin)                  â•‘
-  â•‘    â”‚           â•²    â•±    "I feel safe with them"                  â•‘
-  â•‘    â”‚            â•²â”€â”€â•±                                              â•‘
-  â•‘    â”‚             â•³  â† The Handoff Zone                           â•‘
-  â•‘    â”‚            â•± â•²   (6-18 months in)                           â•‘
-  â•‘    â”‚           â•±   â•²  Many relationships fail here               â•‘
-  â•‘    â”‚â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•±     â•²â”€â”€â”€ â”€ â”€ â”€ â”€ â”€ â”€ â”€ â”€ â”€                     â•‘
-  â•‘    â”‚         â•±       LUST (testosterone)                         â•‘
-  â•‘    â”‚        â•±        "They're attractive"                         â•‘
-  â•‘    â”‚       â•±         Baseline, always present, unspecific         â•‘
-  â•‘    â”‚                                                             â•‘
-  â•‘    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Time            â•‘
-  â•‘      Weeks      Months       Years       Decades                 â•‘
-  â•‘                                                                  â•‘
-  â•‘  âš  THE DANGER ZONE: When attraction dopamine fades but           â•‘
-  â•‘    attachment oxytocin hasn't fully established. This is          â•‘
-  â•‘    when people say "the spark is gone" and make bad decisions.    â•‘
-  â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║     THE THREE REWARD FUNCTIONS OF HUMAN PAIR-BONDING            ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║                                                                  ║
+  ║  Intensity                                                       ║
+  ║    │                                                             ║
+  ║    │  ╱╲                                                         ║
+  ║    │ ╱  ╲    ATTRACTION                                          ║
+  ║    │╱    ╲   (dopamine, norepinephrine)                          ║
+  ║    │      ╲  "I can't stop thinking about them"                  ║
+  ║    │       ╲                                                     ║
+  ║    │        ╲          ┌─────────────────────────                 ║
+  ║    │         ╲        ╱  ATTACHMENT                               ║
+  ║    │          ╲      ╱   (oxytocin, vasopressin)                  ║
+  ║    │           ╲    ╱    "I feel safe with them"                  ║
+  ║    │            ╲──╱                                              ║
+  ║    │             ╳  ← The Handoff Zone                           ║
+  ║    │            ╱ ╲   (6-18 months in)                           ║
+  ║    │           ╱   ╲  Many relationships fail here               ║
+  ║    │──────────╱     ╲─── ─ ─ ─ ─ ─ ─ ─ ─ ─                     ║
+  ║    │         ╱       LUST (testosterone)                         ║
+  ║    │        ╱        "They're attractive"                         ║
+  ║    │       ╱         Baseline, always present, unspecific         ║
+  ║    │                                                             ║
+  ║    └──────────────────────────────────────────── Time            ║
+  ║      Weeks      Months       Years       Decades                 ║
+  ║                                                                  ║
+  ║  ⚠ THE DANGER ZONE: When attraction dopamine fades but           ║
+  ║    attachment oxytocin hasn't fully established. This is          ║
+  ║    when people say "the spark is gone" and make bad decisions.    ║
+  ╚══════════════════════════════════════════════════════════════════╝
 </div>
-  <figcaption class="hilarious-diagram-caption">Figure 1: Attraction dives toward attachment handoffâ€”the marked wedge is where "spark died" panic always rents space.</figcaption>
+  <figcaption class="hilarious-diagram-caption">Figure 1: Attraction dives toward attachment handoff—the marked wedge is where "spark died" panic always rents space.</figcaption>
 </figure>
 
-<p>Notice the "Handoff Zone" â€” that period roughly 6-18 months into a relationship where the insane dopamine-driven attraction starts to fade and the calmer oxytocin-driven attachment is supposed to take over. This is where an enormous number of relationships fail. The dopamine is wearing off, the person suddenly seems less magical, their annoying habits are no longer charming quirks, and the whole thing starts to feel like a mistake.</p>
+<p>Notice the "Handoff Zone" — that period roughly 6-18 months into a relationship where the insane dopamine-driven attraction starts to fade and the calmer oxytocin-driven attachment is supposed to take over. This is where an enormous number of relationships fail. The dopamine is wearing off, the person suddenly seems less magical, their annoying habits are no longer charming quirks, and the whole thing starts to feel like a mistake.</p>
 
 <p>It isn't a mistake. It's a phase transition. But people who don't understand the neurochemistry interpret the loss of dopamine-driven excitement as evidence that they chose the wrong person, when really it's just evidence that the attraction system completed its job and handed off to the attachment system. If you bolt every time the dopamine fades, you'll spend your life in an endless series of 18-month relationships, forever chasing a neurochemical state that was designed to be temporary.<sup>1</sup></p>
 
@@ -142,15 +142,15 @@
 
 <p>Relationships have the same problem. Your brain's attraction system has a very specific objective function: it optimises for <strong>novelty + physical attractiveness + status + arousal</strong>. These are the signals that trigger dopamine release. These are the features your reward function is actually measuring when you "fall for someone."</p>
 
-<p>But what you <em>think</em> you're optimising for â€” what you'd <em>say</em> if asked â€” is compatibility, shared values, emotional maturity, kindness, and long-term potential. This is your stated objective. It's the objective you'd write in the documentation.</p>
+<p>But what you <em>think</em> you're optimising for — what you'd <em>say</em> if asked — is compatibility, shared values, emotional maturity, kindness, and long-term potential. This is your stated objective. It's the objective you'd write in the documentation.</p>
 
-<p>The problem is that your stated objective and your actual reward function are badly misaligned. You <em>say</em> you want someone kind and emotionally available. Your dopamine system <em>rewards</em> you for someone exciting and physically attractive. When these two things conflict â€” and they often do â€” the reward function usually wins. This is why people keep dating people who are wrong for them. It's not that they're stupid. It's that their reward function is optimising for the wrong thing, and it's running at a lower level than conscious decision-making.</p>
+<p>The problem is that your stated objective and your actual reward function are badly misaligned. You <em>say</em> you want someone kind and emotionally available. Your dopamine system <em>rewards</em> you for someone exciting and physically attractive. When these two things conflict — and they often do — the reward function usually wins. This is why people keep dating people who are wrong for them. It's not that they're stupid. It's that their reward function is optimising for the wrong thing, and it's running at a lower level than conscious decision-making.</p>
 
 <div class="callout">In AI alignment terms: your prefrontal cortex wrote a perfectly sensible objective function ("find a compatible long-term partner"). But the actual training signal comes from your limbic system ("DOPAMINE NOW"), and the limbic system doesn't care about your long-term objectives. Your limbic system is an AI with a badly specified reward function, and it has root access to your emotions.</div>
 
 <p>This is, I think, the deepest reason why dating is so confusing. You're not a single agent making rational decisions. You're a multi-agent system where different agents have different objective functions that frequently conflict. The lust system wants physical gratification. The attraction system wants novelty and excitement. The attachment system wants stability and safety. Your prefrontal cortex wants long-term compatibility. And they're all running simultaneously, with different time horizons, different discount rates, and different definitions of "success."</p>
 
-<div class="pull-quote">Falling in love isn't finding "the one." It's finding someone whose reward function happens to align with yours well enough that you can tolerate the misalignments. That's less romantic than the fairy tale version. It's also more accurate, more useful, and â€” if you think about it â€” more impressive.</div>
+<div class="pull-quote">Falling in love isn't finding "the one." It's finding someone whose reward function happens to align with yours well enough that you can tolerate the misalignments. That's less romantic than the fairy tale version. It's also more accurate, more useful, and — if you think about it — more impressive.</div>
 
 <h2>The Arranged Marriage Puzzle</h2>
 
@@ -160,11 +160,11 @@
 
 <p>How is this possible? Through the lens of reward functions, it actually makes perfect sense.</p>
 
-<p>In a love marriage, the initial selection is driven primarily by the attraction system â€” dopamine, novelty, physical chemistry. These features have very low predictive power for long-term compatibility. You're selecting based on a reward signal that will be largely irrelevant in five years. It's like hiring a software engineer based on their handshake â€” technically a signal, but not a very good one for the job they'll actually be doing.</p>
+<p>In a love marriage, the initial selection is driven primarily by the attraction system — dopamine, novelty, physical chemistry. These features have very low predictive power for long-term compatibility. You're selecting based on a reward signal that will be largely irrelevant in five years. It's like hiring a software engineer based on their handshake — technically a signal, but not a very good one for the job they'll actually be doing.</p>
 
 <p>In an arranged marriage (at least in its non-coercive, modern form), the selection is driven by family evaluation of compatibility factors: similar values, education, socioeconomic background, family harmony, temperament complementarity. These features have much higher predictive power for long-term satisfaction. The initial dopamine hit is smaller (or absent), but the attachment system has better raw material to work with.</p>
 
-<p>In AI terms: love marriages are selected by a reward function with high variance and low bias (exciting but unreliable). Arranged marriages are selected by a reward function with low variance and high bias (boring but predictable). Over time, the low-variance selection tends to win â€” the same way that in machine learning, a less exciting but more reliable model often outperforms a flashy one in production.</p>
+<p>In AI terms: love marriages are selected by a reward function with high variance and low bias (exciting but unreliable). Arranged marriages are selected by a reward function with low variance and high bias (boring but predictable). Over time, the low-variance selection tends to win — the same way that in machine learning, a less exciting but more reliable model often outperforms a flashy one in production.</p>
 
 <p>I'm not arguing for arranged marriages. I'm arguing that the process of "falling in love" is a terrible selection mechanism for long-term partnership, and that acknowledging this might save people a lot of heartbreak. You can have the dopamine rush <em>and</em> use your prefrontal cortex. You just have to be aware that they're optimising for different things, and deliberately weight the prefrontal cortex's input higher than your limbic system would naturally prefer.</p>
 
@@ -174,74 +174,74 @@
 
 <figure class="hilarious-diagram">
   <div class="ascii-diagram">
-  â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
-  â•‘      TWO REWARD FUNCTIONS: CONVERGING vs. DIVERGING             â•‘
-  â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£
-  â•‘                                                                  â•‘
-  â•‘  SCENARIO A: Successful Long-Term Relationship                   â•‘
-  â•‘                                                                  â•‘
-  â•‘  Reward                                                          â•‘
-  â•‘    â”‚   Person A: â”€â”€â”€â”€â”€â”€â•®                                         â•‘
-  â•‘    â”‚                    â•°â”€â”€â”€â”€â”€â”€â•®                                  â•‘
-  â•‘    â”‚   Person B: â”€ â”€ â”€ â”€â•®     â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Shared       â•‘
-  â•‘    â”‚                     â•°â”€ â”€ â”€â•¯                    reward       â•‘
-  â•‘    â”‚                                                signal       â•‘
-  â•‘    â”‚   (Different initial values â†’ negotiate â†’                   â•‘
-  â•‘    â”‚    build shared objective function over time)               â•‘
-  â•‘    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Time          â•‘
-  â•‘      Year 1          Year 5         Year 10+                     â•‘
-  â•‘                                                                  â•‘
-  â•‘  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•         â•‘
-  â•‘                                                                  â•‘
-  â•‘  SCENARIO B: Relationship That Falls Apart                       â•‘
-  â•‘                                                                  â•‘
-  â•‘  Reward                                                          â•‘
-  â•‘    â”‚   Person A: â”€â”€â”€â”€â”€â”€â•®                                         â•‘
-  â•‘    â”‚                    â•°â”€â”€â”€â”€â”€â”€â•®                                  â•‘
-  â•‘    â”‚                           â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ A's path    â•‘
-  â•‘    â”‚   Person B: â”€ â”€ â”€ â”€â•®                                       â•‘
-  â•‘    â”‚                     â•°â”€ â”€ â”€ â”€â•®                               â•‘
-  â•‘    â”‚                              â•°â”€ â”€ â”€ â”€ â”€ â”€ â”€ â”€ B's path   â•‘
-  â•‘    â”‚                                                             â•‘
-  â•‘    â”‚   (Initial alignment was superficial â€” based on             â•‘
-  â•‘    â”‚    attraction, not values. Diverged as dopamine faded.)     â•‘
-  â•‘    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Time          â•‘
-  â•‘      Year 1          Year 5         Year 10+                     â•‘
-  â•‘                                                                  â•‘
-  â•‘  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•         â•‘
-  â•‘                                                                  â•‘
-  â•‘  SCENARIO C: Arranged Marriage That Grows                        â•‘
-  â•‘                                                                  â•‘
-  â•‘  Reward                                                          â•‘
-  â•‘    â”‚   Person A: â”€â”€â”€â”€â”€â”€â”€â”€â•®                                       â•‘
-  â•‘    â”‚                      â•°â”€â”€â”€â”€â•®                                  â•‘
-  â•‘    â”‚   Person B: â”€ â”€ â”€ â”€ â”€ â”€ â”€â•°â”€ â”€â•®                             â•‘
-  â•‘    â”‚                                â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Converged    â•‘
-  â•‘    â”‚                                                             â•‘
-  â•‘    â”‚   (Started further apart, but aligned on fundamentals.      â•‘
-  â•‘    â”‚    Slower convergence, but more durable.)                   â•‘
-  â•‘    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Time          â•‘
-  â•‘      Year 1          Year 5         Year 10+                     â•‘
-  â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║      TWO REWARD FUNCTIONS: CONVERGING vs. DIVERGING             ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║                                                                  ║
+  ║  SCENARIO A: Successful Long-Term Relationship                   ║
+  ║                                                                  ║
+  ║  Reward                                                          ║
+  ║    │   Person A: ──────╮                                         ║
+  ║    │                    ╰──────╮                                  ║
+  ║    │   Person B: ─ ─ ─ ─╮     ╰─────────────────── Shared       ║
+  ║    │                     ╰─ ─ ─╯                    reward       ║
+  ║    │                                                signal       ║
+  ║    │   (Different initial values → negotiate →                   ║
+  ║    │    build shared objective function over time)               ║
+  ║    └────────────────────────────────────────────── Time          ║
+  ║      Year 1          Year 5         Year 10+                     ║
+  ║                                                                  ║
+  ║  ═══════════════════════════════════════════════════════         ║
+  ║                                                                  ║
+  ║  SCENARIO B: Relationship That Falls Apart                       ║
+  ║                                                                  ║
+  ║  Reward                                                          ║
+  ║    │   Person A: ──────╮                                         ║
+  ║    │                    ╰──────╮                                  ║
+  ║    │                           ╰──────────────────── A's path    ║
+  ║    │   Person B: ─ ─ ─ ─╮                                       ║
+  ║    │                     ╰─ ─ ─ ─╮                               ║
+  ║    │                              ╰─ ─ ─ ─ ─ ─ ─ ─ B's path   ║
+  ║    │                                                             ║
+  ║    │   (Initial alignment was superficial — based on             ║
+  ║    │    attraction, not values. Diverged as dopamine faded.)     ║
+  ║    └────────────────────────────────────────────── Time          ║
+  ║      Year 1          Year 5         Year 10+                     ║
+  ║                                                                  ║
+  ║  ═══════════════════════════════════════════════════════         ║
+  ║                                                                  ║
+  ║  SCENARIO C: Arranged Marriage That Grows                        ║
+  ║                                                                  ║
+  ║  Reward                                                          ║
+  ║    │   Person A: ────────╮                                       ║
+  ║    │                      ╰────╮                                  ║
+  ║    │   Person B: ─ ─ ─ ─ ─ ─ ─╰─ ─╮                             ║
+  ║    │                                ╰────────────── Converged    ║
+  ║    │                                                             ║
+  ║    │   (Started further apart, but aligned on fundamentals.      ║
+  ║    │    Slower convergence, but more durable.)                   ║
+  ║    └────────────────────────────────────────────── Time          ║
+  ║      Year 1          Year 5         Year 10+                     ║
+  ╚══════════════════════════════════════════════════════════════════╝
 </div>
   <figcaption class="hilarious-diagram-caption">Figure 2: Scenario A lines braid together; Scenario B splits wide; arranged-marriage line slowly hugs the same reward ceiling.</figcaption>
 </figure>
 
-<p>A long-term relationship is a multi-agent alignment problem. Two agents, each with their own reward functions, need to cooperate indefinitely. The question isn't whether your reward functions are identical â€” they never will be. The question is whether they're <strong>compatible enough to be negotiated</strong>.</p>
+<p>A long-term relationship is a multi-agent alignment problem. Two agents, each with their own reward functions, need to cooperate indefinitely. The question isn't whether your reward functions are identical — they never will be. The question is whether they're <strong>compatible enough to be negotiated</strong>.</p>
 
 <p>The couples who survive long-term are the ones who explicitly negotiate a shared objective function. "We want these things. We value these things. When our individual preferences conflict, here's how we'll resolve it." This sounds unromantic. It is unromantic. It also works.<sup>2</sup></p>
 
-<p>John Gottman, the psychologist who can predict divorce with 94% accuracy after watching a couple argue for fifteen minutes, found that the biggest predictor of relationship failure isn't conflict itself â€” it's the presence of what he calls "the Four Horsemen": contempt, criticism, defensiveness, and stonewalling. In alignment terms, these are all symptoms of the same thing: the two agents' reward functions have diverged to the point where cooperation is no longer mutually beneficial. Contempt, in particular, is the signal that one agent has stopped modelling the other as a cooperative partner and started modelling them as an adversary. Once that happens, the alignment is broken in a way that's very difficult to repair.</p>
+<p>John Gottman, the psychologist who can predict divorce with 94% accuracy after watching a couple argue for fifteen minutes, found that the biggest predictor of relationship failure isn't conflict itself — it's the presence of what he calls "the Four Horsemen": contempt, criticism, defensiveness, and stonewalling. In alignment terms, these are all symptoms of the same thing: the two agents' reward functions have diverged to the point where cooperation is no longer mutually beneficial. Contempt, in particular, is the signal that one agent has stopped modelling the other as a cooperative partner and started modelling them as an adversary. Once that happens, the alignment is broken in a way that's very difficult to repair.</p>
 
 <h2>What This Means (Practically)</h2>
 
-<p>I realise that reframing love as "two reward functions that accidentally aligned" is not exactly the stuff of greeting cards. But I think there's something genuinely useful here â€” something that, far from diminishing romance, actually increases your chances of finding lasting love.</p>
+<p>I realise that reframing love as "two reward functions that accidentally aligned" is not exactly the stuff of greeting cards. But I think there's something genuinely useful here — something that, far from diminishing romance, actually increases your chances of finding lasting love.</p>
 
-<p>Because if you understand the neurochemistry, you stop making a very common mistake: confusing the dopamine signal with the compatibility signal. They feel similar. They're not the same thing. The dopamine says "this person is exciting." The compatibility signal â€” which is quieter, slower, and comes from the prefrontal cortex rather than the limbic system â€” says "this person is someone I can build a life with." The best relationships have both. But if you can only have one, the second is the one that lasts.</p>
+<p>Because if you understand the neurochemistry, you stop making a very common mistake: confusing the dopamine signal with the compatibility signal. They feel similar. They're not the same thing. The dopamine says "this person is exciting." The compatibility signal — which is quieter, slower, and comes from the prefrontal cortex rather than the limbic system — says "this person is someone I can build a life with." The best relationships have both. But if you can only have one, the second is the one that lasts.</p>
 
-<p>Similarly, if you understand that the attraction phase is designed to end â€” it's a rocket booster, not an engine â€” you stop panicking when it does. You stop interpreting the end of the dopamine phase as the end of the relationship. You recognise it as a transition, not a failure. The attachment system is less exciting than the attraction system, but it's the one you'll actually live in.</p>
+<p>Similarly, if you understand that the attraction phase is designed to end — it's a rocket booster, not an engine — you stop panicking when it does. You stop interpreting the end of the dopamine phase as the end of the relationship. You recognise it as a transition, not a failure. The attachment system is less exciting than the attraction system, but it's the one you'll actually live in.</p>
 
-<p>And if you understand that you're a multi-agent system â€” that your lust, attraction, attachment, and rational planning systems all want different things â€” you can at least be more intentional about which system you listen to. Your limbic system is going to scream. Let it scream. Then ask your prefrontal cortex what it thinks. It's slower, quieter, and right more often.</p>
+<p>And if you understand that you're a multi-agent system — that your lust, attraction, attachment, and rational planning systems all want different things — you can at least be more intentional about which system you listen to. Your limbic system is going to scream. Let it scream. Then ask your prefrontal cortex what it thinks. It's slower, quieter, and right more often.</p>
 
 <p>Happy Valentine's Day. May your reward functions converge, and may the convergence hold.</p>
 

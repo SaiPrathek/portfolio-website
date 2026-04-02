@@ -82,7 +82,7 @@
     "title": "The Dunning-Kruger Peak Is Where All the Confidence Lives",
     "date": "2026-01-14",
     "readTime": "10 min",
-    "excerpt": "The sweet spot where you know just enough to be dangerously wrong — and why AI models go through the exact same thing during training.",
+    "excerpt": "The sweet spot where you know just enough to be dangerously wrong - and why AI models go through the exact same thing during training.",
     "tags": [
       "Psychology",
       "Learning",
@@ -121,7 +121,7 @@
     "title": "Why Every Meeting Could Have Been an Email (But Also Shouldn't Have Been)",
     "date": "2026-01-26",
     "readTime": "10 min",
-    "excerpt": "The bandwidth problem in communication — meetings, emails, and Slack as network protocols.",
+    "excerpt": "The bandwidth problem in communication - meetings, emails, and Slack as network protocols.",
     "tags": [
       "Productivity",
       "Communication",
@@ -134,7 +134,7 @@
     "title": "The Algorithm Doesn't Know You. It Knows a Puppet That Looks Like You.",
     "date": "2026-01-30",
     "readTime": "11 min",
-    "excerpt": "Recommendation algorithms don't model the real you — they model a simplified statistical puppet built from your clicks.",
+    "excerpt": "Recommendation algorithms don't model the real you - they model a simplified statistical puppet built from your clicks.",
     "tags": [
       "AI",
       "Privacy",
@@ -186,7 +186,7 @@
     "title": "Love Is Just Two Reward Functions That Accidentally Aligned (A Valentine's Day Special)",
     "date": "2026-02-15",
     "readTime": "11 min",
-    "excerpt": "Oxytocin, dopamine, and the alignment problem — in relationships and in AI.",
+    "excerpt": "Oxytocin, dopamine, and the alignment problem - in relationships and in AI.",
     "tags": [
       "Relationships",
       "AI",
@@ -212,7 +212,7 @@
     "title": "Why You Can't Remember Where You Put Your Keys But Can Quote Entire Movie Scenes",
     "date": "2026-02-23",
     "readTime": "10 min",
-    "excerpt": "Memory encoding isn't about importance — it's about emotional weight, narrative structure, and repetition.",
+    "excerpt": "Memory encoding isn't about importance - it's about emotional weight, narrative structure, and repetition.",
     "tags": [
       "Memory",
       "Neuroscience",
@@ -251,7 +251,7 @@
     "title": "Your Gut Feeling Is Just a Neural Network With No Documentation",
     "date": "2026-03-05",
     "readTime": "11 min",
-    "excerpt": "Intuition is pattern matching from compressed experience — a biological neural network that produces outputs without showing its work.",
+    "excerpt": "Intuition is pattern matching from compressed experience - a biological neural network that produces outputs without showing its work.",
     "tags": [
       "Neuroscience",
       "AI",
@@ -340,7 +340,7 @@
   },
   {
     "slug": "2026-03-25-how-pok-mon-go-players-accidentally-built-the-world-s-best-r",
-    "title": "How Pokémon Go Players Accidentally Built the World's Best Robot Navigation System (And What That Says About Us)",
+    "title": "How Pok-mon Go Players Accidentally Built the World's Best Robot Navigation System (And What That Says About Us)",
     "date": "2026-03-25",
     "readTime": "11 min",
     "excerpt": "For ten years, millions of people walked around catching imaginary creatures. Turns out they were also training the most sophisticated pedestrian navigation dat",
@@ -355,7 +355,7 @@
   },
   {
     "slug": "2026-03-26-slowest-queue",
-    "title": "You Always Pick the Slowest Queue (And It's Not Bad Luck — It's Math)",
+    "title": "You Always Pick the Slowest Queue (And It's Not Bad Luck - It's Math)",
     "date": "2026-03-26",
     "readTime": "13 min",
     "excerpt": "The universe isn't conspiring against you at the supermarket. But the math kind of is. Here's why your queue intuition is broken and what load balancers figured out decades ago.",

@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Gut Feeling Is Just a Neural Network With No Documentation | The Debrief</title>
-  <meta name="description" content="Intuition is pattern matching from compressed experience â€” a biological neural network that produces outputs without showing its work." />
+  <meta name="description" content="Intuition is pattern matching from compressed experience — a biological neural network that produces outputs without showing its work." />
   <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-03-05-gut-feeling-neural-net.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta property="og:title" content="Your Gut Feeling Is Just a Neural Network With No Documentation" />
-  <meta property="og:description" content="Intuition is pattern matching from compressed experience â€” a biological neural network that produces outputs without showing its work." />
+  <meta property="og:description" content="Intuition is pattern matching from compressed experience — a biological neural network that produces outputs without showing its work." />
   <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-03-05-gut-feeling-neural-net.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -116,44 +116,44 @@
         <div class="ascii-diagram">
 HUMAN INTUITION                          ARTIFICIAL NEURAL NETWORK
 (The Gut Model)                          (The LLM)
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€                 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+────────────────────────                 ────────────────────────
 
 INPUT LAYER                              INPUT LAYER
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ Visual fragments     â”‚                 â”‚ Token embeddings     â”‚
-â”‚ Sounds / smells      â”‚                 â”‚ Positional encoding  â”‚
-â”‚ Social cues          â”‚                 â”‚ Context window       â”‚
-â”‚ Bodily sensations    â”‚                 â”‚ (e.g. 128k tokens)   â”‚
-â”‚ Emotional context    â”‚                 â”‚                      â”‚
-â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                 â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-       â”‚                                        â”‚
+┌──────────────────────┐                 ┌──────────────────────┐
+│ Visual fragments     │                 │ Token embeddings     │
+│ Sounds / smells      │                 │ Positional encoding  │
+│ Social cues          │                 │ Context window       │
+│ Bodily sensations    │                 │ (e.g. 128k tokens)   │
+│ Emotional context    │                 │                      │
+└──────┬───────────────┘                 └──────┬───────────────┘
+       │                                        │
   HIDDEN LAYERS                            HIDDEN LAYERS
   (completely opaque)                      (technically inspectable,
-       â”‚                                   practically opaque)
-â”Œâ”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                 â”Œâ”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â”‚                 â”‚ â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â”‚
-â”‚ â–ˆâ–ˆ 86 billion â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â”‚                 â”‚ â–ˆâ–ˆ ~1.8 trillion â–ˆâ–ˆâ–ˆ â”‚
-â”‚ â–ˆâ–ˆ neurons â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â”‚                 â”‚ â–ˆâ–ˆ parameters â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â”‚
-â”‚ â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â”‚                 â”‚ â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â”‚
-â”‚ (NO DOCUMENTATION)   â”‚                 â”‚ (SOME DOCUMENTATION) â”‚
-â”‚ (NO LOGGING)         â”‚                 â”‚ (MOSTLY USELESS)     â”‚
-â”‚ (NO STACK TRACES)    â”‚                 â”‚ (ATTENTION MAPS?)    â”‚
-â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                 â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-       â”‚                                        â”‚
+       │                                   practically opaque)
+┌──────┴───────────────┐                 ┌──────┴───────────────┐
+│ ████████████████████ │                 │ ████████████████████ │
+│ ██ 86 billion ██████ │                 │ ██ ~1.8 trillion ███ │
+│ ██ neurons █████████ │                 │ ██ parameters ██████ │
+│ ████████████████████ │                 │ ████████████████████ │
+│ (NO DOCUMENTATION)   │                 │ (SOME DOCUMENTATION) │
+│ (NO LOGGING)         │                 │ (MOSTLY USELESS)     │
+│ (NO STACK TRACES)    │                 │ (ATTENTION MAPS?)    │
+└──────┬───────────────┘                 └──────┬───────────────┘
+       │                                        │
   OUTPUT LAYER                             OUTPUT LAYER
-â”Œâ”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                 â”Œâ”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ "Something feels     â”‚                 â”‚ "The answer is 42"   â”‚
-â”‚  off about this"     â”‚                 â”‚                      â”‚
-â”‚                      â”‚                 â”‚ Confidence: 94.2%    â”‚
-â”‚ Confidence: Â¯\_(ãƒ„)_/Â¯â”‚                â”‚ Explanation: [none]  â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+┌──────┴───────────────┐                 ┌──────┴───────────────┐
+│ "Something feels     │                 │ "The answer is 42"   │
+│  off about this"     │                 │                      │
+│                      │                 │ Confidence: 94.2%    │
+│ Confidence: ¯\_(ツ)_/¯│                │ Explanation: [none]  │
+└──────────────────────┘                 └──────────────────────┘
 
 EXPLAINABILITY:                          EXPLAINABILITY:
 "I just... feel it"                      "Based on the patterns
                                           in my training data"
 (same energy)                            (same energy)
       </div>
-        <figcaption class="hilarious-diagram-caption">Figure 1: Side-by-side netsâ€”gut outputs "feels wrong" with shrug confidence; model outputs 42 with 94% like a stamped form.</figcaption>
+        <figcaption class="hilarious-diagram-caption">Figure 1: Side-by-side nets—gut outputs "feels wrong" with shrug confidence; model outputs 42 with 94% like a stamped form.</figcaption>
       </figure>
 
       <p>The parallels are unsettling. Both systems take in massive amounts of high-dimensional input. Both process it through layers of transformations that even their creators can't fully trace. Both produce outputs that are often surprisingly accurate. And both, when asked to explain <em>why</em> they produced that output, offer answers that are essentially confabulation &mdash; plausible-sounding stories constructed after the fact to justify a conclusion that was reached through entirely opaque means.</p>
@@ -187,34 +187,34 @@ EXPLAINABILITY:                          EXPLAINABILITY:
       <figure class="hilarious-diagram">
         <div class="ascii-diagram">
 GUT FEELING RELIABILITY BY DOMAIN
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+══════════════════════════════════════════════════════════════
 
                           REGULARITY OF DOMAIN
-                    Low â—„â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â–º High
-                    â”‚                              â”‚
-              High  â”‚  DANGEROUS          RELIABLE â”‚
-                    â”‚  ZONE               ZONE     â”‚
-  FEEDBACK          â”‚                              â”‚
-  SPEED             â”‚  Stock trading      Chess    â”‚
-                    â”‚  Political punditry Firefightâ”‚
-                    â”‚  Dating ("the one") Surgery  â”‚
-                    â”‚  VC investing       Nursing  â”‚
-                    â”‚  Predicting wars    Piloting â”‚
-                    â”‚                              â”‚
-              Low   â”‚  TERRIBLE           SLOW BUT â”‚
-                    â”‚  ZONE               DECENT   â”‚
-                    â”‚                              â”‚
-                    â”‚  Long-term economic Farming  â”‚
-                    â”‚    forecasting      Brewing  â”‚
-                    â”‚  Predicting tech    Climate  â”‚
-                    â”‚    trends 10yr out  science  â”‚
-                    â”‚  Hiring decisions   (with    â”‚
-                    â”‚  (unstructured      data)    â”‚
-                    â”‚   interviews)                â”‚
-                    â”‚                              â”‚
-                    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                    Low ◄─────────────────────► High
+                    │                              │
+              High  │  DANGEROUS          RELIABLE │
+                    │  ZONE               ZONE     │
+  FEEDBACK          │                              │
+  SPEED             │  Stock trading      Chess    │
+                    │  Political punditry Firefight│
+                    │  Dating ("the one") Surgery  │
+                    │  VC investing       Nursing  │
+                    │  Predicting wars    Piloting │
+                    │                              │
+              Low   │  TERRIBLE           SLOW BUT │
+                    │  ZONE               DECENT   │
+                    │                              │
+                    │  Long-term economic Farming  │
+                    │    forecasting      Brewing  │
+                    │  Predicting tech    Climate  │
+                    │    trends 10yr out  science  │
+                    │  Hiring decisions   (with    │
+                    │  (unstructured      data)    │
+                    │   interviews)                │
+                    │                              │
+                    └──────────────────────────────┘
 
-CONFIDENCE LEVEL OF THE PERSON:  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ
+CONFIDENCE LEVEL OF THE PERSON:  ████████████████████████████
 (equally high in ALL quadrants, which is the entire problem)
       </div>
         <figcaption class="hilarious-diagram-caption">Figure 2: Quadrants label scary zones for dating and trading while one thick confidence stripe pretends every box feels equally sure.</figcaption>
