@@ -7,7 +7,10 @@
   "private": true,
   "scripts": {
     "start": "npx serve .",
-    "dev": "npx serve . -l 3000"
+    "dev": "npx serve . -l 3000",
+    "format": "npx prettier --write \"*.{html,json}\" \"blog/**/*.html\" \"blog/**/*.json\" \"css/**/*.css\" \"js/**/*.js\" \"scripts/**/*.js\"",
+    "validate:blog": "node scripts/validate-blog.js",
+    "generate:post": "node scripts/generate-post.js"
   },
   "keywords": [
     "portfolio",

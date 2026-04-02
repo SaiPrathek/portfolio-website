@@ -114,6 +114,13 @@
     </p>
   </footer>
 
+  <script src="/js/core.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/animations.js"></script>
+  <script src="/js/contact.js"></script>
+  <script src="/js/interactive.js"></script>
+  <script src="/js/blog.js"></script>
   <script src="/js/main.js"></script>
   <script>
     // Load and render posts
@@ -130,62 +137,9 @@
           return;
         }
 
-        grid.innerHTML = posts.slice().reverse().map((p, i) => `
-          <article class="post-card" onclick="window.location='/blog/posts/${p.slug}.html'">
-            <!-- F1 Card -->
-            <div class="f1-only p-8 relative overflow-hidden" style="background: var(--surface-container-lowest); border-left: 4px solid var(--primary);">
-              <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
-                <div>
-                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #${p.id || String(posts.length - i).padStart(3,'0')}</span>
-                  <h2 class="text-2xl md:text-3xl font-extrabold italic tracking-tight leading-tight" style="font-family: var(--font-headline);">${p.title}</h2>
-                </div>
-                <div class="flex gap-4 shrink-0 text-right">
-                  <div>
-                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Filed</span>
-                    <span class="block text-sm font-bold" style="font-family: var(--font-mono);">${p.date}</span>
-                  </div>
-                  <div>
-                    <span class="block text-[10px] uppercase" style="color: var(--secondary); font-family: var(--font-mono);">Read</span>
-                    <span class="block text-sm font-bold" style="color: var(--primary); font-family: var(--font-mono);">${p.readTime}</span>
-                  </div>
-                </div>
-              </div>
-              <p class="text-sm leading-relaxed mb-4" style="color: var(--secondary); font-family: var(--font-body);">${p.excerpt}</p>
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <div class="flex flex-wrap gap-2">${p.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
-                <span class="text-xs font-bold uppercase tracking-widest flex items-center gap-1" style="color: var(--primary); font-family: var(--font-headline);">
-                  Read Full Debrief <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </span>
-              </div>
-            </div>
-            <!-- Office Card -->
-            <div class="office-only p-8 relative overflow-hidden" style="background: var(--surface-container-low); border-left: 4px solid var(--primary);">
-              <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
-                <div>
-                  <span class="text-[10px] uppercase tracking-widest block mb-1" style="color: var(--primary);">MEMO #${p.id || String(posts.length - i).padStart(3,'0')}</span>
-                  <h2 class="text-2xl md:text-3xl font-semibold italic leading-tight" style="font-family: var(--font-headline);">${p.title}</h2>
-                </div>
-                <div class="flex gap-4 shrink-0 text-right">
-                  <div>
-                    <span class="block text-[10px] uppercase" style="color: var(--secondary);">Filed</span>
-                    <span class="block text-sm font-semibold">${p.date}</span>
-                  </div>
-                  <div>
-                    <span class="block text-[10px] uppercase" style="color: var(--secondary);">Read</span>
-                    <span class="block text-sm font-semibold" style="color: var(--primary);">${p.readTime}</span>
-                  </div>
-                </div>
-              </div>
-              <p class="text-sm leading-relaxed mb-4" style="color: var(--secondary);">${p.excerpt}</p>
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <div class="flex flex-wrap gap-2">${p.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
-                <span class="text-xs font-semibold uppercase tracking-widest flex items-center gap-1" style="color: var(--primary);">
-                  Read Memo <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </span>
-              </div>
-            </div>
-          </article>
-        `).join('');
+        grid.innerHTML = window.PortfolioApp?.buildBlogIndexCards
+          ? window.PortfolioApp.buildBlogIndexCards(posts)
+          : "";
       } catch(e) {
         grid.innerHTML = `<div class="text-center py-12 opacity-40" style="color: var(--secondary);">
           <span class="text-xs uppercase tracking-widest">Could not load posts.</span>

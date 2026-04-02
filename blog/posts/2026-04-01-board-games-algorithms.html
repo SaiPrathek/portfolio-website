@@ -83,7 +83,7 @@
   <main class="px-6 pb-24 max-w-3xl mx-auto">
     <div class="post-body">
 
-      <p>I watched a grown man nearly dislocate his shoulder over a wooden totem the size of a chapati roller because his brain's interrupt handler suffered a 50-millisecond lag. We call this "Jungle Speed." My operating systems professor would call it a race condition. The grown man — my friend Abhishek — calls it "the totem was slippery," a hypothesis unsupported by physics, witnesses, or the laws of friction.</p>
+      <p>I watched a grown man nearly dislocate his shoulder over a wooden totem the size of a chapati roller because his brain's interrupt handler suffered a 50-millisecond lag. We call this "Jungle Speed." My operating systems professor would call it a race condition. The grown man â€” my friend Abhishek â€” calls it "the totem was slippery," a hypothesis unsupported by physics, witnesses, or the laws of friction.</p>
       <p>This was Saturday evening in Hyderabad. A board game cafe. Six people around a table covered with cards, weird little tokens, one plate of masala fries that nobody ordered but everyone kept eating, and the kind of cheerful chaos that would make a systems engineer whisper, "this has no fault tolerance." Over the next four hours, we played Ghost Blitz, Jungle Speed, Codenames, Sequence, Animal Circus, and Art Robbery. We laughed. We argued. Abhishek knocked over two piles of cards and blamed air conditioning.<sup>[1]</sup></p>
       <p>And somewhere between Abhishek grabbing the wrong Ghost Blitz piece with the serene confidence of a corrupted database that believes it is perfectly synced, and me watching him accuse the wrong Art Robbery suspect for the third consecutive round, something clicked. Not in the spiritual "the universe spoke to me" sense. More in the "I accidentally profiled a distributed system in production" sense.</p>
       <p>We think board games are leisure. Your brain did not receive that memo. Your brain spent Saturday night solving constraint satisfaction problems, managing mutex contention, running multi-objective optimization under adversarial pressure, and hallucinating animal positions from a cache that expires faster than Maggi cooks. Your Saturday fun night was a graduate seminar in computer science. The dress code was hoodies. The penalty for wrong answers was public shame and Abhishek's commentary.</p>
@@ -95,32 +95,32 @@
 
       <figure class="hilarious-diagram">
         <div class="ascii-diagram"><pre>
-╔════════════════════════════════════════════════════════════╗
-║     GHOST BLITZ: WHAT YOUR BRAIN THINKS IT DOES           ║
-║              vs. WHAT IT ACTUALLY DOES                     ║
-╠════════════════════════════════════════════════════════════╣
-║                                                            ║
-║  THEORY (clean SAT solver):                                ║
-║                                                            ║
-║  Card flips ──▶ Parse colors ──▶ Eliminate ──▶ Grab ✓      ║
-║                                                            ║
-║  PRACTICE (Abhishek edition):                              ║
-║                                                            ║
-║  Card flips ──▶ Panic ──▶ Grab nearest object ──▶ Wrong    ║
-║       │                                                    ║
-║       ├──▶ "Wait no" ──▶ Drop it ──▶ Grab ANOTHER wrong   ║
-║       │                    object ──▶ Argue it counts       ║
-║       │                                                    ║
-║       └──▶ Brain finally computes answer                   ║
-║              └──▶ Someone else already has it              ║
-║                     └──▶ Blame lighting conditions         ║
-╚════════════════════════════════════════════════════════════╝
+â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+â•‘     GHOST BLITZ: WHAT YOUR BRAIN THINKS IT DOES           â•‘
+â•‘              vs. WHAT IT ACTUALLY DOES                     â•‘
+â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£
+â•‘                                                            â•‘
+â•‘  THEORY (clean SAT solver):                                â•‘
+â•‘                                                            â•‘
+â•‘  Card flips â”€â”€â–¶ Parse colors â”€â”€â–¶ Eliminate â”€â”€â–¶ Grab âœ“      â•‘
+â•‘                                                            â•‘
+â•‘  PRACTICE (Abhishek edition):                              â•‘
+â•‘                                                            â•‘
+â•‘  Card flips â”€â”€â–¶ Panic â”€â”€â–¶ Grab nearest object â”€â”€â–¶ Wrong    â•‘
+â•‘       â”‚                                                    â•‘
+â•‘       â”œâ”€â”€â–¶ "Wait no" â”€â”€â–¶ Drop it â”€â”€â–¶ Grab ANOTHER wrong   â•‘
+â•‘       â”‚                    object â”€â”€â–¶ Argue it counts       â•‘
+â•‘       â”‚                                                    â•‘
+â•‘       â””â”€â”€â–¶ Brain finally computes answer                   â•‘
+â•‘              â””â”€â”€â–¶ Someone else already has it              â•‘
+â•‘                     â””â”€â”€â–¶ Blame lighting conditions         â•‘
+â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 </pre></div>
         <figcaption class="hilarious-diagram-caption">Figure 1: That tidy SAT row is the brochure; the tangled panic ladder is me grabbing wrong ghosts and blaming the lights.</figcaption>
       </figure>
 
-      <p>Computer scientists call this pruning a search space. You and I call it "why did I grab the wrong thing before the card even fully landed?" The reason experts seem magically fast is not faster eyes. It is better elimination strategy. They do not inspect all possibilities. They cut branches early. Good players are DPLL solvers — the methodical type who try one assumption, hit a contradiction, backtrack, and try the next. Great players are CDCL solvers — the terrifying type who not only backtrack but <em>remember why</em> they failed and never make the same wrong assumption twice. Abhishek is a random number generator with hands.</p>
-      <p>Abhishek operates on what I can only describe as a "Vibes-First, Verification-Never" architecture. He commits to an answer 20 milliseconds into card processing, before his visual cortex has even clocked in for the shift. When he is right, he looks at you like he invented logic. When he is wrong — which is often — he does this specific thing where his hand freezes mid-air, his eyes go wide, and his mouth forms a small "o" like a man who just realized he replied-all. Then he puts the wrong piece down gently, as if placing it softly will somehow undo the laws of the game.<sup>[2]</sup></p>
+      <p>Computer scientists call this pruning a search space. You and I call it "why did I grab the wrong thing before the card even fully landed?" The reason experts seem magically fast is not faster eyes. It is better elimination strategy. They do not inspect all possibilities. They cut branches early. Good players are DPLL solvers â€” the methodical type who try one assumption, hit a contradiction, backtrack, and try the next. Great players are CDCL solvers â€” the terrifying type who not only backtrack but <em>remember why</em> they failed and never make the same wrong assumption twice. Abhishek is a random number generator with hands.</p>
+      <p>Abhishek operates on what I can only describe as a "Vibes-First, Verification-Never" architecture. He commits to an answer 20 milliseconds into card processing, before his visual cortex has even clocked in for the shift. When he is right, he looks at you like he invented logic. When he is wrong â€” which is often â€” he does this specific thing where his hand freezes mid-air, his eyes go wide, and his mouth forms a small "o" like a man who just realized he replied-all. Then he puts the wrong piece down gently, as if placing it softly will somehow undo the laws of the game.<sup>[2]</sup></p>
 
       <div class="callout">
         <strong>Fun fact:</strong> SAT solving is one of the classic NP-complete problem families. If you can solve every SAT instance efficiently, you either changed mathematics forever or accidentally discovered the world is a simulation with debug mode on.
@@ -138,8 +138,8 @@
         <strong>Small serious detour:</strong> Race conditions are not just annoying bugs. In safety-critical systems, timing errors have caused real harm. Concurrency is where "almost correct" can become catastrophic.
       </div>
 
-      <p>Jungle Speed also demonstrates interrupt handling. The table can be relaxed for five turns — somebody is telling a story about their Ola driver, someone is debating vada pav rankings — and then suddenly one symbol match appears and everybody's nervous system receives a maskable interrupt that nobody masks. Context switches happen instantly: from "anyway so the driver took the wrong flyover" to hand-trajectory computation in under 400 milliseconds. Your prefrontal cortex does not get a say. Your motor cortex has already filed the launch order.</p>
-      <p>Abhishek's style here is architectural comedy. He pre-loads his hand near the totem between turns "just in case," hovering like a helicopter parent over a shared resource. This is speculative execution. Sometimes it wins spectacularly — his hand is already there when the match appears, and he looks like a prophet. But more often, he false-triggers on a near-match, smacks the table hard enough to rattle everyone's cards, and then sits back with the expression of a man whose branch predictor just flushed the entire pipeline. "I thought those were the same symbol," he says, wounded, as if the cards personally betrayed him.</p>
+      <p>Jungle Speed also demonstrates interrupt handling. The table can be relaxed for five turns â€” somebody is telling a story about their Ola driver, someone is debating vada pav rankings â€” and then suddenly one symbol match appears and everybody's nervous system receives a maskable interrupt that nobody masks. Context switches happen instantly: from "anyway so the driver took the wrong flyover" to hand-trajectory computation in under 400 milliseconds. Your prefrontal cortex does not get a say. Your motor cortex has already filed the launch order.</p>
+      <p>Abhishek's style here is architectural comedy. He pre-loads his hand near the totem between turns "just in case," hovering like a helicopter parent over a shared resource. This is speculative execution. Sometimes it wins spectacularly â€” his hand is already there when the match appears, and he looks like a prophet. But more often, he false-triggers on a near-match, smacks the table hard enough to rattle everyone's cards, and then sits back with the expression of a man whose branch predictor just flushed the entire pipeline. "I thought those were the same symbol," he says, wounded, as if the cards personally betrayed him.</p>
 
       <div class="pull-quote">Most friendships survive disagreement; only great friendships survive lock contention over a wooden totem.</div>
 
@@ -152,43 +152,43 @@
 
       <figure class="hilarious-diagram">
         <div class="ascii-diagram"><pre>
-╔════════════════════════════════════════════════════════════╗
-║    CODENAMES SEMANTIC SPACE: ABHISHEK'S "WEEKEND: 2"      ║
-╠════════════════════════════════════════════════════════════╣
-║                                                            ║
-║   What Abhishek saw:                                       ║
-║                                                            ║
-║       NAP ●━━━━━━━━━━━● BIRYANI                           ║
-║               ▲                                            ║
-║               │                                            ║
-║         "WEEKEND: 2"                                       ║
-║         (philosophically perfect)                          ║
-║                                                            ║
-║   What the board actually looked like:                     ║
-║                                                            ║
-║       NAP ●                     ● BIRYANI                  ║
-║            \                   /                           ║
-║             \    ☠ SLEEP      /                            ║
-║              \  (assassin)   /                             ║
-║               ╲  sitting    ╱                              ║
-║                ╲ RIGHT HERE╱                               ║
-║                 ╲         ╱                                ║
-║                  ╲ BOOM ╱  ← game over in 8 seconds        ║
-║                   ╲   ╱                                    ║
-║                    ╲ ╱                                     ║
-║                                                            ║
-║   Spymaster's clue radius must capture ● and dodge ☠       ║
-║   Abhishek's clue radius: included literally everything    ║
-╚════════════════════════════════════════════════════════════╝
+â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+â•‘    CODENAMES SEMANTIC SPACE: ABHISHEK'S "WEEKEND: 2"      â•‘
+â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£
+â•‘                                                            â•‘
+â•‘   What Abhishek saw:                                       â•‘
+â•‘                                                            â•‘
+â•‘       NAP â—â”â”â”â”â”â”â”â”â”â”â”â— BIRYANI                           â•‘
+â•‘               â–²                                            â•‘
+â•‘               â”‚                                            â•‘
+â•‘         "WEEKEND: 2"                                       â•‘
+â•‘         (philosophically perfect)                          â•‘
+â•‘                                                            â•‘
+â•‘   What the board actually looked like:                     â•‘
+â•‘                                                            â•‘
+â•‘       NAP â—                     â— BIRYANI                  â•‘
+â•‘            \                   /                           â•‘
+â•‘             \    â˜  SLEEP      /                            â•‘
+â•‘              \  (assassin)   /                             â•‘
+â•‘               â•²  sitting    â•±                              â•‘
+â•‘                â•² RIGHT HEREâ•±                               â•‘
+â•‘                 â•²         â•±                                â•‘
+â•‘                  â•² BOOM â•±  â† game over in 8 seconds        â•‘
+â•‘                   â•²   â•±                                    â•‘
+â•‘                    â•² â•±                                     â•‘
+â•‘                                                            â•‘
+â•‘   Spymaster's clue radius must capture â— and dodge â˜        â•‘
+â•‘   Abhishek's clue radius: included literally everything    â•‘
+â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 </pre></div>
         <figcaption class="hilarious-diagram-caption">Figure 2: Weekend ties NAP and BIRYANI in one happy arc while SLEEP the assassin lounges in the middle like a trap at brunch.</figcaption>
       </figure>
 
       <p>What makes Codenames brilliant is that it reveals hidden differences between your semantic model and everyone else's. You might think "Pitch" links <em>CRICKET</em> and <em>MUSIC</em> elegantly. Your team might confidently choose <em>FORK</em> because "pitchfork." Congratulations, you just discovered representation mismatch in collaborative systems. Your internal word2vec and their internal word2vec were trained on different corpora. This is the fundamental tragedy of communication, and Codenames turns it into a party game.</p>
-      <p>Abhishek once gave the clue "Weekend: 2" for <em>NAP</em> and <em>BIRYANI</em>. In his head, this was poetic. In everyone's head, this was poetic. The problem was that <em>SLEEP</em> — the assassin — also lives in the "weekend" vector neighborhood, close enough that our teammate tapped it first with the calm certainty of a man walking into a glass door. We lost in eight seconds. Abhishek sat there with the specific face of someone who just deployed to production without running tests: mouth slightly open, eyes fixed on the middle distance, processing the gap between intention and catastrophe. It was the purest demonstration of how local coherence can still fail global optimization.</p>
+      <p>Abhishek once gave the clue "Weekend: 2" for <em>NAP</em> and <em>BIRYANI</em>. In his head, this was poetic. In everyone's head, this was poetic. The problem was that <em>SLEEP</em> â€” the assassin â€” also lives in the "weekend" vector neighborhood, close enough that our teammate tapped it first with the calm certainty of a man walking into a glass door. We lost in eight seconds. Abhishek sat there with the specific face of someone who just deployed to production without running tests: mouth slightly open, eyes fixed on the middle distance, processing the gap between intention and catastrophe. It was the purest demonstration of how local coherence can still fail global optimization.</p>
 
       <div class="callout">
-        <strong>Fun fact:</strong> Early word embedding work showed analogies like "king - man + woman ≈ queen." Codenames players reinvent this with fewer equations and more panic.
+        <strong>Fun fact:</strong> Early word embedding work showed analogies like "king - man + woman â‰ˆ queen." Codenames players reinvent this with fewer equations and more panic.
       </div>
 
       <div class="pull-quote">Language feels like poetry, but under pressure it behaves like coordinate geometry with consequences.</div>
@@ -199,54 +199,54 @@
       <p>Sequence is the kind of game people underestimate because it looks straightforward: play cards, place chips, build lines. But beneath the polite board lies a strategic tug-of-war between deterministic position and stochastic card draws. You are balancing what the board invites against what your hand permits.</p>
       <p>This is classic tree search territory. Each move branches into possible futures depending on what card appears next and what opponents prioritize. You cannot compute the whole tree because it explodes. So you do what good algorithms do: evaluate heuristics, sample likely paths, and pick a move with acceptable expected value. That is Monte Carlo Tree Search in plain clothes. Human players run lighter versions mentally: "If I place here, I block their diagonal, open my horizontal, and force them to waste a turn." You are estimating future state quality under uncertainty, between bites of fries.</p>
       <p>Then there is Art Robbery, which teaches you a lesson that software engineers learn the hard way and economists learn the expensive way: <strong>optimizing for one thing while ignoring everything else will get you eliminated.</strong></p>
-      <p>Here is the setup: numbered tokens (0 through 5) sit in the center. You play cards to grab tokens — either from the center or stolen directly from opponents. A Boss token worth 5 points floats around like a prize everybody wants. Guard Dogs protect your stash from theft. A Greedy Thief card lets you snatch any token you want. After four rounds, the player with the most valuable loot wins. Simple, right?</p>
-      <p>Except for the alibi dots. Every token has alibi dots printed on it, and at the end of the game, the player with the <em>fewest</em> alibi dots across their collected tiles is eliminated — regardless of how much loot they have. You could be sitting on a mountain of stolen art, and if your alibi trail is too thin, you get caught. Game over. Do not pass Go.</p>
+      <p>Here is the setup: numbered tokens (0 through 5) sit in the center. You play cards to grab tokens â€” either from the center or stolen directly from opponents. A Boss token worth 5 points floats around like a prize everybody wants. Guard Dogs protect your stash from theft. A Greedy Thief card lets you snatch any token you want. After four rounds, the player with the most valuable loot wins. Simple, right?</p>
+      <p>Except for the alibi dots. Every token has alibi dots printed on it, and at the end of the game, the player with the <em>fewest</em> alibi dots across their collected tiles is eliminated â€” regardless of how much loot they have. You could be sitting on a mountain of stolen art, and if your alibi trail is too thin, you get caught. Game over. Do not pass Go.</p>
 
       <div class="callout">
         <strong>CS translation:</strong> Art Robbery is a multi-objective optimization problem. You are maximizing token value subject to a constraint on alibi dots. Ignore the constraint and you get pruned from the solution space, no matter how good your primary objective looks.
       </div>
 
-      <p>This is Pareto optimality at a cafe table. You cannot just chase the highest-value tokens blindly. You need solutions that are good <em>enough</em> on both dimensions — valuable enough to win, alibi-heavy enough to survive. The 5-value Boss token is tempting, but if it comes with zero alibi dots and you are already running thin, grabbing it might be the move that eliminates you.</p>
-      <p>Then there is the adversarial layer. Four friends around a table, each deciding: do I steal from the center, or do I steal from someone else? And if I steal from someone, do they have a Guard Dog? The Guard Dog is a firewall with legs — an invisible defense you cannot see until you have already committed to the theft, at which point you receive a useless wooden dog and the specific humiliation of someone saying, "Should have checked."</p>
+      <p>This is Pareto optimality at a cafe table. You cannot just chase the highest-value tokens blindly. You need solutions that are good <em>enough</em> on both dimensions â€” valuable enough to win, alibi-heavy enough to survive. The 5-value Boss token is tempting, but if it comes with zero alibi dots and you are already running thin, grabbing it might be the move that eliminates you.</p>
+      <p>Then there is the adversarial layer. Four friends around a table, each deciding: do I steal from the center, or do I steal from someone else? And if I steal from someone, do they have a Guard Dog? The Guard Dog is a firewall with legs â€” an invisible defense you cannot see until you have already committed to the theft, at which point you receive a useless wooden dog and the specific humiliation of someone saying, "Should have checked."</p>
       <p>If everyone avoids stealing from the leader because they might have a Guard Dog, the leader runs away with the game. If everyone piles onto the leader, the second-place player cruises to victory unbothered. The optimal strategy depends on what everyone else is doing, which depends on what they think you are doing. Nash equilibrium with four players, snacks, and grudges.</p>
-      <p>Abhishek in Art Robbery is a case study in single-objective tunnel vision wrapped in pure theater. He spots the Boss token and his eyes go wide like a man who just found a ₹500 note on the footpath. He plays four rounds chasing maximum token value — the 5, the 4, the Boss — with the focus of someone speedrunning a heist movie. He leans forward. He narrows his eyes. He says things like "nobody touch my stack" with the delivery of a Bollywood villain who has not yet realized the hero is behind him. And then, at the end of round four, the alibi dots are counted, and Abhishek has the fewest. Eliminated. Every single time. He optimized beautifully for the wrong objective. He is the human embodiment of a loss function that forgot a regularization term.</p>
+      <p>Abhishek in Art Robbery is a case study in single-objective tunnel vision wrapped in pure theater. He spots the Boss token and his eyes go wide like a man who just found a â‚¹500 note on the footpath. He plays four rounds chasing maximum token value â€” the 5, the 4, the Boss â€” with the focus of someone speedrunning a heist movie. He leans forward. He narrows his eyes. He says things like "nobody touch my stack" with the delivery of a Bollywood villain who has not yet realized the hero is behind him. And then, at the end of round four, the alibi dots are counted, and Abhishek has the fewest. Eliminated. Every single time. He optimized beautifully for the wrong objective. He is the human embodiment of a loss function that forgot a regularization term.</p>
       <p>The rest of us, watching him get eliminated with the highest-value collection at the table, learn a lesson that optimization textbooks take a whole chapter to explain: a locally optimal solution that violates a hard constraint is not a solution at all. It is just a confident mistake with good presentation. Board games compress these trade-offs into tight loops with instant feedback: wrong balance, immediate elimination; right balance, tiny dopamine bonus and the right to look smug for eleven seconds. The world rarely has a single scoreboard, and Art Robbery teaches that in four rounds flat.</p>
 
       <h2>Animal Circus and the Tragedy of Your L1 Cache</h2>
       <p>Animal Circus looks adorable, which is always suspicious. Cute artwork is the Trojan horse of ruthless game design. Underneath the friendly elephants and cheerful seals is a memory stress test that would make your RAM blush. You must track positions, features, patterns, and the sequence of reveal events. Meanwhile, other players are moving faster than you, social pressure is compounding, and your brain's reliable memory subsystem has quietly filed for emergency leave.</p>
-      <p>In computing, cache hierarchy matters because fast memory is limited and slow memory is vast. Your brain works the same way. Working memory — the L1 cache — is blazingly fast but holds maybe four to seven items on a good day with adequate chai intake. Long-term memory is huge and messy. Retrieval is probabilistic. And under speed pressure, your working set overflows and eviction begins, except nobody told your confidence module, which keeps broadcasting "I DEFINITELY know where the penguin is" while your actual memory subsystem is returning null.</p>
+      <p>In computing, cache hierarchy matters because fast memory is limited and slow memory is vast. Your brain works the same way. Working memory â€” the L1 cache â€” is blazingly fast but holds maybe four to seven items on a good day with adequate chai intake. Long-term memory is huge and messy. Retrieval is probabilistic. And under speed pressure, your working set overflows and eviction begins, except nobody told your confidence module, which keeps broadcasting "I DEFINITELY know where the penguin is" while your actual memory subsystem is returning null.</p>
 
       <figure class="hilarious-diagram">
         <div class="ascii-diagram"><pre>
-╔════════════════════════════════════════════════════════════╗
-║  YOUR BRAIN'S MEMORY DURING ANIMAL CIRCUS (BY ROUND)     ║
-╠════════════════════════════════════════════════════════════╣
-║                                                            ║
-║  Round 1:  "Elephant top-left, fox middle, seal bottom"    ║
-║            Status: L1 cache warm. Feeling genius.          ║
-║                                                            ║
-║  Round 3:  "Elephant... top-left? Fox was... somewhere"    ║
-║            Status: L2 fuzzy recall. Minor concern.         ║
-║                                                            ║
-║  Round 5:  "There's definitely a penguin in this game"     ║
-║            Status: L3 archive. Data may be fabricated.     ║
-║                                                            ║
-║  Round 7:  "Was that a camel or did I imagine a camel"     ║
-║            Status: CACHE MISS. Hallucination probable.     ║
-║                                                            ║
-║  Round 9:  *points at card with pure unearned confidence*  ║
-║            Status: Confidence: 100%. Accuracy: 12%.        ║
-║                                                            ║
-║  ┌─────────────────────────────────────────────────────┐   ║
-║  │  CONFIDENCE ████████████████████████████████ 100%   │   ║
-║  │  ACCURACY   ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░  12%   │   ║
-║  └─────────────────────────────────────────────────────┘   ║
-╚════════════════════════════════════════════════════════════╝
+â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+â•‘  YOUR BRAIN'S MEMORY DURING ANIMAL CIRCUS (BY ROUND)     â•‘
+â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£
+â•‘                                                            â•‘
+â•‘  Round 1:  "Elephant top-left, fox middle, seal bottom"    â•‘
+â•‘            Status: L1 cache warm. Feeling genius.          â•‘
+â•‘                                                            â•‘
+â•‘  Round 3:  "Elephant... top-left? Fox was... somewhere"    â•‘
+â•‘            Status: L2 fuzzy recall. Minor concern.         â•‘
+â•‘                                                            â•‘
+â•‘  Round 5:  "There's definitely a penguin in this game"     â•‘
+â•‘            Status: L3 archive. Data may be fabricated.     â•‘
+â•‘                                                            â•‘
+â•‘  Round 7:  "Was that a camel or did I imagine a camel"     â•‘
+â•‘            Status: CACHE MISS. Hallucination probable.     â•‘
+â•‘                                                            â•‘
+â•‘  Round 9:  *points at card with pure unearned confidence*  â•‘
+â•‘            Status: Confidence: 100%. Accuracy: 12%.        â•‘
+â•‘                                                            â•‘
+â•‘  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â•‘
+â•‘  â”‚  CONFIDENCE â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ 100%   â”‚   â•‘
+â•‘  â”‚  ACCURACY   â–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘  12%   â”‚   â•‘
+â•‘  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â•‘
+â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 </pre></div>
-        <figcaption class="hilarious-diagram-caption">Figure 3: Memory notes dissolve by round but the bars still show sky-high confidence beside a stubby accuracy bar—classic finger-point energy.</figcaption>
+        <figcaption class="hilarious-diagram-caption">Figure 3: Memory notes dissolve by round but the bars still show sky-high confidence beside a stubby accuracy barâ€”classic finger-point energy.</figcaption>
       </figure>
 
-      <p>This is why you confidently remember the wrong square. Confidence is not a checksum. It is a feeling generated by your prediction machinery, and it is frequently, hilariously detached from correctness. Machine learning models do the same thing — output confident nonsense when calibration is poor. We call it hallucination when AI does it, but humans have been doing premium hallucination since we first pointed at constellations and said "that's a bear."</p>
+      <p>This is why you confidently remember the wrong square. Confidence is not a checksum. It is a feeling generated by your prediction machinery, and it is frequently, hilariously detached from correctness. Machine learning models do the same thing â€” output confident nonsense when calibration is poor. We call it hallucination when AI does it, but humans have been doing premium hallucination since we first pointed at constellations and said "that's a bear."</p>
       <p>Here is the thing nobody tells you at game night, and it might be the most important sentence in this post: <strong>you are not stupid for forgetting.</strong> Your cache eviction is not a bug. It is a survival mechanism. If your brain faithfully archived every OTP you ever entered, every auto-rickshaw fare, every awkward thing you said at a wedding in 2014, you would not be a genius. You would be non-functional. Forgetting is how your brain keeps the signal-to-noise ratio livable. Your L1 cache is small on purpose. The system is optimized for adaptive compression, not perfect archival. That is not a deficiency. That is engineering.</p>
 
       <div class="callout">
@@ -265,12 +265,12 @@
 
       <div class="pull-quote">A great game is a tiny universe where complexity is safe enough to touch and failure is cheap enough to learn from.</div>
 
-      <p>We keep asking, in AI research, "How do we build systems that reason, coordinate, infer, and communicate under uncertainty?" But humans already do all of this. Imperfectly. Loudly. Around a table with cardboard components and one friend who interprets every rule as a suggestion. The challenge is not inventing intelligence from scratch. The challenge is understanding the kind that already exists — fast, biased, social, adaptive, occasionally disastrous, and somehow still effective enough to keep the species going.</p>
+      <p>We keep asking, in AI research, "How do we build systems that reason, coordinate, infer, and communicate under uncertainty?" But humans already do all of this. Imperfectly. Loudly. Around a table with cardboard components and one friend who interprets every rule as a suggestion. The challenge is not inventing intelligence from scratch. The challenge is understanding the kind that already exists â€” fast, biased, social, adaptive, occasionally disastrous, and somehow still effective enough to keep the species going.</p>
 
       <h2>Final Boss: Abhishek, the Human Benchmark Suite</h2>
       <p>At the end of the night, we packed the boxes, settled the bill, and tried to reconstruct who actually won what. Nobody agreed, which is perfectly on brand for a species whose memory systems prioritize vibes over version control. Abhishek claimed moral victory because he "dominated in spirit," a metric not recognized by any known standards body but defended with the conviction of a man presenting at a board meeting he did not prepare for.<sup>[4]</sup></p>
       <p>On the auto ride back, I kept thinking about how often we separate "technical" and "human" as if they are different planets. They are not. They are two descriptions of the same machinery at different zoom levels. One uses equations. One uses anecdotes about a man who false-triggered on a near-match and then blamed humidity.</p>
-      <p>Abhishek is not bad at board games. Abhishek is a chaos monkey stress-testing every system he encounters. He finds the edge cases nobody planned for. He exposes the gap between what the rules say and what human cognition actually does under pressure. If you want to understand a game — really understand it, at the level of what cognitive primitives it exercises — do not read the rulebook. Watch Abhishek play it. Watch him grab the wrong piece, accuse the wrong suspect, give a clue that is emotionally perfect and strategically lethal. That is where the interesting data lives.</p>
+      <p>Abhishek is not bad at board games. Abhishek is a chaos monkey stress-testing every system he encounters. He finds the edge cases nobody planned for. He exposes the gap between what the rules say and what human cognition actually does under pressure. If you want to understand a game â€” really understand it, at the level of what cognitive primitives it exercises â€” do not read the rulebook. Watch Abhishek play it. Watch him grab the wrong piece, accuse the wrong suspect, give a clue that is emotionally perfect and strategically lethal. That is where the interesting data lives.</p>
       <p>Next weekend we might play something calmer. Maybe Carcassonne. Maybe Azul. Maybe something with fewer opportunities for shoulder injuries and existential lessons. Realistically, we will play Jungle Speed again, and Abhishek will pre-load his hand near the totem, and someone's knuckles will collide, and the eternal truth will reassert itself: in systems and in life, the lock goes to whoever commits first and apologizes fastest.<sup>[5]</sup></p>
 
       <div class="footnote">
@@ -289,6 +289,13 @@
     <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
     <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
   </section>
+    <script src="/js/core.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/animations.js"></script>
+  <script src="/js/contact.js"></script>
+  <script src="/js/interactive.js"></script>
+  <script src="/js/blog.js"></script>
   <script src="/js/main.js"></script>
   <script>
     const bar = document.getElementById('progress-bar');
