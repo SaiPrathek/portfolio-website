@@ -225,7 +225,9 @@ Target: **2500-4000 words**. This is a hard requirement. Under 2500 feels thin. 
 
 ## HTML Template
 
-Read `references/template.html` for the exact HTML structure. Every post uses this template with these variables filled in:
+Read `references/template.html` for the exact HTML structure. Every post uses this template with these variables filled in.
+
+> **CRITICAL:** The template uses `<script src="/js/blog.js"></script>` — this is what powers footnote hover tooltips, next/prev post navigation, and the recommended posts section. Never change this to `main.js` (which is a stub). If `blog.js` is missing, all three interactive features break silently.
 
 - `{{SLUG}}` — URL-safe slug like `2026-03-26-topic-name`
 - `{{TITLE}}` — Full post title
@@ -272,6 +274,7 @@ Before considering a post done, verify:
 - [ ] CS/AI parallel is explored (not just mentioned)
 - [ ] All HTML tags properly closed (no truncation!)
 - [ ] `</main>`, `</body>`, `</html>` all present
+- [ ] Script tag uses `/js/blog.js` (NOT `main.js`) — required for footnote tooltips, next/prev nav, and recommended posts
 - [ ] posts.json updated with correct metadata
 - [ ] Read time is accurate (word count / 220, rounded up)
 - [ ] Post ID is sequential (no duplicates)
