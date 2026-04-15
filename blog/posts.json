@@ -380,5 +380,19 @@
       "Psychology"
     ],
     "id": "029"
+  },
+  {
+    "slug": "2026-04-15-earworms-cache-eviction",
+    "title": "Earworms Are Just Your Brain Refusing to Evict a Cache Entry (I've Been Debugging This Since Tuesday)",
+    "date": "2026-04-15",
+    "readTime": "14 min",
+    "excerpt": "Why certain songs get permanently lodged in your brain's working memory, and what it reveals about how your memory cache actually works — and spectacularly fails.",
+    "tags": [
+      "Neuroscience",
+      "Memory",
+      "Music",
+      "AI"
+    ],
+    "id": "030"
   }
 ]

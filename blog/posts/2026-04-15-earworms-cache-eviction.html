@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Earworms Are Just Your Brain Refusing to Evict a Cache Entry (I've Been Debugging This Since Tuesday) | The Debrief</title>
+  <meta name="description" content="Why certain songs get permanently lodged in your brain's working memory, and what it reveals about how your memory cache actually works — and spectacularly fails." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-04-15-earworms-cache-eviction.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Earworms Are Just Your Brain Refusing to Evict a Cache Entry (I've Been Debugging This Since Tuesday)" />
+  <meta property="og:description" content="Why certain songs get permanently lodged in your brain's working memory, and what it reveals about how your memory cache actually works — and spectacularly fails." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-04-15-earworms-cache-eviction.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; } .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); } body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">&#8592; All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">&#8592; All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #030 &middot; 15 Apr 2026 &middot; 14 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">Earworms Are Just Your Brain Refusing to Evict a Cache Entry (I've Been Debugging This Since Tuesday)</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #030 &middot; 15 Apr 2026 &middot; 14 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">Earworms Are Just Your Brain Refusing to Evict a Cache Entry (I've Been Debugging This Since Tuesday)</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">Why certain songs get permanently lodged in your brain's working memory, and what it reveals about how your memory cache actually works — and spectacularly fails.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="background: var(--surface-container); color: var(--primary); font-family: var(--font-mono);">Neuroscience</span>
+      <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="background: var(--surface-container); color: var(--primary); font-family: var(--font-mono);">Memory</span>
+      <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="background: var(--surface-container); color: var(--primary); font-family: var(--font-mono);">Music</span>
+      <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="background: var(--surface-container); color: var(--primary); font-family: var(--font-mono);">AI</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+<p>It is 2:47 AM on a Tuesday. Abhishek has been lying awake for forty minutes. He has tried his phone. He has tried counting sheep. He has tried thinking about his pending income tax filing — which usually delivers unconsciousness with the efficiency of a general anaesthetic. Nothing works. Because lodged somewhere in his auditory cortex, playing on infinite repeat at approximately 140 BPM, is <em>Naatu Naatu</em>. He watched RRR three weeks ago. He hasn't thought about it since. And yet here it is, punctual as a government notice, at 2:47 AM — taking up residence in his working memory like a squatter who brought a dhol.<sup>[1]</sup></p>
+
+<p>This has a name. Scientists call it Involuntary Musical Imagery, abbreviated INMI because scientists consider "earworm" insufficiently serious. The internet calls them earworms. Your brain calls them "essential background processing, I'll explain later, please go back to sleep."</p>
+
+<p>About 98% of people experience earworms. The remaining 2% are either lying or have transcended to a plane of consciousness the rest of us haven't accessed yet. Earworms happen an average of once per day. They last anywhere from a few seconds to several days. For roughly 30% of people they're genuinely distressing — not just mildly annoying, but "I have considered speaking to a professional about this" annoying.</p>
+
+<p>But here's what nobody tells you: earworms aren't random noise. They're not your brain misfiring. They're a very specific kind of memory failure — one that maps almost perfectly onto a classic computer science problem that engineers have been wrestling with since the 1960s, and which is still not fully solved, which should perhaps concern you more than it currently does.</p>
+
+<h2>The Bug Report: What's Actually Happening In There</h2>
+
+<p>Your brain does not store music the way a hard drive stores a file. There's no folder called <code>/audio/naatu_naatu.wav</code> that plays when accessed and stops when closed. Music in the brain is encoded more like a kinetic sculpture: a series of patterns — melodic contours, rhythmic structures, harmonic expectations, emotional associations, the specific memory of where you were the first time you heard it.</p>
+
+<p>When you hear a song, your auditory cortex doesn't just passively record it. It <em>models</em> it. It builds a predictive framework. Your brain learns to anticipate what comes next. This is why you can hear just the first three notes of <em>Kal Ho Na Ho</em> and immediately have the entire orchestral arrangement playing internally. Your brain isn't recalling the song — it's <em>simulating</em> it, running the learned model forward in time.</p>
+
+<div class="callout">
+<strong>What's actually happening:</strong> Your auditory cortex is a prediction machine that constantly generates expectations about what sounds will come next. Music exploits this relentlessly. Pop songwriters who say "I want to write a hit" are essentially saying "I want to create a melodic shape that maximally activates the prediction engine and rewards its expectations in just the right way." Earworms are that engine running without a specific target.
+</div>
+
+<p>Here's where it gets interesting. When you're not actively listening to anything, your brain doesn't go idle. It enters what neuroscientists call the Default Mode Network — a background state of semi-purposeful activity. Think of it as the processes that run when your laptop's screen saver kicks in: still consuming resources, still doing <em>something</em>, just not whatever you were actually trying to do.</p>
+
+<p>During Default Mode Network states — commuting on the Bangalore metro, waiting for your Zomato order, staring at the office ceiling during a meeting that has long since lost the thread — your brain pulls cached content into working memory. Usually this is useful: planning, replaying conversations, mentally rehearsing arguments you'll never have with your boss. But sometimes the cache has a song in it. And the song starts playing. And here's the critical problem: it doesn't stop.</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════════╗
+║       NORMAL MEMORY EVICTION VS YOUR BRAIN AT 3AM        ║
+╠══════════════════════════════════════════════════════════╣
+║                                                           ║
+║  NORMAL COMPUTER CACHE                                    ║
+║                                                           ║
+║  New item arrives ──▶  Working Memory (limited space)     ║
+║                        [item A — recent         ]         ║
+║                        [item B — fairly recent  ]         ║
+║                        [item C — getting old    ]         ║
+║                        [item D — very old  ──▶ EVICT]     ║
+║                                                           ║
+╠══════════════════════════════════════════════════════════╣
+║                                                           ║
+║  YOUR BRAIN WITH AN EARWORM                               ║
+║                                                           ║
+║  "Should I evict Naatu Naatu?" ──▶  Check if in-use       ║
+║                                           │               ║
+║                                           ▼               ║
+║                                  Is song simulating?      ║
+║                                    YES (I'm doing it)     ║
+║                                           │               ║
+║                                           ▼               ║
+║                                  Mark ACTIVE → Keep       ║
+║                                           │               ║
+║                                           ▼               ║
+║                                  Continue simulating      ║
+║                                           │               ║
+║                                           ▼               ║
+║                            "Should I evict Naatu Naatu?"  ║
+║                                         ↑_________________║
+║                             (it is now 4:15 AM)           ║
+╚══════════════════════════════════════════════════════════╝
+</pre></div>
+
+<h2>The Suspects: Why These Songs and Not Others</h2>
+
+<p>Not all songs are equally dangerous. There's a taxonomy of earworm-prone music, and it's specific enough that researchers have identified the precise features. Studies led by James Kellaris — who has apparently embraced the title "Dr. Earworm" with the enthusiasm of a man who has accepted his legacy — found that earworm-prone songs share three main characteristics.</p>
+
+<p><strong>Melodic contour with a gap.</strong> Songs that have a melodic arc the brain expects to complete — but doesn't. The gap creates a tension that the brain keeps trying to resolve. If a melodic phrase ends just before its implied resolution, your brain's prediction engine flags an error. It re-runs the phrase. It searches for the resolution. It runs it again. It's been doing this for forty minutes and Abhishek would like it to stop.</p>
+
+<p><strong>Simple, repetitive structure.</strong> Songs built on short motifs that repeat. The brain learns the pattern fast, predicts it immediately, and then it's just running a very short loop. There isn't enough material to sustain a full, satisfying memory chunk, so it cycles. This is why jingles are catastrophically sticky. The IRCTC booking confirmation jingle, which is approximately four notes, will live in your brain rent-free until the heat death of the universe.<sup>[2]</sup></p>
+
+<p><strong>Emotional or contextual salience.</strong> Songs tied to strong memories are encoded with inflated importance scores. Your brain marks them as high-priority. This makes them easier to recall — which sounds useful until it's 3 AM and your brain has decided that a song from your college farewell playlist is "important" to review right now, in full, at volume.</p>
+
+<p>Abhishek has a specific problem with Himesh Reshammiya songs from 2006. He claims to hate them. He can name at least six within two seconds. He knows all the words to <em>Aashiq Banaya Aapne</em> and has proven this on multiple occasions at parties where he genuinely did not want to prove it. His brain has filed these songs under <strong>High Priority: Do Not Delete</strong>. His brain is not wrong. It has just decided to be right at the worst possible times.</p>
+
+<div class="ascii-diagram"><pre>
+╔═══════════════════════════════════════════════════════════╗
+║              EARWORM RISK ASSESSMENT MATRIX                ║
+╠═══════════════════════════╦═══════════════════════════════╣
+║ THREAT LEVEL              ║ SONG CATEGORY                  ║
+╠═══════════════════════════╬═══════════════════════════════╣
+║ ████████████  CRITICAL    ║ 4-note jingle heard once       ║
+║ ████████████  CRITICAL    ║ Oscar-winning Bollywood banger ║
+║ █████████     HIGH        ║ Any Himesh Reshammiya 2006     ║
+║ ████████       HIGH       ║ Kids' rhyme (Twinkle, etc.)    ║
+║ ██████         MEDIUM     ║ IPL ad song heard 47 times     ║
+║ ████           LOW        ║ Jazz (too complex, brain quit) ║
+║ ██             SAFE       ║ A song you genuinely despise   ║
+║ ░              IMMUNE     ║ BSNL hold music (brain refuses)║
+╚═══════════════════════════╩═══════════════════════════════╝
+</pre></div>
+
+<h2>Your Brain's Cache Manager Called In Sick</h2>
+
+<p>Let me tell you about a computer science concept called LRU caching.</p>
+
+<p>In any system where you're working with more data than you can hold in fast-access memory — which is to say, almost every meaningful system ever built — you need a strategy for deciding what stays in memory and what gets thrown out. The most popular strategy is called Least Recently Used: you keep the items you've accessed most recently, and when you need space, you evict the thing you haven't touched in the longest time.</p>
+
+<p>It's elegant. It works brilliantly for databases, web servers, CPU instruction caches, browser storage. The core assumption is simple: recently used things are likely to be needed again soon, and things you haven't touched in ages are probably safe to discard.</p>
+
+<div class="pull-quote">LRU cache eviction assumes that if you haven't used something recently, you don't need it. Your brain has read this assumption and chosen violence.</div>
+
+<p>Your working memory has something like this. Short-term memory is severely capacity-limited — the classic formulation is 7 ± 2 items, though modern research suggests it's closer to 4. Your brain is constantly evicting old content to make room for new. This is fine. This is normal. This is why you can forget what you were going to say the moment you walk through a doorway.</p>
+
+<p>Earworms are what happens when a cache entry resists eviction.</p>
+
+<p>Here is the specific failure mode. Normally, when a memory item hasn't been accessed recently, the eviction policy marks it for removal. But here's the bug in the design: <strong>memory items that are actively being <em>processed</em> — even passively — cannot be evicted.</strong> They look active to the cache manager. They look like something the system is using right now.</p>
+
+<p>An earworm is a song that your brain has started simulating — running the predictive audio model, playing the internal representation — which registers as active processing, which prevents eviction, which keeps it in working memory, which means the brain keeps simulating it, which registers as active processing, which prevents eviction.</p>
+
+<p>This is what computer scientists call a <strong>reference cycle</strong>. The garbage collector cannot free memory that holds active references to itself. The earworm has a reference to itself. The eviction policy is waiting for the reference to drop. The reference will not drop because the simulation is running. The simulation is running because the entry is in memory. The entry is in memory because the simulation is running.</p>
+
+<p>You have been issued a circular dependency at 2:47 AM and there is no compiler warning for this.</p>
+
+<h2>The Zeigarnik Effect: Incomplete Things Are Haunted</h2>
+
+<p>In the 1920s, a Lithuanian psychologist named Bluma Zeigarnik made a curious observation at a Viennese café. The waiters had remarkable memories for complex orders they hadn't yet delivered — but the moment an order was served, they forgot it almost immediately. Like a piece of RAM being freed on task completion.</p>
+
+<p>This became the Zeigarnik Effect: we remember incomplete tasks far better than completed ones. Unfinished business gets special status in memory. It stays flagged as "active," waiting for resolution. The mental task remains open. The system keeps checking for a completion signal that never arrives.</p>
+
+<p>Music exploits this without mercy. A melody is fundamentally a sequence of raised and resolved tensions. When you hear the beginning of a musical phrase, your brain opens a cognitive task for it: <em>resolve this</em>. When the phrase completes satisfyingly, the task closes and the memory begins to decay. But when the phrase is incomplete — when it loops back before resolution, when you only caught the first verse and not the chorus, when the song was cut off by a phone call — the task stays open.</p>
+
+<div class="callout">
+<strong>The chorus fragment problem:</strong> The most common earworm type is the partial chorus — you've heard enough of the song to have the melodic model loaded, but not enough to consider it finished. Your brain marks the task open. The task runs in the background. Indefinitely. Researchers at the Earworm Research Collaboration (this is a real group; some people have very specific callings) found that songs heard incompletely are significantly more likely to become earworms than songs heard to completion. The cure is often the full play-through. The irony is that this sometimes just reinforces the entry and makes the <em>next</em> earworm worse.
+</div>
+
+<p>Abhishek described this to me once with the clarity of someone who has thought about it too much at odd hours. "It's always a song I half-heard somewhere," he said. "On an Ola ride. In the DMart queue. Coming out of someone else's flat at a party. Just enough to load the pattern. Not enough to close the loop." He paused. "It's like someone starts reading you a story and then just walks away."<sup>[3]</sup></p>
+
+<p>He has been waiting for the ending of <em>Dilbar Dilbar</em> since approximately 2019.</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════════╗
+║               THE EARWORM PERPETUAL LOOP                  ║
+╠══════════════════════════════════════════════════════════╣
+║                                                           ║
+║   You half-hear a catchy song (Ola ride, DMart queue)     ║
+║                     │                                     ║
+║                     ▼                                     ║
+║   Brain loads melodic model ──▶ "I will complete this"    ║
+║                     │                                     ║
+║                     ▼                                     ║
+║   Plays internal simulation (you are not asked)           ║
+║                     │                                     ║
+║                     ▼                                     ║
+║   Reaches end of remembered fragment                      ║
+║                     │                                     ║
+║                     ▼                                     ║
+║   Gap detected ─────────────────────────────┐             ║
+║                     │                       │             ║
+║                     ▼                       │             ║
+║   Task marked: INCOMPLETE                   │             ║
+║                     │                       │             ║
+║                     ▼                       │             ║
+║   Zeigarnik flag: KEEP IN MEMORY            │             ║
+║                     │                       │             ║
+║                     ▼                       │             ║
+║   LRU policy: "active reference" → No evict │             ║
+║                     │                       │             ║
+║                     ▼                       │             ║
+║   Restart simulation ◀──────────────────────┘             ║
+║                                                           ║
+║              (it is now 4:15 AM)                          ║
+║              (Abhishek has work at 9:00 AM)               ║
+║                                                           ║
+╚══════════════════════════════════════════════════════════╝
+</pre></div>
+
+<h2>The Priority Inversion Bug Your Brain Ships With by Default</h2>
+
+<p>Let me return to the computer science layer for a moment, because there's a deeper structural problem here that I think is underdiscussed.</p>
+
+<p>The LRU eviction failure we described is one problem. But there's a second problem running in parallel: your brain's memory system deliberately overrides the standard eviction policy for emotionally salient content.</p>
+
+<p>Your brain is not trying to maximise access performance. It's trying to maximise survival relevance. Emotionally significant things are given inflated importance scores. Things tied to strong relationships get elevated retention. Things associated with powerful sensory experiences get deeper encoding. This is why you can recall exactly what was playing on the radio the night of your college farewell with almost zero effort, but can't reliably remember what you had for lunch on Wednesday.</p>
+
+<p>The earworm is a side effect of this entirely sensible design decision. You have a memory system that says "emotionally resonant things are important, keep them accessible." You also have an audio simulation system that says "I notice this emotionally resonant thing, I should simulate it to maintain the encoding." These two systems interact to create a positive feedback loop that the eviction policy was simply never designed to handle.</p>
+
+<p>In operating systems, this specific pattern is called a <strong>priority inversion bug</strong>: a high-priority process (emotional memory retention) is blocking a lower-priority process (eviction cleanup) from running. The system isn't broken — two individually correct systems are producing emergent incorrect behaviour when they interact.<sup>[4]</sup></p>
+
+<p>This distinction matters. An earworm is not your brain being stupid. It's your brain being smart in two ways simultaneously, and the combination creating something neither system intended. The engineers responsible for your prefrontal cortex are aware of this interaction. They are working on it. There is no ETA.</p>
+
+<h2>Debugging Strategies That Work (And the One That Spectacularly Doesn't)</h2>
+
+<p>The internet is full of advice for getting rid of earworms. Most of it is confidently wrong. Let me rank the main strategies by their alignment with what we now actually understand about the mechanism.</p>
+
+<h3>The Approach That Makes It Worse: Direct Suppression</h3>
+
+<p>Trying to not think about the earworm is the single worst strategy available to you, and there's a precise reason why. Daniel Wegner's "white bear" experiments showed that thought suppression makes intrusive thoughts more frequent, not less. When you try to not think about the song, you must internally reference the song to know what you're trying to avoid. This pings the cache entry. Which counts as an access. Which resets the LRU timer. You have just pushed the eviction further into the future. Congratulations on making this significantly worse.</p>
+
+<h3>Strategy 1: The Completion Approach — Close the Zeigarnik Task</h3>
+
+<p>Because earworms are partly driven by incomplete task flags, one effective approach is to actually finish the song. Put it on. Listen all the way through. Let the melodic resolution happen. Let the brain's prediction engine get its payoff. Let the task close.</p>
+
+<p>This often works for the current instance. The risk is that actively replaying the song reinforces the cache entry's importance score, potentially making future earworm events stronger. You're treating this Tuesday at the cost of a potentially worse Thursday.</p>
+
+<p>Abhishek has a phone playlist labelled "Earworm Treatment." He also has a second playlist labelled "Songs I Cannot Play Because Treating Earworms With Them Made Them Worse Earworms." The second playlist has more songs on it than the first. He considers this a reasonable trade-off. I am less sure.</p>
+
+<h3>Strategy 2: Cognitive Saturation — Evict by Filling</h3>
+
+<p>Working memory has finite capacity. If you fill it completely with a cognitively demanding task — a difficult puzzle, a mentally taxing conversation, arithmetic you can't do automatically (try 17 × 23 right now without writing anything down) — the earworm may lose enough working memory real estate to sustain itself.</p>
+
+<p>This is essentially forced eviction through capacity pressure. The limitation: the moment you stop the demanding task, the earworm bounces straight back in. You haven't deleted it. You've just hidden it temporarily behind a large object. The object has to stay there indefinitely for this to work, which is not sustainable as a sleep strategy.</p>
+
+<h3>Strategy 3: The Replacement Song — The Cure Tune Protocol</h3>
+
+<p>This is the approach with the most research support. Load a different, lower-stakes song deliberately — ideally something melodically complete and emotionally neutral. Research by Ira Hyman at Western Washington University found that certain "cure tunes" work reliably. Key properties: complete melodic resolution (the loop closes), moderate familiarity (not so novel it becomes its own earworm, not so loaded it triggers emotional amplification), low salience.</p>
+
+<div class="callout">
+<strong>The Earworm Research Collaboration</strong> — a genuine group of researchers at the University of Reading dedicated entirely to the science of songs that get stuck — found that "Happy Birthday To You," "God Save the Queen," and nursery rhymes like "Twinkle Twinkle Little Star" consistently function as effective cure tunes. They work because they're melodically complete, short, and carry minimal emotional charge for most adults. They close the loop. The brain files them as done. The previous earworm loses its incomplete-task flag. This makes birthday parties epistemologically complicated, but science rarely cares about that.
+</div>
+
+<h3>Strategy 4: Starve the Loop's Window</h3>
+
+<p>Earworms are more frequent and more persistent during low-attention states — that specific bandwidth where you're doing something automatic but not nothing. Commuting. Repetitive work. Lying in the dark waiting for sleep. The window your brain uses for earworm playback is exactly the Default Mode Network window.</p>
+
+<p>If you can either fully engage your attention OR fully disengage it — through genuine focus or through meditation and deliberate relaxation — the earworm loses the processing window it needs. This is why experienced meditators report fewer intrusive earworms. They've stopped leaving the right amount of idle compute available for the loop to run in. They've essentially disabled the screen saver.<sup>[5]</sup></p>
+
+<h2>Why Your Brain Won't Fix This — And Why That's Actually Fine</h2>
+
+<p>The deeper question is why evolution hasn't selected against this. If earworms are mildly distressing and serve no obvious function, why are they still running on every human brain without exception?</p>
+
+<p>The answer: they're not a bug in the sense of something that shouldn't be there. They're the side effect of a feature you would absolutely not want to remove — the capacity to simulate music internally, to rehearse it, learn it, and preserve it accurately across time without external playback.</p>
+
+<p>Oral cultures preserved epic narratives as songs for thousands of years specifically because songs are more memorisable than prose. The rhythmic-melodic encoding is redundant in the information theory sense: it gives you multiple overlapping retrieval cues. Your internal music replay system is how oral traditions maintained a living archive across generations without writing anything down.</p>
+
+<p>The earworm is that archival system running without a specific intent. You didn't ask your brain to keep <em>Naatu Naatu</em>. But your brain has a background process that says "periodically replay important cultural material to prevent memory decay" and an Oscar-winning song with 140 BPM and a gap in its melodic resolution has been classified as important cultural material. Which is, objectively, correct.</p>
+
+<div class="pull-quote">The earworm is not your brain broken. It's your brain's internal archive doing mandatory backup — and forgetting to schedule it for 3 AM maintenance window.</div>
+
+<p>The real complaint isn't that the earworm exists. It's that the system has no quiet mode. No "do not disturb." No configuration option that says "yes, retain this song in long-term storage, but please suppress active simulation during sleep hours." That's the missing feature. In an otherwise remarkably sophisticated audio processing and retention system, there is no off switch. There is no volume knob. There is no way to send the process a SIGSTOP.</p>
+
+<p>The developers are aware. The issue is marked as Known Behaviour. There is no current ETA for a fix, and the workaround section of the documentation just says "try <em>Happy Birthday To You</em>."</p>
+
+<p>So if you find yourself tonight — or next Tuesday at 2:47 AM — with a song playing at full volume in the auditory theatre of your mind, here's what to do. Don't fight it directly. Don't lie there issuing the mental equivalent of <code>kill -9</code> to a process that has already forked itself three times. Instead: do a few genuinely hard maths problems. Then deliberately, carefully, think of <em>Happy Birthday To You</em> in its entirety, from first note to final held chord. Let it complete. Let the loop close. File the task as done.</p>
+
+<p>Or just let it play. Go with what your brain, in its strange archival wisdom, decided was worth preserving tonight. It's probably a good song.</p>
+
+<p>Abhishek certainly thinks so. He'd never admit it, but he definitely does.</p>
+
+    <div class="footnote">
+      <p><sup>[1]</sup> The worst part? Abhishek actually loves the song. The earworm is technically his brain paying him an enthusiastic compliment. He does not feel complimented. He feels persecuted.</p>
+      <p><sup>[2]</sup> I refuse to describe the IRCTC jingle any further in case simply reading about it loads it into your memory. You're welcome. Too late. Sorry.</p>
+      <p><sup>[3]</sup> Abhishek also described the experience of trying to remember the rest of a song he only half-knows as "Googling with one bar of Jio." I thought this was the most accurate metaphor I'd ever heard and wrote it down immediately. He does not know I've been using it in presentations.</p>
+      <p><sup>[4]</sup> Priority inversion famously contributed to the Mars Pathfinder spacecraft resetting itself repeatedly in 1997. A high-priority task kept starving a lower-priority one, and the watchdog timer triggered a system reset. NASA fixed it remotely by enabling priority inheritance. If you discover a way to remotely patch your brain's task scheduler via a radio signal from Pasadena, please file a pull request.</p>
+      <p><sup>[5]</sup> The meditation approach works but has a significant prerequisite: you have to actually know how to meditate. Simply lying there thinking "I am meditating now" is not meditating. It is lying there thinking about meditating. The earworm will still be there. It will have used the time to memorise the bridge section.</p>
+    </div>
+
+    </div>
+  </main>
+
+  <section class="px-6 pb-16 max-w-3xl mx-auto flex justify-between items-center">
+    <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
+    <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+  </section>
+  <script src="/js/main.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>
