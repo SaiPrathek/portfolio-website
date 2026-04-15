@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Meals on Trips Taste Better Than the Exact Same Food at Home (Your Brain Is a Transformer) | The Debrief</title>
+  <meta name="description" content="The fish curry didn't improve. Your context did. Why food tastes better on trips is a story about attention — and transformers figured it out first." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-04-15-food-context-attention.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Why Meals on Trips Taste Better Than the Exact Same Food at Home (Your Brain Is a Transformer)" />
+  <meta property="og:description" content="The fish curry didn't improve. Your context did. Why food tastes better on trips is a story about attention — and transformers figured it out first." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-04-15-food-context-attention.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; } .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); } body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">&#8592; All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">&#8592; All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #031 &middot; 15 Apr 2026 &middot; 14 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">Why Meals on Trips Taste Better Than the Exact Same Food at Home (Your Brain Is a Transformer)</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #031 &middot; 15 Apr 2026 &middot; 14 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">Why Meals on Trips Taste Better Than the Exact Same Food at Home (Your Brain Is a Transformer)</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">The fish curry didn't improve. Your context did. Why food tastes better on trips is a story about attention — and transformers figured it out first.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip">Neuroscience</span>
+      <span class="tag-chip">AI</span>
+      <span class="tag-chip">Travel</span>
+      <span class="tag-chip">Food</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+<p>Abhishek came back from Goa last month raving about the fish curry from some beach shack. "Best meal of my life," he declared, with the conviction of a man who had found religion. "The fish was different. The coconut was just — I can't explain it. The masala..." — he trailed off, visually moved.</p>
+
+<p>A week later, he ordered fish curry from a highly-rated restaurant two streets from his flat in Hyderabad. Same dish. Four-point-three stars on Swiggy. Real kitchen, real chef, real exhaust fan. He ate half of it and pushed the plate aside. "It's just not the same," he said, with the grief of a man confronting something he couldn't name.</p>
+
+<p>It wasn't. But here's the thing that should bother you: by every objective measure, the Hyderabad curry was probably <em>better</em>. Fresher sourcing, professional kitchen, not a guy cooking three metres from the sea on a gas cylinder that had clearly survived several near-misses. And yet the beach shack version was transcendent, and the Hyderabad version was just Tuesday.</p>
+
+<p>This is one of travel's most consistent phenomena. The chai at a highway dhaba in Rajasthan hits differently than the same tea from your own kitchen. The vada pav outside CST in Mumbai is a spiritual experience even though vada pav is vada pav is vada pav. The Maggi cooked in a shack near Kulu — in a pot that may not have been properly cleaned since the UPA government — tastes like it was prepared by someone who understands the purpose of existence, even though it's the same ₹14 packet you have at home.</p>
+
+<p>None of this makes sense if you think food quality is determined by the food.</p>
+
+<p>It makes perfect sense if you think food quality is determined by what your brain decides to pay attention to.</p>
+
+<h2>The Biryani Isn't the Point</h2>
+
+<p>Let's start with what we know about how the brain processes eating, because it turns out "tasting food" is not a passive recording activity — it's an active construction. Your mouth and nose collect raw sensory signals, but what you experience as flavour is assembled upstairs, in the cortex, the limbic system, the orbitofrontal cortex, from dozens of inputs that have nothing to do with what's in the pot.</p>
+
+<p>Temperature of the environment affects perceived sweetness. Background noise affects how crunchy things seem. The weight of your cutlery changes how rich food tastes. In one study, identical yogurt was rated significantly creamier and more expensive when eaten from a heavier container. The yogurt didn't change. The brain's contextual assessment of the yogurt changed.<sup>[1]</sup> This isn't placebo in the fuzzy, hand-wavy sense — it's the architecture. Your brain doesn't wait passively for flavour signals and then render a verdict. It is a prediction machine that is constantly building models of expected experience, and what you actually <em>taste</em> is the result of those models being tested against reality.</p>
+
+<p>Which immediately explains something uncomfortable: why your own cooking almost never tastes as good as food at a restaurant. You watched it being made. You know every ingredient. The expectation model is so fully-formed before the first bite that there's very little surprise left. The prediction was too accurate. There's no signal delta, so there's no amplification.<sup>[2]</sup></p>
+
+<p>Now scale this up. The reason trip food tastes different isn't that the ingredient quality changed. It's that an entirely different set of inputs is being fed into the evaluation system. The brain is running a different model in a different environment with a different prior — and every single one of those factors shifts the output. The biryani is just the prompt. The context is the model.</p>
+
+<div class="callout">
+<strong>Fun fact:</strong> Researchers at Oxford found that the same wine tasted measurably different — more intense, more complex — when consumed alongside higher-pitched music versus lower-pitched music. Not "slightly different." Measurably different, with subjects consistently associating higher pitch with brightness and lower pitch with heaviness. The grapes did not change. The acoustic environment just shifted what the brain decided to weight.
+</div>
+
+<h2>Your Brain Has a Spam Filter (And It Has Classified Your Kitchen as Boring)</h2>
+
+<p>The thalamus is, roughly speaking, your brain's traffic controller. It receives virtually all incoming sensory data and decides what gets forwarded to conscious attention and what gets quietly discarded. Its operating principle is ruthlessly efficient: <em>novelty gets through; repetition gets filtered.</em></p>
+
+<p>This is called sensory gating, and it exists for good reasons. If you consciously processed every available sensory input right now — the exact pressure of your clothes against your skin, the precise temperature of the air, the ambient noise from two rooms away, the specific colour of the light — you'd be unable to think about anything else. The thalamus runs a constant suppression routine on signals tagged as "known, stable, not a threat," so you can concentrate on what actually matters. It is a very good spam filter. It's just that it has no aesthetic sense about what it marks as spam.</p>
+
+<p>Your kitchen is fully classified. Your usual lunch spot is fully classified. The entire sensory context of eating at your desk — the light, the ambient temperature, the background noise, the specific smell of your flat at midday — has been catalogued and suppressed. Your thalamus has seen this episode. It is not interested. It routes a minimal signal through.</p>
+
+<p>Now arrive at a beach in Pondicherry for the first time. The thalamus goes berserk. Everything is unclassified. The quality of the light is different. The air smells of salt and fishing boats and something frying nearby. The ambient sounds are unfamiliar. The menu is handwritten in three languages and has no prices. The people at the next table are strangers. None of this is in the database. <em>Everything goes through.</em> Your brain is running at maximum attentional bandwidth — and the rice meal arrives directly into that fully-open sensory stream. The same food, meeting the same taste receptors, but now landing inside a system running at entirely different gain.</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════╗
+║         YOUR BRAIN'S ATTENTIONAL BANDWIDTH           ║
+╠══════════════════════════════════════════════════════╣
+║                                                       ║
+║  AT HOME (familiar environment)                       ║
+║                                                       ║
+║  Food signal         ████░░░░░░░░░░░░░░░░  LOW       ║
+║  Environment         ░░░░░░░░░░░░░░░░░░░░  ZERO      ║
+║  Social context      ░░░░░░░░░░░░░░░░░░░░  ZERO      ║
+║  Novelty             ░░░░░░░░░░░░░░░░░░░░  ZERO      ║
+║  (thalamus: "seen it, suppressed, carry on")          ║
+║                                                       ║
+║  Output: "It's fine."                                 ║
+║                                                       ║
+╠══════════════════════════════════════════════════════╣
+║                                                       ║
+║  ON A TRIP (everything unclassified)                  ║
+║                                                       ║
+║  Food signal         ████████████████████  HIGH      ║
+║  Salt air + sounds   ████████████░░░░░░░░  HIGH      ║
+║  Strangers nearby    ██████████░░░░░░░░░░  MED       ║
+║  Hunger (two hours)  ████████████████████  HIGH      ║
+║  Novelty of place    ████████████████████  HIGH      ║
+║  No phone, no Slack  ████████████████████  HIGH      ║
+║  (thalamus: "I have no idea what this is, flag all")  ║
+║                                                       ║
+║  Output: "This is the best thing I've ever eaten."   ║
+║                                                       ║
+╚══════════════════════════════════════════════════════╝
+</pre></div>
+
+<div class="callout">
+<strong>The hunger multiplier:</strong> Ghrelin — the hunger hormone — doesn't just make you want food. It directly enhances dopaminergic signalling in the reward system, amplifying how good the eventual meal actually tastes. You didn't "earn" the Manali Maggi by trekking for three hours to reach it. But your body behaves as if you did. Hunger is cheating. Hunger is the highest-ROI seasoning available.
+</div>
+
+<h2>The Hidden Variable Nobody Put on the Menu</h2>
+
+<p>Here is the experiment that should permanently calibrate your confidence in your own palate. In 2008, researchers at Stanford and Caltech gave participants two glasses of wine and told them one cost ₹700 a bottle and one cost ₹7,000. Both were the same wine. Brain scans showed that the expensive wine didn't just <em>taste</em> better — it produced a measurably stronger signal in the medial orbitofrontal cortex, the region that tracks actual experienced pleasure. People weren't lying or being polite. Their brains were generating more reward from the identical product, because expectation had reconfigured the evaluation function.<sup>[3]</sup></p>
+
+<p>Now apply this to the beach shack. Your prior expectation walking in is: plastic chairs, sandy floor, hand-written menu, gas cylinder of uncertain vintage, possibly a cat that has opinions about your food. Low expectation environment. When the fish curry arrives and it is <em>genuinely good</em> — fresh, properly spiced, made by someone who actually cares — the prediction error is enormous. Your dopamine system fires not just for the taste, but for the violated expectation. The reward signal is the delta, not the absolute value. The meal didn't score highly. It <em>outperformed its prior</em>, which is a completely different calculation.</p>
+
+<p>Compare this to any restaurant at home where you read twelve reviews first. Your expectation baseline is already high before you sit down. The dish would have to be extraordinary just to break even on the prediction error. Mediocrity in a high-expectation environment doesn't just taste bad — it tastes worse than mediocrity, because it's a negative delta on a big number. The food is the same. The prior is what changed.</p>
+
+<p>Abhishek once told me his theory: "Good restaurants are ruined by good reviews." He'd arrived at the right answer with no mechanism to explain it — which is basically how Abhishek navigates most things. He's right though. A pristine Zomato rating is a context tax you pay before the first bite.</p>
+
+<div class="pull-quote">The reward signal is the delta, not the absolute score. This is why a highway dhaba chai beats a Starbucks Reserve every single time.</div>
+
+<h2>This Is Exactly What Transformers Are Doing (I'm Completely Serious)</h2>
+
+<p>In 2017, a team at Google Brain published a paper titled "Attention Is All You Need." It introduced the transformer architecture — the design that underlies GPT, BERT, Gemini, Claude, and essentially every large language model running today. The core innovation was a mechanism called <em>self-attention</em>, and it solved a problem that all previous AI language architectures had handled badly: how do you correctly understand a word without considering everything around it?<sup>[4]</sup></p>
+
+<p>Before transformers, language models read text sequentially — word by word, feeding a compressed hidden state forward like a baton in a relay race. The problem: context decays. By the time you reach word 200 of a paragraph, the signal from word 3 has been compressed into a faint smear in the activations. Long-range relationships — the pronoun "it" at the end of a paragraph referring back to a subject introduced six clauses earlier — were handled with increasing sloppiness as distance grew.</p>
+
+<p>The transformer's answer was aggressive: throw out the sequence entirely. Instead, let every token attend to every other token in the context simultaneously. For each token, compute how relevant every other token is to correctly understanding the current one. Weight all of them by that relevance score. Generate your understanding of the current token as a weighted sum of everything else. Do this for all tokens at once, in parallel, through three learned matrices called Query, Key, and Value.</p>
+
+<p>This is the architecture that rewrote the field. And it is, with only slightly squinted eyes, a precise model of what your brain is doing when it evaluates a meal on a trip versus a meal at your desk.</p>
+
+<h2>The Query, the Key, and the Fish Curry</h2>
+
+<p>Let's map it explicitly, because the parallel is too clean to leave vague.</p>
+
+<p>In a transformer, the <strong>Query</strong> is what a token is essentially asking: "given what I am, what in my context matters for understanding me?" The <strong>Keys</strong> are the signals each surrounding token presents: "I might be relevant to you." The attention score — the dot product of a Query against every Key — tells the model how much each surrounding context element should contribute to the final representation of the current token. The <strong>Values</strong> are what each token actually contributes when selected. The final output is a weighted sum of Values, shaped by attention scores.</p>
+
+<p>Now translate. The fish curry is your current token. Its Query is something like: "what is this experience, and how much does it matter?" The Keys are every piece of context running in parallel — your hunger level, the novelty of the environment, the warmth of the people you're with, the ambient sound, the smell in the air, the fact that there's no Wi-Fi, the physical temperature, the memory of how far you walked to get here. Each of these context elements presents a Key: "I am relevant to how you experience this meal." The attention score for each is determined by how activated it is, how novel it is, how salient it is right now.</p>
+
+<p>When you're at the beach shack, nearly every Key is live and presenting a high attention score. The output — your brain's full representation of this eating experience — is a rich, high-dimensional weighted combination of food, place, people, body state, and novelty. The fish curry as <em>experienced</em> isn't just fish and masala. It is fish and masala contextualised by everything the attention mechanism decided was relevant. It is a fully-attended representation.</p>
+
+<p>When you're at your desk in Hyderabad, most Keys score near zero. The environment is familiar: attention score essentially nil. Social context: nil. Physical novelty: nil. The fish curry's final representation is computed almost entirely from the food signal alone, which is perfectly good, but stripped of amplification. Same token. Completely different attention pattern. Completely different output.</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════╗
+║         EATING AS TRANSFORMER ATTENTION               ║
+╠══════════════════════════════════════════════════════╣
+║                                                       ║
+║  TOKEN: [fish curry]                                  ║
+║  QUERY: "what does this experience mean right now?"   ║
+║                                                       ║
+║  CONTEXT KEY              ATTENTION SCORE             ║
+║  ──────────────────────────────────────────          ║
+║  Hunger (two hours)    ████████████████████  0.92    ║
+║  Novelty of place      ████████████████████  0.89    ║
+║  Social warmth         ████████████████████  0.87    ║
+║  Sea sounds + smell    ███████████████░░░░░  0.74    ║
+║  No notifications      ████████████████████  0.91    ║
+║  Violated expectation  ████████████████████  0.95    ║
+║                                                       ║
+║  OUTPUT = weighted sum of all active Values           ║
+║         = "Best meal of my life"                      ║
+║                                                       ║
+╠══════════════════════════════════════════════════════╣
+║                                                       ║
+║  SAME TOKEN, DIFFERENT CONTEXT (at desk, Hyderabad)   ║
+║                                                       ║
+║  Hunger (mild)         ████░░░░░░░░░░░░░░░░  0.21   ║
+║  Novelty of place      ░░░░░░░░░░░░░░░░░░░░  0.00   ║
+║  Social warmth         ░░░░░░░░░░░░░░░░░░░░  0.00   ║
+║  Slack open            ████████░░░░░░░░░░░░  0.41   ║
+║  High prior (reviews)  ███████████░░░░░░░░░  0.55   ║
+║                                                       ║
+║  OUTPUT = mostly food signal, low amplification       ║
+║         = "It's not the same."                        ║
+║                                                       ║
+╚══════════════════════════════════════════════════════╝
+</pre></div>
+
+<h2>Why You Can Never Recreate It (And Why That's Not a Bug)</h2>
+
+<p>People try. After every transcendent trip meal, someone attempts the recipe at home. Abhishek spent three consecutive weekends attempting to recreate the Goa fish curry — sourcing a specific variety of coconut from a shop in Marathahalli that specialised in coastal Karnataka ingredients, getting dried red chillies from a specific vendor, finding the correct variety of kokum. The curry was genuinely good. Everyone who ate it said so. But it wasn't the same, and he knew it wouldn't be, and he made it anyway, because humans are stubborn and optimistic in exactly the proportions required to keep us doing pointless things.</p>
+
+<p>What he was trying to recreate was the Values — the food itself. What generated the original experience was the full attention-weighted combination of Values plus every live Key in that context. You can clone the recipe. You cannot clone the Keys. You cannot simultaneously be unfamiliar with your own kitchen, physically tired from a day on the beach, cut off from your phone, sitting with people you met twenty-four hours ago, with no idea what you're doing tomorrow and no menu expectations to manage. That context ran once, produced a specific attended representation, and is now encoded in memory.</p>
+
+<p>Which brings us to why trip meals are remembered so vividly in the first place. Memory consolidation is proportional to signal strength — neurologically, this maps cleanly onto how gradient updates work in neural networks. Large prediction error produces a large weight update. The network learns more, faster, from surprising events. Your hippocampus does the same thing: novel, emotionally salient, high-attention experiences consolidate deeper and last longer. The Pondicherry rice meal isn't just a stronger memory. It received a larger gradient update at encoding time. The synaptic weights are set accordingly.</p>
+
+<p>Years later, you can reconstruct the smell of the cafe, the sound of the street outside, the exact quality of the afternoon light, without any effort at all — while you struggle to remember what you had for lunch three Tuesdays ago. Tuesday lunch was low-attention. It passed through a mostly-closed context window. It encoded weakly. It was, in the transformer's language, an under-attended representation, and the model did not update much on it.</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════╗
+║         CONTEXT WINDOW OF A MEAL                      ║
+╠══════════════════════════════════════════════════════╣
+║                                                       ║
+║  FULL CONTEXT WINDOW (on a trip)                      ║
+║                                                       ║
+║  ┌──────────────────────────────────────────────┐    ║
+║  │ Hunger │ Place │ People │ Sound │ Smell       │    ║
+║  │  [fish curry]  │ Novelty │ No phone │ Light   │    ║
+║  │ Expectation violated │ Time of day │ Weather  │    ║
+║  └──────────────────────────────────────────────┘    ║
+║                                                       ║
+║  → High prediction error → Large gradient update      ║
+║  → Deep hippocampal consolidation                     ║
+║  → Memory accessible in full detail five years later  ║
+║                                                       ║
+╠══════════════════════════════════════════════════════╣
+║                                                       ║
+║  TRUNCATED CONTEXT WINDOW (desk, Tuesday)             ║
+║                                                       ║
+║  ┌──────────────────────────────────────────────┐    ║
+║  │ [fish curry] │ Laptop open │ Slack pinging   │    ║
+║  │              │             │                 │    ║
+║  └──────────────────────────────────────────────┘    ║
+║                                                       ║
+║  → Low prediction error → Small gradient update       ║
+║  → Weak encoding                                      ║
+║  → "Wait, what did I have for lunch on Tuesday?"      ║
+║                                                       ║
+╚══════════════════════════════════════════════════════╝
+</pre></div>
+
+<div class="callout">
+<strong>The memory-gradient parallel:</strong> In a neural network, a large loss value produces a large gradient — the model updates its weights significantly. In your hippocampus, high emotional arousal and novelty trigger stronger long-term potentiation. Both are implementations of the same principle: the system learns more from events it didn't predict. The Pondicherry meal wasn't just memorable. It was a high-loss event that forced a significant weight update in your autobiographical memory system.
+</div>
+
+<h2>The Implication You're Allowed to Act On</h2>
+
+<p>Once you understand context as attention, something clarifies that might have felt like a vague aspiration before. The trip meal isn't better because the food is better. It's better because you arrived at it with an open context window — no suppressed channels, no thalamic spam filter running overtime, no inbox compressing your attentional bandwidth. You were, for that hour at the beach shack or the mountain dhaba or the Pondicherry cafe, running full attention. Everything was novel. Everything was passing through. You were, briefly, the way a freshly-initialised transformer is at the start of inference: all keys live, all attention available, nothing pre-classified.</p>
+
+<p>And here's the actually useful part: context is partially modifiable even at home. You can't make your kitchen novel, but you can eat outside. You can put the phone in another room — not on silent, in another room, those are different things and you know it. You can eat with someone you don't eat with regularly. You can order something genuinely unfamiliar. You can eat when you're actually hungry instead of when the calendar says to. Each of these activates a Key. Each active Key shifts the attention distribution of the meal toward something more fully contextualised.</p>
+
+<div class="pull-quote">You can clone the recipe. You cannot clone the context. The experience ran once, fully attended, and is now encoded in memory at maximum resolution.</div>
+
+<p>The food is not what you're attending to. The food is what you're attending <em>with</em>. Context is not the background of the meal. Context is the model the meal runs on.</p>
+
+<h2>Abhishek's Second Trip (A Prediction)</h2>
+
+<p>Abhishek is going back to Goa. He told me last week with the resolute energy of someone who has a plan and has not thought about it too carefully. I explained the context window problem: even if he sits at the same plastic table at the same beach shack, the novelty is gone. The expectation is now very high — he remembers the previous meal as transcendent, so the new baseline is set accordingly. Most of the Keys that fired last time are now classified. The thalamus has seen this episode. The gradient update, if the curry is merely as good as before, will be minimal or negative.</p>
+
+<p>He considered this for a moment. "So," he said slowly, "I need to go to a <em>different</em> beach shack."</p>
+
+<p>He's not wrong. He's also going to spend forty-five minutes reading reviews of different beach shacks before he goes, which will raise his expectation baseline, which will ensure the curry is merely excellent rather than mind-altering. This is fine. The search for the perfectly-attended meal is its own reward. The model runs on hope, and hope is the only prior that never updates on negative evidence.</p>
+
+<div class="footnote">
+  <p><sup>[1]</sup> The cutlery weight study was conducted by Charles Spence at Oxford's Crossmodal Research Laboratory, who has spent a remarkable portion of his career proving that flavour is almost entirely constructed from non-food inputs. His group has found that background music affects perceived taste profiles, that plate colour shifts sweetness perception, and that a knife labelled "expensive" genuinely makes food taste better than the same knife labelled "cheap." The entire body of work is a sustained argument that "what food tastes like" is a question about brains, not kitchens.</p>
+  <p><sup>[2]</sup> This also explains why your own cooking almost never tastes as good as cooking from someone else, even if yours is technically better. You've been smelling it for an hour before you eat it. Your olfactory saturation has compressed the signal. You've tasted it four times during cooking. The prediction model is fully loaded. The person who walks in from outside and gets the first smell without the hour of preview — they are running genuine inference on genuinely new input. You are reviewing your own rough draft.</p>
+  <p><sup>[3]</sup> Plassmann, H., O'Doherty, J., Shiv, B., &amp; Rangel, A. (2008). "Marketing actions can modulate neural representations of experienced pleasantness." PNAS. The medial orbitofrontal cortex activation wasn't a proxy measure or self-report — it was direct fMRI evidence that the brain was generating more subjective pleasure from the identical wine when it believed the price was higher. The implication for the wine industry is that the most efficient quality investment is probably in label design. The implication for all of us is that we have essentially no direct access to our own taste perception.</p>
+  <p><sup>[4]</sup> "Attention Is All You Need" (Vaswani et al., 2017) is probably the most consequential machine learning paper since backpropagation was formalised. The eight authors were trying to build a better machine translation system. They accidentally invented the architecture that now runs ChatGPT, Claude, Gemini, and essentially every language model anyone is talking about. The paper has been cited over 100,000 times. Somewhere, there are eight people who are either extremely calm about what they did or completely unable to sleep. Possibly both.</p>
+  <p><sup>[5]</sup> I wrote most of this post a week after returning from Pondicherry, where I ate rice meals that were objectively simple and felt like the best food of my life. I am fully aware of the irony of explaining the mechanism of context-dependent attention while being actively subject to it. The fish was incredible. The light at the beach at 6am was something I cannot adequately describe. I would go back tomorrow and I know — I now know, technically — that the experience would be measurably diminished. I am going to go back anyway. The model runs on hope.</p>
+</div>
+
+    </div>
+  </main>
+
+  <section class="px-6 pb-16 max-w-3xl mx-auto flex justify-between items-center">
+    <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
+    <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+  </section>
+  <script src="/js/blog.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>

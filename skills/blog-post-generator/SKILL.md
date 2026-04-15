@@ -51,7 +51,7 @@ All posts are set in India. The author and Abhishek live in India. Use Indian en
 - Healthcare → government hospital, Apollo, 1mg, PharmEasy
 - Education → IIT/IIM, coaching institutes, "engineering or medicine" pressure
 - Currency → ₹ (Indian rupees), not £ or $
-- Cities → Mumbai, Bangalore, Hyderabad, Delhi, Chennai, Pune — use specific cities when it adds colour
+- Cities → Mumbai, Hyderabad, Hyderabad, Delhi, Chennai, Pune — use specific cities when it adds colour
 
 **Cultural texture to weave in:**
 - The concept of "jugaad" (creative improvised solutions — India's unofficial engineering philosophy)

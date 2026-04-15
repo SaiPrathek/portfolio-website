@@ -384,7 +384,7 @@
   {
     "slug": "2026-04-15-earworms-cache-eviction",
     "title": "Earworms Are Just Your Brain Refusing to Evict a Cache Entry (I've Been Debugging This Since Tuesday)",
-    "date": "2026-04-15",
+    "date": "2026-04-08",
     "readTime": "14 min",
     "excerpt": "Why certain songs get permanently lodged in your brain's working memory, and what it reveals about how your memory cache actually works — and spectacularly fails.",
     "tags": [
@@ -394,5 +394,19 @@
       "AI"
     ],
     "id": "030"
+  },
+  {
+    "slug": "2026-04-15-food-context-attention",
+    "title": "Why Meals on Trips Taste Better Than the Exact Same Food at Home (Your Brain Is a Transformer)",
+    "date": "2026-04-15",
+    "readTime": "14 min",
+    "excerpt": "The fish curry didn't improve. Your context did. Why food tastes better on trips is a story about attention — and transformers figured it out first.",
+    "tags": [
+      "Neuroscience",
+      "AI",
+      "Travel",
+      "Food"
+    ],
+    "id": "031"
   }
 ]
