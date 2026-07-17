@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Math Finally Told Me When to Stop Swiping (Part 2: The 37% Rule) | The Debrief</title>
+  <meta name="description" content="Part 2 of 2. There is a provably optimal moment to stop looking and commit — and a 19th-century puzzle called the secretary problem hands you the exact number. It's 37%." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-07-17-hinge-37-percent-part-2.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="The Math Finally Told Me When to Stop Swiping (Part 2: The 37% Rule)" />
+  <meta property="og:description" content="Part 2 of 2. There is a provably optimal moment to stop looking and commit — and a 19th-century puzzle called the secretary problem hands you the exact number. It's 37%." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-07-17-hinge-37-percent-part-2.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; } .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); } body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">&#8592; All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">&#8592; All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #033 &middot; 17 Jul 2026 &middot; 14 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">The Math Finally Told Me When to Stop Swiping (Part 2: The 37% Rule)</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #033 &middot; 17 Jul 2026 &middot; 14 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">The Math Finally Told Me When to Stop Swiping (Part 2: The 37% Rule)</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">Part 2 of 2. There is a provably optimal moment to stop looking and commit — and a 19th-century puzzle called the secretary problem hands you the exact number. It's 37%.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Dating Apps</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Optimal Stopping</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Math</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Decision Theory</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+<div class="callout">
+<strong>Previously, on The Debrief:</strong> In <a href="/blog/posts/2026-07-03-hinge-bandit-part-1.html">Part 1</a>, I explained how Hinge turned me into a multi-armed bandit experiment with a variable-reward schedule and a fraudulently infinite deck, and how the app's reward function ("keep him swiping forever") quietly out-competed mine ("find someone, leave"). I ended, defeated, at 2am, thumb hovering over profile 900-something, understanding the trap perfectly and still unable to escape it. This is the escape. It has a number in it.</div>
+
+<p>Two weeks after Abhishek installed Hinge on my phone against my will, I did something I should have done on day one: I complained about it to the correct person. Not to Abhishek — Abhishek's advice for everything is "just vibe, bro," which is not a strategy, it's a fortune cookie. I complained to my cousin Meera, who did her master's in operations research and who has the specific, dangerous calm of a person who has proven things.</p>
+
+<p>I told her the whole thing. The 900 profiles. The infinite deck. The 2am paralysis. The gnawing feeling that if I picked someone I'd always wonder if the next swipe was better, and if I didn't pick someone I'd swipe until the heat death of the universe. She listened, sipping her filter coffee, and when I finished she said the most annoying sentence a person can say to someone in emotional distress:</p>
+
+<p>"Oh, that's just the secretary problem. It's solved. The answer is thirty-seven percent."</p>
+
+<p>I want to walk you through what she meant, because it is genuinely one of the most beautiful things I have ever learned, and by the end of this post you will have an actual, defensible, mathematically optimal rule for when to stop looking — not just at dating apps, but at flats, at job offers, at the buffet. It is the antidote to the infinite deck. And the wild part is that the math doesn't care <em>who</em> is on the app or how the algorithm ranks them. It only needs one honest input from you.</p>
+
+<h2>A Problem Dressed Up as a Hiring Decision</h2>
+
+<p>The classic version goes like this. You need to hire a secretary.<sup>[1]</sup> There are, say, 100 applicants. You will interview them one at a time, in random order. After each interview you must make an irreversible decision: hire this person on the spot, or reject them forever and move to the next. You cannot go back. You cannot say "let me sleep on it." The instant you reject someone, they take a job at TCS and are gone. And you can only rank people relatively — after interviewing someone you know whether they're the best you've <em>seen so far</em>, but you have no idea how they stack up against the ones you haven't met yet.</p>
+
+<p>Your goal: hire the single best applicant out of all 100.</p>
+
+<p>Sit with how brutal this is for a second. If you hire the very first person, you've committed with essentially zero information — they might be the best, but the odds are 1 in 100. If you keep rejecting to gather information, you risk letting the best person walk out the door, at which point the game is unwinnable — no one left can beat someone already gone. Every rejection is information bought at the price of a permanently closed door. This is <strong>optimal stopping</strong>, an entire branch of mathematics about knowing when to quit, and the secretary problem is its most famous member.</p>
+
+<p>If this is starting to sound exactly like a dating app, congratulations, you've felt the trap from the inside. Swiping is a secretary problem in a hoodie. Profiles arrive one at a time in a roughly random order. Each decision feels irreversible (unmatch someone and the moment's gone; the algorithm rarely resurfaces a pass). You can only judge people relative to who you've already seen. And you are trying, with limited patience and a finite lifespan, to do well.</p>
+
+<div class="ascii-diagram"><pre>
+╔═══════════════════════════════════════════════════════╗
+║        THE SAME PROBLEM, THREE DISGUISES               ║
+╠═══════════════════════════════════════════════════════╣
+║                                                         ║
+║   HIRING          FLAT-HUNTING       DATING APP         ║
+║   ───────         ────────────       ──────────         ║
+║   applicants  →   flats to see   →   profiles           ║
+║   one at a time   landlord won't     deck feeds one     ║
+║                   "hold" it          by one             ║
+║   hire = commit   pay token =        match + commit     ║
+║   reject = gone   deposit locks it   pass = gone        ║
+║   can't rewind    "sold by evening"  can't un-pass      ║
+║                                                         ║
+║   ALL THREE ASK THE SAME QUESTION:                      ║
+║   "How much do I look before I'm allowed to leap?"      ║
+║                                                         ║
+╚═══════════════════════════════════════════════════════╝
+</pre></div>
+
+<h2>The Strategy That Sounds Too Simple to Work</h2>
+
+<p>Here's the solution, and it comes in two moves.</p>
+
+<p><strong>Move one — the Look Phase.</strong> Take the first 37% of your options and reject <em>all of them, automatically, no matter how good they are.</em> You are not choosing during this phase. You are calibrating. You are learning what "good" even looks like in this particular pool. Think of it as building a mental benchmark: the best person you see in this phase becomes your bar.</p>
+
+<p><strong>Move two — the Leap Phase.</strong> After that, commit to the very first option that is better than everyone you saw in the Look Phase. The next person who beats your benchmark — that's the one. Snap. Done. No agonising, no "but what if," no one more swipe.</p>
+
+<p>That's it. That's the whole algorithm. Look at 37%, remember the best, then grab the next one who beats it. And this strategy — this almost insultingly simple rule — gives you a <strong>37% chance of landing the single best person in the entire pool.</strong></p>
+
+<div class="callout">
+<strong>Wait, that's the punchline?</strong> Yes, and it's stranger than it looks. The number 37 shows up <em>twice</em>, and they're not the same 37. You look at 37% of the options, and as a result you win 37% of the time. Both numbers are the same because both are 1 divided by <em>e</em> — Euler's number, 2.718…, the constant that governs compound interest, radioactive decay, and, apparently, your love life. Nobody planned this. It falls out of the math. The universe is showing off.</div>
+
+<div class="pull-quote">You spend the first 37% learning what "good" means, and the rest of your life brave enough to recognise it when it shows up again.</div>
+
+<h2>Why 37 and Not, Say, "Vibes"</h2>
+
+<p>Let me give you the intuition, because the intuition is the beautiful part and you don't need any calculus for it.</p>
+
+<p>Picture the trade-off as a dial. On one end: look at almost nobody before committing (say the first 5%). On the other: look at almost everybody (say 95%). Both extremes are terrible, and they're terrible for opposite, symmetrical reasons.</p>
+
+<p>If your Look Phase is <em>too short</em>, your benchmark is garbage. You've seen five people, the best of them is your bar, and it's a low bar, so you leap early on someone merely okay while the genuinely great options are still downstream, unseen. You committed on ignorance.</p>
+
+<p>If your Look Phase is <em>too long</em>, you've built a fantastic benchmark — but you've used up all your runway building it. The best person in the whole pool has a very high chance of having appeared <em>during</em> your Look Phase, where you were contractually obligated to reject them. Now you're in the Leap Phase holding an impossibly high bar that almost no one left can clear, and you run out of options, and you end up with the last person by default, which is how people end up settling in a panic. You committed on desperation.</p>
+
+<p>The 37% point is precisely where those two failure modes balance — where the risk of "leaping too soon on a weak benchmark" exactly equals the risk of "having already rejected the best person." It's the mathematical sweet spot between naivety and desperation. And it is razor-sharp.</p>
+
+<div class="ascii-diagram"><pre>
+╔═══════════════════════════════════════════════════════╗
+║     CHANCE OF BAGGING THE BEST vs LOOK-PHASE LENGTH    ║
+╠═══════════════════════════════════════════════════════╣
+║                                                         ║
+║  win %                                                  ║
+║   40│                  ╱‾‾╲                              ║
+║   35│              ╱‾‾‾    ‾╲                            ║
+║   30│           ╱‾            ‾╲                         ║
+║   25│         ╱                 ‾╲                       ║
+║   20│       ╱                     ╲                      ║
+║   15│     ╱                        ╲___                  ║
+║   10│   ╱                              ‾‾‾╲__            ║
+║      └──┬─────┬─────┬─────┬─────┬─────┬─────┬──          ║
+║        5%    20%   37%   50%   65%   80%   95%           ║
+║                     ▲                                   ║
+║              peak: look 37%, win 37%                    ║
+║        "leap too soon"      "rejected 'the one'         ║
+║         weak benchmark       during the look phase"     ║
+║                                                         ║
+╚═══════════════════════════════════════════════════════╝
+</pre></div>
+
+<p>Meera pointed out the detail that actually broke my brain: a 37% success rate might sound mediocre — you "fail" 63% of the time, after all. But think about what you're up against. You are trying to pick the <em>single best</em> option out of a hundred, seeing them one at a time, in random order, with no rewind, judging only by relative rank. Pure random guessing gives you a 1% chance. This trivially simple rule gives you 37%. It multiplies your odds by <em>thirty-seven</em>, using no information you didn't already have. That's not mediocre. That's the closest thing decision theory has to a cheat code.<sup>[2]</sup></p>
+
+<h2>The One Number Hinge Doesn't Want You to Estimate</h2>
+
+<p>Now — the practical part, and the part where the app's whole strategy from Part 1 falls apart.</p>
+
+<p>To use the 37% rule you need exactly one thing: an honest estimate of your total pool size, <em>N</em>. Not who's in it. Not how the algorithm ranks it. Just: over the realistic window you're willing to date, roughly how many candidates will you seriously consider? This is the number the infinite deck is specifically engineered to stop you from ever writing down, because the moment you commit to a finite <em>N</em>, the "one more swipe forever" spell breaks. The deck stops being infinite. It becomes countable. And countable things can be finished.</p>
+
+<p>So let's be concrete, the way Meera forced me to be. Say you reckon you'll seriously consider about 100 people over the next several months of dating — a realistic number, not the 900 profiles I <em>skimmed</em>, but the ones I'd actually meet and weigh. Then:</p>
+
+<div class="ascii-diagram"><pre>
+╔═══════════════════════════════════════════════════════╗
+║           YOUR PERSONAL SWIPE BUDGET                    ║
+╠═══════════════════════════════════════════════════════╣
+║                                                         ║
+║   Pool you'll seriously consider (N):        100        ║
+║                                                         ║
+║   ┌─────────────────────┐  ┌──────────────────────┐    ║
+║   │   LOOK PHASE         │  │   LEAP PHASE          │    ║
+║   │   first 37 people    │  │   people 38 → 100     │    ║
+║   │                      │  │                       │    ║
+║   │   date, enjoy,       │  │   commit to the FIRST │    ║
+║   │   learn your type,   │  │   one who beats the   │    ║
+║   │   reject ALL of them │  │   best of your first  │    ║
+║   │   (yes, even the     │  │   37. no agonising.   │    ║
+║   │    great ones)       │  │   that's the person.  │    ║
+║   └─────────────────────┘  └──────────────────────┘    ║
+║                                                         ║
+║   Result: ~37% shot at the actual best match,          ║
+║           and permission to STOP.                       ║
+╚═══════════════════════════════════════════════════════╝
+</pre></div>
+
+<p>Reject your first 37 no matter what. Then marry the next person who's better than all of them. I am obviously simplifying — "marry" is doing heavy lifting, and real dating is not a clean random draw — but the structure is real, and the psychological gift is enormous: <em>it tells you when you are allowed to stop.</em> That is the exact thing the infinite deck stole from you. The rule hands it back. It converts "I could always do better" — which is true, technically, forever, and which is precisely why it's poison — into "I have looked enough; the next great one is the one." It is the off-switch for the bandit.</p>
+
+<h2>The Part Where the Cerebellum Was Right All Along</h2>
+
+<p>Here's the twist that made me genuinely happy, and it connects back to Part 1's whole thesis about mismatched reward functions. Remember, the app's reward function wanted my exploration rate pinned high forever — keep him at "explore," never let him "exploit," never let him commit. The 37% rule is, in the language of Part 1, a formula for <em>exactly when to switch from explore to exploit.</em> It's the decay schedule the app deliberately deleted. Look phase = explore. Leap phase = exploit. The math isn't fighting my instincts. It's fighting the app's.</p>
+
+<p>And this is not a niche party trick. Optimal stopping is everywhere the moment you learn to see it. Selling a house — economists have shown the mathematically-optimal home-selling strategy is a stopping rule: set a threshold, accept the first offer above it, ignore the fear that a better one's coming. Parking — the reason you should grab the first decent spot rather than circling for the perfect one near the entrance is literally an optimal-stopping result. Even foraging animals — birds deciding when to abandon a food patch — appear to run their own crude version of these rules, tuned by evolution. Nature has been solving the secretary problem, badly and instinctively, for a very long time. We just wrote it down.<sup>[3]</sup></p>
+
+<div class="callout">
+<strong>The honest caveat:</strong> The pure 37% rule assumes you only care about getting <em>the</em> best and count anything else as total failure. Real people are happier settling for "top 5%," and if you allow that, the math says look for even less time before leaping — closer to 25%. The moral is not the exact digit. The moral is that the optimal Look Phase is always a specific, finite, surprisingly <em>early</em> fraction — and it is never, ever "keep looking forever." Every honest version of this problem ends with: stop sooner than you think.</div>
+
+<h2>What I Actually Did (And What Abhishek Did)</h2>
+
+<p>I did not, I confess, rigorously execute the 37% rule with a spreadsheet and a rejection quota, because I am a person and not a batch job. But I did the thing that matters, which is that I <em>picked a finite N and believed it.</em> I decided I'd give it a genuine three months and about forty real conversations, treated the first stretch as pure calibration with zero pressure to commit, and promised myself that after that, the next person who clearly beat that bar got a real, undivided, phone-in-the-other-room chance. The paralysis lifted almost immediately. Turns out most of the 2am misery wasn't about the people at all. It was about not knowing the game had an ending. Once the deck was finite, I could breathe.</p>
+
+<p>I told Abhishek all of this, expecting him to be moved by the elegance of it. He thought about it for a long moment, sipping his chai, and said: "So basically, reject the first 37 people even if they're perfect? Bro, what if number 12 is the love of my life?"</p>
+
+<p>And that — that right there — is the whole human tragedy of the secretary problem in one sentence. Yes, Abhishek. Number 12 might be the love of your life. And you have to let them walk out the door and take a job at TCS, because the only way to reliably recognise the love of your life is to first learn what love-of-your-life-tier even looks like, and you cannot learn that from a sample of twelve. The rule doesn't promise you won't lose someone great. It promises you'll make the best possible decision <em>given what any human could actually know at the time</em>, which is all that decision-making under uncertainty ever gets to promise anybody.<sup>[4]</sup></p>
+
+<p>Abhishek, for the record, then admitted he had reinstalled Hinge "purely scientifically" (see Part 1) and had it open <em>during this exact conversation</em>. His girlfriend does not know. His N, as far as I can tell, remains defiantly infinite. Some men you cannot save with mathematics. You can only put them in a footnote and hope they read to the bottom.</p>
+
+<p>I deleted the app last Tuesday. Designed to be deleted, it said. It took a 19th-century puzzle, a Nobel-adjacent branch of mathematics, and my cousin's filter coffee, but the marketing was finally, technically, true. I just had to beat the machine at its own game first — and it turned out the winning move was the one thing the machine was built to prevent: I stopped playing.</p>
+
+<div class="footnote">
+  <p><sup>[1]</sup> The problem has a mildly embarrassing history of names. It's variously "the secretary problem," "the marriage problem," "the sultan's dowry problem," and "the fussy suitor problem," which tells you exactly what kind of scenario the (mostly male, mostly mid-century) mathematicians had in mind when they formalised it. The math is pristine; the branding could use a rework. I'm lobbying for "the swipe problem" but nobody at the journals is returning my emails.</p>
+  <p><sup>[2]</sup> The proof that 1/<em>e</em> is optimal is genuinely gorgeous and fits on a napkin if you know a little calculus. You write out the probability of winning as a function of how long you look, take the derivative, set it to zero, and out pops <em>e</em>, completely uninvited, like a cat that has decided this problem is now its problem. The first rigorous published solutions landed in the early 1960s, though versions of the puzzle floated around recreational-math circles for decades before that. It's the kind of result that makes people become mathematicians and also the kind that makes them insufferable at dinner. I would know; Meera has not stopped.</p>
+  <p><sup>[3]</sup> There's a whole delightful book about applying these algorithms to daily life — when to stop apartment hunting, how to organise your sock drawer, when to try a new restaurant versus revisit your favourite (that last one is our multi-armed bandit from Part 1, back for an encore). The unifying theme is that many agonising human decisions are secretly well-studied computer science problems with known answers, and we suffer through them by hand because nobody taught us the shortcut. Consider this your shortcut.</p>
+  <p><sup>[4]</sup> If it helps Abhishek sleep: the rule doesn't say number 12 <em>can't</em> be the one. It says that if you make a firm decision to commit to number 12 on the strength of having seen only 11 others, you are, on average, across all the universes where you run this strategy, going to do worse than the person who calibrated first. You might get lucky. Strategy isn't about any single universe. It's about which policy you'd want running in all of them. Abhishek's response to this was "bro I only live in one universe though," which is, infuriatingly, also correct, and is the reason decision theory will never fully win an argument against a man in love.</p>
+</div>
+
+    </div>
+  </main>
+
+  <section class="px-6 pb-16 max-w-3xl mx-auto flex justify-between items-center">
+    <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
+    <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+  </section>
+  <script src="/js/blog.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>

@@ -408,5 +408,33 @@
       "Food"
     ],
     "id": "031"
+  },
+  {
+    "slug": "2026-07-03-hinge-bandit-part-1",
+    "title": "Hinge Is \"Designed to Be Deleted\" the Same Way a Casino Is Designed to Be Left (Part 1)",
+    "date": "2026-07-03",
+    "readTime": "16 min",
+    "excerpt": "I downloaded Hinge to find love and became a live reinforcement-learning experiment instead. Part 1 of 2: on swiping, slot machines, and the reward function that was never yours.",
+    "tags": [
+      "Dating Apps",
+      "Reinforcement Learning",
+      "AI",
+      "Psychology"
+    ],
+    "id": "032"
+  },
+  {
+    "slug": "2026-07-17-hinge-37-percent-part-2",
+    "title": "The Math Finally Told Me When to Stop Swiping (Part 2: The 37% Rule)",
+    "date": "2026-07-17",
+    "readTime": "14 min",
+    "excerpt": "Part 2 of 2. There is a provably optimal moment to stop looking and commit — and a 19th-century puzzle called the secretary problem hands you the exact number. It's 37%.",
+    "tags": [
+      "Dating Apps",
+      "Optimal Stopping",
+      "Math",
+      "Decision Theory"
+    ],
+    "id": "033"
   }
 ]

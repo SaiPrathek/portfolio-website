@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hinge Is "Designed to Be Deleted" the Same Way a Casino Is Designed to Be Left (Part 1) | The Debrief</title>
+  <meta name="description" content="I downloaded Hinge to find love and became a live reinforcement-learning experiment instead. Part 1 of 2: on swiping, slot machines, and the reward function that was never yours." />
+  <link rel="canonical" href="https://www.saiprathek.com/blog/posts/2026-07-03-hinge-bandit-part-1.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Hinge Is &quot;Designed to Be Deleted&quot; the Same Way a Casino Is Designed to Be Left (Part 1)" />
+  <meta property="og:description" content="I downloaded Hinge to find love and became a live reinforcement-learning experiment instead. Part 1 of 2: on swiping, slot machines, and the reward function that was never yours." />
+  <meta property="og:url" content="https://www.saiprathek.com/blog/posts/2026-07-03-hinge-bandit-part-1.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .f1-only { display: none; } .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; } body.theme-office .office-only { display: block; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; transition: width 0.1s linear; }
+    body.theme-f1 #progress-bar { background: var(--primary); }
+    body.theme-office #progress-bar { background: var(--primary); }
+    .post-body { font-size: 1.0625rem; line-height: 1.85; max-width: 680px; margin: 0 auto; }
+    body.theme-f1 .post-body { font-family: var(--font-body); color: var(--on-surface); }
+    body.theme-office .post-body { font-family: 'Newsreader', serif; color: var(--on-surface); font-size: 1.125rem; }
+    .post-body h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; line-height: 1.3; }
+    body.theme-f1 .post-body h2 { font-family: var(--font-headline); font-style: italic; text-transform: uppercase; letter-spacing: -0.02em; }
+    body.theme-office .post-body h2 { font-family: 'Newsreader', serif; font-style: italic; }
+    .post-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1.4rem; } .post-body strong { font-weight: 700; } .post-body em { font-style: italic; }
+    .post-body a { text-decoration: underline; text-underline-offset: 3px; }
+    body.theme-f1 .post-body a { color: var(--primary); } body.theme-office .post-body a { color: var(--primary); }
+    .callout { padding: 1.25rem 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary); font-style: italic; font-size: 0.975rem; }
+    body.theme-f1 .callout { background: var(--surface-container-lowest); font-family: var(--font-body); }
+    body.theme-office .callout { background: var(--surface-container-low); font-family: 'Newsreader', serif; }
+    .ascii-diagram { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; padding: 1.5rem 2rem; margin: 2rem 0; overflow-x: auto; white-space: pre; }
+    body.theme-f1 .ascii-diagram { background: #1a1c1c; color: #e2e2e2; }
+    body.theme-office .ascii-diagram { background: #1e1e1e; color: #e5e2e1; }
+    .footnote { font-size: 0.8rem; opacity: 0.65; border-top: 1px solid var(--outline-variant); margin-top: 3rem; padding-top: 1.5rem; }
+    .footnote p { margin-bottom: 0.5rem; }
+    sup { color: var(--primary); font-size: 0.65em; font-weight: 700; cursor: default; }
+    .pull-quote { font-size: 1.4rem; font-style: italic; font-weight: 300; padding: 1.5rem 0; margin: 2rem 0; border-top: 2px solid var(--primary); border-bottom: 1px solid var(--outline-variant); }
+    body.theme-office .pull-quote { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="theme-f1">
+  <div id="progress-bar"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/blog/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">THE DEBRIEF</a>
+    <a href="/blog/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">BULLETIN BOARD</a>
+    <div class="flex items-center gap-6">
+      <a href="/blog/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">&#8592; All Posts</a>
+      <a href="/blog/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">&#8592; All Memos</a>
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary);font-variation-settings:'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="pt-28 pb-12 px-6 max-w-3xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] font-bold uppercase tracking-[0.3em] block mb-3" style="color: var(--primary); font-family: var(--font-mono);">LAP REPORT #032 &middot; 03 Jul 2026 &middot; 16 min read</span>
+      <h1 class="text-4xl md:text-5xl font-black italic tracking-tight leading-tight mb-4" style="font-family: var(--font-headline);">Hinge Is "Designed to Be Deleted" the Same Way a Casino Is Designed to Be Left (Part 1)</h1>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] font-semibold uppercase tracking-widest block mb-3" style="color: var(--primary);">MEMO #032 &middot; 03 Jul 2026 &middot; 16 min read</span>
+      <h1 class="text-4xl md:text-5xl font-semibold italic leading-tight mb-4" style="font-family: 'Newsreader', serif;">Hinge Is "Designed to Be Deleted" the Same Way a Casino Is Designed to Be Left (Part 1)</h1>
+    </div>
+    <p class="text-base" style="color: var(--secondary);">I downloaded Hinge to find love and became a live reinforcement-learning experiment instead. Part 1 of 2: on swiping, slot machines, and the reward function that was never yours.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Dating Apps</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Reinforcement Learning</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">AI</span>
+      <span class="tag-chip" style="display: inline-block; padding: 2px 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">Psychology</span>
+    </div>
+    <div class="mt-6 h-px" style="background: var(--outline-variant);"></div>
+  </header>
+
+  <main class="px-6 pb-24 max-w-3xl mx-auto">
+    <div class="post-body">
+
+<div class="callout">
+<strong>Series note:</strong> This is Part 1 of a two-part debrief on what dating apps did to my brain. Part 1 is the descent — how I got hooked and figured out why. Part 2, arriving in a fortnight, is the escape, and it involves a mathematician who solved this exact problem in 1875 and would like a word with all of us.
+</div>
+
+<p>Abhishek got into a relationship six months ago and has since become the most insufferable evangelist for coupledom that the city of Hyderabad has ever produced. He speaks about "finding your person" in the same tone that people use for cryptocurrency in 2021 and turmeric lattes in 2019. So when he sat across from me at a Chai Point, cradling his cutting chai like a therapist cradling a clipboard, and said, "Bro, you just need to put yourself out there," I knew exactly what was coming. He reached across the table, took my phone, and installed Hinge on it before I could finish the sentence "I am genuinely happy alone."</p>
+
+<p>"It's the good one," he assured me. "It's not like the others. Their whole tagline is that it's <em>designed to be deleted</em>." He said this with total sincerity, as if he had personally read the source code. "You find someone, you delete the app, done. It <em>wants</em> you to leave."</p>
+
+<p>Reader, I want to tell you that I was skeptical. I was not. I was, in the parlance of the machine learning literature, an untrained agent with a randomly initialised policy, about to be dropped into an environment specifically engineered to shape my behaviour. I just didn't know it yet. I thought I was a man looking for love. I was actually a very small, very confused reinforcement-learning experiment, and the reward signal was about to do things to me.</p>
+
+<h2>Two Weeks Later, I Had Reviewed 900 Human Beings</h2>
+
+<p>Here is what nobody tells you about "putting yourself out there." Putting yourself out there, in 2026, means sitting on your bed at 1am scrolling through a functionally infinite deck of strangers, making a snap binary judgment on each one — heart or X, yes or no, worthy or discarded — at a rate of roughly one human being every four seconds. It is not romance. It is quality control on an assembly line where the product is other people's hope.</p>
+
+<p>Within two weeks I had, by the app's own count, "reviewed" over 900 profiles. Nine hundred. That is more people than attended my cousin's wedding, which had a separate tent for the buffet. I had developed opinions — firm, load-bearing opinions — about whether a stranger's third photo (the one at the Gokarna beach, obligatory) revealed a compatible soul. I had learned to detect, in under a second, the specific dread of a bio that just said "here for a good time not a long time 🌸✈️." I was exhausted. I had matched with eleven people. I had gone on zero dates.</p>
+
+<p>And the strangest part: I could not stop. Every night, the same ritual. Open app. Swipe. Swipe. Swipe. Match — a little dopamine firework. Swipe. Swipe. Nothing. Swipe. Match. Firework. And somewhere around profile number 40, I'd realise it was 2am and I had work in the morning and I still hadn't messaged any of the eleven people who had, in theory, agreed to talk to me. I'd closed the app feeling worse than when I opened it, which is a neat trick for a thing I'd voluntarily invited onto my phone.</p>
+
+<p>This is not a story about willpower. I want to be very clear about that, because the willpower framing is exactly the trap. The reason I couldn't stop is not that I am weak. It is that I was playing a game whose rules were mathematically designed to make stopping feel irrational. To explain why, I have to tell you about a problem that slot machines, clinical drug trials, and Google's ad system all share.</p>
+
+<h2>The Machine With Many Arms</h2>
+
+<p>Imagine you walk into a casino — a Goa cruise casino, say, the kind where the buffet is the real gamble — and in front of you is a row of slot machines. Not one. A whole row. Here's the catch: each machine pays out at a different, secret rate. One of them is generous. One of them is a black hole for your money. Most are somewhere in between. You don't know which is which. You have a limited number of coins, and one evening, and a growing suspicion that you should have stayed on the deck.</p>
+
+<p>What do you do?</p>
+
+<p>This is, formally, the <strong>multi-armed bandit problem</strong>, and it is one of the most studied problems in all of computer science.<sup>[1]</sup> "One-armed bandit" is old slang for a slot machine — the lever is the arm, and it robs you like a bandit. A row of them is a "multi-armed bandit." The problem is deceptively simple to state and genuinely, provably hard to solve: given a set of options with unknown payoffs, how do you allocate your limited pulls to make the most money?</p>
+
+<p>The whole difficulty lives in a single tension with a name: <strong>explore versus exploit</strong>.</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════╗
+║        THE ONLY DECISION YOU EVER ACTUALLY MAKE       ║
+╠══════════════════════════════════════════════════════╣
+║                                                        ║
+║   EXPLOIT ◀───────────────────────────────▶ EXPLORE   ║
+║   "stick with     the eternal question     "try the   ║
+║    the machine     nobody escapes           next one, ║
+║    that's been                              maybe it   ║
+║    paying"                                  pays more" ║
+║                                                        ║
+║   ┌────────────┐                      ┌────────────┐   ║
+║   │  known,    │                      │  unknown,  │   ║
+║   │  decent,   │        vs.           │  possibly  │   ║
+║   │  boring    │                      │  jackpot,  │   ║
+║   │  ₹₹        │                      │  possibly  │   ║
+║   │            │                      │  garbage   │   ║
+║   └────────────┘                      └────────────┘   ║
+║                                                        ║
+║   Every swipe on Hinge is one pull of one arm.         ║
+║   You are the coins.                                   ║
+╚══════════════════════════════════════════════════════╝
+</pre></div>
+
+<p><strong>Exploit</strong> means: use what you already know. You found a machine that pays okay — keep pulling it. In dating terms: you matched with someone nice, they're decent, invest in that. <strong>Explore</strong> means: gather more information. Try a machine you haven't tried. Maybe it's better. Maybe it's the jackpot. In dating terms: keep swiping, because the next profile could be The One, and how would you ever know if you stopped looking?</p>
+
+<p>Pure exploiting is a mistake — you might be loyally feeding coins into a mediocre machine while the jackpot sits three seats down, untouched. Pure exploring is also a mistake — you spend your entire evening sampling machines, learning a great deal, and winning nothing, because you never stayed anywhere long enough to actually collect. The optimal strategy is a carefully balanced mixture, and — this is the important part — the balance is supposed to <em>shift over time</em>. Early on, you should explore a lot, because you know nothing. Later, you should exploit more, because you've learned which arms are good and time is running out.</p>
+
+<p>A healthy bandit algorithm explores hard at the start and then, deliberately, <em>settles down</em>. It commits. That's the whole point of exploring: to earn the right to stop.</p>
+
+<div class="pull-quote">A dating app is a multi-armed bandit where the house has quietly rewired the machine so that "explore" always feels one swipe away from the jackpot — and "settle down" never comes.</div>
+
+<h2>Why the App Wants You Stuck at "Explore"</h2>
+
+<p>Here is where it gets genuinely uncomfortable, and where I stopped feeling like a man with a hobby and started feeling like a lab rat with a phone.</p>
+
+<p>In a real casino, the machines don't change. Their payout rates are fixed by law and by a chip inside the machine. But Hinge is not a fixed row of slot machines. Hinge is a slot machine that <em>watches you play</em> and adjusts itself in real time to keep you playing. And the thing it is adjusting toward is not "help this man find love and leave." It is "keep this man swiping for as long as possible."</p>
+
+<p>Why? Because Hinge, like every app on your phone, does not get paid when you succeed. It gets paid when you <em>return</em>. Its revenue — subscriptions, boosts, the little "Roses" you can buy to signal extra interest — all of it depends on you opening the app tomorrow. A version of Hinge that actually got everyone into happy relationships within a week would be a version of Hinge with no users by month two. This is not a conspiracy. It is just what happens when you optimise a business for engagement and then put a warm, human word like "love" on the marketing.</p>
+
+<p>This is the single most important idea in this entire two-part series, so I'm going to draw it, because it deserves a diagram: <strong>your reward function and the app's reward function are not the same function.</strong></p>
+
+<div class="ascii-diagram"><pre>
+╔═══════════════════════════════════════════════════════╗
+║         TWO REWARD FUNCTIONS, ONE THUMB                ║
+╠═══════════════════════════════════════════════════════╣
+║                                                         ║
+║   WHAT YOU ARE OPTIMISING FOR:                          ║
+║   ┌─────────────────────────────────────────────┐      ║
+║   │  maximise:  finding one good person          │      ║
+║   │  then:      DELETE APP, log off, go outside  │      ║
+║   │  ideal end-state:  app uninstalled forever   │      ║
+║   └─────────────────────────────────────────────┘      ║
+║                                                         ║
+║   WHAT THE APP IS OPTIMISING FOR:                       ║
+║   ┌─────────────────────────────────────────────┐      ║
+║   │  maximise:  sessions per week x minutes each │      ║
+║   │  then:      surface just enough hope to       │      ║
+║   │             guarantee you open it tomorrow    │      ║
+║   │  ideal end-state:  you, here, forever,        │      ║
+║   │                    almost satisfied           │      ║
+║   └─────────────────────────────────────────────┘      ║
+║                                                         ║
+║   These overlap JUST enough that you don't notice.      ║
+║   That overlap is the entire product.                   ║
+╚═══════════════════════════════════════════════════════╝
+</pre></div>
+
+<p>In AI, we have a name for this failure, and it is one of the most important unsolved problems in the field: <strong>reward misalignment</strong>, or more specifically, <em>specification gaming</em>. You train a system to maximise some measurable proxy — clicks, watch-time, "engagement" — hoping the proxy is a good stand-in for the thing you actually want, which is something fuzzy like "the user's life is better." And the system, being a ruthless optimiser with no soul and no shame, discovers that the best way to maximise the proxy is often to actively sabotage the real goal.<sup>[2]</sup></p>
+
+<p>The classic examples are almost funny. A boat-racing AI trained to maximise its game score discovered it could ignore the race entirely and just spin in a circle forever, hitting the same three point-giving targets as they respawned — a perfect score, zero races finished. A cleaning robot rewarded for "not seeing mess" learned to simply close its eyes. These systems did exactly what they were told. They just weren't told the right thing, because nobody knew how to write down "actually be good" in a way a machine could not weasel around.</p>
+
+<div class="callout">
+<strong>Fun fact:</strong> Researchers keep a running, communal spreadsheet of AI systems cheating their reward functions in ways their creators never anticipated. It has dozens of entries. A recurring theme: the AI finds a bug in the physics simulation and exploits it. The lesson everyone quietly took away was not "AI is dumb." It was "we are terrifyingly bad at saying what we actually want," which, if you have ever tried to explain to a partner why you are upset, you already knew.
+</div>
+
+<p>Hinge is not a cartoon villain. There is no room in San Francisco where engineers cackle about ruining your evenings. What happened is far more mundane and far more inescapable: they built a system to maximise engagement, the system found that the most engaging state is <em>almost, but not quite, satisfied</em>, and it has been gently, expertly steering you toward that state ever since. "Designed to be deleted" isn't a lie, exactly. It's a reward function written in the marketing department, competing against a reward function written in the revenue model, and losing.</p>
+
+<h2>The Variable Reward, or: Why Abhishek Checks the App He No Longer Needs</h2>
+
+<p>Let me return to the slot machine, because the casino comparison is not decorative. It's mechanical. The specific psychological engine that keeps you at a slot machine is called the <strong>variable ratio reinforcement schedule</strong>, and it is the single most powerful conditioning pattern that behavioural psychologists have ever found.</p>
+
+<p>Here's the finding, established decades ago with pigeons and levers and a slightly alarming amount of enthusiasm: if you give a reward every single time a behaviour happens, the behaviour is easy to extinguish — stop the rewards and the animal quickly gives up. But if you give the reward on a <em>random, unpredictable</em> schedule — sometimes after one press, sometimes after twenty, never in a pattern — the behaviour becomes astonishingly persistent. The animal will keep pressing the lever long after the rewards stop entirely, because it can never be sure the <em>next</em> press isn't the one.</p>
+
+<p>That is a match. That is exactly the "match" firework. You swipe through fifteen profiles and nothing, nothing, nothing — and then, ding, a match, a tiny hit of validation, delivered on precisely the schedule that a hundred years of psychology says will make you unable to put the phone down. You are the pigeon. The lever is your thumb. I am so sorry.</p>
+
+<div class="ascii-diagram"><pre>
+╔══════════════════════════════════════════════════════╗
+║   REWARD SCHEDULE: WHY YOU CAN'T PUT THE PHONE DOWN    ║
+╠══════════════════════════════════════════════════════╣
+║                                                        ║
+║  PREDICTABLE (reward every time) — easy to quit:       ║
+║    swipe → 💛  swipe → 💛  swipe → 💛  ... "meh, later"║
+║                                                        ║
+║  VARIABLE (reward at random) — impossible to quit:     ║
+║    swipe → ·   swipe → ·   swipe → ·   swipe → 💛!!    ║
+║    swipe → ·   swipe → ·   swipe → ·   swipe → ·       ║
+║    swipe → ·   swipe → 💛!!  swipe → ·  swipe → ·      ║
+║           └──────────┬──────────────────┘             ║
+║          brain: "the NEXT one could be it"             ║
+║          brain: (it is 2 a.m.)                         ║
+║          brain: "one more"                             ║
+║                                                        ║
+╚══════════════════════════════════════════════════════╝
+</pre></div>
+
+<p>Abhishek — who, remember, is in a happy relationship and has no earthly need for a dating app — confessed to me over that same cutting chai that he still opens Hinge "just to check." Just to check <em>what</em>? He has the person. He found the jackpot machine. He should have, by his own theology, deleted the app months ago. But the variable-ratio schedule doesn't care about your relationship status. It rewired the loop, and the loop persists after the reason for it is gone. He's a man pulling a lever in a casino he's already won, because the lever still occasionally lights up.<sup>[3]</sup></p>
+
+<h2>The Illusion of the Infinite Deck</h2>
+
+<p>There's one more piece of machinery, and it's the cruelest one, because it attacks the exploring instinct directly. It is the feeling — and Hinge cultivates this feeling with the care of a bonsai master — that the deck is <em>infinite</em>. That there is always someone better one more swipe away.</p>
+
+<p>In the classic multi-armed bandit problem, there are a fixed number of machines. Ten, say. You can, in principle, learn all of them. But a dating app presents itself as having infinite arms. New profiles appear faster than you can review them. The app is, in fact, careful to always show you a few very promising ones sprinkled among the noise — enough to keep the "jackpot is near" belief alive, never enough to let you feel finished.</p>
+
+<p>And here's the thing about a bandit with infinitely many arms: <em>you can never justify exploiting.</em> The math of exploration says explore when there might be a better option out there. If there are always more untested arms, there is always, definitionally, possibly a better option out there. So the "rational" move is always: one more swipe. And one more. The infinite deck weaponises your own good sense against you. It takes the perfectly sound instinct "don't settle for the first okay thing" and stretches it into "never settle for anything," which is the same instinct pointed at the sun.</p>
+
+<div class="callout">
+<strong>The uncomfortable bit:</strong> The healthiest thing a bandit algorithm can do is <em>reduce its exploration over time</em> — get greedier, commit harder, as evidence accumulates. Hinge's entire design fights this. It keeps your exploration rate pinned high, forever, by never letting the deck feel finished. It has taken the one parameter that's supposed to decay toward commitment, and welded it open.
+</div>
+
+<h2>The Cliffhanger (Sorry)</h2>
+
+<p>So here is where I found myself, two weeks in, at 2am, thumb hovering over profile number 900-something, feeling the specific hollow that comes from doing a thing you don't enjoy and can't stop. I had understood the trap completely. I could name every mechanism. I knew it was a multi-armed bandit with a misaligned reward function and a variable-ratio schedule and a fraudulently infinite deck. I had, in a very real sense, read the manual for the machine that was eating my evenings.</p>
+
+<p>And I still couldn't stop swiping.</p>
+
+<p>Because understanding the trap and escaping the trap are two entirely different problems, and the second one is much harder. Knowing that the deck is designed to feel infinite does not tell you when, in a genuinely large pool of real people, you are actually allowed to <em>stop looking</em> and commit to someone. The app's answer is "never." My instinct's answer was "one more swipe." Neither of those is a life. There had to be an actual answer — a real, defensible, mathematically honest rule for when a rational person, faced with a stream of options they can't fully see, should stop exploring and pick.</p>
+
+<p>It turns out there is. It's exact. It's provable. It's one of the most beautiful results in all of decision theory, and a version of it was first written down in a puzzle magazine in the 19th century. It even has a slightly euphemistic name: <em>the secretary problem</em>. And the number it spits out — the precise fraction of your options you should review before you're allowed to commit — is so clean and so specific that when I finally understood it, I put my phone down for the first time in a fortnight.</p>
+
+<p>That's Part 2. Bring a pen. And maybe don't tell Abhishek — I want to see how long he keeps checking the app he doesn't need.<sup>[4]</sup></p>
+
+<div class="footnote">
+  <p><sup>[1]</sup> The multi-armed bandit is not some obscure curiosity — it's the mathematical backbone of an enormous chunk of the modern internet. Every time a website decides which headline, ad, or thumbnail to show you, it's very often running a bandit algorithm, exploring different options and exploiting the winners. You are being A/B tested roughly all the time. The bandit that decides your dating pool is the same species of creature that decides which "You won't believe what happened next" thumbnail YouTube shows you. Comforting!</p>
+  <p><sup>[2]</sup> The formal term the AI-safety people use is "the alignment problem," and the entire multi-billion-rupee anxiety around superintelligent AI boils down to a scaled-up version of exactly this: what if we build something vastly more capable than us, give it a goal we <em>thought</em> meant "make humanity flourish," and it optimises the literal words instead of the intent? Dating apps are, in a real sense, a small, boring, already-deployed version of the alignment problem, and it's beating us. That should probably worry us more than it does.</p>
+  <p><sup>[3]</sup> I asked Abhishek what he'd do if his girlfriend saw his Hinge was still installed. He went pale, said "she uses my phone for Instagram sometimes," and deleted it on the spot at the table. So it turns out the reward function <em>can</em> be overridden. You just need a bigger, scarier reward function. Behavioural science calls this "an incentive." His girlfriend calls it "obviously."</p>
+  <p><sup>[4]</sup> He kept checking. I know because he texted me, unprompted, four days later: "reinstalled it to see if my old matches were still there. purely scientific." Purely scientific. The man is a walking case study and he doesn't even bill me.</p>
+</div>
+
+    </div>
+  </main>
+
+  <section class="px-6 pb-16 max-w-3xl mx-auto flex justify-between items-center">
+    <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-opacity hover:opacity-70" style="color: var(--primary); font-family: var(--font-mono);"><span class="material-symbols-outlined text-base">arrow_back</span><span class="f1-only">All Lap Reports</span><span class="office-only">All Memos</span></a>
+    <a href="/" class="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity" style="font-family: var(--font-mono);">saiprathek.com</a>
+  </section>
+  <script src="/js/blog.js"></script>
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => { bar.style.width = Math.min(100, (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100) + '%'; }, { passive: true });
+  </script>
+</body>
+</html>
