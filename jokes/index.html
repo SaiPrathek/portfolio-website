@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pit Banter | Sai Prathek Kotha</title>
+  <meta name="description" content="A random joke generator. Pull the lever, get a groan. Themed for the paddock and the office." />
+  <link rel="canonical" href="https://www.saiprathek.com/jokes/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="Pit Banter — Random Jokes by Sai Prathek Kotha" />
+  <meta property="og:description" content="Pull the lever, get a groan. A tiny random joke generator." />
+  <meta property="og:url" content="https://www.saiprathek.com/jokes/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    .f1-only { display: none; }
+    .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; }
+    body.theme-office .office-only { display: block; }
+    body.theme-f1 .f1-flex { display: flex; }
+    body.theme-office .office-flex { display: flex; }
+    .f1-flex, .office-flex { display: none; }
+
+    .joke-card {
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-container);
+      border-radius: 4px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    body.theme-f1 .joke-card { box-shadow: 0 12px 32px rgba(179,4,0,0.08); }
+    body.theme-office .joke-card { box-shadow: 0 12px 32px rgba(242,202,80,0.08); }
+
+    .joke-setup { transition: opacity 0.2s ease, transform 0.2s ease; }
+    .joke-punch { transition: opacity 0.35s ease, transform 0.35s ease; }
+    .joke-swap { opacity: 0; transform: translateY(6px); }
+
+    .lever-btn { transition: transform 0.1s ease, box-shadow 0.2s ease, opacity 0.2s ease; }
+    .lever-btn:active { transform: translateY(2px) scale(0.99); }
+    .lever-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  </style>
+</head>
+<body class="theme-f1">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">APEX ENGINEERING</a>
+    <a href="/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">THE BRANCH</a>
+
+    <div class="flex items-center gap-6">
+      <a href="/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← Portfolio</a>
+      <a href="/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← Back to Office</a>
+
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary); font-variation-settings: 'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary); font-variation-settings: 'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-8 px-6 max-w-3xl mx-auto text-center">
+    <!-- F1 Header -->
+    <div class="f1-only">
+      <span class="text-[10px] tracking-[0.3em] uppercase mb-3 block" style="color: var(--primary); font-family: var(--font-mono);">Team Radio // Comedy Division</span>
+      <h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase italic leading-none mb-4" style="font-family: var(--font-headline);">PIT <span style="color: var(--primary);">BANTER</span></h1>
+      <p class="text-base max-w-xl mx-auto" style="color: var(--secondary); font-family: var(--font-body);">Pull the lever, get a groan. Full-send one-liners for the three seconds between pit stops.</p>
+    </div>
+    <!-- Office Header -->
+    <div class="office-only">
+      <span class="text-[10px] tracking-[0.2em] uppercase mb-3 block" style="color: var(--primary);">Conference Room // Mandatory Fun</span>
+      <h1 class="text-5xl md:text-7xl font-semibold leading-none mb-4" style="font-family: var(--font-headline);">The <span style="color: var(--primary);">Joke</span> Jar</h1>
+      <p class="text-base max-w-xl mx-auto" style="color: var(--secondary);">Reach in, pull one out. Company policy requires at least one groan per meeting.</p>
+    </div>
+  </section>
+
+  <!-- JOKE MACHINE -->
+  <section class="px-6 pb-32 max-w-3xl mx-auto">
+    <div class="joke-card p-8 md:p-12 mt-4">
+      <div class="flex items-center justify-between mb-6">
+        <span id="joke-tag" class="tag-chip" style="display:inline-block; padding:2px 10px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background: var(--surface-container-high); color: var(--secondary); font-family: var(--font-mono);">—</span>
+        <span id="joke-count" class="text-[10px] uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono);"></span>
+      </div>
+
+      <p id="joke-setup" class="joke-setup text-2xl md:text-3xl font-semibold leading-snug mb-5" style="color: var(--on-surface); font-family: var(--font-headline);">
+        Ready when you are.
+      </p>
+      <p id="joke-punch" class="joke-punch text-xl md:text-2xl leading-snug" style="color: var(--primary); font-family: var(--font-body);">
+        <span class="f1-only">Hit the button to get on track.</span>
+        <span class="office-only">Hit the button. It's in the budget.</span>
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center gap-4">
+        <button id="new-joke" class="lever-btn w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 font-bold uppercase text-xs tracking-widest" style="background: var(--primary); color: var(--on-primary, #fff); border-radius: 4px;">
+          <span class="material-symbols-outlined" style="font-size:18px;">casino</span>
+          <span class="f1-only">Send It</span>
+          <span class="office-only">Tell Me One</span>
+        </button>
+        <button id="copy-joke" class="lever-btn w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 font-bold uppercase text-xs tracking-widest" style="background: transparent; color: var(--secondary); border: 1px solid var(--outline-variant); border-radius: 4px;" disabled>
+          <span class="material-symbols-outlined" style="font-size:18px;">content_copy</span>
+          Copy
+        </button>
+      </div>
+    </div>
+
+    <p class="text-center mt-6 text-[10px] uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono); opacity:0.6;">
+      <span class="f1-only">Live feed from icanhazdadjoke.com · curated paddock jokes when you're off the grid.</span>
+      <span class="office-only">Live feed from icanhazdadjoke.com · curated office jokes when the network's down.</span>
+    </p>
+  </section>
+
+  <footer class="border-t px-6 py-8 text-center" style="border-color: var(--outline-variant);">
+    <p class="text-xs uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono);">
+      <a href="/" class="hover:opacity-70 transition-opacity" style="color: var(--primary);">saiprathek.com</a>
+      <span class="mx-2">·</span>
+      Curated groans by Sai Prathek Kotha
+    </p>
+  </footer>
+
+  <script src="/js/core.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/animations.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    (() => {
+      const app = window.PortfolioApp;
+
+      // Two curated pools — one per livery. { s: setup, p: punchline, tag }
+      const JOKES = {
+        f1: [
+          { s: "Why did the F1 car bring a ladder to the race?", p: "It heard the competition was on another level.", tag: "Paddock" },
+          { s: "How does a race engineer flirt?", p: "\"Box, box — you're mint on this lap.\"", tag: "Team Radio" },
+          { s: "Why don't F1 drivers ever get cold?", p: "They're always in the fast lane, generating downforce and warmth.", tag: "Aero" },
+          { s: "What's a pit crew's favorite music?", p: "Anything with a good tempo — they change tires in 2 seconds flat.", tag: "Pit Wall" },
+          { s: "Why did the tire go to therapy?", p: "It had too much pressure and kept getting flat-spotted.", tag: "Tyres" },
+          { s: "What do you call an F1 car that tells jokes?", p: "A pun-derbird. It only lands the corners it commits to.", tag: "Paddock" },
+          { s: "Why was the DRS flap so confident?", p: "It only opens up when the moment's right.", tag: "Aero" },
+          { s: "Why did the strategist bring a pencil to the race?", p: "To draw up a Plan B, C, and an undercut.", tag: "Strategy" },
+          { s: "What did the safety car say to the field?", p: "\"Everybody bunch up — I'm feeling clingy.\"", tag: "Race Control" },
+          { s: "Why don't F1 cars make good comedians?", p: "Their delivery is too fast and the corners kill the timing.", tag: "Team Radio" },
+        ],
+        office: [
+          { s: "Why did the employee bring a ladder to work?", p: "They wanted to climb the corporate ladder — literally, HR was concerned.", tag: "Corporate" },
+          { s: "Why don't scientists trust the office printer?", p: "Because it makes up everything — and then jams.", tag: "Supplies" },
+          { s: "What's a manager's favorite exercise?", p: "Running late to meetings and jumping to conclusions.", tag: "Management" },
+          { s: "Why did the stapler get promoted?", p: "It really held things together under pressure.", tag: "Supplies" },
+          { s: "How many people work in this office?", p: "About half of them, on a good day.", tag: "Corporate" },
+          { s: "Why did the spreadsheet go to therapy?", p: "It had too many unresolved cells... I mean, feelings.", tag: "Finance" },
+          { s: "What did the coffee say on Monday?", p: "\"Same grind, different day.\"", tag: "Break Room" },
+          { s: "Why did the intern bring a broom to the meeting?", p: "They heard it was time to clean up the backlog.", tag: "Management" },
+          { s: "What's the difference between a status update and a horror movie?", p: "One has a scary ending. The other is 45 minutes long.", tag: "Meetings" },
+          { s: "Why don't office chairs ever win arguments?", p: "They always back down and roll away.", tag: "Break Room" },
+        ],
+        // Theme-neutral dad jokes — rotate in under either livery.
+        shared: [
+          { s: "Can a kangaroo jump higher than the Empire State Building?", p: "Of course. The Empire State Building can't jump.", tag: "Dad Joke" },
+          { s: "What's the worst thing about ancient history class?", p: "The teachers tend to Babylon.", tag: "Dad Joke" },
+          { s: "Where do astronauts hang out after work?", p: "At the spacebar.", tag: "Dad Joke" },
+          { s: "What do you call a careful wolf?", p: "Aware wolf.", tag: "Dad Joke" },
+          { s: "Animal Fact #25:", p: "Most bobcats are not named Bob.", tag: "Dad Joke" },
+          { s: "When does a joke become a dad joke?", p: "When it becomes apparent.", tag: "Dad Joke" },
+          { s: "My friend said pepper is the best seasoning for a roast.", p: "I took it with a grain of salt.", tag: "Dad Joke" },
+          { s: "The urge to sing the Lion King song...", p: "...is just a whim away.", tag: "Dad Joke" },
+          { s: "I wear a stethoscope...", p: "...so in a medical emergency, I can teach people a valuable lesson about assumptions.", tag: "Dad Joke" },
+          { s: "What do you give a sick lemon?", p: "Lemonaid.", tag: "Dad Joke" },
+          { s: "Dermatologists are always in a hurry.", p: "They spend all day making rash decisions.", tag: "Dad Joke" },
+        ],
+      };
+
+      const setupEl = document.getElementById("joke-setup");
+      const punchEl = document.getElementById("joke-punch");
+      const tagEl = document.getElementById("joke-tag");
+      const countEl = document.getElementById("joke-count");
+      const newBtn = document.getElementById("new-joke");
+      const copyBtn = document.getElementById("copy-joke");
+
+      const LIVE_ENDPOINT = "https://icanhazdadjoke.com/";
+      let lastIndex = -1;
+      let current = null;
+      let loading = false;
+
+      function activePool() {
+        const base = app && app.getCurrentTheme() === app.OFFICE ? JOKES.office : JOKES.f1;
+        return base.concat(JOKES.shared);
+      }
+
+      // Curated pick — theme-matched, used as the offline fallback.
+      function pickCurated() {
+        const pool = activePool();
+        let i = 0;
+        if (pool.length > 1) {
+          i = lastIndex;
+          while (i === lastIndex) i = Math.floor(Math.random() * pool.length);
+        }
+        lastIndex = i;
+        return { s: pool[i].s, p: pool[i].p, tag: pool[i].tag, meta: "offline · curated" };
+      }
+
+      // icanhazdadjoke returns one line; split it into setup / punchline
+      // on the first "?" (or first sentence break) so it fits our layout.
+      function splitJoke(text) {
+        const q = text.indexOf("? ");
+        if (q !== -1) return { s: text.slice(0, q + 1), p: text.slice(q + 2) };
+        const d = text.indexOf(". ");
+        if (d > 0 && d < text.length - 2) return { s: text.slice(0, d + 1), p: text.slice(d + 2) };
+        return { s: text, p: "" };
+      }
+
+      async function fetchLiveJoke() {
+        const res = await fetch(LIVE_ENDPOINT, { headers: { Accept: "application/json" } });
+        if (!res.ok) throw new Error("bad status " + res.status);
+        const data = await res.json();
+        if (!data || !data.joke) throw new Error("empty payload");
+        const parts = splitJoke(data.joke.trim());
+        return { s: parts.s, p: parts.p, tag: "Dad Joke · live", meta: "live · icanhazdadjoke.com" };
+      }
+
+      function paint(joke) {
+        current = joke;
+        setupEl.textContent = joke.s;
+        punchEl.textContent = joke.p;
+        tagEl.textContent = joke.tag;
+        countEl.textContent = joke.meta || "";
+        setupEl.classList.remove("joke-swap");
+        punchEl.classList.remove("joke-swap");
+        copyBtn.disabled = false;
+      }
+
+      async function render() {
+        if (loading) return;
+        loading = true;
+        newBtn.disabled = true;
+
+        // fade current out — doubles as the loading state during the fetch
+        setupEl.classList.add("joke-swap");
+        punchEl.classList.add("joke-swap");
+        tagEl.textContent = "…";
+
+        try {
+          paint(await fetchLiveJoke());
+        } catch {
+          paint(pickCurated());
+        } finally {
+          loading = false;
+          newBtn.disabled = false;
+        }
+      }
+
+      async function copyJoke() {
+        if (!current) return;
+        const text = (current.s + "\n" + current.p).trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          app && app.showToast && app.showToast("Joke copied. Use responsibly.", "success");
+        } catch {
+          app && app.showToast && app.showToast("Couldn't copy — clipboard said no.", "error");
+        }
+      }
+
+      newBtn.addEventListener("click", render);
+      copyBtn.addEventListener("click", copyJoke);
+    })();
+  </script>
+</body>
+</html>
