@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Lockup | Sai Prathek Kotha</title>
+  <meta name="description" content="Every build, prototype, paper and side-quest by Sai Prathek Kotha — rolled out of the garage and lined up in one place." />
+  <link rel="canonical" href="https://www.saiprathek.com/garage/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content="The Lockup — Everything Sai Prathek Kotha Has Built" />
+  <meta property="og:description" content="Live products, enterprise systems, open source and research — the full garage in one place." />
+  <meta property="og:url" content="https://www.saiprathek.com/garage/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <style>
+    .f1-only { display: none; }
+    .office-only { display: none; }
+    body.theme-f1 .f1-only { display: block; }
+    body.theme-office .office-only { display: block; }
+    .f1-inline, .office-inline { display: none; }
+    body.theme-f1 .f1-inline { display: inline; }
+    body.theme-office .office-inline { display: inline; }
+
+    .bay-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-container-lowest);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .bay-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--primary);
+      opacity: 0.85;
+    }
+    .bay-card:hover { transform: translateY(-4px); }
+    body.theme-f1 .bay-card:hover { box-shadow: 0 16px 40px rgba(179,4,0,0.12); border-color: var(--primary); }
+    body.theme-office .bay-card:hover { box-shadow: 0 16px 40px rgba(242,202,80,0.12); border-color: var(--primary); }
+
+    .bay-id {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--secondary); font-family: var(--font-mono);
+    }
+    .status-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 2px 9px; font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      font-family: var(--font-mono);
+    }
+    .status-dot { width: 6px; height: 6px; border-radius: 999px; display: inline-block; }
+    .st-live   { background: rgba(34,197,94,0.14); color: #16a34a; }
+    .st-live .status-dot { background: #16a34a; animation: pulse-dot 1.6s infinite; }
+    .st-internal { background: var(--surface-container-high); color: var(--secondary); }
+    .st-research { background: rgba(59,130,246,0.14); color: #2563eb; }
+    .st-code   { background: var(--surface-container-high); color: var(--on-surface); }
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+    .bay-tag {
+      display: inline-block; padding: 2px 8px; font-size: 10px;
+      background: var(--surface-container-high); color: var(--secondary);
+      font-family: var(--font-mono); letter-spacing: 0.02em;
+    }
+    .bay-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--primary); font-family: var(--font-headline);
+      transition: gap 0.2s ease;
+    }
+    .bay-card:hover .bay-cta { gap: 10px; }
+    .bay-locked { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--secondary); font-family: var(--font-mono); display: inline-flex; align-items: center; gap: 6px; }
+
+    .section-rule { height: 1px; background: var(--outline-variant); flex: 1; }
+  </style>
+</head>
+<body class="theme-f1">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style="background: var(--surface); border-bottom: 1px solid var(--outline-variant);">
+    <a href="/" class="f1-only font-black italic tracking-tighter text-xl" style="color: var(--on-surface); font-family: var(--font-headline);">APEX ENGINEERING</a>
+    <a href="/" class="office-only font-semibold tracking-widest text-sm uppercase" style="color: var(--on-surface); font-family: var(--font-headline);">THE BRANCH</a>
+
+    <div class="flex items-center gap-6">
+      <a href="/" class="f1-only text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary); font-family: var(--font-mono);">← Portfolio</a>
+      <a href="/" class="office-only text-xs font-semibold uppercase tracking-widest hover:opacity-70 transition-opacity" style="color: var(--secondary);">← Back to Office</a>
+
+      <button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle-btn">
+        <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary); font-variation-settings: 'FILL' 1;">light_mode</span>
+        <span class="toggle-switch-track"><span class="toggle-switch-thumb"></span></span>
+        <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary); font-variation-settings: 'FILL' 1;">dark_mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-10 px-6 max-w-6xl mx-auto">
+    <div class="f1-only">
+      <span class="text-[10px] tracking-[0.3em] uppercase mb-3 block" style="color: var(--primary); font-family: var(--font-mono);">Garage // Full Inventory</span>
+      <h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase italic leading-none mb-4" style="font-family: var(--font-headline);">THE <span style="color: var(--primary);">LOCKUP</span></h1>
+      <p class="text-base max-w-2xl" style="color: var(--secondary); font-family: var(--font-body);">Every build, prototype, paper and side-quest — rolled out of the garage and lined up in one place. Live products, enterprise systems, open source and research.</p>
+    </div>
+    <div class="office-only">
+      <span class="text-[10px] tracking-[0.2em] uppercase mb-3 block" style="color: var(--primary);">Storage // Full Inventory</span>
+      <h1 class="text-5xl md:text-7xl font-semibold leading-none mb-4" style="font-family: var(--font-headline);">The <span style="color: var(--primary);">Warehouse</span></h1>
+      <p class="text-base max-w-2xl" style="color: var(--secondary);">Every project, prototype, and paper — pulled from the shelves and catalogued in one place. Shipped products, internal systems, open source and research.</p>
+    </div>
+  </section>
+
+  <!-- INVENTORY -->
+  <main id="bays" class="px-6 pb-32 max-w-6xl mx-auto space-y-16">
+    <div class="text-center py-12 opacity-40" style="color: var(--secondary);">
+      <span class="material-symbols-outlined text-4xl block mb-2">garage</span>
+      <span class="text-xs uppercase tracking-widest">Opening the garage…</span>
+    </div>
+  </main>
+
+  <footer class="border-t px-6 py-8 text-center" style="border-color: var(--outline-variant);">
+    <p class="text-xs uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono);">
+      <a href="/" class="hover:opacity-70 transition-opacity" style="color: var(--primary);">saiprathek.com</a>
+      <span class="mx-2">·</span>
+      Built by Sai Prathek Kotha
+    </p>
+  </footer>
+
+  <script src="/js/core.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/animations.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    (() => {
+      // ---- Inventory data -------------------------------------------------
+      const SECTIONS = [
+        {
+          title: "Live Builds",
+          f1: "On Track",
+          office: "Shipped & Live",
+          note: "Out in the world right now.",
+          items: [
+            {
+              name: "K2K Horizon",
+              sub: "Attack-Surface Intelligence Platform",
+              blurb: "Analyses any domain against 50+ open, deep and dark-web sources to surface exposed credentials, lookalike domains and risky infrastructure — scored through the HORIZON, HIRR and MITRESight frameworks.",
+              tags: ["OSINT", "Threat Intel", "Dark Web", "MITRE ATT&CK"],
+              status: "live", href: "https://horizon.infoseck2k.com", cta: "Launch Horizon", external: true,
+            },
+            {
+              name: "Morecambe FC",
+              sub: "Official Club Website",
+              blurb: "Design and build of the official website for Morecambe FC, the English football club — fixtures, news and matchday, shipped and live.",
+              tags: ["Web", "Frontend", "Live Site"],
+              status: "live", href: "https://morecambefc.com", cta: "Visit site", external: true,
+            },
+            {
+              name: "MIRA",
+              sub: "Multi-Intelligence Response Agent",
+              blurb: "Meta-LLaMA-3.1-8B fine-tuned on 8.4M+ tokens of therapist–patient dialogue with Unsloth, deployed on Hugging Face for open mental-health AI research.",
+              tags: ["LLaMA 3.1", "Fine-tuning", "Mental Health AI", "Hugging Face"],
+              status: "live", href: "https://kzmluwnx39bq0ja6grhx.lite.vusercontent.net/", cta: "Launch MIRA", external: true,
+            },
+            {
+              name: "Pit Banter",
+              sub: "Random Joke Generator",
+              blurb: "A dual-theme joke generator wired to a live dad-joke API, with a curated F1/Office set as the offline fallback. Pull the lever, get a groan.",
+              tags: ["JavaScript", "Live API", "Fun"],
+              status: "live", href: "/jokes/", cta: "Open the jokes", external: false,
+            },
+          ],
+        },
+        {
+          title: "Enterprise Systems",
+          f1: "Factory Floor",
+          office: "Internal — State Street",
+          note: "Production systems behind closed doors.",
+          items: [
+            {
+              name: "SQL Runner",
+              sub: "Natural Language → SQL → Dashboard",
+              blurb: "Text-to-SQL-to-dashboard system adopted across 3 business teams at State Street, cutting reporting time from 1–2 days to minutes. Research paper available.",
+              tags: ["Python", "SQL", "Snowflake", "LLM"],
+              status: "internal", locked: "Internal · paper available",
+            },
+            {
+              name: "Doc Intel",
+              sub: "Financial Document Extraction Engine",
+              blurb: "Azure Document Intelligence platform for US financial documents — invoices, K-1 forms, statements — freeing 50+ hours/week of manual extraction at 85% accuracy on complex tables.",
+              tags: ["Azure Doc Intelligence", "OCR", "GPT", "Financial AI"],
+              status: "internal", locked: "Internal — State Street",
+            },
+            {
+              name: "Enterprise GPT",
+              sub: "Internal Knowledge Assistant",
+              blurb: "Fine-tuned GPT-3.5 on Azure over State Street's knowledge base, replacing manual document hunting with instant, contextual answers.",
+              tags: ["GPT-3.5", "Azure OpenAI", "RAG", "Enterprise AI"],
+              status: "internal", locked: "Internal — State Street",
+            },
+            {
+              name: "K2K Discovery",
+              sub: "Credential & Threat Intelligence Hub",
+              blurb: "Real-time aggregation of Qualys, Shodan, DeHashed, HIBP and internal logs into actionable security insights, with anomaly detection and IAM posture mapped to MITRE ATT&CK.",
+              tags: ["OSINT", "IAM", "Anomaly Detection", "Python"],
+              status: "internal", locked: "Access on request",
+            },
+          ],
+        },
+        {
+          title: "Open Source & Research",
+          f1: "Tech Regs",
+          office: "The Filing Cabinet",
+          note: "Papers, experiments and words.",
+          items: [
+            {
+              name: "Publications",
+              sub: "Peer-Reviewed Research",
+              blurb: "Image denoising with autoencoders (ICCCE 2024, Springer) and T2I-RISE on adversarial robustness in latent diffusion models (IEEE BigData 2024).",
+              tags: ["Springer", "IEEE", "Deep Learning"],
+              status: "research", href: "/#publications", cta: "Read the papers", external: false,
+            },
+            {
+              name: "VoiceCmd",
+              sub: "Real-time Speech Recognition Engine",
+              blurb: "TensorFlow/Keras model trained on Google's Mini Speech Commands, wired into a real-time Pygame app with <100ms command recognition latency.",
+              tags: ["TensorFlow", "Keras", "Speech", "Pygame"],
+              status: "code", href: "https://github.com/SaiPrathek", cta: "View on GitHub", external: true,
+            },
+            {
+              name: "The Debrief",
+              sub: "Long-form Blog",
+              blurb: "Posts on AI, life and the weird intersections between them — deep dives, tangents and the occasional ASCII diagram.",
+              tags: ["Writing", "AI", "Essays"],
+              status: "code", href: "/blog/", cta: "Read the blog", external: false,
+            },
+          ],
+        },
+      ];
+
+      const STATUS_LABEL = { live: "Live", internal: "Internal", research: "Published", code: "Open" };
+
+      function esc(s) {
+        return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      }
+
+      function cardHTML(item, bayNo) {
+        const tags = item.tags.map(t => `<span class="bay-tag">${esc(t)}</span>`).join("");
+        const chip = `<span class="status-chip st-${item.status}">${item.status === "live" ? '<span class="status-dot"></span>' : ""}${STATUS_LABEL[item.status]}</span>`;
+        const foot = item.href
+          ? `<a class="bay-cta" href="${esc(item.href)}"${item.external ? ' target="_blank" rel="noopener"' : ""}>${esc(item.cta)} <span class="material-symbols-outlined" style="font-size:16px;">${item.external ? "north_east" : "arrow_forward"}</span></a>`
+          : `<span class="bay-locked"><span class="material-symbols-outlined" style="font-size:15px;">lock</span>${esc(item.locked || "Internal")}</span>`;
+        return `
+          <article class="bay-card p-7">
+            <div class="flex items-center justify-between mb-4">
+              <span class="bay-id">Bay ${bayNo}</span>
+              ${chip}
+            </div>
+            <h3 class="text-2xl font-black tracking-tight leading-tight mb-1" style="font-family: var(--font-headline); color: var(--on-surface);">${esc(item.name)}</h3>
+            <p class="text-xs uppercase tracking-widest mb-4" style="color: var(--secondary); font-family: var(--font-mono);">${esc(item.sub)}</p>
+            <p class="text-sm leading-relaxed mb-5" style="color: var(--secondary);">${esc(item.blurb)}</p>
+            <div class="flex flex-wrap gap-2 mb-6">${tags}</div>
+            <div class="mt-auto pt-1">${foot}</div>
+          </article>`;
+      }
+
+      function render() {
+        const root = document.getElementById("bays");
+        let bayNo = 0;
+        root.innerHTML = SECTIONS.map(sec => {
+          const cards = sec.items.map(it => cardHTML(it, String(++bayNo).padStart(2, "0"))).join("");
+          return `
+            <section>
+              <div class="flex items-center gap-4 mb-6">
+                <h2 class="text-sm font-bold uppercase tracking-[0.2em]" style="font-family: var(--font-mono); color: var(--on-surface);">
+                  <span class="f1-inline">${esc(sec.f1)}</span><span class="office-inline">${esc(sec.office)}</span>
+                </h2>
+                <span class="text-[10px] uppercase tracking-widest hidden sm:inline" style="color: var(--secondary); font-family: var(--font-mono);">${esc(sec.note)}</span>
+                <span class="section-rule"></span>
+                <span class="text-[10px] uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono);">${sec.items.length} in the bay</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">${cards}</div>
+            </section>`;
+        }).join("");
+      }
+
+      render();
+    })();
+  </script>
+</body>
+</html>
