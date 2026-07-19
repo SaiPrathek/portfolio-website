@@ -110,8 +110,8 @@
     </div>
 
     <p class="text-center mt-6 text-[10px] uppercase tracking-widest" style="color: var(--secondary); font-family: var(--font-mono); opacity:0.6;">
-      <span class="f1-only">Live feed from icanhazdadjoke.com · curated paddock jokes when you're off the grid.</span>
-      <span class="office-only">Live feed from icanhazdadjoke.com · curated office jokes when the network's down.</span>
+      <span class="f1-only">Fresh jokes every pull · curated paddock jokes when you're off the grid.</span>
+      <span class="office-only">Fresh jokes every pull · curated office jokes when the network's down.</span>
     </p>
   </section>
 
@@ -200,7 +200,7 @@
           while (i === lastIndex) i = Math.floor(Math.random() * pool.length);
         }
         lastIndex = i;
-        return { s: pool[i].s, p: pool[i].p, tag: pool[i].tag, meta: "offline · curated" };
+        return { s: pool[i].s, p: pool[i].p, tag: pool[i].tag, meta: "" };
       }
 
       // icanhazdadjoke returns one line; split it into setup / punchline
@@ -219,7 +219,7 @@
         const data = await res.json();
         if (!data || !data.joke) throw new Error("empty payload");
         const parts = splitJoke(data.joke.trim());
-        return { s: parts.s, p: parts.p, tag: "Dad Joke · live", meta: "live · icanhazdadjoke.com" };
+        return { s: parts.s, p: parts.p, tag: "Dad Joke", meta: "" };
       }
 
       function paint(joke) {
