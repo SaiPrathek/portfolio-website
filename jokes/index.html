@@ -185,6 +185,7 @@
       let lastIndex = -1;
       let current = null;
       let loading = false;
+      let servedCount = 0;
 
       function activePool() {
         const base = app && app.getCurrentTheme() === app.OFFICE ? JOKES.office : JOKES.f1;
@@ -224,10 +225,11 @@
 
       function paint(joke) {
         current = joke;
+        servedCount += 1;
         setupEl.textContent = joke.s;
         punchEl.textContent = joke.p;
         tagEl.textContent = joke.tag;
-        countEl.textContent = joke.meta || "";
+        countEl.textContent = "No. " + servedCount + " served";
         setupEl.classList.remove("joke-swap");
         punchEl.classList.remove("joke-swap");
         copyBtn.disabled = false;
