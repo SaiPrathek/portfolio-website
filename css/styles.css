@@ -171,6 +171,130 @@ body.theme-office #navbar {
   color: var(--primary);
 }
 
+/* Nav dropdown (direct project navigation) */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav-caret {
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+
+.nav-dropdown:hover .nav-caret,
+.nav-dropdown:focus-within .nav-caret {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 250px;
+  padding: 8px;
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 60;
+}
+
+/* hover bridge so the 6px gap doesn't drop the menu */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(6px);
+}
+
+.nav-dropdown-head {
+  display: block;
+  padding: 8px 12px 4px;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  font-family: var(--font-mono);
+}
+
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-family: var(--font-headline);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-dropdown-item:hover {
+  background: var(--surface-container-high);
+  color: var(--primary);
+}
+
+.nav-dropdown-item .material-symbols-outlined {
+  font-size: 14px;
+  opacity: 0.45;
+}
+
+.nav-dropdown-item:hover .material-symbols-outlined {
+  opacity: 0.9;
+}
+
+.nav-dropdown-divider {
+  height: 1px;
+  background: var(--outline-variant);
+  margin: 6px 4px;
+}
+
+.nav-dropdown-all {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Mobile sub-links under the Garage entry */
+.mobile-subnav-link {
+  display: block;
+  padding: 0.5rem 0 0.5rem 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--secondary);
+  border-bottom: 1px solid var(--outline-variant);
+  font-family: var(--font-body);
+}
+
+.mobile-subnav-link:hover {
+  color: var(--primary);
+}
+
 /* Theme toggle button */
 .theme-toggle-btn {
   display: flex;
