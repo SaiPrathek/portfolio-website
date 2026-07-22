@@ -8,6 +8,14 @@
   ],
   "routes": [
     {
+      "src": "/cath",
+      "dest": "https://saiprathek.github.io/cath/"
+    },
+    {
+      "src": "/cath/(.*)",
+      "dest": "https://saiprathek.github.io/cath/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
