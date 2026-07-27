@@ -2408,3 +2408,164 @@ body.theme-office .skunkworks-tag {
   0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
   50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(34,197,94,0); }
 }
+
+/* ============================================
+   CATH CURTAIN
+   ============================================ */
+
+html.cath-transitioning,
+html.cath-transitioning body {
+  overflow: hidden;
+}
+
+.cath-curtain {
+  --cath-pull: 0px;
+  position: fixed;
+  z-index: 40;
+  top: -20px;
+  left: 50%;
+  width: 184px;
+  height: calc(82px + var(--cath-pull));
+  transform: translateX(-50%);
+  overflow: visible;
+  color: #fff0c2;
+  pointer-events: none;
+  transition:
+    top 0.68s cubic-bezier(0.72, 0, 0.18, 1),
+    left 0.68s cubic-bezier(0.72, 0, 0.18, 1),
+    width 0.68s cubic-bezier(0.72, 0, 0.18, 1),
+    height 0.68s cubic-bezier(0.72, 0, 0.18, 1),
+    transform 0.68s cubic-bezier(0.72, 0, 0.18, 1);
+}
+
+.cath-curtain.is-dragging {
+  transition: none;
+}
+
+.cath-curtain.is-opening {
+  z-index: 120;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  transform: none;
+}
+
+.cath-curtain__fabric {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 3px solid #fff0c2;
+  border-top: 0;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 240, 194, 0.13) 17%, transparent 34%, rgba(37, 26, 50, 0.3) 53%, transparent 72%, rgba(255, 240, 194, 0.1)),
+    repeating-linear-gradient(90deg, #5f1938 0 8%, #8f284d 8% 17%, #b03a62 17% 25%, #7b2145 25% 34%);
+  box-shadow:
+    inset 0 -10px 0 #251a32,
+    inset 0 -15px 0 #e8a33c,
+    0 7px 18px rgba(23, 16, 31, 0.34);
+}
+
+.cath-curtain__fabric::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  height: 20px;
+  background: radial-gradient(circle at 10px 0, #d94f78 10px, transparent 11px) 0 0 / 20px 20px repeat-x;
+}
+
+.cath-curtain__pull {
+  position: absolute;
+  right: 10px;
+  bottom: -82px;
+  left: 10px;
+  display: grid;
+  grid-template-columns: 38px 1fr 16px;
+  align-items: center;
+  gap: 7px;
+  min-height: 58px;
+  padding: 7px 9px;
+  border: 3px solid #fff0c2;
+  color: #fff0c2;
+  background: #382646;
+  box-shadow: 4px 4px 0 #17101f;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.61rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.075em;
+  text-align: left;
+  text-transform: uppercase;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: grab;
+  pointer-events: auto;
+}
+
+.cath-curtain__pull:hover,
+.cath-curtain__pull:focus-visible {
+  color: #fff0c2;
+  outline: 3px solid #e8a33c;
+  outline-offset: 3px;
+}
+
+.cath-curtain__pull:active {
+  cursor: grabbing;
+}
+
+.cath-curtain__pull img {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.cath-curtain__arrow {
+  color: #e8a33c;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.cath-curtain:not(.is-dragging):not(.is-opening) .cath-curtain__pull {
+  animation: cath-curtain-bob 2.6s ease-in-out infinite;
+}
+
+.cath-curtain.is-opening .cath-curtain__pull {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+@keyframes cath-curtain-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+
+@media (max-width: 480px) {
+  .cath-curtain {
+    width: 168px;
+  }
+
+  .cath-curtain__pull {
+    grid-template-columns: 34px 1fr 14px;
+    font-size: 0.56rem;
+  }
+
+  .cath-curtain__pull img {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cath-curtain,
+  .cath-curtain__pull {
+    animation: none !important;
+    transition-duration: 0.12s !important;
+  }
+}
