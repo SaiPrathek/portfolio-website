@@ -67,23 +67,26 @@
   </script>
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="/css/styles.css?v=20260727-cath" />
+  <link rel="stylesheet" href="/css/styles.css?v=20260727-cath2" />
 </head>
 
 <body class="theme-f1">
 
   <div class="cath-curtain" id="cath-curtain">
     <div class="cath-curtain__fabric" aria-hidden="true"></div>
-    <a
+    <div
       class="cath-curtain__pull"
       id="cath-curtain-pull"
-      href="/cath/"
+      data-game-url="/cath/"
+      role="button"
+      aria-roledescription="pull handle"
       aria-label="Pull down to open Cath's birthday game"
+      tabindex="0"
     >
-      <img src="/cath/assets/pixel/portrait-cat-v1.png" alt="" width="38" height="38" />
+      <img src="/cath/assets/pixel/portrait-cat-v1.png" alt="" width="46" height="46" draggable="false" />
       <span>PULL IF YOU'RE CATH</span>
       <span class="cath-curtain__arrow" aria-hidden="true">↓</span>
-    </a>
+    </div>
   </div>
 
   <!-- ===================== NAVBAR ===================== -->
@@ -2211,7 +2214,7 @@
   <script src="/js/contact.js"></script>
   <script src="/js/interactive.js"></script>
   <script src="/js/blog.js"></script>
-  <script src="/js/cath-curtain.js?v=20260727-cath"></script>
+  <script src="/js/cath-curtain.js?v=20260727-cath2"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>
