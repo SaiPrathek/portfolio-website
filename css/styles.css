@@ -2438,8 +2438,9 @@ html.cath-transitioning body {
     transform 0.68s cubic-bezier(0.72, 0, 0.18, 1);
 }
 
-.cath-curtain.is-dragging {
-  transition: none;
+.cath-curtain.is-click-pulling {
+  --cath-pull: 80px;
+  transition: height 0.24s cubic-bezier(0.22, 0.75, 0.24, 1);
 }
 
 .cath-curtain.is-opening {
@@ -2498,10 +2499,10 @@ html.cath-transitioning body {
   letter-spacing: 0.075em;
   text-align: left;
   text-transform: uppercase;
-  touch-action: none;
+  touch-action: manipulation;
   user-select: none;
   -webkit-user-drag: none;
-  cursor: grab;
+  cursor: pointer;
   pointer-events: auto;
 }
 
@@ -2510,10 +2511,6 @@ html.cath-transitioning body {
 .cath-curtain__pull:focus-visible {
   color: #fff0c2;
   outline: none;
-}
-
-.cath-curtain__pull:active {
-  cursor: grabbing;
 }
 
 .cath-curtain__pull img {
@@ -2531,7 +2528,7 @@ html.cath-transitioning body {
   text-align: center;
 }
 
-.cath-curtain:not(.is-dragging):not(.is-opening) .cath-curtain__pull {
+.cath-curtain:not(.is-click-pulling):not(.is-opening) .cath-curtain__pull {
   animation: cath-curtain-bob 2.6s ease-in-out infinite;
 }
 
