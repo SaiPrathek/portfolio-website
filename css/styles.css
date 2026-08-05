@@ -2422,10 +2422,10 @@ html.cath-transitioning body {
   --cath-pull: 0px;
   position: fixed;
   z-index: 40;
-  top: -20px;
+  top: -30px;
   left: 50%;
-  width: 221px;
-  height: calc(82px + var(--cath-pull));
+  width: 360px;
+  height: calc(94px + var(--cath-pull));
   transform: translateX(-50%);
   overflow: visible;
   color: #fff0c2;
@@ -2439,7 +2439,7 @@ html.cath-transitioning body {
 }
 
 .cath-curtain.is-click-pulling {
-  --cath-pull: 80px;
+  --cath-pull: 108px;
   transition: height 0.24s cubic-bezier(0.22, 0.75, 0.24, 1);
 }
 
@@ -2479,21 +2479,21 @@ html.cath-transitioning body {
 
 .cath-curtain__pull {
   position: absolute;
-  right: 12px;
-  bottom: -94px;
-  left: 12px;
+  right: 14px;
+  bottom: -138px;
+  left: 14px;
   display: grid;
-  grid-template-columns: 46px 1fr 19px;
+  grid-template-columns: 68px 1fr 28px;
   align-items: center;
-  gap: 8px;
-  min-height: 70px;
-  padding: 9px 11px;
-  border: 3px solid #fff0c2;
+  gap: 12px;
+  min-height: 108px;
+  padding: 14px 16px;
+  border: 4px solid #fff0c2;
   color: #fff0c2;
   background: #382646;
-  box-shadow: 5px 5px 0 #17101f;
+  box-shadow: 7px 7px 0 #17101f;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.73rem;
+  font-size: 0.98rem;
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: 0.075em;
@@ -2514,8 +2514,8 @@ html.cath-transitioning body {
 }
 
 .cath-curtain__pull img {
-  width: 46px;
-  height: 46px;
+  width: 68px;
+  height: 68px;
   object-fit: cover;
   image-rendering: pixelated;
   pointer-events: none;
@@ -2523,7 +2523,7 @@ html.cath-transitioning body {
 
 .cath-curtain__arrow {
   color: #e8a33c;
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 1;
   text-align: center;
 }
@@ -2540,22 +2540,26 @@ html.cath-transitioning body {
 
 @keyframes cath-curtain-bob {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(7px); }
+  50% { transform: translateY(10px); }
 }
 
 @media (max-width: 480px) {
   .cath-curtain {
-    width: 202px;
+    width: calc(100vw - 12px);
   }
 
   .cath-curtain__pull {
-    grid-template-columns: 41px 1fr 17px;
-    font-size: 0.67rem;
+    bottom: -124px;
+    grid-template-columns: 60px 1fr 24px;
+    gap: 10px;
+    min-height: 96px;
+    padding: 12px 13px;
+    font-size: 0.82rem;
   }
 
   .cath-curtain__pull img {
-    width: 41px;
-    height: 41px;
+    width: 60px;
+    height: 60px;
   }
 }
 
